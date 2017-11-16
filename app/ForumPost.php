@@ -31,8 +31,11 @@ class ForumPost extends Model
         });
 
         static::created(function ($post) {
+            Cache::forget('lastThread-f'.$post->thread->forum->id);
+
             Cache::forget('lastPost-'.$post->thread->forum->id);
             Cache::forget('lastPoster-t'.$post->thread->id);
+
             Cache::forget('lastPost-t'.$post->thread->id);
             Cache::forget('lastPoster-f'.$post->thread->forum->id);
 
