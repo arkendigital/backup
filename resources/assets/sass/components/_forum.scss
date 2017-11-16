@@ -1,0 +1,208 @@
+.forum {
+    width: 100%;
+
+    @include transition;
+
+    border-top: 2px solid rgba($offblack, 0.2);
+
+    &:hover {
+        border-color: $secondary;
+        background-color: rgba($black, 0.06);
+
+        .forum__category {
+            background-color: none;
+        }
+    }
+
+    &__description {
+        color: $offblack;
+        padding: none;
+    }
+
+    &__description_topic {
+        margin-top: -12px;
+        margin-left: 72px !important;
+    }
+
+    &__icon {
+        width: 9%;
+        display: inline-block;
+        vertical-align: middle;
+        text-align: center;
+        i {
+            font-size: 4rem;
+            background-color: rgba($secondary, 0.9);
+            color: $white;
+            padding: 2rem;
+            border-radius: 1rem;
+            width: 80px;
+
+            @include transition;
+        }
+    }
+
+    &__info {
+        width: 50%;
+        display: inline-block;
+        vertical-align: middle;
+        padding: 1rem;
+    }
+
+    &__stats {
+        width: 10%;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    &__latest {
+        width: 30%;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    &__lastposter {
+        width: 25%;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    &__avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-size: cover;
+        background-position: center center;
+        margin: 2rem auto;
+        display: block;
+    }
+
+    &__lastpost {
+        width: 70%;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    &__category {
+        color: $secondary;
+        display: block;
+        padding: 0 1rem;
+        margin-top: 2rem;
+
+        a {
+            color: $secondary;
+        }
+    }
+
+    &__topic_title {
+        color: $offblack;
+        display: block;
+        padding: 0 1rem;
+        margin-top: 1rem;
+
+        a {
+            color: $secondary;
+        }
+
+        i {
+            color: $offblack;
+        }
+    }
+
+    &__heading {
+        margin: 0;
+        font-size: 1.7rem;
+
+        i {
+            padding: 0;
+            margin-left: 4px;
+            color: $secondary;
+        }
+
+        &:hover {
+            i {
+                color: $secondary;
+            }
+        }
+    }
+
+    &__last_arrow {
+        i {
+            padding: 0;
+            margin-left: 4px;
+            color: $secondary;
+        }
+
+        &:hover {
+            i {
+                color: $secondary;
+            }
+        }
+    }
+}
+
+.avatar {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.table-responsive td {
+    vertical-align: middle !important;
+}
+
+div[id^="post-"] {
+    position: relative;
+}
+
+.reaction-strip {
+    clear: both;
+    margin: 1rem 0;
+}
+
+.reaction {
+    background-color: transparent;
+    border-color: transparent;
+    padding: 0.1rem;
+    margin-left: 8px;
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+        outline: none;
+
+        i {
+            opacity: 1;
+        }
+    }
+
+    i {
+        opacity: 0.5;
+        text-decoration: none;
+        transition: all 0.3s ease;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    .total {
+        font-weight: bold;
+    }
+}
+
+.disabled {
+    opacity: 0.4;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.pagination {
+    margin: 0;
+}
+
+.signature-container {
+    max-height: 200px;
+    overflow: hidden;
+}

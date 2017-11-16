@@ -1,0 +1,30 @@
+.comment {
+    &__userinfo {
+        width: 20%;
+        float: left;
+    }
+    &__content {
+        position: relative;
+        min-height: 150px;
+        width: 80%;
+        float: left;
+    }
+    &__footer {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        ul {
+            list-style: none;
+            li {
+                float: left;
+                a {
+                    padding: 1rem;
+                }
+            }
+        }
+    }
+    &__avatar {
+        width: 80px !important; 
+        height: 80px !important;
+    }
+}

@@ -1,0 +1,138 @@
+.slider {
+    background: linear-gradient(darken($offblack, 5%), darken($offblack, 15%));
+
+    &__item {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        margin: 2rem;
+        padding: 2rem;
+        height: 30rem !important;
+        position: relative;
+        opacity: 0.7;
+        transition: all 0.3s ease;
+
+
+        &:hover {
+            .slider__content {
+                background-color: $primary;
+            }
+
+            .slider__button {
+                background-color: $secondary;
+            }
+        }
+
+        .slider__desc {
+            display: none;
+
+            transition: all 0.3s ease;
+            font-size: 1.25rem;
+        }
+
+        &.slick-center {
+            transform: scale(1.1);
+            opacity: 1;
+
+            .slider__desc {
+                display: block;
+            }
+        }
+    }
+
+    &__link {
+        display: block;
+        width: 100%;
+        height: 100%;
+        color: $white !important;
+    }
+
+    &__content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 0 1rem 2rem 1rem;
+        background-color: rgba($secondary, 0.8);
+        width: 100%;
+        color: $white;
+
+        transition: all 0.3s ease;
+
+    }
+
+    &__title {
+        padding-bottom: 0rem;
+        margin-top: 1rem;
+        font-size: 2rem;
+    }
+
+    &__button {
+        background-color: $primary;
+        color: $white;
+        padding: 1rem;
+        display: inline-block;
+
+        transition: all 0.3s ease;
+
+    }
+}
+
+.slider-nav {
+    padding: 0.5rem 0 !important;
+
+    &__list {
+        float: left;
+        width: 100%;
+        list-style-type: none;
+        padding: 0;
+        text-align: center;
+    }
+
+    &__item {
+        padding: 0 1.5rem;
+        width: 16.66%;
+        float: left;
+        vertical-align: middle;
+        border-right: 5px solid lighten($offblack, 60%);
+
+        @media all and (max-width: $tablet) {
+            width: calc(33.333% - 2rem);
+            border-right: 0;
+            background-color: rgba($primary, 0.25);
+            margin: 1rem;
+        }
+
+        @media all and (max-width: $phone) {
+            width: calc(50% - 2rem);
+            border-right: 0;
+            background-color: rgba($primary, 0.25);
+            margin: 1rem;
+        }
+
+        &:last-of-type {
+            border-right: none;
+        }
+    }
+
+    &__link {
+        display: block;
+        height: 6rem;
+        position: relative;
+
+        &--current, &:hover {
+            @media all and (min-width: $tablet) {
+                color: $primary;
+                background-color: rgba($primary, 0.25);
+            }
+        }
+
+        span {
+            width: 90%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: 600;
+        }
+    }
+}

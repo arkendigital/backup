@@ -1,0 +1,43 @@
+.breadcrumbs {
+    width: 70%;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 2rem 0;
+
+    &__menu {
+        list-style: none;
+        margin: 0;
+        padding: 1rem 0.5rem;
+    }
+
+    &__item {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 1.75rem;
+
+        &:last-of-type {
+            .breadcrumbs__link {
+                font-weight: bold;
+            }
+
+            &:after {
+                display: none;
+            }
+        }
+
+        &:after {
+            content: '//';
+            color: darken($primary, 15%);
+        }
+    }
+
+    &__link {
+        padding: 0.5rem;
+        font-weight: 500;
+        color: $offwhite;
+    }
+
+    &__link:hover {
+        color: $primary;
+    }
+}
