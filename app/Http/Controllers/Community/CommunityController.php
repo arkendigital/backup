@@ -32,8 +32,6 @@ class CommunityController extends Controller
         } else {
             $users = $user->all()->map(function($user) {
                 return $user;
-            })->reject(function($user) {
-                return $user->id == 65992;
             })->paginate(20);
         }
 

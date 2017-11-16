@@ -43,10 +43,6 @@
                 <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
                 Registered <strong>{{ $member->profile->created_at->format('jS F Y')}}</strong>
             </p>
-            <p class="stats">
-                <i class="fa fa-upload" aria-hidden="true"></i>
-                <strong>{{$member->profile->fileCount()}}</strong> Files Uploaded
-            </p>
         </div>
     </div>
     @endforeach
