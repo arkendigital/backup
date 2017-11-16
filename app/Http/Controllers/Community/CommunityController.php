@@ -34,11 +34,7 @@ class CommunityController extends Controller
                 return $user;
             })->reject(function($user) {
                 return $user->id == 65992;
-            });
-
-            $jeff = collect([User::find(65992)]);
-            
-            $users = $jeff->merge($users)->paginate(20);
+            })->paginate(20);
         }
 
         return view('community.index', compact('users', 'letters'));
