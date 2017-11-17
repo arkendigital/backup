@@ -59,11 +59,11 @@
                             <td>{{ $subscription->thread->view_count }}</td>
                             <td>
                                 By 
-                                <a href="{{ route('me', $subscription->thread->lastPost()->profile) }}">
-                                    <strong>{{ $subscription->thread->lastPost()->profile->display_name }}</strong>
+                                <a href="{{ route('me', $subscription->thread->lastPost->profile) }}">
+                                    <strong>{{ $subscription->thread->lastPost->profile->display_name }}</strong>
                                 </a> 
                                 - {{ $subscription->thread->updated_at->diffForHumans() }}
-                                <a href="{{ route('goToLastPost', [$subscription->thread->forum, $subscription->thread, $subscription->thread->lastPost()->id]) }}" class="forum__last_arrow">
+                                <a href="{{ route('goToLastPost', [$subscription->thread->forum, $subscription->thread, $subscription->thread->lastPost->id]) }}" class="forum__last_arrow">
                                     <i class="fa fa-arrow-circle-right"></i>
                                 </a>
                             </td>
