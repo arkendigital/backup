@@ -51,6 +51,7 @@ class RegisterController extends Controller {
         "username" => request()->username,
         "password" => Hash::make(request()->password),
         "email_token" => base64_encode(request()->email),
+        "api_token" => str_random()
       ]);
 
       Auth::loginUsingId($user->id);
