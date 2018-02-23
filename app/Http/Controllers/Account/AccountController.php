@@ -44,6 +44,9 @@ class AccountController extends Controller {
     * Update avatar photo.
     */
     if (request()->file("image")) {
+      
+      $size = AWS::setCustomSize([200,200]);
+
       $image_path = AWS::uploadImage(
         request()->file("image"),
         "user",
