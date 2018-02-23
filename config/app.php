@@ -171,7 +171,6 @@ return [
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Lavary\Menu\ServiceProvider::class, // Menu
         jdavidbakr\MailTracker\MailTrackerServiceProvider::class, // MailTracker
-        Golonka\BBCode\BBCodeParserServiceProvider::class,
         Mews\Purifier\PurifierServiceProvider::class,
         NotificationChannels\Discord\DiscordServiceProvider::class,
         // Laravel\Socialite\SocialiteServiceProvider::class,
@@ -205,7 +204,6 @@ return [
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
-        'BBCode' => Golonka\BBCode\Facades\BBCodeParser::class,
         'Blade' => Illuminate\Support\Facades\Blade::class,
         'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
         'Broadcast' => Illuminate\Support\Facades\Broadcast::class,
