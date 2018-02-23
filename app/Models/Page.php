@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\Models\PageField;
+use App\Models\PageAdvert;
 use App\Models\Section;
 
 class Page extends Model {
@@ -27,12 +28,12 @@ class Page extends Model {
     "meta_description"
   ];
 
-    /**
-     * The attributes that should be cast to carbon instances.
-     *
-     * @var array
-     */
-    protected $dates = ['deleted_at'];
+  /**
+  * The attributes that should be cast to carbon instances.
+  *
+  * @var array
+  */
+  protected $dates = ['deleted_at'];
 
     /**
      * Return the sluggable configuration array for this model.
@@ -72,6 +73,15 @@ class Page extends Model {
       return $this->hasOne(Section::class, 'id', 'section_id');
     }
 
+    /**
+    * A page can have many adverts.
+    *
+    * @return Illuminate\Database\Eloquent\Relations\HasMany
+    */
+    public function adverts() {
+      return $this->hasMany(PageAdvert::class, 'page_id', 'id');
+    }
+
     public function ScopeGetField($query, $key, $type = "") {
       foreach($this->fields as $field) {
         if ($field->key == $key) {
@@ -85,6 +95,19 @@ class Page extends Model {
         }
       }
       return '';
+    }
+
+
+    public function ScopeGetAdvert($query, $slug) {
+
+      $page_advert = PageAdvert::where("page_id", $this->id)
+        ->where("slug", $slug)
+        ->first();
+
+      $advert = Advert::find($page_advert->advert_id);
+
+      return $advert;
+
     }
 
 }

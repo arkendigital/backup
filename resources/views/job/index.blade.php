@@ -18,7 +18,11 @@
 
     <div class="clear"></div>
 
-    <img src="/images/temp/jobs-advertise-banner.png" alt="" title="">
+    @if(isset($page_adverts[0]["main-content"]))
+      <a href="{{ $page_adverts[0]["main-content"]["url"] }}" target="_blank">
+        <img src="{{ $page_adverts[0]["main-content"]["image"] }}" alt="" title="">
+      </a>
+    @endif
 
   </div><!-- /.website-container -->
 

@@ -206,6 +206,27 @@ return [
           'icon'  => 'users',
           'can'   => 'exams'
         ],
+        [
+          'text' => 'Manage Useful Links',
+          'url'  => 'ops/exam-links',
+          'icon'  => 'users',
+          'can'   => 'exams'
+        ],
+
+
+        /**
+        * Adverts.
+        */
+        [
+          'header' => 'Adverts',
+          'can' => 'adverts',
+        ],
+        [
+          'text' => 'Manage Adverts',
+          'url'  => 'ops/adverts',
+          'icon'  => 'users',
+          'can'   => 'adverts'
+        ],
 
 
 

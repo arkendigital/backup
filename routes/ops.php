@@ -60,4 +60,18 @@ Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function() 
       "exam-resources" => "resource"
     ]]);
 
+    /**
+    * Exam Links.
+    */
+    Route::resource("/exam-links", "Exams\ExamLinkController", ["parameters" => [
+      "exam-links" => "link"
+    ]]);
+
+    /**
+    * Adverts.
+    */
+    Route::resource("/adverts", "Adverts\AdvertController", ["parameters" => [
+      "adverts" => "advert"
+    ]]);
+
 });

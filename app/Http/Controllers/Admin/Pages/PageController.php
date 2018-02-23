@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Page;
 use App\Models\PageField;
+use App\Models\PageAdvert;
 use App\Models\Section;
 use App\Models\DiscussionCategory;
 
@@ -145,6 +146,19 @@ class PageController extends Controller {
           "value" => $field
         ]);
       }
+    }
+
+    /**
+    * Save adverts.
+    */
+    foreach(request()->adverts as $page_advert_id => $advert_id) {
+
+      $page_advert = PageAdvert::find($page_advert_id);
+
+      $page_advert->update([
+        "advert_id" => $advert_id
+      ]);
+
     }
 
     /**

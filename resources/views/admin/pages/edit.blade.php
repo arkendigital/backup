@@ -44,6 +44,9 @@
     </div>
   </div>
 
+
+
+
   <div class="box box-primary">
     <div class="box-header with-border">
       <h3 class="box-title">SEO</h3>
@@ -79,6 +82,30 @@
           @elseif($field->type == "text")
             <textarea class="form-control editor" name="field[{{ $field->key }}]" id="{{ $field->key }}">{{ $field->value }}</textarea>
           @endif
+        </div>
+      @endforeach
+
+    </div>
+  </div>
+
+
+
+
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <h3 class="box-title">Adverts</h3>
+    </div>
+    <div class="box-body">
+
+      @foreach($page->adverts as $page_advert)
+        <div class="form-group">
+          <label for="meta_title">{{ ucwords(str_replace("-", " ", $page_advert->slug)) }} Advert</label>
+          <select name="adverts[{{ $page_advert->id }}]" class="form-control">
+            <option value="">None</option>
+            @foreach(\App\Models\Advert::all() as $advert)
+              <option value="{{ $advert->id }}" @if($page_advert->advert_id == $advert->id) selected @endif>{{ $advert->name }}</option>
+            @endforeach
+          </select>
         </div>
       @endforeach
 

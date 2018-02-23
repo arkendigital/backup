@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 */
 use App\Models\Section;
 use App\Models\Page;
+use App\Models\PageAdvert;
 
 class JobController extends Controller {
 
@@ -41,11 +42,17 @@ class JobController extends Controller {
     $this->seo()->setDescription($page->meta_description);
 
     /**
+    * Get adverts for this page.
+    */
+    $page_adverts = getArrayOfAdverts($page->id);
+
+    /**
     * Display page.
     */
     return view("job.index", [
       "section" => $this->section,
-      "page" => $page
+      "page" => $page,
+      "page_adverts" => $page_adverts
     ]);
 
   }

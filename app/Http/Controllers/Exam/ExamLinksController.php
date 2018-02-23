@@ -44,12 +44,18 @@ class ExamLinksController extends Controller {
       ->get();
 
     /**
+    * Get adverts for this page.
+    */
+    $page_adverts = getArrayOfAdverts($page->id);
+
+    /**
     * Display results.
     */
     return view("exam.links.index", compact(
       "page",
       "official_links",
-      "unofficial_links"
+      "unofficial_links",
+      "page_adverts"
     ));
 
   }

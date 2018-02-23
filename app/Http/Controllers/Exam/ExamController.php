@@ -53,11 +53,17 @@ class ExamController extends Controller {
     $this->set_seo($page);
 
     /**
+    * Get adverts for this page.
+    */
+    $page_adverts = getArrayOfAdverts($page->id);
+
+    /**
     * Display page.
     */
     return view("exam.index", [
       "section" => $this->section,
-      "page" => $page
+      "page" => $page,
+      "page_adverts" => $page_adverts
     ]);
 
   }

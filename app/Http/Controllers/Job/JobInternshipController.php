@@ -30,10 +30,16 @@ class JobInternshipController extends Controller {
     $this->seo()->setDescription($page->meta_description);
 
     /**
+    * Get adverts for this page.
+    */
+    $page_adverts = getArrayOfAdverts($page->id);
+
+    /**
     * Display page.
     */
     return view("job.internship.index", compact(
-      "page"
+      "page",
+      "page_adverts"
     ));
 
   }

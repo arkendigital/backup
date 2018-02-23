@@ -18,6 +18,12 @@
       <img src="/images/temp/jobs-advertise-banner.png" alt="" title="" class="margin-top--medium">
     @endif
 
+    @if(isset($advert) && !empty($advert))
+      <a href="{{ $advert["url"] }}" target="_blank">
+        <img src="{{ $advert["image"] }}" alt="" title="" class="margin-top--medium">
+      </a>
+    @endif
+
     <p class="homepage-information-title margin-top--large">Join our discussions</p>
     <p class="homepage-information-text">Ut eos enisciaspe ma dolorpo rerunti oreseque di ulparum etur seque vellaut int facea am inciuscius.</p>
 

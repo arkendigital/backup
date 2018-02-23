@@ -49,11 +49,17 @@ class ExamResourcesController extends Controller {
     $resources = ExamResource::all();
 
     /**
+    * Get adverts for this page.
+    */
+    $page_adverts = getArrayOfAdverts($page->id);
+
+    /**
     * Display page.
     */
     return view("exam.resources.index", compact(
       "page",
-      "resources"
+      "resources",
+      "page_adverts"
     ));
 
   }

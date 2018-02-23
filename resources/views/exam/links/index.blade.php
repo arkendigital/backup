@@ -53,7 +53,7 @@
 
   @include("partials.exams-select")
   @include("partials.join-discussion", [
-    "with" => "banner",
+    "advert" => isset($page_adverts[0]["discussion-widget"]) ? $page_adverts[0]["discussion-widget"] : [],
     "category_id" => $page->discussion_category_id
   ])
 
