@@ -5,6 +5,10 @@
   font-size: 18px;
   text-decoration: none;
   color: #FFFFFF;
+  &--large {
+    padding: 10px 25px;
+    border-radius: 25px;
+  }
 }
 
 .button--orange {

@@ -62,6 +62,7 @@
           @endforeach
         </div><!-- /.discussion-view -->
 
+        @if(auth()->check())
         <div class="discussion-view-reply">
           <form action="{{ route("discussionStoreReply", compact("category", "discussion")) }}" method="POST" id="discussion-reply-form">
             {{ csrf_field() }}
@@ -81,6 +82,15 @@
 
           </form>
         </div><!-- /.discussion-view-reply -->
+        @else
+          <div class="discussion-view margin-top--small">
+            <div class="discussion-view-thread" style="padding-bottom: 40px;">
+              <a class="button button--large button--dark-blue" href="{{ route("register") }}">REGISTER TO REPLY</a>
+              &nbsp;&nbsp;or&nbsp;&nbsp;
+              <a class="button button--large button--dark-blue" href="{{ route("login") }}">LOGIN</a>
+            </div>
+          </div>
+        @endif
 
       </div><!-- /.discussion-view-container -->
 
