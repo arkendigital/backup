@@ -21,6 +21,14 @@
             </div>
 
             <div class="form-group">
+              <label for="url">Advert Link (URL)</label>
+              @if($errors->has("url"))
+                <p class="text-danger">{{ $errors->first("url") }}</p>
+              @endif
+              <input type="text" class="form-control" name="url" id="url" value="{{ old("url") }}" placeholder="Enter link (URL) for advert...">
+            </div>
+
+            <div class="form-group">
               <label for="image">Advert Image</label>
               @if($errors->has("image"))
                 <p class="text-danger">{{ $errors->first("image") }}</p>
