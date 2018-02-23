@@ -1,57 +1,71 @@
-@extends('layouts.master')
+<!DOCTYPE html>
+<html class="login_page">
+  <head>
+    <title>Register</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset("css/app.css") }}">
+  </head>
+  <body class="login_page">
 
-@section('content')
-<section class="site__container">
-    <div class="col-3"><!-- Spacer --></div>
+    <a href="/">
+      <img src="/images/logo.png" alt="Actuaries Online" title="Actuaries Online" class="login_page_logo">
+    </a>
 
-    <div class="col-6">
-        <div class="box box--with-margin">
-            <span class="box__title">Register New Account</span>
-            <div class="box__content">
-                <form method="POST" action="{{ route('register') }}">
-                    {{ csrf_field() }}
-                    <label for="name">Username</label>
-                    <input id="name" type="text" class="form__input" name="name" value="{{ old('name') }}" required autofocus>
+    <form class="login_page_form" action="{{ route("register") }}" method="POST">
+      {{ csrf_field() }}
+      {{ method_field("POST") }}
 
-                    @if ($errors->has('name'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('name') }}</strong>
-                        </span>
-                    @endif
+      <div class="login_page_form_actions">
+        <a href="{{ route("register") }}" class="login_page_form_actions_item login_page_form_actions_item_active">Sign up</a>
+        <a href="{{ route("login") }}" class="login_page_form_actions_item">Log in</a>
+      </div>
 
-                    <label for="email">E-Mail Address</label>
-                    <input id="email" type="email" class="form__input" name="email" value="{{ old('email') }}" required>
+      @if($errors->has("exists"))
+        <p class="login_page_form_item_error">{{ $errors->first("exists") }}</p>
+      @else
+        <p class="login_page_form_text">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cras justo odio,dapibus ac facilisis in, ege ras justo dapibus ac facilisis</p>
+      @endif
 
-                    @if ($errors->has('email'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('email') }}</strong>
-                        </span>
-                    @endif
+      <div class="login_page_form_social">
+        <i class="fa fa-facebook-official fa-2x"></i>
+        <i class="fa fa-twitter-square fa-2x"></i>
+        <i class="fa fa-linkedin-square fa-2x"></i>
+      </div>
 
-                    <label for="password">Password</label>
-                    <input id="password" type="password" class="form__input" name="password" required>
+      <div class="login_page_form_item">
+        <label class="login_page_form_item_label" for="name">Your Name</label>
+        @if($errors->has("name"))
+          <p class="login_page_form_item_error">{{ $errors->first("name") }}</p>
+        @endif
+        <input class="login_page_form_item_input" type="text" name="name" id="name" value="{{ old("name") }}">
+      </div>
 
-                    @if ($errors->has('password'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('password') }}</strong>
-                        </span>
-                    @endif
+      <div class="login_page_form_item">
+        <label class="login_page_form_item_label" for="email">Your Email</label>
+        @if($errors->has("email"))
+          <p class="login_page_form_item_error">{{ $errors->first("email") }}</p>
+        @endif
+        <input class="login_page_form_item_input" type="email" name="email" id="email" value="{{ old("email") }}">
+      </div>
 
-                    <label for="password-confirm">Confirm Password</label>
-                    <input id="password-confirm" type="password" class="form__input" name="password_confirmation" required>
+      <div class="login_page_form_item">
+        <label class="login_page_form_item_label" for="username">User Name</label>
+        @if($errors->has("username"))
+          <p class="login_page_form_item_error">{{ $errors->first("username") }}</p>
+        @endif
+        <input class="login_page_form_item_input" type="text" name="username" id="username" value="{{ old("username") }}">
+      </div>
 
-                    @captcha()
+      <div class="login_page_form_item">
+        <label class="login_page_form_item_label" for="password">Create Password</label>
+        @if($errors->has("password"))
+          <p class="login_page_form_item_error">{{ $errors->first("password") }}</p>
+        @endif
+        <input class="login_page_form_item_input" type="password" name="password" id="password" value="{{ old("password") }}">
+      </div>
 
-                    <button type="submit" class="button blue">
-                        Register Account
-                    </button>
+      <input class="login_page_form_submit" value="Register" type="submit">
+    </form>
 
-
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-3"><!-- Spacer --></div>
-</section>
-@endsection
+  </body>
+</html>

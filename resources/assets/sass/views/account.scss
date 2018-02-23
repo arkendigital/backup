@@ -1,0 +1,146 @@
+.account_page {
+  background: #FFFFFF;
+  &_header {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1140px;
+    padding: 50px 0;
+    text-align: center;
+    position: relative;
+    &_inner {
+      display: inline-block;
+      max-width: 755px;
+      width: 96%;
+      text-align: left;
+    }
+
+    &_user {
+      position: absolute;
+      right: 0;
+      top: calc(50% - 27.5px);
+      img {
+        border-radius: 55px;
+        width: 55px;
+        height: 55px;
+      }
+    }
+  }
+
+  &_wrap {
+    display: block;
+    margin: 0 auto;
+    width: 98%;
+    max-width: 1140px;
+    background: #f8f8f6;
+    text-align: center;
+
+    &_inner {
+      display: inline-block;
+      text-align: left;
+      max-width: 755px;
+      width: 96%;
+      padding: 30px 0;
+    }
+
+    &_intro {
+      float: left;
+      width: 365px;
+      h1 {
+        display: block;
+        font-size: 33px;
+        color: #707070;
+        margin-bottom: 25px;
+      }
+      p {
+        display: block;
+        font-size: 14px;
+        line-height: 18px;
+        color: #707070;
+      }
+    }
+
+    &_photo_wrap {
+      float: right;
+      width: 175px;
+      text-align: center;
+      img {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        width: 155px;
+        height: 155px;
+        border-radius: 155px;
+        border: 2px solid #707070;
+      }
+      p {
+        font-size: 20px;
+        color: #707070;
+      }
+    }
+
+    &_title {
+      display: block;
+      font-size: 28px;
+      color: #707070;
+      margin-bottom: 50px;
+    }
+  }
+
+  &_form {
+
+    &_item {
+      display: block;
+      margin: 30px auto;
+      width: 100%;
+      text-align: left;
+      &_label {
+        font-size: 20px;
+        color: #707070;
+        display: block;
+        margin-bottom: 7.5px;
+      }
+      &_error {
+        display: block;
+        margin-bottom: 10px;
+        color: $red;
+        border-left: 5px solid $red;
+        padding: 5px 10px;
+      }
+      &_input {
+        display: block;
+        width: calc(100% - 34px);
+        height: 50px;
+        background: #FFFFFF;
+        outline: 0;
+        border: 2px solid #DDD;
+        border-radius: 5px;
+        font-size: 20px;
+        padding: 0 15px;
+      }
+    }
+
+    &_double {
+      > div {
+        width: 48%;
+        float: left;
+        margin: 0;
+        &:nth-child(2n + 2) {
+          float: right;
+        }
+      }
+    }
+
+    &_submit {
+      display: inline-block;
+      margin: 25px 0;
+      background: #0d72b9;
+      color: #FFFFFF;
+      text-align: center;
+      padding: 10px 30px;
+      font-size: 14px;
+      border-radius: 25px;
+    }
+
+  }
+}

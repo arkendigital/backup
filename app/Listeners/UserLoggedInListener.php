@@ -16,6 +16,6 @@ class UserLoggedInListener
 
         // Give user XP for logging in
         // touches the user table so also updates latest activity
-        $event->user->xp()->increment('points', 1);
+        // $event->user->xp()->increment('points', 1);
     }
 }

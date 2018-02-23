@@ -1,6 +1,10 @@
 <?php
+Route::resource('/account', 'Account\AccountController');
+Route::patch("/update-password", "Account\AccountController@updatePassword")->name("account.updatePassword");
 
 Route::namespace('Account')->middleware('auth')->prefix('account')->group(function() {
+
+    /*
     Route::get('/', 'AccountController@index')->name('myAccount');
     Route::get('/edit', 'AccountController@edit')->name('accountEdit');
     Route::patch('/edit', 'AccountController@update')->name('accountUpdate');
@@ -13,4 +17,6 @@ Route::namespace('Account')->middleware('auth')->prefix('account')->group(functi
     Route::post('conversations', 'MessagesController@store')->name('messageStore');
     Route::get('conversations/{id}', 'MessagesController@show')->name('messageView');
     Route::put('conversations/{id}', 'MessagesController@update')->name('messageUpdate');
+    */
+
 });

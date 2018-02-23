@@ -1,0 +1,293 @@
+/**
+* Company information.
+*/
+.job-company-info {
+  margin: 50px 0;
+  display: inline-block;
+  width: 100%;
+  &-logo {
+    float: left;
+    width: 265px;
+  }
+  &-content {
+    float: right;
+    width: calc(100% - 300px);
+    text-align: left;
+    p {
+      margin-top: 0;
+    }
+  }
+  &-additional {
+    display: block;
+    margin-top: 35px;
+    p {
+      margin: 0;
+    }
+  }
+}
+
+
+/**
+* Job list.
+*/
+.job-list-container {
+  display: block;
+  text-align: center;
+  &-inner {
+    display: inline-block;
+    width: 1140px;
+    text-align: left;
+  }
+}
+
+.job-list-banner {
+  display: inline-block;
+  width: calc(100% - 20px);
+  background: #FFFFFF;
+  border: 1px solid #d4d4d4;
+  padding: 30px 10px;
+  > div, input {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  > div {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a304d;
+  }
+  &-location-label {
+
+  }
+  &-location-search {
+    -webkit-appearance: none;
+    padding: 7.5px 5px;
+    width: 325px;
+    background: #ffffff;
+    font-size: 16px;
+    border: 1px solid #d4d4d4;
+    border-radius: 0px;
+    outline: 0;
+    margin-left: 10px;
+    &::placeholder {
+      color: #acacac;
+    }
+  }
+  &-sort-by {
+    margin: 0 25px;
+    span {
+      background: #1a304d;
+      color: #ffffff;
+      border-radius: 25px;
+      text-align: center;
+      padding: 5px 25px;
+    }
+  }
+  &-showing {
+
+  }
+}
+
+.job-list-sidebar {
+  float: left;
+  width: 265px;
+  &-title {
+    display: block;
+    font-size: 22px;
+    font-weight: 600;
+    color: #1a304d;
+    margin: 30px 0;
+  }
+  &-inner {
+    background: #1a304d;
+    padding: 5px 20px 20px 20px;
+    > div {
+      display: block;
+      margin: 30px 0;
+    }
+  }
+
+  &-item {
+    display: block;
+    color: #FFFFFF;
+
+    &-checkbox, &-label {
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 14px;
+    }
+
+    &-select {
+      -webkit-appearance: none;
+      display: block;
+      width: 100%;
+      padding: 7.5px 5px;
+      background: #ffffff;
+      font-size: 16px;
+      border: 1px solid #d4d4d4;
+      border-radius: 0px;
+      outline: 0;
+      color: #acacac;
+      background-image:url(/images/icons/select-arrows.png);
+      background-repeat: no-repeat;
+      background-position: center right 10px;
+      &-default {
+        color: #acacac;
+      }
+    }
+
+    &-input {
+      -webkit-appearance: none;
+      display: block;
+      width: calc(100% - 12px);
+      padding: 7.5px 5px;
+      background: #ffffff;
+      font-size: 16px;
+      border: 1px solid #d4d4d4;
+      border-radius: 0px;
+      outline: 0;
+      &::placeholder {
+        color: #acacac;
+      }
+    }
+
+    &-title {
+      color: #ffffff;
+      font-size: 14px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+  }
+
+  &-button {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    background: #ffffff;
+    color: #1a304d;
+    text-align: center;
+    padding: 5px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-bottom: 15px;
+  }
+
+}
+
+.checkbox-wrapper {
+  input[type="checkbox"], input[type="radio"] {
+    display: none;
+  }
+	label {
+		cursor: pointer;
+		position: relative;
+		margin-bottom: 15px;
+		display: block;
+		min-height: 25px;
+		padding-left: 35px;
+		line-height: 22px;
+		&:before {
+			left: 0;
+			top: 0;
+			position: absolute;
+			content: '';
+			height: 20px;
+			width: 20px;
+			border: 1px solid #e0e7ee;
+      background: #FFFFFF;
+		}
+	}
+	input[type=radio]:checked + label, input[type=checkbox]:checked + label {
+		&:before {
+			background-image: url(/images/icons/tick.png);
+			background-size: 75%;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+	}
+}
+
+.job-list-vacancies {
+  float: right;
+  width: 850px;
+  &-title {
+    display: block;
+    font-size: 22px;
+    font-weight: 600;
+    color: #1a304d;
+    margin: 30px 0;
+  }
+}
+
+/**
+* Actual job item.
+*/
+.job-list-item {
+  position: relative;
+  padding: 30px;
+  display: inline-block;
+  width: calc(100% - 60px);
+  border-bottom: 1px dotted #d4d4d4;
+  &:last-of-type {
+    border-bottom: none;
+  }
+  &-featured {
+    background: #FFFFFF;
+    border: 1px solid #d4d4d4;
+    margin-bottom: 30px;
+  }
+  &-logo {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    max-width: 150px;
+  }
+  &-content {
+    float: left;
+    width: 625px;
+  }
+  &-button {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    background: #1a304d;
+    text-decoration: none;
+    text-align: center;
+    padding: 7.5px 25px;
+    color: #FFFFFF;
+    border-radius: 25px;
+  }
+
+  &-title {
+    display: block;
+    font-size: 22px;
+    font-weight: 600;
+    color: #0d72b9;
+    margin-bottom: 15px;
+  }
+  &-text {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a304d;
+    line-height: 18px;
+    margin-bottom: 30px;
+    min-height: 50px;
+  }
+  &-list {
+    display: block;
+    font-size: 16px;
+    color: #0d72b9;
+    margin-bottom: 7.5px;
+    &-key, &-value {
+      display: inline-block;
+    }
+    &-key {
+      width: 150px;
+      text-align: left;
+    }
+    &-value {
+      text-align: right;
+    }
+  }
+}

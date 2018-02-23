@@ -1,45 +1,59 @@
-<footer class="footer">
-    <div class="footer__container">
-        <div class="footer__col">
-            {{-- <img src="{{ asset('images/logo.svg') }}" alt=""> --}}
-            <h2>Footer Logo</h2>
-            <p class="footer__text">
-                &copy; Example.com 2017.
-            </p>
-            <p class="footer__text">
-                <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
-            </p>
-            <p class="footer__text">
-                <a href="http://imperfectproduct.uk">An Imperfect Product</a> &mdash; v{{ Setting::get('site_version') }}
-            </p>
-        </div>
-        <div class="footer__col">
-            &nbsp;
-        </div>
-        <div class="footer__col">
-            <h3 class="footer__title">Menu One</h3>
-            <ul>
-                <li><a href="" title="">Example Hardcoded Link</a></li>
-                <li><a href="" title="">Example Hardcoded Link</a></li>
-                <li><a href="" title="">Example Hardcoded Link</a></li>
-                <li><a href="" title="">Example Hardcoded Link</a></li>
-                <li><a href="" title="">Example Hardcoded Link</a></li>
-            </ul>
-        </div>
-        <div class="footer__col">
-            <h3 class="footer__title">Menu Two</h3>
-            <ul>
-                <li><a href="" title="">Example Hardcoded Link</a></li>
-                <li><a href="" title="">Example Hardcoded Link</a></li>
-                <li><a href="" title="">Example Hardcoded Link</a></li>
-                <li><a href="" title="">Example Hardcoded Link</a></li>
-                <li><a href="" title="">Example Hardcoded Link</a></li>
+<footer>
 
-            </ul>
-        </div>
-        <div class="footer__col">
-            <h3 class="footer__title">About Us</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias dolorum laboriosam nam ipsam, molestiae animi maxime vero optio fugiat odit id, enim temporibus rem est iure, sit dignissimos ad iste.</p>
-        </div>
-    </div>
+  <div class="footer-social">
+    FIND US ON SOCIAL MEDIA
+    <i class="fa fa-facebook-official"></i>
+    <i class="fa fa-twitter-square"></i>
+    <i class="fa fa-linkedin-square"></i>
+  </div>
+
+  <nav class="footer-nav">
+    <ul>
+      <li>
+        <a href="">Exams</a>
+      </li>
+      <li>
+        <a href="">Jobs</a>
+      </li>
+      <li>
+        <a href="">CPD</a>
+      </li>
+      <li>
+        <a href="">Salary Survey</a>
+      </li>
+      <li>
+        <a href="">Uni Corner</a>
+      </li>
+      <li>
+        <a href="">Regional Societies</a>
+      </li>
+      <li>
+        <a href="">Discussion</a>
+      </li>
+      <li>
+        <a href="">CV Support</a>
+      </li>
+    </ul>
+  </nav>
+
+  <nav class="footer-nav footer-nav-secondary">
+    <ul>
+      <li>
+        <a href="">About Actuaries Online</a>
+      </li>
+      <li>
+        <a href="">Advertise With us</a>
+      </li>
+      <li>
+        <a href="">Privacy/Cookies</a>
+      </li>
+      <li>
+        <a href="">Terms and Conditions</a>
+      </li>
+      <li>
+        <a href="">Contact</a>
+      </li>
+    </ul>
+  </nav>
+
 </footer>

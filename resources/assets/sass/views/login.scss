@@ -1,0 +1,105 @@
+.login_page {
+  background: #FFFFFF;
+  &_logo {
+    display: block;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 25px;
+  }
+
+  &_form {
+    display: block;
+    margin: 0 auto;
+    width: 96%;
+    max-width: 1135px;
+    background: #f8f8f6;
+    text-align: center;
+    padding-bottom: 100px;
+    margin-bottom: 100px;
+
+    &_actions {
+      display: inline-block;
+      width: 100%;
+      &_item {
+        display: inline-block;
+        font-size: 18px;
+        color: #b7b7b7;
+        padding-bottom: 5px;
+        text-decoration: none;
+        margin: 35px;
+        font-weight: 600;
+      }
+      &_item_active {
+        color: #707070;
+        border-bottom: 1px solid #707070;
+      }
+    }
+
+    &_text {
+      display: block;
+      margin: 0 auto;
+      font-size: 14px;
+      color: #707070;
+      width: 96%;
+      max-width: 425px;
+      line-height: 18px;
+    }
+
+    &_social {
+      display: block;
+      margin: 25px auto;
+      .fa-facebook-official {
+        color: #0864af;
+      }
+      .fa-twitter-square {
+        color: #23b0e6;
+      }
+      .fa-linkedin-square {
+        color: #0076b3;
+      }
+    }
+
+    &_item {
+      display: block;
+      margin: 30px auto;
+      width: 750px;
+      max-width: 96%;
+      text-align: left;
+      &_label {
+        font-size: 22px;
+        color: #707070;
+        display: block;
+        margin-bottom: 7.5px;
+      }
+      &_error {
+        display: block;
+        margin-bottom: 10px;
+        color: $red;
+        border-left: 5px solid $red;
+        padding: 5px 10px;
+      }
+      &_input {
+        display: block;
+        width: calc(100% - 34px);
+        height: 50px;
+        background: #FFFFFF;
+        outline: 0;
+        border: 2px solid #DDD;
+        border-radius: 5px;
+        font-size: 20px;
+        padding: 0 15px;
+      }
+    }
+
+    &_submit {
+      display: block;
+      margin: 100px auto;
+      background: #0d72b9;
+      color: #FFFFFF;
+      text-align: center;
+      padding: 15px 50px;
+      font-size: 14px;
+      border-radius: 25px;
+    }
+  }
+}

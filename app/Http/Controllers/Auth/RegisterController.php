@@ -2,96 +2,68 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Events\UserRegistered;
+// use App\Events\UserRegistered;
+// use Illuminate\Auth\Events\Registered;
+
 use App\Http\Controllers\Controller;
 use App\User;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
-class RegisterController extends Controller
-{
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
+use App\Http\Requests\Register;
+
+class RegisterController extends Controller {
+
+    /**
+    * Handle a registration request for the application.
+    *
+    * @param Register $request
+    * @return \Illuminate\Http\Response
+    *
     */
+    public function register(Register $request) {
 
-    use RegistersUsers;
+      /**
+      * Check if this user already exists.
+      */
+      $check = User::where("email", request()->email)
+        ->orWhere("username", request()->username)
+        ->first();
 
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/account';
+      if ($check !== null) {
 
-    /**
-     * Create a new controller instance.
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
+        return redirect(route("register"))
+          ->withErrors([
+            "exists" => "A user with these details already exists"
+          ])
+          ->withInput();
+
+      }
+
+      /**
+      * Add user to database.
+      */
+      $user = User::create([
+        "name" => request()->name,
+        "email" => request()->email,
+        "username" => request()->username,
+        "password" => Hash::make(request()->password),
+        "email_token" => base64_encode(request()->email),
+      ]);
+
+      Auth::loginUsingId($user->id);
+
+      /**
+      * Redirect user to account.
+      */
+      return redirect(route("account.index"));
+
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param array $data
-     *
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-            'g-recaptcha-response' => 'required|captcha'
-        ]);
-    }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param array $data
-     *
-     * @return \App\User
-     */
-    protected function create(array $data)
-    {
-        $user = new User();
-
-        return $user->registerUser($data['name'], $data['email'], $data['password']);
-    }
-
-    /**
-     * Handle a registration request for the application.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function register(Request $request)
-    {
-        $this->validator($request->all())->validate();
-
-        event(new Registered($user = $this->create($request->all())));
-
-        event(new UserRegistered($user));
-
-        alert()
-            ->info("Thanks for registering. We've just sent you an email with a link which you need to click in order to activate your account.")
-            ->persistent();
-
-        return redirect(route('index'));
+    public function showRegistrationForm() {
+      return view("auth.register");
     }
 
     /**
@@ -117,4 +89,5 @@ class RegisterController extends Controller
             return redirect(route('index'));
         }
     }
+
 }

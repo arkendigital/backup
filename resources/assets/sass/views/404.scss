@@ -1,0 +1,47 @@
+body.404 {
+
+}
+
+.error-404 {
+  &-container {
+    display: flex;
+    flex: 1;
+    height: 100vh;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: center;
+  }
+
+  &-image {
+
+  }
+  &-title {
+    text-align: center;
+    display: block;
+    font-size: 28px;
+    color: #707070;
+    margin-top: 80px;
+    margin-bottom: 25px;
+  }
+  &-text {
+    text-align: center;
+    display: block;
+    font-size: 14px;
+    color: #707070;
+  }
+  &-button {
+    &-container {
+      display: block;
+      text-align: center;
+    }
+    display: inline-block;
+    margin-top: 50px;
+    font-size: 14px;
+    background: #0d72b9;
+    text-align: center;
+    padding: 15px 40px;
+    color: #ffffff;
+    border-radius: 25px;
+    text-decoration: none;
+  }
+}

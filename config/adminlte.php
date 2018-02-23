@@ -13,11 +13,11 @@ return [
     |
     */
 
-    'title' => 'Example.com',
+    'title' => 'Actuaries',
 
     'title_postfix' => '',
 
-    'title_prefix' => 'OPS &mdash; ',
+    'title_prefix' => 'AO',
 
     /*
     |--------------------------------------------------------------------------
@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b>O</b>PS',
+    'logo' => 'Actuaries Online',
 
-    'logo_mini' => '<b>OPS</b>',
+    'logo_mini' => 'AO',
 
     /*
     |--------------------------------------------------------------------------
@@ -115,7 +115,7 @@ return [
             'active' => [],
         ],
         [
-            'text' => 'OPS Home',
+            'text' => 'Admin Home',
             'url'  => 'ops',
             'icon'  => 'home',
             'active' => ['ops'],
@@ -126,21 +126,91 @@ return [
             'icon'  => 'cog',
             'can'   => 'view settings'
         ],
+
+
+        /**
+        * Sections.
+        */
         [
-            'text' => 'My Account',
-            'url'  => 'ops/me',
-            'icon' => 'lock'
+          'header' => 'Sections',
+          'can' => 'sections',
         ],
         [
-            'header' => 'Reports',
-            'can' => 'view report',
+            'text' => 'Manage Sections',
+            'url'  => 'ops/sections',
+            'icon'  => 'users',
+            'can'   => 'sections'
+        ],
+
+        /**
+        * Pages.
+        */
+        [
+          'header' => 'Pages',
+          'can' => 'pages',
         ],
         [
-            'text' => 'View Reported Content',
-            'url'  => 'ops/reports',
-            'icon'  => 'warning',
-            'can'   => 'view report'
+            'text' => 'Manage Pages',
+            'url'  => 'ops/pages',
+            'icon'  => 'users',
+            'can'   => 'pages'
         ],
+
+
+        /**
+        * Discussions.
+        */
+        [
+          'header' => 'Discussions',
+          'can' => 'discussions',
+        ],
+        [
+            'text' => 'Manage Discussion Categories',
+            'url'  => 'ops/discussion-categories',
+            'icon'  => 'users',
+            'can'   => 'discussions'
+        ],
+
+
+        /**
+        * Jobs.
+        */
+        [
+          'header' => 'Jobs',
+          'can' => 'jobs',
+        ],
+        [
+            'text' => 'Manage Jobs',
+            'url'  => 'ops/jobs',
+            'icon'  => 'users',
+            'can'   => 'jobs'
+        ],
+        [
+            'text' => 'Manage Companies / Recruiters',
+            'url'  => 'ops/job-companies',
+            'icon'  => 'users',
+            'can'   => 'jobs'
+        ],
+
+
+        /**
+        * Exams.
+        */
+        [
+          'header' => 'Exams',
+          'can' => 'exams',
+        ],
+        [
+          'text' => 'Manage Resources',
+          'url'  => 'ops/exam-resources',
+          'icon'  => 'users',
+          'can'   => 'exams'
+        ],
+
+
+
+
+
         [
             'header' => 'Users',
             'can' => 'edit user',
@@ -169,22 +239,9 @@ return [
             'icon'  => 'key',
             'can'   => 'edit role'
         ],
-        [
-            'header' => 'Articles',
-            'can' => 'edit article',
-        ],
-        [
-            'text' => 'All Articles',
-            'url'  => 'ops/articles',
-            'icon'  => 'newspaper-o',
-            'can'   => 'edit article'
-        ],
-        [
-            'text' => 'Add Article',
-            'url'  => 'ops/articles/create',
-            'icon'  => 'pencil',
-            'can'   => 'create article'
-        ],
+
+
+
         [
             'header' => 'Pages',
             'can' => 'edit page',

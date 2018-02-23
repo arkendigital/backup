@@ -1,0 +1,124 @@
+.box-select {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: inline-block;
+  width: 100%;
+  padding: 60px 0;
+  text-align: center;
+  * {
+    color: #FFFFFF;
+  }
+  &-container {
+    display: inline-block;
+    width: 100%;
+    max-width: 900px;
+  }
+  &-title {
+    font-size: 31px;
+    font-weight: 600;
+  }
+  &-text {
+    display: block;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 60px;
+  }
+
+  &-item {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: center;
+    text-decoration: none;
+    border: 3px solid #FFFFFF;
+    font-size: 26px;
+    line-height: 32px;
+    font-weight: 600;
+    width: 180px;
+    height: 100px;
+    margin: 0 50px;
+    margin-bottom: 40px;
+  }
+  &-item:nth-child(3n+0) {
+    margin-left: 0;
+  }
+  &-item:nth-child(3n+2) {
+    margin-right: 0;
+  }
+
+  &-search {
+    display: block;
+    margin: 50px auto;
+    input {
+      display: block;
+      margin: 0 auto;
+      width: 250px;
+      height: 30px;
+      padding-left: 35px;
+      background-color: #FFFFFF;
+      background-image: url(/images/icons/search--grey.png);
+      background-repeat: no-repeat;
+      background-position: center left 10px;
+      outline: 0;
+      font-size: 18px;
+      color: #444444;
+
+    }
+    label {
+      display: block;
+      font-size: 16px;
+      margin-top: 15px;
+    }
+  }
+
+  &-button {
+    display: inline-block;
+    width: auto;
+    padding: 15px 60px;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    border-radius: 25px;
+  }
+}
+
+/**
+* Customization.
+*/
+.box-select-padding-bottom--large {
+  background-position: center bottom;
+  padding-bottom: 450px;
+}
+
+.box-select--dark-blue {
+  * {
+    color: #002157;
+  }
+
+  .box-select-item {
+    border-color: #002157;
+  }
+
+  .box-select-button {
+    background: #002157;
+    color: #FFFFFF;
+  }
+}
+
+/**
+* Box Slider.
+*/
+.box-select-slider {
+  .box-select-item {
+    margin: auto;
+    width: calc(100% - 5px);
+  }
+}

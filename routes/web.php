@@ -7,15 +7,36 @@ Route::namespace('Auth')->group(function() {
 
 Auth::routes();
 
+
+/**
+* Homepage.
+*/
 Route::get('/', 'HomeController@index')->name('index');
 
-Route::get('/home', 'HomeController@home')->middleware('auth')->name('home');
+/**
+* Sections
+*
+* - Jobs
+* - Exams
+* - CV Support
+* - CPD
+* - Uni Corner
+* - Discussion
+*
+*/
+require(base_path() . '/routes/jobs.php');
+require(base_path() . '/routes/exams.php');
+require(base_path() . '/routes/cvsupport.php');
+require(base_path() . '/routes/cpd.php');
+require(base_path() . '/routes/uni-corner.php');
+require(base_path() . '/routes/discussion.php');
+
+// Route::get('/home', 'HomeController@home')->middleware('auth')->name('home');
 
 Route::get('invite', 'Auth\InviteController@check')->name('checkInvite');
 Route::post('invite', 'Auth\InviteController@registerInvitedUser')->name('registerInvitedUser');
 
 Route::get('/@{profile}', 'Profile\ProfileController@show')->name('me');
-Route::get('/@{profile}/files', 'Profile\FilesController@show')->name('usersFiles');
 Route::get('/@{profile}/follow', 'Profile\ProfileController@follow')->name('followUser');
 Route::get('/@{profile}/unfollow', 'Profile\ProfileController@unfollow')->name('unfollowUser');
 
@@ -39,10 +60,3 @@ Route::post('api/profile/{user}/cover', 'Api\\ProfileController@storeCover');
 Route::post('api/reports/{post}', 'Api\\ReportController@store');
 Route::get('api/posts/content/{post}', 'Api\\ForumPostController@show');
 Route::get('api/users', 'Api\\UsersController@index');
-Route::get('api/games', 'Api\\GamesController@index');
-Route::get('api/games/{gameId}/categories', 'Api\\GamesController@getCategories');
-Route::post('api/files/{file}/thumbUp', 'Api\\FileRatingController@thumbUp');
-Route::post('api/files/{file}/thumbDown', 'Api\\FileRatingController@thumbDown');
-Route::get('api/files/{file}/hasRated', 'Api\\FileRatingController@userHasRated');
-Route::get('api/files/ratings/{file}', 'Api\\FileRatingController@getCount');
-

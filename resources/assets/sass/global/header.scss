@@ -1,0 +1,121 @@
+header {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  padding: 25px 0;
+  background: #FFF;
+  text-align: center;
+
+  > div {
+    display: inline-block;
+    width: 100%;
+    max-width: 1140px;
+  }
+
+  .header-logo {
+    float: left;
+  }
+
+  .header-email {
+    float: right;
+    width: calc(100% - 200px);
+    text-align: right;
+    font-weight: 600;
+    color: #707070;
+    text-decoration: none;
+  }
+
+  .header-account {
+    float: right;
+    width: calc(100% - 200px);
+    text-align: right;
+    margin-top: 18px;
+    margin-bottom: 22px;
+    a {
+      font-weight: 600;
+      color: #707070;
+      text-decoration: none;
+      margin-left: 15px;
+      span {
+        display: inline-block;
+        background: $blue;
+        height: 11px;
+        width: 40px;
+        border-radius: 15px;
+        margin-left: 5px;
+      }
+    }
+  }
+
+  nav {
+    float: left;
+    width: calc(100% - 285px);
+    text-align: center;
+    ul {
+      li {
+        display: inline-block;
+        border-right: 2px solid #dbdbdb;
+        padding: 0 6px;
+        margin-left: -4px;
+        a {
+          text-decoration: none;
+          color: #707070;
+          font-weight: 600;
+          font-size: 14.5px;
+        }
+        img {
+          float: right;
+          margin-top: 6px;
+          margin-left: 5px;
+        }
+      }
+      li:last-of-type {
+        border-right: none;
+      }
+    }
+  }
+
+  li.exams-active {
+    a {
+      color: $offblue;
+    }
+  }
+  li.jobs-active, li.discussion-active {
+    a {
+      color: $red;
+    }
+  }
+  li.cvsupport-active {
+    a {
+      color: $lightblue;
+    }
+  }
+  li.cpd-active {
+    a {
+      color: $yellow;
+    }
+  }
+  li.uni-corner-active {
+    a {
+      color: $orange;
+    }
+  }
+
+  .header-search {
+    float: right;
+    width: 85px;
+    img, input {
+      float: left;
+    }
+    input {
+      float: right;
+      border: none;
+      outline: none;
+      width: calc(100% - 20px);
+      font-size: 14px;
+      font-weight: 600;
+      color: #707070;
+      text-transform: uppercase;
+    }
+  }
+}

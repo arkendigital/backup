@@ -8,14 +8,78 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use JamesMills\Watchable\Models\Watch;
+use App\Http\Requests\Account;
+use App\Http\Controllers\AWS\ImageController as AWS;
 
-class AccountController extends Controller
-{
+class AccountController extends Controller {
+
+  /**
+  * Display account page.
+  */
+  public function index() {
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    * Show page.
+    */
+    return view("account.index");
+
+  }
+
+  /**
+  * Update account in database storage.
+  *
+  * @param Account $request
+  *
+  */
+  public function update(Account $request) {
+
+    /**
+    * Update user details.
+    */
+    $account = auth()->user();
+
+    $account->update(array_merge($request->except(["_token", "_method"])));
+
+    /**
+    * Update avatar photo.
+    */
+    if (request()->file("image")) {
+      $image_path = AWS::uploadImage(
+        request()->file("image"),
+        "user",
+        $account->avatar_path
+      );
+
+      $account->update([
+        "avatar_path" => $image_path
+      ]);
+    }
+
+    /**
+    * Redirect user.
+    */
+    return redirect(route("account.index"))
+      ->with([
+        "alert" => true,
+        "alert_title" => "Success",
+        "alert_message" => "Account has been updated!",
+        "alert_button" => "OK"
+      ]);
+
+  }
+
+  /**
+  * Update account password.
+  *
+  * @param AccountPassword $request
+  *
+  */
+  public function updatePassword(AccountPassword $request) {
+    dd("password");
+  }
+
+
+    /*
     public function index()
     {
         $this->seo()->setTitle('User Control Panel');
@@ -33,13 +97,7 @@ class AccountController extends Controller
         return view('account.index', compact('subscriptions', 'codes'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit()
     {
         $this->seo()->setTitle('Edit Profile');
@@ -47,14 +105,6 @@ class AccountController extends Controller
         return view('account.edit');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int                      $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request)
     {
         $request->validate([
@@ -84,4 +134,6 @@ class AccountController extends Controller
 
         return back();
     }
+    */
+
 }

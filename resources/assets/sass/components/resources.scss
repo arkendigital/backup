@@ -1,0 +1,46 @@
+.resource-list {
+  display: inline-block;
+  width: 100%;
+  background: #ffffff;
+  text-align: center;
+  &-item {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 25px;
+    border-right: 1px dotted $orange;
+    text-align: center;
+    width: calc(24% - 45px);
+    margin: 25px 0;
+    &-with-padding {
+      padding-top: 25px;
+      padding-bottom: 25px;
+    }
+    &:nth-child(4n + 4) {
+      border-right: none;
+    }
+    &-icon {
+      display: block;
+      height: 85px;
+      &-small {
+        height: 50px;
+      }
+    }
+    &-title {
+      display: block;
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: 600;
+      color: #0d72b9;
+      margin: 25px 0;
+      margin-bottom: 15px;
+    }
+    &-text {
+      display: block!important;
+      font-size: 18px!important;
+      font-weight: 600!important;
+      line-height: 24px!important;
+      color: #1a304d!important;
+      margin: 0!important;
+    }
+  }
+}

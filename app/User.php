@@ -23,18 +23,21 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'email_token',
-        'role_id',
-        'verified',
-        'api_token',
-        'banned',
-        'disabled',
-        'provider',
-        'provider_id',
-        'created_at'
+      'name',
+      "username",
+      "avatar_path",
+      "phone_number",
+      'email',
+      'password',
+      'email_token',
+      'role_id',
+      'verified',
+      'api_token',
+      'banned',
+      'disabled',
+      'provider',
+      'provider_id',
+      'created_at'
     ];
 
     /**
@@ -54,33 +57,6 @@ class User extends Authenticatable
     protected $dates = ['deleted_at'];
 
     protected $appends = ['icon'];
-
-
-    /**
-     * Boot the User Model.
-     */
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::created(function ($user) {
-            Profile::firstOrCreate([
-                'id' => $user->id,
-                'user_id' => $user->id,
-                'display_name' => $user->name,
-                'slug' => str_slug($user->name),
-            ]);
-
-            if ($user->verified == 0) {
-                if (!in_array($user->provider, ['steam'])) {
-                    dispatch(new SendVerificationEmail($user));
-                }
-            }
-
-            $user->xp()->updateOrCreate([]);
-            $user->xp()->increment('points', 50);
-        });
-    }
 
     /**
      * A user has a profile.
@@ -157,84 +133,19 @@ class User extends Authenticatable
         return false;
     }
 
-    /**
-     * Is the current user a member of staff.
-     *
-     * @return bool
-     */
-    public function isStaff()
-    {
-        if ($this->hasRole('Super Administrator|Administrator|Moderator')) {
-            return true;
-        }
-        return false;
+
+
+  /**
+  * Get the avatar attribute
+  *
+  * @return string
+  */
+  public function getAvatarAttribute() {
+    if (!$this->avatar_path) {
+      return asset("images/defaults/avatar_default.jpg");
     }
+    // return asset('storage/'. $this->avatar_path);
+    return env("S3_URL") . $this->avatar_path;
+  }
 
-    /**
-     * Is the user online?
-     *
-     * @return bool
-     */
-    public function isOnline()
-    {
-        return Cache::has('user-is-online-'.$this->id);
-    }
-
-    /**
-     * A user has XP.
-     *
-     * @return Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function xp()
-    {
-        return $this->hasOne(Experience::class, 'user_id', 'id');
-    }
-
-    /**
-     * Register a user.
-     *
-     * @param string      $username
-     * @param string      $email
-     * @param string|null $password
-     * @param array|null  $options  An optional array of arguments, currently only supports auto_login
-     *
-     * @return \App\User
-     */
-    public function registerUser($username, $email, $password = null, $options = [], $provider = 'default')
-    {
-        $password = empty($password) ? Hash::make(rand(0, 999999)) : Hash::make($password);
-
-        // $role = Role::where('name', 'User')->first();
-
-        $user = $this->firstOrCreate([
-            'name' => $username,
-            'email' => $email,
-            'password' => $password,
-            'api_token' => str_random(60),
-            'email_token' => base64_encode($email),
-            'provider' => $provider,
-        ]);
-
-        $user->assignRole('Member');
-
-        if (is_array($options)) {
-            if (isset($options['auto_login'])) {
-                auth()->login($user);
-            }
-        }
-
-        event(new Registered($user));
-
-        return $user;
-    }
-
-    /**
-     * Get the first letter attribute
-     *
-     * @return string
-     */
-    public function getFirstLetterAttribute()
-    {
-        return substr(strtoupper($this->name), 0, 1);
-    }
 }

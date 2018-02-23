@@ -1,0 +1,347 @@
+.discussion-top-bar {
+  display: block;
+  width: 100%;
+  height: 25px;
+  background: #7f65aa;
+}
+
+.discussion-container {
+  display: block;
+  text-align: center;
+  &-inner {
+    display: inline-block;
+    width: 1140px;
+    text-align: left;
+  }
+}
+
+.discussion-page-title {
+  display: block;
+  font-size: 48px;
+  font-weight: 600;
+  color: #1a304d;
+  margin: 50px 0;
+  span {
+    font-size: 24px;
+    font-weight: 500;
+    display: inline-block;
+    margin-left: 15px;
+  }
+}
+
+
+/**
+* Sidebar.
+*/
+.discussion-sidebar {
+  float: left;
+  width: 295px;
+
+  > div {
+    display: block;
+    background: #ebebeb;
+    margin-bottom: 15px;
+    padding: 15px 20px;
+  }
+
+  &-search {
+    border: 1px solid #d3d3d3;
+    font-family: $font;
+    font-size: 12px;
+    font-weight: 600;
+    background-image: url(/images/icons/search.png);
+    background-repeat: no-repeat;
+    background-position: center left 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    height: 35px;
+    line-height: 35px;
+    outline: 0;
+    display: block;
+    width: calc(100% - 60px);
+    color: #b7b7b7;
+    &::placeholder {
+      color: #b7b7b7;
+    }
+  }
+
+  ul {
+    li {
+      display: block;
+      border-bottom: 1px dotted #AAA;
+      padding: 10px 0;
+      font-size: 18px;
+      font-weight: 600;
+      color: #707070;
+      min-height: 30px;
+      line-height: 30px;
+      .icon-container {
+        display: inline-block;
+        width: 35px;
+        text-align: center;
+        margin-right: 10px;
+        img {
+          max-width: 92%;
+          max-height: 100%;
+        }
+      }
+      span,img {
+        vertical-align: middle;
+      }
+      a {
+        text-decoration: none;
+        color: #707070;
+      }
+    }
+    li:last-of-type {
+      border-bottom: none;
+    }
+  }
+
+}
+
+
+/**
+* Discussion list.
+*/
+.discussion-list {
+  display: inline-block;
+  width: 100%;
+  background: #FFFFFF;
+  text-align: center;
+
+  &-container {
+    float: right;
+    width: calc(100% - 310px); //835px;
+  }
+
+  &-thread {
+    display: inline-block;
+    width: calc(100% - 30px);
+    border-bottom: 1px dotted #AAA;
+    padding: 40px 0;
+    &:last-of-type {
+      border-bottom: none;
+    }
+    &-avatar {
+      float: left;
+      width: 100px;
+      margin-right: 15px;
+      img {
+        width: 75px;
+        height: 75px;
+        border-radius: 75px;
+      }
+    }
+    &-content {
+      float: left;
+      width: 610px;
+      text-align: left;
+      &-title {
+        display: block;
+        font-size: 18px;
+        font-weight: 600;
+        color: #0d72b9;
+        margin-bottom: 15px;
+        text-decoration: none;
+      }
+      &-text {
+        font-size: 12px;
+        font-weight: 600;
+        color: #1a304d;
+        line-height: 16px;
+      }
+      &-footer {
+        display: block;
+        text-align: left;
+        font-size: 12px;
+        margin-top: 30px;
+        &-subject {
+          display: inline-block;
+          color: $orange;
+          padding-right: 15px;
+          margin-right: 15px;
+          font-weight: 600;
+          border-right: 1px solid #DDD;
+        }
+        &-time {
+          display: inline-block;
+          padding-right: 15px;
+          color: #959595;
+        }
+        &-user {
+          display: inline-block;
+          border-left: 1px solid #DDD;
+          padding-left: 15px;
+          color: #959595;
+        }
+      }
+    }
+  }
+
+  &-reply-count {
+    float: right;
+    font-size: 18px;
+    font-weight: 600;
+    color: #0d72b9;
+  }
+}
+
+
+/**
+* Discussion view.
+*/
+.discussion-view {
+  display: inline-block;
+  width: 100%;
+  background: #FFFFFF;
+  text-align: center;
+
+  &-container {
+    float: right;
+    width: calc(100% - 310px); //835px;
+  }
+
+  &-thread {
+    display: inline-block;
+    width: calc(100% - 30px);
+    padding-top: 40px;
+    border-bottom: 1px dotted #AAA;
+    &:last-of-type {
+      border-bottom: none;
+    }
+    &-avatar {
+      float: left;
+      width: 100px;
+      margin-right: 15px;
+      img {
+        width: 75px;
+        height: 75px;
+        border-radius: 75px;
+      }
+    }
+    &-content {
+      float: left;
+      width: 76%;
+      text-align: left;
+      &-title {
+        display: block;
+        font-size: 18px;
+        font-weight: 600;
+        color: #0d72b9;
+        margin-bottom: 15px;
+        text-decoration: none;
+      }
+      &-text {
+        font-size: 12px;
+        font-weight: 600;
+        color: #1a304d;
+        line-height: 16px;
+      }
+      &-footer {
+        display: block;
+        text-align: left;
+        font-size: 12px;
+        margin-top: 30px;
+        margin-bottom: 40px;
+        &-subject {
+          display: inline-block;
+          color: $orange;
+          padding-right: 15px;
+          margin-right: 15px;
+          font-weight: 600;
+          border-right: 1px solid #DDD;
+        }
+        &-time {
+          display: inline-block;
+          padding-right: 15px;
+          color: #959595;
+        }
+        &-user {
+          display: inline-block;
+          border-left: 1px solid #DDD;
+          padding-left: 15px;
+          color: #959595;
+        }
+      }
+    }
+
+    &-reply {
+      float: right;
+      width: calc(100% - 145px);
+      margin-right: 15px;
+    }
+  }
+
+
+  &-reply {
+    display: block;
+    background: #FFFFFF;
+    width: calc(100% - 30px);
+    padding: 15px;
+    margin-top: 15px;
+    text-align: left;
+    margin-bottom: 15px;
+    &-title {
+      display: block;
+      font-size: 18px;
+      font-weight: 600;
+      color: #0d72b9;
+      margin-bottom: 15px;
+    }
+    &-error {
+      display: block;
+      margin-bottom: 15px;
+      color: $red;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    &-editor {
+      border: 1px dotted #AAA;
+      width: calc(100% - 30px);
+      max-width: calc(100% - 30px);
+      min-width: calc(100% - 30px);
+      padding: 15px;
+      display: block;
+      outline: 0;
+      font-size: 18px;
+      color: #777;
+      min-height: 147px;
+    }
+    &-submit {
+      display: inline-block;
+      color: #FFFFFF;
+      background: #0d72b9;
+      text-align: center;
+      padding: 7.5px 15px;
+      margin-top: 15px;
+      cursor: pointer;
+      outline: 0;
+      text-decoration: none;
+      &:hover {
+        background: $offblue;
+      }
+    }
+  }
+
+}
+
+/**
+* Pagination links.
+*/
+.discussion-pagination {
+  display: block;
+  margin: 15px 0;
+  text-align: left;
+  li {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 18px;
+    a {
+      color: #210e4c;
+      text-decoration: none;
+      padding: 7.5px 5px;
+      font-weight: 600;
+    }
+  }
+}

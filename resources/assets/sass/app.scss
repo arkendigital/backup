@@ -1,61 +1,32 @@
-@import "config";
+/**
+* Global.
+*/
+@import "global/reset";
+@import "global/fonts";
+@import "global/variables";
+@import "global/typography";
+@import "global/header";
+@import "global/footer";
+@import "global/misc";
 
-// LIBS
-// # BOOTSTRAP
-@import "vendor/bootstrap/bootstrap";
-@import "vendor/bootstrap/bootstrap-theme";
-
-// CORE
-
-@import "util/mixins";
-
-@import "core/core";
-@import "core/typography";
-
-// HELPERS
-@import "util/util";
-
-// LAYOUT
-@import "layout/header";
-@import "layout/footer";
-@import "layout/form";
-
-// COMPONENTS
-
-@import "components/box";
-@import "components/breadcrumbs";
+/**
+* Components.
+*/
 @import "components/button";
-@import "components/card";
-@import "components/comment";
-@import "components/forum";
-@import "components/games";
-@import "components/hero";
-@import "components/pagination";
-@import "components/pageheader";
-@import "components/search";
-@import "components/slider";
+@import "components/carousel";
+@import "components/box-select";
+@import "components/section-hero";
+@import "components/item-value";
+@import "components/alert";
+@import "components/resources";
 
-// PAGES
-@import "pages/home";
-@import "pages/front";
-@import "pages/profile";
-
-// LIBS
-
-// # FONT AWESOME
-@import "vendor/fontawesome/fontawesome";
-
-// # ANIMATE.CSS
-@import "vendor/animate-sass/animate";
-
-// # @.CSS
-@import "vendor/atwho/atwho";
-
-// # SLICK
-@import "vendor/slick/slick";
-@import "vendor/slick/slick-theme";
-
-// # TRUMBOWYG
-@import "vendor/trumbowyg/trumbowyg.scss";
-
-// @import "node_modules/dropzone/src/dropzone.scss";
+/**
+* Views.
+*/
+@import "views/homepage";
+@import "views/section";
+@import "views/jobs";
+@import "views/login";
+@import "views/account";
+@import "views/discussion";
+@import "views/404";

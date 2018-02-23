@@ -1,0 +1,35 @@
+footer {
+  text-align: center;
+  color: #959595;
+  background: #eeede3;
+  padding: 80px 0 35px 0;
+  .footer-social {
+    i {
+      margin: 0 10px;
+    }
+  }
+  .footer-nav {
+    display: block;
+    margin-top: 60px;
+    ul {
+      li {
+        display: inline-block;
+        padding: 0 10px;
+        a {
+          text-decoration: none;
+          text-transform: uppercase;
+          font-size: 14px;
+          font-weight: 600;
+          color: #959595;
+        }
+      }
+    }
+  }
+  .footer-nav-secondary {
+    margin-top: 20px;
+    ul li a {
+      font-size: 11px;
+      font-weight: 400;
+    }
+  }
+}
