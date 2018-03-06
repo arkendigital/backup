@@ -14,7 +14,8 @@ class JobCompany extends Model {
   */
   protected $fillable = [
     "name",
-    "logo_path"
+    "logo_path",
+    "description"
   ];
 
 

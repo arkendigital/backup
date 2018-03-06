@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Discussion;
 */
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\Discussion as DiscussionRequest;
 
 /**
 * Load models.
@@ -98,6 +99,48 @@ class DiscussionController extends Controller {
       "category",
       "discussion"
     ));
+
+  }
+
+  /**
+  * Store a new discussion in database storage.
+  *
+  * @param DiscussionRequest $request
+  *
+  */
+  public function store(DiscussionRequest $request) {
+
+    /**
+    * Get excerpt for discussion.
+    */
+    if (isset(request()->excerpt) && request()->excerpt != "") {
+      $excerpt = request()->excerpt;
+    } else {
+      $excerpt = substr(strip_tags(request()->content), 0, 150) . "...";
+    }
+
+    /**
+    * Store new discussion in database storage
+    */
+    $discussion = Discussion::create([
+      "name" => request()->name,
+      "subject" => request()->subject,
+      "excerpt" => $excerpt,
+      "content" => request()->content,
+      "category_id" => request()->category_id,
+      "user_id" => auth()->user()->id
+    ]);
+
+    /**
+    * Redirect and notify the user.
+    */
+    return redirect("/discussion/".$discussion->category->slug."/".$discussion->slug)
+      ->with([
+        "alert" => true,
+        "alert_title" => "Success",
+        "alert_message" => "Your discussion has been created!",
+        "alert_button" => "OK"
+      ]);
 
   }
 

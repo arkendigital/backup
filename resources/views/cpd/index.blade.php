@@ -2,7 +2,7 @@
 
 @section("content")
 
-  <div class="section-hero" style="background-image: url(/images/temp/cpd-section-hero-bg.png); border-color: #ffd600;"></div>
+  <div class="section-hero" style="background-image: url({{ $page->section->image }}); border-color: {{ $page->section->color }};"></div>
 
   <div class="website-container view-section">
     <div class="website-container-content">
@@ -15,7 +15,7 @@
 
     </div>
     <div class="website-container-sidebar">
-      @include("partials.sidebar.cpd")
+      @include("cpd.sidebar")
     </div>
 
     <div class="clear"></div>

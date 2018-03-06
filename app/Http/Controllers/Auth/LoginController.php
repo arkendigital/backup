@@ -36,6 +36,11 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+
+        if (isset(request()->forward)) {
+          $this->redirectTo = request()->forward;
+        }
+
     }
 
     /**

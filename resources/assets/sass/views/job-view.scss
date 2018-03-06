@@ -1,0 +1,95 @@
+.job-view-header {
+  display: inline-block;
+  width: 100%;
+  border-bottom: 1px dotted #ddd;
+  padding: 40px 0;
+  margin-bottom: 40px;
+  &-title {
+    font-size: 48px;
+    font-weight: bold;
+    color: #1a304d;
+    margin-bottom: 15px;
+  }
+  &-job-title {
+    font-weight: 600;
+    font-size: 29px;
+    color: #0d72b9;
+  }
+  &-left {
+    float: left;
+    width: 45%;
+  }
+  &-right {
+    float: right;
+    width: 250px;
+    &-item {
+      display: inline-block;
+      width: 100%;
+      color: #0d72b9;
+      font-size: 16px;
+      margin-top: 10px;
+      &-left {
+        float: left;
+        text-align: left;
+      }
+      &-right {
+        float: right;
+        text-align: right;
+      }
+    }
+  }
+}
+
+
+/**
+* Job view company information
+*
+*/
+.job-view-company {
+  &-logo {
+    float: left;
+    width: 265px;
+  }
+  &-info {
+    float: right;
+    width: calc(100% - 300px);
+    line-height: 1.5;
+  }
+}
+
+
+/**
+* Job content
+*
+*/
+.job-view-content {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 50px;
+  &-title {
+    display: block;
+    font-size: 22px;
+    font-weight: 600;
+    color: #0d72b9;
+    margin: 35px 0;
+  }
+  &-description {
+    line-height: 1.5;
+  }
+  &-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 12.5px;
+    border-radius: 12.5px;
+    color: #ffffff;
+    cursor: pointer;
+    text-decoration: none;
+    &-apply {
+      background: $orange;
+      margin-top: 35px;
+    }
+    &-back {
+      background: #1a304d;
+    }
+  }
+}

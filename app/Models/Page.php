@@ -35,79 +35,109 @@ class Page extends Model {
   */
   protected $dates = ['deleted_at'];
 
-    /**
-     * Return the sluggable configuration array for this model.
-     *
-     * @return array
-     */
-    public function sluggable() {
-      return [
-        'slug' => [
-          'source' => 'name',
-        ],
-      ];
+  /**
+   * Return the sluggable configuration array for this model.
+   *
+   * @return array
+   */
+  public function sluggable() {
+    return [
+      'slug' => [
+        'source' => 'name',
+      ],
+    ];
+  }
+
+  /**
+   * Get the route key name
+   */
+  public function getRouteKeyName() {
+    return 'slug';
+  }
+
+
+  /**
+  * Get page information.
+  *
+  */
+  public static function getPage($slug) {
+
+    $page = Page::where("slug", $slug)
+      ->first();
+
+    if (null === $page) {
+
+      $return = new \stdClass();
+      $return->meta_title = "";
+      $return->meta_description = "";
+
+      return $return;
+
+    } else {
+
+      return $page;
+
     }
 
-    /**
-     * Get the route key name
-     */
-    public function getRouteKeyName() {
-      return 'slug';
-    }
+  }
 
-    /**
-    * A page can have many custom fields.
-    *
-    * @return Illuminate\Database\Eloquent\Relations\HasMany
-    */
-    public function fields() {
-      return $this->hasMany(PageField::class, 'page_id', 'id');
-    }
 
-    /**
-    * A page has one section attached to it.
-    *
-    * @return Illuminate\Database\Eloquent\Relations\HasOne
-    */
-    public function section() {
-      return $this->hasOne(Section::class, 'id', 'section_id');
-    }
 
-    /**
-    * A page can have many adverts.
-    *
-    * @return Illuminate\Database\Eloquent\Relations\HasMany
-    */
-    public function adverts() {
-      return $this->hasMany(PageAdvert::class, 'page_id', 'id');
-    }
 
-    public function ScopeGetField($query, $key, $type = "") {
-      foreach($this->fields as $field) {
-        if ($field->key == $key) {
-          $return = $field->value;
 
-          if ($type == "image") {
-            return env("S3_URL") . str_replace("-thumb", "", $field->value);
-          }
+  /**
+  * A page can have many custom fields.
+  *
+  * @return Illuminate\Database\Eloquent\Relations\HasMany
+  */
+  public function fields() {
+    return $this->hasMany(PageField::class, 'page_id', 'id');
+  }
 
-          return $return;
+  /**
+  * A page has one section attached to it.
+  *
+  * @return Illuminate\Database\Eloquent\Relations\HasOne
+  */
+  public function section() {
+    return $this->hasOne(Section::class, 'id', 'section_id');
+  }
+
+  /**
+  * A page can have many adverts.
+  *
+  * @return Illuminate\Database\Eloquent\Relations\HasMany
+  */
+  public function adverts() {
+    return $this->hasMany(PageAdvert::class, 'page_id', 'id');
+  }
+
+  public function ScopeGetField($query, $key, $type = "") {
+    foreach($this->fields as $field) {
+      if ($field->key == $key) {
+        $return = $field->value;
+
+        if ($type == "image") {
+          return env("S3_URL") . str_replace("-thumb", "", $field->value);
         }
+
+        return $return;
       }
-      return '';
     }
+    return '';
+  }
 
 
-    public function ScopeGetAdvert($query, $slug) {
+  public function ScopeGetAdvert($query, $slug) {
 
-      $page_advert = PageAdvert::where("page_id", $this->id)
-        ->where("slug", $slug)
-        ->first();
+    $page_advert = PageAdvert::where("page_id", $this->id)
+      ->where("slug", $slug)
+      ->first();
 
-      $advert = Advert::find($page_advert->advert_id);
+    $advert = Advert::find($page_advert->advert_id);
 
-      return $advert;
+    return $advert;
 
-    }
+  }
 
 }

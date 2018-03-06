@@ -23,7 +23,7 @@ class JobCompany extends FormRequest {
   public function rules() {
     return [
       "name" => "required|string",
-      "logo_path" => "required"
+      "description" => "required"
     ];
   }
 

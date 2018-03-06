@@ -6,4 +6,4 @@
 <a href="">Uni Actuarial Societies</a>
 <a href="">Actuarial Employers</a>
 <a href="">Jobs and Tips</a>
-<a href="">Join our Discussion</a>
+<a href="/discussion/uni-corner">Join our Discussion</a>

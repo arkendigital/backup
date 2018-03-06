@@ -86,19 +86,19 @@ class Section extends Model {
 
   }
 
-  public function ScopeGetField($query, $key, $type = "") {
-    foreach($this->fields as $field) {
-      if ($field->key == $key) {
-        $return = $field->value;
+  public function ScopeGetField($query, $section, $key) {
 
-        if ($type == "image") {
-          return env("S3_URL") . str_replace("-thumb", "", $field->value);
-        }
+    $new_section = Section::where("slug", $section)
+      ->first();
 
-        return $return;
+    foreach($new_section->fields as $field) {
+      if ($key == $field->key) {
+        return $field->value;
       }
     }
+
     return '';
+
   }
 
 

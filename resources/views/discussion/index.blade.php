@@ -9,6 +9,10 @@
 
       <h1 class="discussion-page-title">Discussion <span>{{ isset($category) ? $category->name : "" }}</span></h1>
 
+      <a class="discussion-add-button">Create Discussion</a>
+
+      <div class="clear"></div>
+
       @include("discussion.sidebar")
 
       <div class="discussion-list-container margin-bottom--medium">
@@ -52,5 +56,54 @@
 
     </div><!-- /.discussion-container-inner -->
   </div><!-- ./discussion-container -->
+
+  <div class="discussion-popover">
+    <form action="/discussion/" method="POST">
+      {{ csrf_field() }}
+      {{ method_field("POST") }}
+
+      @if(isset($category->id) && $category->id != "")
+        <input type="hidden" name="category_id" value="{{ $category->id }}">
+      @endif
+
+      <p class="discussion-popover-title">Create New Discussion</p>
+
+      <div class="discussion-popover-form-item">
+        <label>Title</label>
+        <input type="text" name="name" placeholder="Enter a title for this discussion...">
+      </div>
+
+      <div class="discussion-popover-form-item">
+        <label>Subject</label>
+        <input type="text" name="subject" placeholder="Enter a subject...">
+      </div>
+
+      @if(!isset($category->id) || isset($category->id) && $category->id == "")
+        <div class="discussion-popover-form-item">
+          <label>Category</label>
+          <select name="category_id">
+            <option value="">Select a category to add this discussion to</option>
+            @foreach($categories as $cat)
+              <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+            @endforeach
+          </select>
+        </div>
+      @endif
+
+      <div class="discussion-popover-form-item">
+        <label>Excerpt <small>(optional)</small></label>
+        <input type="text" name="excerpt" placeholder="Enter an excerpt for your discussion...">
+      </div>
+
+      <div class="discussion-popover-form-item">
+        <label>Content</label>
+        <textarea name="content" placeholder="Enter your discussions content..."></textarea>
+      </div>
+
+      <button type="submit" class="discussion-popover-button">Create Discussion</button>
+      <button type="button" class="discussion-popover-button discussion-popover-button-cancel discussion-popover-close">Cancel</button>
+
+    </form>
+  </div>
 
 @endsection

@@ -1,3 +1,5 @@
+<div class="clear"></div>
+
 <footer>
 
   <div class="footer-social">
@@ -10,28 +12,28 @@
   <nav class="footer-nav">
     <ul>
       <li>
-        <a href="">Exams</a>
+        <a href="/exams">Exams</a>
       </li>
       <li>
-        <a href="">Jobs</a>
+        <a href="/jobs">Jobs</a>
       </li>
       <li>
-        <a href="">CPD</a>
+        <a href="/cpd">CPD</a>
       </li>
       <li>
         <a href="">Salary Survey</a>
       </li>
       <li>
-        <a href="">Uni Corner</a>
+        <a href="/uni-corner">Uni Corner</a>
       </li>
       <li>
-        <a href="">Regional Societies</a>
+        <a href="/regional-societies">Regional Societies</a>
       </li>
       <li>
-        <a href="">Discussion</a>
+        <a href="/discussion">Discussion</a>
       </li>
       <li>
-        <a href="">CV Support</a>
+        <a href="/cv-support">CV Support</a>
       </li>
     </ul>
   </nav>
@@ -39,19 +41,19 @@
   <nav class="footer-nav footer-nav-secondary">
     <ul>
       <li>
-        <a href="">About Actuaries Online</a>
+        <a href="/about">About Actuaries Online</a>
       </li>
       <li>
-        <a href="">Advertise With us</a>
+        <a href="/jobs/advertise-with-us">Advertise With us</a>
       </li>
       <li>
-        <a href="">Privacy/Cookies</a>
+        <a href="/privacy-cookies">Privacy/Cookies</a>
       </li>
       <li>
-        <a href="">Terms and Conditions</a>
+        <a href="/terms-and-conditions">Terms and Conditions</a>
       </li>
       <li>
-        <a href="">Contact</a>
+        <a href="/contact">Contact</a>
       </li>
     </ul>
   </nav>

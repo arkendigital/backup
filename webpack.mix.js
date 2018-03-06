@@ -11,10 +11,6 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.autoload({
-    jquery: ['$', 'window.jQuery',"jQuery","window.$","jquery","window.jquery"]
-});
-
 mix.js('resources/assets/js/app.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css')
     .styles([
@@ -22,6 +18,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
       'resources/assets/sass/plugins/slick-theme.min.scss',
       'resources/assets/sass/plugins/slick.min.scss',
       'resources/assets/sass/plugins/swiper.min.scss',
+      'resources/assets/sass/plugins/trumbowyg.min.scss',
     ], 'public/css/vendor.css')
     .scripts([
       'node_modules/jquery/dist/jquery.js',
@@ -30,6 +27,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
       'resources/assets/js/vendor/scripts.js',
       'resources/assets/js/vendor/swiper.min.js',
       'resources/assets/js/vendor/slick.min.js',
+      'resources/assets/js/vendor/trumbowyg.min.js',
     ], 'public/js/vendor.js')
     .scripts([
       'resources/assets/js/vendor/ckeditor/ckeditor.js',

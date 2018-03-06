@@ -74,4 +74,25 @@ Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function() 
       "adverts" => "advert"
     ]]);
 
+    /**
+    * CPD Resources.
+    */
+    Route::resource("/cpd-resources", "CPD\CPDResourceController", ["parameters" => [
+      "cpd-resources" => "resource"
+    ]]);
+
+    /**
+    * CPD Resources.
+    */
+    Route::resource("/cpd-publications", "CPD\CPDPublicationController", ["parameters" => [
+      "cpd-publications" => "publication"
+    ]]);
+
+    /**
+    * CPD Links.
+    */
+    Route::resource("/cpd-links", "CPD\CPDLinkController", ["parameters" => [
+      "cpd-links" => "link"
+    ]]);
+
 });

@@ -134,10 +134,24 @@ class JobVacanciesController extends Controller {
   public function view(Job $job) {
 
     /**
+    * Get page information.
+    *
+    */
+    $page = Page::getPage("jobs-vacancy-view");
+
+    /**
+    * Set SEO.
+    *
+    */
+    $this->seo()->setTitle($job->title);
+    $this->seo()->setDescription($job->excerpt);
+
+    /**
     * Display job.
     */
     return view("job.vacancies.view", compact(
-      "job"
+      "job",
+      "page"
     ));
 
   }

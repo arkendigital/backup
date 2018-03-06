@@ -14,6 +14,7 @@ use Webpatser\Uuid\Uuid;
 class ImageController extends Controller {
 
   private static $size;
+  private static $name;
 
   /**
   * Upload Featured Image to Amazon S3 Bucket
@@ -28,10 +29,11 @@ class ImageController extends Controller {
       $s3->delete($oldPath);
     }
 
-    /**
-    * Generate a new Uuid
-    */
-    $uuid = Uuid::generate()->string;
+    if (isset(self::$name)) {
+      $file_name = self::$name;
+    } else {
+      $uuid = Uuid::generate()->string;
+    }
 
     /**
     * Create S3 Instance
@@ -41,7 +43,7 @@ class ImageController extends Controller {
     /**
     * Create file path for this image
     */
-    $originalPath = '/'.$section.'/'. $uuid . '.jpeg';
+    $originalPath = '/'.$section.'/'. $file_name . "." . $file->extension();
 
     /**
     * Create a thumbnail version of the image
@@ -77,9 +79,11 @@ class ImageController extends Controller {
   }
 
   public static function setCustomSize($size) {
-
     self::$size = $size;
+  }
 
+  public static function setCustomName($name) {
+    self::$name = $name;
   }
 
 

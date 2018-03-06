@@ -41,11 +41,17 @@ class CVSupportController extends Controller {
     $this->seo()->setDescription($page->meta_description);
 
     /**
+    * Get adverts for this page.
+    */
+    $page_adverts = getArrayOfAdverts($page->id);
+
+    /**
     * Display page.
     */
     return view("cvsupport.index", [
       "section" => $this->section,
-      "page" => $page
+      "page" => $page,
+      "page_adverts" => $page_adverts
     ]);
 
   }

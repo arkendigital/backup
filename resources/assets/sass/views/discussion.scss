@@ -16,7 +16,7 @@
 }
 
 .discussion-page-title {
-  display: block;
+  float: left;
   font-size: 48px;
   font-weight: 600;
   color: #1a304d;
@@ -27,6 +27,17 @@
     display: inline-block;
     margin-left: 15px;
   }
+}
+
+.discussion-add-button {
+  float: right;
+  margin: 50px 0;
+  background: #1a304d;
+  color: #ffffff;
+  padding: 12.5px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 
@@ -317,6 +328,9 @@
       margin-top: 15px;
       cursor: pointer;
       outline: 0;
+      border: none;
+      border-radius: 15px;
+      font-size: 16px;
       text-decoration: none;
       &:hover {
         background: $offblue;
@@ -342,6 +356,117 @@
       text-decoration: none;
       padding: 7.5px 5px;
       font-weight: 600;
+    }
+  }
+}
+
+
+/**
+* Create popover.
+*/
+.discussion-popover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.25);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  &-active {
+    display: flex;
+  }
+  form {
+    background: #ffffff;
+    padding: 25px 50px;
+    text-align: left;
+    width: 600px;
+    max-height: calc(92% - 50px);
+    position: relative;
+    overflow-y: auto;
+  }
+  /*
+  &-close {
+    position: absolute;
+    right: -17.5px;
+    top: -17.5px;
+    text-align: center;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    background: #1a304d;
+    color: #ffffff;
+    border-radius: 35px;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  */
+  &-title {
+    display: block;
+    font-size: 28px;
+    font-weight: 600;
+    color: #1a304d;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px dotted #1a304d;
+  }
+
+  &-form-item {
+    display: block;
+    width: 100%;
+    margin-bottom: 25px;
+    label {
+      display: block;
+      margin-bottom: 7.5px;
+      font-weight: 600;
+      color: #1a304d;
+    }
+    input, textarea, select {
+      -webkit-appearance: none;
+      display: block;
+      outline: 0;
+      width: calc(100% - 20px);
+      padding: 0 10px;
+      height: 35px;
+      font-size: 16px;
+      border: 1px solid #CCC;
+      &::placeholder {
+        color: #aaa;
+      }
+    }
+    textarea {
+      padding: 10px;
+      min-height: 125px;
+      max-height: 125px;
+      max-width: calc(100% - 20px);
+      min-width: calc(100% - 20px);
+    }
+    select {
+      width: calc(100% + 2px);
+      background: #ffffff;
+      border-radius: 0;
+      cursor: pointer;
+    }
+  }
+
+  &-button {
+    float: right;
+    background: #1a304d;
+    color: #ffffff;
+    padding: 12.5px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+    outline: 0;
+    border: none;
+    margin-left: 25px;
+    &-cancel {
+      // background: #335f99;
+      opacity: 0.75;
     }
   }
 }

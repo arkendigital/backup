@@ -11,7 +11,7 @@ Auth::routes();
 /**
 * Homepage.
 */
-Route::get('/', 'HomeController@index')->name('index');
+Route::get('/', 'HomeController@index')->name("index");
 
 /**
 * Sections
@@ -30,6 +30,31 @@ require(base_path() . '/routes/cvsupport.php');
 require(base_path() . '/routes/cpd.php');
 require(base_path() . '/routes/uni-corner.php');
 require(base_path() . '/routes/discussion.php');
+
+/**
+* Pages
+*
+* - Contact
+* - Terms and Conditions
+* - Privacy and Cookies
+* - About
+*
+*/
+Route::get('/contact', 'Contact\ContactController@index')->name("contact");
+Route::post('/contact', 'Contact\ContactController@submit');
+Route::get('/terms-and-conditions', 'Misc\TermsController@index')->name("terms");
+Route::get('/privacy-cookies', 'Misc\PrivacyController@index')->name("privacy");
+Route::get('/about', 'Misc\AboutController@index')->name("about");
+
+
+
+
+
+
+
+
+
+
 
 // Route::get('/home', 'HomeController@home')->middleware('auth')->name('home');
 

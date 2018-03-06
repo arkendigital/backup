@@ -9,6 +9,8 @@
 
       <h1 class="discussion-page-title">Discussion <span>{{ $category->name }}</span></h1>
 
+      <div class="clear"></div>
+
       @include("discussion.sidebar")
 
       <div class="discussion-view-container">
@@ -21,7 +23,7 @@
 
             <div class="discussion-view-thread-content">
               <p class="discussion-view-thread-content-title">{{ $discussion->name }}</p>
-              <p class="discussion-view-thread-content-text">{{ $discussion->excerpt }}</p>
+              <span class="discussion-view-thread-content-text">{!! $discussion->content !!}</span>
 
               <div class="discussion-view-thread-content-footer">
                 @if($discussion->subject != "")
@@ -39,27 +41,9 @@
           </div><!-- /.discussion-view-thread -->
 
           @foreach($discussion->replies as $reply)
-            <div class="discussion-view-thread discussion-view-thread-reply">
-
-              <div class="discussion-view-thread-avatar">
-                <img src="{{ $reply->user->avatar }}" alt="{{ $reply->user->username }}" title="{{ $reply->user->username }}">
-              </div><!-- /.discussion-view-thread-avatar -->
-
-              <div class="discussion-view-thread-content">
-                <p class="discussion-view-thread-content-title"><i class="fa fa-reply"></i></p>
-                <p class="discussion-view-thread-content-text">{{ $reply->content }}</p>
-
-                <div class="discussion-view-thread-content-footer">
-                  @if($reply->subject != "")
-                    <p class="discussion-view-thread-content-footer-subject">{{ $reply->subject }}</p>
-                  @endif
-                  <p class="discussion-view-thread-content-footer-time">{{ $reply->created_at->diffForHumans() }}</p>
-                  <p class="discussion-view-thread-content-footer-user">by {{ $reply->user->username }}</p>
-                </div><!-- /.discussion-view-thread-content-footer -->
-              </div><!-- /.discussion-view-thread-content -->
-
-            </div><!-- /.discussion-view-thread -->
+            @include("discussion.partials.reply", $reply)
           @endforeach
+          <div id="newDiscussionReply"></div>
         </div><!-- /.discussion-view -->
 
         @if(auth()->check())
@@ -78,7 +62,7 @@
 
             <textarea class="discussion-view-reply-editor" name="content"></textarea>
 
-            <a class="discussion-view-reply-submit" onclick="document.getElementById('discussion-reply-form').submit()">Submit Reply</a>
+            <button type="submit" class="discussion-view-reply-submit">Submit Reply</a>
 
           </form>
         </div><!-- /.discussion-view-reply -->
@@ -87,7 +71,7 @@
             <div class="discussion-view-thread" style="padding-bottom: 40px;">
               <a class="button button--large button--dark-blue" href="{{ route("register") }}">REGISTER TO REPLY</a>
               &nbsp;&nbsp;or&nbsp;&nbsp;
-              <a class="button button--large button--dark-blue" href="{{ route("login") }}">LOGIN</a>
+              <a class="button button--large button--dark-blue" href="{{ route("login") }}?from={{ urlencode(url()->full()) }}">LOGIN</a>
             </div>
           </div>
         @endif

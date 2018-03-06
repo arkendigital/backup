@@ -20,7 +20,7 @@
 
     <div class="website-container">
 
-      <div class="carousel">{{ $page->section->getField("exam_carousel") }}</div>
+      <div class="carousel">{{ $page->section->getField("exam", "exam_carousel") }}</div>
 
     </div>
 

@@ -2,7 +2,7 @@
 
 @section("content")
 
-  <div class="section-hero" style="background-image: url(/images/temp/uni-corner-section-hero-bg.png); border-color: {{ $section->color }};"></div>
+  <div class="section-hero" style="background-image: url({{ $page->section->image }}); border-color: {{ $page->section->color }};"></div>
 
   <div class="website-container view-section">
     <div class="website-container-content">
@@ -18,9 +18,15 @@
 
     <div class="clear"></div>
 
-    <div class="carousel">Exam Entry Opens Monday 29 January 2018 • Exam Entry Opens Monday 29 January 2018 • Exam Entry Opens Monday 29 January 2018</div>
+    <div class="carousel">{{ $page->section->getField("exam", "exam_carousel") }}</div>
 
-    <img src="/images/temp/jobs-advertise-banner.png" alt="" title="" class="margin-top--medium">
+    <div class="clear margin-bottom--medium"></div>
+
+    @if(isset($page_adverts[0]["main-content"]))
+      <a href="{{ $page_adverts[0]["main-content"]["url"] }}" target="_blank">
+        <img src="{{ $page_adverts[0]["main-content"]["image"] }}" alt="" title="">
+      </a>
+    @endif
 
   </div><!-- /.website-container -->
 

@@ -41,12 +41,17 @@ class UniCornerController extends Controller {
     $this->seo()->setDescription($page->meta_description);
 
     /**
+    * Get adverts for this page.
+    */
+    $page_adverts = getArrayOfAdverts($page->id);
+
+    /**
     * Display page.
     */
-    return view("uni-corner.index", [
-      "section" => $this->section,
-      "page" => $page
-    ]);
+    return view("uni-corner.index", compact(
+      "page",
+      "page_adverts"
+    ));
 
   }
 

@@ -24,15 +24,17 @@ class PageController extends Controller {
     $sections = Section::all();
 
     /**
-    * Get pages.
+    * Get pages not assigned a section.
     */
-    $pages = Page::all();
+    $misc_pages = Page::where("section_id", NULL)
+      ->get();
 
     /**
     * Display results.
     */
     return view("admin.pages.index", compact(
       "pages",
+      "misc_pages",
       "sections"
     ));
 
@@ -151,14 +153,16 @@ class PageController extends Controller {
     /**
     * Save adverts.
     */
-    foreach(request()->adverts as $page_advert_id => $advert_id) {
+    if(!empty(request()->adverts)) {
+      foreach(request()->adverts as $page_advert_id => $advert_id) {
 
-      $page_advert = PageAdvert::find($page_advert_id);
+        $page_advert = PageAdvert::find($page_advert_id);
 
-      $page_advert->update([
-        "advert_id" => $advert_id
-      ]);
+        $page_advert->update([
+          "advert_id" => $advert_id
+        ]);
 
+      }
     }
 
     /**

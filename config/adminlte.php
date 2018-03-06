@@ -215,6 +215,33 @@ return [
 
 
         /**
+        * CPD.
+        */
+        [
+          'header' => 'CPD',
+          'can' => 'cpd',
+        ],
+        [
+          'text' => 'Manage Resources',
+          'url'  => 'ops/cpd-resources',
+          'icon'  => 'users',
+          'can'   => 'cpd'
+        ],
+        [
+          'text' => 'Manage Publications',
+          'url'  => 'ops/cpd-publications',
+          'icon'  => 'users',
+          'can'   => 'cpd'
+        ],
+        [
+          'text' => 'Manage Verifiable Links',
+          'url'  => 'ops/cpd-links',
+          'icon'  => 'users',
+          'can'   => 'cpd'
+        ],
+
+
+        /**
         * Adverts.
         */
         [
@@ -259,47 +286,6 @@ return [
             'url'  => 'ops/permissions',
             'icon'  => 'key',
             'can'   => 'edit role'
-        ],
-
-
-
-        [
-            'header' => 'Pages',
-            'can' => 'edit page',
-        ],
-        [
-            'text' => 'All Pages',
-            'url'  => 'ops/pages',
-            'icon'  => 'file-text-o',
-            'can'   => 'edit page'
-        ],
-        [
-            'text' => 'Add Page',
-            'url'  => 'ops/pages/create',
-            'icon'  => 'plus-circle',
-            'can'   => 'create page'
-        ],
-        [
-            'header' => 'Forums',
-            'can' => 'edit forum',
-        ],
-        [
-            'text' => 'All Forums',
-            'url'  => 'ops/forums',
-            'icon'  => 'comments',
-            'can' => 'edit forum'
-        ],
-        [
-            'text' => 'Add Forum Category',
-            'url'  => 'ops/forums/categories/create',
-            'icon'  => 'comment',
-            'can' => 'create forum category'
-        ],
-        [
-            'text' => 'Add Forum',
-            'url'  => 'ops/forums/create',
-            'icon'  => 'comment',
-            'can' => 'create forum'
         ],
     ],
 

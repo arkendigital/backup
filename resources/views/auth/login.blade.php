@@ -15,6 +15,10 @@
       {{ csrf_field() }}
       {{ method_field("POST") }}
 
+      @if(isset($_GET["from"]))
+        <input type="hidden" name="forward" value="{{ $_GET["from"] }}">
+      @endif
+
       <div class="login_page_form_actions">
         <a href="{{ route("register") }}" class="login_page_form_actions_item">Sign up</a>
         <a href="{{ route("login") }}" class="login_page_form_actions_item login_page_form_actions_item_active">Log in</a>

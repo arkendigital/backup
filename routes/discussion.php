@@ -1,6 +1,7 @@
 <?php
 Route::namespace('Discussion')->prefix('discussion')->group(function() {
   Route::get('/', 'DiscussionController@index');
+  Route::post('/', 'DiscussionController@store');
   Route::get('/popular-threads', 'DiscussionController@popular');
   Route::get('/answered-threads', 'DiscussionController@answered');
   Route::get('/unanswered-threads', 'DiscussionController@unanswered');

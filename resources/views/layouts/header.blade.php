@@ -9,12 +9,15 @@
 
     <div class="header-account">
       @if(auth()->check())
+        @if(auth()->user()->isAdmin())
+          <a href="/ops" target="_blank">Admin<span class="header-account-oval"></span></a>
+        @endif
         <a href="{{ route("account.index") }}">My Account<span class="header-account-oval"></span></a>
         <a onclick="document.getElementById('logout-form').submit()">Logout<span class="header-account-oval"></span></a>
         <form id="logout-form" action="{{ route("logout") }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
       @else
         <a href="{{ route("register") }}">Sign up<span class="header-account-oval"></span></a>
-        <a href="{{ route("login") }}">Sign in<span class="header-account-oval"></span></a>
+        <a href="{{ route("login") }}?from={{ urlencode(url()->full()) }}">Sign in<span class="header-account-oval"></span></a>
       @endif
     </div>
 

@@ -102,7 +102,8 @@ class JobCompanyController extends Controller {
     * Insert company to storage.
     */
     $company->update([
-      "name" => request()->name
+      "name" => request()->name,
+      "description" => request()->description
     ]);
 
     /**

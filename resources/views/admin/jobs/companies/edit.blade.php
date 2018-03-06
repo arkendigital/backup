@@ -21,6 +21,14 @@
             </div>
 
             <div class="form-group">
+              <label for="name">Company Information / Description</label>
+              @if($errors->has("description"))
+                <p class="text-danger">{{ $errors->first("description") }}</p>
+              @endif
+              <textarea class="form-control editor" name="description" id="description">{{ $company->description }}</textarea>
+            </div>
+
+            <div class="form-group">
               <label for="logo_path">Company Logo</label>
               @if($errors->has("logo_path"))
                 <p class="text-danger">{{ $errors->first("logo_path") }}</p>
@@ -37,5 +45,15 @@
         </div>
     </form>
 </div>
+
+@push("scripts-after")
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.9.4/trumbowyg.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.9.4/ui/trumbowyg.min.css">
+  <script>
+    $('.editor').trumbowyg({
+      svgPath: '/images/icons.svg',
+    });
+  </script>
+@endpush
 
 @endsection
