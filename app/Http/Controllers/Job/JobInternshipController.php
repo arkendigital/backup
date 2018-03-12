@@ -20,8 +20,7 @@ class JobInternshipController extends Controller {
     /**
     * Get page Information
     */
-    $page = Page::where("slug", "jobs-internships")
-      ->first();
+    $page = Page::getPage(request()->route()->uri);
 
     /**
     * Set seo.

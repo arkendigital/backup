@@ -27,8 +27,14 @@
       <p class="login_page_form_text">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cras justo odio,dapibus ac facilisis in, ege ras justo dapibus ac facilisis</p>
 
       <div class="login_page_form_social">
-        <i class="fa fa-facebook-official fa-2x"></i>
-        <i class="fa fa-twitter-square fa-2x"></i>
+        <a href="{{ route('socialAuth', 'facebook') }}">
+          <i class="fa fa-facebook-official fa-2x"></i>
+        </a>
+
+        <a href="{{ route('socialAuth', 'twitter') }}">
+          <i class="fa fa-twitter-square fa-2x"></i>
+        </a>
+
         <i class="fa fa-linkedin-square fa-2x"></i>
       </div>
 

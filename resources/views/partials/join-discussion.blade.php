@@ -40,49 +40,7 @@
             </div>
           </div>
         @endforeach
-        {{--
-        <div class="homepage-discussion-slider-box swiper-slide">
-          <div class="homepage-discussion-slider-box-hover">
-            <div>
-              <p class="homepage-discussion-slider-box-title">Name of discussion</p>
-              <p class="homepage-discussion-slider-box-text">Ut eos enisciaspe ma dolorpo rerunti oreseque di ulparum.</p>
-            </div>
-          </div>
-        </div>
-        <div class="homepage-discussion-slider-box swiper-slide">
-          <div class="homepage-discussion-slider-box-hover">
-            <div>
-              <p class="homepage-discussion-slider-box-title">Name of discussion</p>
-              <p class="homepage-discussion-slider-box-text">Ut eos enisciaspe ma dolorpo rerunti oreseque di ulparum.</p>
-            </div>
-          </div>
-        </div>
-        <div class="homepage-discussion-slider-box swiper-slide">
-          <div class="homepage-discussion-slider-box-hover">
-            <div>
-              <p class="homepage-discussion-slider-box-title">Name of discussion</p>
-              <p class="homepage-discussion-slider-box-text">Ut eos enisciaspe ma dolorpo rerunti oreseque di ulparum.</p>
-            </div>
-          </div>
-        </div>
-        <div class="homepage-discussion-slider-box swiper-slide">
-          <div class="homepage-discussion-slider-box-hover">
-            <div>
-              <p class="homepage-discussion-slider-box-title">Name of discussion</p>
-              <p class="homepage-discussion-slider-box-text">Ut eos enisciaspe ma dolorpo rerunti oreseque di ulparum.</p>
-            </div>
-          </div>
-        </div>
-        <div class="homepage-discussion-slider-box swiper-slide">
-          <div class="homepage-discussion-slider-box-hover">
-            <div>
-              <p class="homepage-discussion-slider-box-title">Name of discussion</p>
-              <p class="homepage-discussion-slider-box-text">Ut eos enisciaspe ma dolorpo rerunti oreseque di ulparum.</p>
-            </div>
-          </div>
-        </div>
-        --}}
-
+        
       </div>
     </div>
 

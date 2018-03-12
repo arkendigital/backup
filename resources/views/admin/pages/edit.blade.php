@@ -6,7 +6,11 @@
 
 @section('content')
 
-<form action="{{ route('pages.update', compact("page")) }}" method="POST" role="form" enctype="multipart/form-data">
+@if(auth()->user()->hasRole("Super Administrator"))
+  <a class="btn btn-primary" style="margin-bottom:15px;" href="{{ route("pages.add.widget", $page->id) }}">Add a Widget</a>
+@endif
+
+<form action="" method="POST" role="form" enctype="multipart/form-data">
   {{ csrf_field() }}
   {{ method_field("PATCH") }}
 
@@ -20,6 +24,13 @@
         <label for="name">Page Name</label>
         <input type="text" class="form-control" name="name" id="name" placeholder="Enter page name..." value="{{ $page->name }}">
       </div>
+
+      @if(auth()->user()->hasRole("Super Administrator"))
+        <div class="form-group">
+          <label for="slug">Page URL / Slug</label>
+          <input type="text" class="form-control" name="slug" id="slug" placeholder="Enter page url..." value="{{ $page->slug }}">
+        </div>
+      @endif
 
       <div class="form-group">
         <label for="section_id">Section</label>
@@ -68,49 +79,91 @@
 
 
 
-  <div class="box box-primary">
-    <div class="box-header with-border">
-      <h3 class="box-title">Page Fields</h3>
+  @if(!$page->fields->isEmpty())
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">Page Fields</h3>
+      </div>
+      <div class="box-body">
+
+        @foreach($page->fields as $field)
+          <div class="form-group">
+            <label for="{{ $field->key }}">{{ $field->name }}</label>
+            @if($field->type == "string")
+              <input type="text" class="form-control" name="field[{{ $field->key }}]" id="{{ $field->key }}" value="{{ $field->value }}">
+            @elseif($field->type == "text")
+              <textarea class="form-control editor" name="field[{{ $field->key }}]" id="{{ $field->key }}">{{ $field->value }}</textarea>
+            @endif
+          </div>
+        @endforeach
+
+      </div>
     </div>
-    <div class="box-body">
+  @endif
 
-      @foreach($page->fields as $field)
-        <div class="form-group">
-          <label for="{{ $field->key }}">{{ $field->name }}</label>
-          @if($field->type == "string")
-            <input type="text" class="form-control" name="field[{{ $field->key }}]" id="{{ $field->key }}" value="{{ $field->value }}">
-          @elseif($field->type == "text")
-            <textarea class="form-control editor" name="field[{{ $field->key }}]" id="{{ $field->key }}">{{ $field->value }}</textarea>
-          @endif
-        </div>
-      @endforeach
 
+
+
+  @if(!$page->adverts->isEmpty())
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">Adverts</h3>
+      </div>
+      <div class="box-body">
+
+        @foreach($page->adverts as $page_advert)
+          <div class="form-group">
+            <label for="meta_title">{{ ucwords(str_replace("-", " ", $page_advert->slug)) }} Advert</label>
+            <select name="adverts[{{ $page_advert->id }}]" class="form-control">
+              <option value="">None</option>
+              @foreach(\App\Models\Advert::all() as $advert)
+                <option value="{{ $advert->id }}" @if($page_advert->advert_id == $advert->id) selected @endif>{{ $advert->name }}</option>
+              @endforeach
+            </select>
+          </div>
+        @endforeach
+
+      </div>
     </div>
-  </div>
+  @endif
 
 
 
 
-  <div class="box box-primary">
-    <div class="box-header with-border">
-      <h3 class="box-title">Adverts</h3>
+
+
+
+
+
+  @if(!$page->getWidgets()->isEmpty())
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">Widgets</h3>
+        @if(auth()->user()->hasRole("Super Administrator"))
+          <a class="btn btn-primary pull-right" href="{{ route("page-widgets.create") }}?page_id={{ $page->id }}" style="margin-left: 10px;">Create Widget</a>
+        @endif
+        <a class="btn btn-primary pull-right" href="{{ route("page-widgets.order", $page->id) }}">Update Widget Order</a>
+      </div>
+      <div class="box-body">
+
+        @foreach($page->getWidgets() as $page_widget)
+          <div class="form-group">
+            <label for="meta_title">Show the widget "{{ $page_widget->widget->name }}"?</label>
+            <p><input type="checkbox" name="widgets[{{ $page_widget->id }}]" id="widget-{{ $page_widget->id }}" @if($page_widget->is_visible) checked @endif value="{{ $page_widget->id }}"> <label for="widget-{{ $page_widget->id }}" style="margin-left: 5px;">Yes</label></p>
+          </div>
+        @endforeach
+
+      </div>
     </div>
-    <div class="box-body">
+  @endif
 
-      @foreach($page->adverts as $page_advert)
-        <div class="form-group">
-          <label for="meta_title">{{ ucwords(str_replace("-", " ", $page_advert->slug)) }} Advert</label>
-          <select name="adverts[{{ $page_advert->id }}]" class="form-control">
-            <option value="">None</option>
-            @foreach(\App\Models\Advert::all() as $advert)
-              <option value="{{ $advert->id }}" @if($page_advert->advert_id == $advert->id) selected @endif>{{ $advert->name }}</option>
-            @endforeach
-          </select>
-        </div>
-      @endforeach
 
-    </div>
-  </div>
+
+
+
+
+
+
 
   <div class="box-footer">
       <button type="submit" class="btn btn-primary">Update Page</button>

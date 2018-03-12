@@ -89,27 +89,30 @@
           {{ method_field("PATCH") }}
 
           <div class="account_page_form_item">
-            <label class="account_page_form_item_label" for="password">Password</label>
-            @if($errors->has("password"))
-              <p class="account_page_form_item_error">{{ $errors->first("password") }}</p>
+            <label class="account_page_form_item_label" for="old_password">Password</label>
+            @if($errors->has("old_password"))
+              <p class="account_page_form_item_error">{{ $errors->first("old_password") }}</p>
             @endif
-            <input class="account_page_form_item_input" type="password" name="password" id="password" placeholder="Old password">
+            <input class="account_page_form_item_input" type="password" name="old_password" id="old_password" placeholder="Old password">
           </div>
 
+
+          @if($errors->has("new_password"))
+            <p class="account_page_form_item_error">{{ $errors->first("new_password") }}</p>
+          @endif
           <div class="account_page_form_double">
             <div class="account_page_form_item">
-              @if($errors->has("password"))
-                <p class="account_page_form_item_error">{{ $errors->first("password") }}</p>
-              @endif
-              <input class="account_page_form_item_input" type="password" name="password" id="password" placeholder="New password">
+              <input class="account_page_form_item_input" type="password" name="new_password" id="new_password" placeholder="New password">
             </div>
 
             <div class="account_page_form_item">
-              @if($errors->has("password"))
-                <p class="account_page_form_item_error">{{ $errors->first("password") }}</p>
+              @if($errors->has("new_password_confirmation"))
+                <p class="account_page_form_item_error">{{ $errors->first("new_password_confirmation") }}</p>
               @endif
-              <input class="account_page_form_item_input" type="password" name="password" id="password" placeholder="Confirm new password">
+              <input class="account_page_form_item_input" type="password" name="new_password_confirmation" id="new_password_confirmation" placeholder="Confirm new password">
             </div>
+
+            <div class="clear"></div>
 
             <input class="account_page_form_submit" value="Update password" type="submit">
 
@@ -133,6 +136,7 @@
       </div>
     @endif
 
+    <script src="{{ asset("js/vendor.js") }}"></script>
     <script src="{{ asset("js/app.js") }}"></script>
 
   </body>

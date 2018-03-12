@@ -37,8 +37,7 @@ class JobVacanciesController extends Controller {
     /**
     * Get page Information
     */
-    $page = Page::where("slug", "jobs-vacancies")
-      ->first();
+    $page = Page::getPage(request()->route()->uri);
 
     /**
     * Set seo.

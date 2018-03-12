@@ -22,8 +22,7 @@ class ExamLinksController extends Controller {
     /**
     * Get page Information
     */
-    $page = Page::where("slug", "exams-links")
-      ->first();
+    $page = Page::getPage(request()->route()->uri);
 
     /**
     * Set SEO.

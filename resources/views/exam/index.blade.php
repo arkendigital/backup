@@ -2,7 +2,7 @@
 
 @section("content")
 
-  <div class="section-hero" style="background-image: url({{ $section->image }}); border-color: {{ $section->color }};"></div>
+  <div class="section-hero" style="background-image: url({{ $page->section->image }}); border-color: {{ $page->section->color }};"></div>
 
   <div class="website-container view-section">
     <div class="website-container-content">
@@ -13,20 +13,23 @@
 
     </div>
     <div class="website-container-sidebar">
-      @include("partials.sidebar.exams")
+      @include("partials.sidebar", [
+        "sidebar" => $page->section->sidebar
+      ])
     </div>
 
     <div class="clear"></div>
 
     <div class="website-container">
 
-      <div class="carousel">{{ $page->section->getField("exam", "exam_carousel") }}</div>
+      <div class="carousel">{{ $page->section->getField("exams", "exam_carousel") }}</div>
 
     </div>
 
   </div><!-- /.website-container -->
 
-  @include("partials.exams-select")
+  @include("widgets.loop")
+
   @include("partials.join-discussion", [
     "advert" => isset($page_adverts[0]["discussion-widget"]) ? $page_adverts[0]["discussion-widget"] : [],
     "category_id" => $page->discussion_category_id

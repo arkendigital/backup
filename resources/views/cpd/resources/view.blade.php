@@ -15,8 +15,8 @@
 
     </div>
     <div class="website-container-sidebar">
-      @include("cpd.sidebar", [
-        "key" => "resources"
+      @include("partials.sidebar", [
+        "sidebar" => $section->sidebar
       ])
     </div>
 

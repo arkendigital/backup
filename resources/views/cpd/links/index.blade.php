@@ -15,8 +15,8 @@
 
     </div>
     <div class="website-container-sidebar">
-      @include("cpd.sidebar", [
-        "key" => "verifiable"
+      @include("partials.sidebar", [
+        "sidebar" => $page->section->sidebar
       ])
     </div>
 
@@ -35,7 +35,7 @@
 
   </div><!-- /.website-container -->
 
-  @include("partials.cpd-select")
+  @include("widgets.loop")
   @include("partials.join-discussion", [
     "advert" => isset($page_adverts[0]["discussion-widget"]) ? $page_adverts[0]["discussion-widget"] : [],
     "category_id" => $page->discussion_category_id

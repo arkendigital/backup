@@ -4,9 +4,9 @@
 
   <div class="footer-social">
     FIND US ON SOCIAL MEDIA
-    <i class="fa fa-facebook-official"></i>
-    <i class="fa fa-twitter-square"></i>
-    <i class="fa fa-linkedin-square"></i>
+    <i class="fab fa-facebook"></i>
+    <i class="fab fa-twitter-square"></i>
+    <i class="fab fa-linkedin"></i>
   </div>
 
   <nav class="footer-nav">

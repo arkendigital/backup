@@ -60,4 +60,14 @@ class DiscussionCategory extends Model {
     return $this->hasOne(DiscussionIcon::class, 'id', 'icon_id');
   }
 
+  /**
+  * Get the fully qualified path of the discussion category.
+  *
+  */
+  public function getGetURLAttribute() {
+
+    return env("APP_URL")."/discussion/".$this->slug;
+
+  }
+
 }

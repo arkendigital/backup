@@ -11,6 +11,7 @@ class CreateSectionsTable extends Migration {
 			$table->increments('id');
 			$table->string('name');
 			$table->string('color', 6);
+			$table->integer('sidebar_id');
 			$table->timestamps();
 			$table->softDeletes();
 		});

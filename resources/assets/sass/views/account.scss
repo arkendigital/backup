@@ -135,11 +135,17 @@
       display: inline-block;
       margin: 25px 0;
       background: #0d72b9;
+      border: none;
       color: #FFFFFF;
       text-align: center;
       padding: 10px 30px;
       font-size: 14px;
       border-radius: 25px;
+      cursor: pointer;
+      outline: 0;
+      &:hover {
+        background: $offblue;
+      }
     }
 
   }

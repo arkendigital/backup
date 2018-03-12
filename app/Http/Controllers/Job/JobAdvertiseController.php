@@ -26,8 +26,7 @@ class JobAdvertiseController extends Controller {
     /**
     * Get page Information
     */
-    $page = Page::where("slug", "jobs-advertise-with-us")
-      ->first();
+    $page = Page::getPage(request()->route()->uri);
 
     /**
     * Set seo.

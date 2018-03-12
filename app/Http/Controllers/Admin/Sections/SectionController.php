@@ -8,6 +8,7 @@ use App\Http\Controllers\AWS\ImageController as AWS;
 
 use App\Models\Section;
 use App\Models\SectionField;
+use App\Models\SectionSidebar;
 
 class SectionController extends Controller {
 
@@ -37,9 +38,18 @@ class SectionController extends Controller {
   public function edit(Section $section) {
 
     /**
+    * Get sidebars.
+    *
+    */
+    $sidebars = SectionSidebar::all();
+
+    /**
     * Display edit form / page.
     */
-    return view("admin.sections.edit", compact("section"));
+    return view("admin.sections.edit", compact(
+      "section",
+      "sidebars"
+    ));
 
   }
 

@@ -2,7 +2,7 @@
 
 @section("content")
 
-  <div class="section-hero" style="background-image: url(/images/temp/jobs-section-hero-bg.png); border-color: {{ $section->color }};"></div>
+  <div class="section-hero" style="background-image: url({{ $section->image }}); border-color: {{ $section->color }};"></div>
 
   <div class="website-container view-section">
     <div class="website-container-content">
@@ -26,7 +26,14 @@
 
   </div><!-- /.website-container -->
 
-  @include("partials.latest-jobs")
+  @foreach($page->getWidgets() as $widget)
+    @if($widget->is_visible)
+      @include("widgets.".$widget->widget["slug"], [
+        "group" => $widget->getBoxGroup($widget->widget["slug"])
+      ])
+    @endif
+  @endforeach
+  
   @include("partials.join-discussion", [
     "category_id" => $page->discussion_category_id
   ])

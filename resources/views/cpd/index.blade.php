@@ -15,7 +15,9 @@
 
     </div>
     <div class="website-container-sidebar">
-      @include("cpd.sidebar")
+      @include("partials.sidebar", [
+        "sidebar" => $page->section->sidebar
+      ])
     </div>
 
     <div class="clear"></div>
@@ -23,7 +25,7 @@
   </div><!-- /.website-container -->
 
 
-  @include("partials.cpd-select")
+  @include("widgets.loop")
   @include("partials.join-discussion", [
     "with" => "banner",
     "category_id" => $page->discussion_category_id

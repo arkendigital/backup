@@ -19,7 +19,8 @@ class Section extends Model {
     "name",
     "color",
     "slug",
-    "image_path"
+    "image_path",
+    "sidebar_id"
   ];
 
   /**
@@ -71,6 +72,15 @@ class Section extends Model {
   }
 
   /**
+  * A section only has one sidebar.
+  *
+  * @return Illuminate\Database\Eloquent\Relations\HasOne
+  */
+  public function sidebar() {
+    return $this->hasOne(SectionSidebar::class, 'id', 'sidebar_id');
+  }
+
+  /**
   * Get the fully qualified path of the image.
   *
   */
@@ -91,10 +101,14 @@ class Section extends Model {
     $new_section = Section::where("slug", $section)
       ->first();
 
-    foreach($new_section->fields as $field) {
-      if ($key == $field->key) {
-        return $field->value;
+    if ($new_section !== null) {
+
+      foreach($new_section->fields as $field) {
+        if ($key == $field->key) {
+          return $field->value;
+        }
       }
+
     }
 
     return '';

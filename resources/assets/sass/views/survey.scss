@@ -1,0 +1,33 @@
+.survey-results {
+  &-container {
+    display: block;
+    background: #ffffff;
+    padding: 25px;
+  }
+  &-title {
+    display: block;
+    font-size: 29px;
+    font-weight: 600;
+    color: #1a304d;
+    margin-bottom: 25px;
+  }
+
+  &-table {
+    margin-bottom: 50px;
+    width: 475px;
+    td {
+      padding: 5px 20px;
+      border: 1px solid #aaa;
+      text-align: center;
+    }
+    tbody {
+      tr {
+        &:nth-child(even) {
+          td {
+            background: #e9edf8
+          }
+        }
+      }
+    }
+  }
+}

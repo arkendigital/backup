@@ -77,6 +77,16 @@ require(base_path() . '/routes/page.php');
 
 Route::get('socialredirect/{network}/{username}', 'Utilities\\RedirectController@handle')->name('socialRedirect');
 
+/**
+* AJAX API Routes.
+*
+*/
+Route::post('/api/remove-item-from-sidebar', 'Api\\Admin\\SidebarController@removeItem');
+
+Route::post('/api/add-page-to-sidebar', 'Api\\Admin\\SidebarController@addPage');
+Route::post('/api/remove-page-from-sidebar', 'Api\\Admin\\SidebarController@removePage');
+Route::post('/api/add-link-to-sidebar', 'Api\\Admin\\SidebarController@addLink');
+
 // API Routes
 // Mainly used for AJAX
 Route::post('api/react', 'Api\\ReactionController@store');

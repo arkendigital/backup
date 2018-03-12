@@ -141,6 +141,12 @@ return [
             'icon'  => 'users',
             'can'   => 'sections'
         ],
+        [
+            'text' => 'Manage Sidebars',
+            'url'  => 'ops/sidebars',
+            'icon'  => 'users',
+            'can'   => 'sections'
+        ],
 
         /**
         * Pages.
@@ -154,6 +160,18 @@ return [
             'url'  => 'ops/pages',
             'icon'  => 'users',
             'can'   => 'pages'
+        ],
+
+        /**
+        * Box Groups.
+        */
+        [
+          'header' => 'Box Groups',
+        ],
+        [
+            'text' => 'Manage Box Groups',
+            'url'  => 'ops/box-groups',
+            'icon'  => 'users',
         ],
 
 
@@ -199,6 +217,12 @@ return [
         [
           'header' => 'Exams',
           'can' => 'exams',
+        ],
+        [
+          'text' => 'Manage Exams',
+          'url'  => 'ops/exam-categories',
+          'icon'  => 'users',
+          'can'   => 'exams'
         ],
         [
           'text' => 'Manage Resources',
@@ -253,6 +277,19 @@ return [
           'url'  => 'ops/adverts',
           'icon'  => 'users',
           'can'   => 'adverts'
+        ],
+
+
+        /**
+        * Slides.
+        */
+        [
+          'header' => 'Slides',
+        ],
+        [
+          'text' => 'Manage Slides',
+          'url'  => 'ops/slides',
+          'icon'  => 'users',
         ],
 
 

@@ -35,8 +35,7 @@ class ExamResourcesController extends Controller {
     /**
     * Get page Information
     */
-    $page = Page::where("slug", "exams-resources")
-      ->first();
+    $page = Page::getPage(request()->route()->uri);
 
     /**
     * Set seo.
@@ -75,7 +74,7 @@ class ExamResourcesController extends Controller {
     /**
     * Get section.
     */
-    $section = Section::where("slug", "exam")
+    $section = Section::where("slug", "exams")
       ->first();
 
     return view("exam.resources.view", [

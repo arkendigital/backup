@@ -27,7 +27,7 @@ class CPDLinkController extends Controller {
     * Get page information.
     *
     */
-    $page = Page::getPage("cpd-get-verifiable");
+    $page = Page::getPage(request()->route()->uri);
 
     /**
     * Get SEO.

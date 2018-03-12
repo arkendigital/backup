@@ -27,7 +27,7 @@ class CPDPublicationController extends Controller {
     * Get page information.
     *
     */
-    $page = Page::getPage("cpd-publications");
+    $page = Page::getPage(request()->route()->uri);
 
     /**
     * Set SEO.

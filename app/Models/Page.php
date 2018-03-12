@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\Models\PageField;
 use App\Models\PageAdvert;
+use App\Models\PageWidget;
 use App\Models\Section;
 
 class Page extends Model {
@@ -112,6 +113,15 @@ class Page extends Model {
     return $this->hasMany(PageAdvert::class, 'page_id', 'id');
   }
 
+  /**
+  * A page can have many widgets.
+  *
+  * @return Illuminate\Database\Eloquent\Relations\HasMany
+  */
+  public function widgets() {
+    return $this->hasMany(PageWidget::class, 'page_id', 'id');
+  }
+
   public function ScopeGetField($query, $key, $type = "") {
     foreach($this->fields as $field) {
       if ($field->key == $key) {
@@ -137,6 +147,37 @@ class Page extends Model {
     $advert = Advert::find($page_advert->advert_id);
 
     return $advert;
+
+  }
+
+  /**
+  * Check to see if a widget on a specific page is visible
+  *
+  */
+  public function widgetIsVisible($slug = "") {
+
+    $widget = PageWidget::where("slug", $slug)
+      ->first();
+
+    if ($widget !== null) {
+      if ($widget->is_visible) {
+        return true;
+      }
+    }
+
+    return false;
+
+  }
+
+  /**
+  * Get widgets to display on a page.
+  *
+  */
+  public function getWidgets() {
+
+    return PageWidget::where("page_id", $this->attributes["id"])
+      ->orderBy("order", "ASC")
+      ->get();
 
   }
 

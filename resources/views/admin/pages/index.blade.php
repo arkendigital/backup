@@ -34,7 +34,7 @@
                 <td>{{ $page->name }}</td>
                 <td>
                   <div class="btn-group">
-                    <a class="btn btn-success btn-small" type="button" href="{{ route('pages.edit', $page) }}">
+                    <a class="btn btn-success btn-small" type="button" href="{{ route('pages.edit', $page->id) }}">
                       <i class="fa fa-pencil"></i>
                     </a>
                   </div>
@@ -74,7 +74,7 @@
               <td>{{ $page->name }}</td>
               <td>
                 <div class="btn-group">
-                  <a class="btn btn-success btn-small" type="button" href="{{ route('pages.edit', $page) }}">
+                  <a class="btn btn-success btn-small" type="button" href="{{ route('pages.edit', $page->id) }}">
                     <i class="fa fa-pencil"></i>
                   </a>
                 </div>

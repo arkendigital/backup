@@ -40,16 +40,11 @@
     font-size: 26px;
     line-height: 32px;
     font-weight: 600;
-    width: 180px;
-    height: 100px;
+    width: calc(180px - 20px);
+    padding: 10px;
+    height: calc(100px - 20px);
     margin: 0 50px;
     margin-bottom: 40px;
-  }
-  &-item:nth-child(3n+0) {
-    margin-left: 0;
-  }
-  &-item:nth-child(3n+2) {
-    margin-right: 0;
   }
 
   &-search {
@@ -119,6 +114,6 @@
 .box-select-slider {
   .box-select-item {
     margin: auto;
-    width: calc(100% - 5px);
+    width: calc(100% - 26px);
   }
 }

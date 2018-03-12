@@ -29,10 +29,10 @@ class ImageController extends Controller {
       $s3->delete($oldPath);
     }
 
-    if (isset(self::$name)) {
+    if (isset(self::$name) && self::$name != "") {
       $file_name = self::$name;
     } else {
-      $uuid = Uuid::generate()->string;
+      $file_name = Uuid::generate()->string;
     }
 
     /**

@@ -48,6 +48,9 @@
     &_social {
       display: block;
       margin: 25px auto;
+      a {
+        text-decoration: none;
+      }
       .fa-facebook-official {
         color: #0864af;
       }

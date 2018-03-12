@@ -27,6 +27,16 @@
         <p> <img src="{{ $section->image }}" height="75"> </p>
         <input type="file" class="form-control" name="image" id="image">
       </div>
+
+      <div class="form-group">
+        <label for="color">Sidebar</label>
+        <select class="form-control" name="sidebar_id">
+          <option value="">Select a sidebar for pages in this section</option>
+          @foreach($sidebars as $sidebar)
+            <option value="{{ $sidebar->id }}" @if($sidebar->id == $section->sidebar_id) selected @endif>{{ $sidebar->name }}</option>
+          @endforeach
+        </select>
+      </div>
     </div>
   </div>
 

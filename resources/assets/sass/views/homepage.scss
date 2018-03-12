@@ -5,6 +5,7 @@
   display: block;
   width: 100%;
   text-align: center;
+  background: #EEE;
   &-slide {
     background-repeat: no-repeat;
     background-size: cover;
@@ -14,15 +15,22 @@
     > div {
       display: inline-block;
       text-align: right;
-      width: 1140px;
+      width: 96%;
+      max-width: 1140px;
+      @media(max-width: 650px) {
+        text-align: center;
+      }
     }
     &-title {
       float: right;
-      width: 400px;
+      max-width: 50%;
       color: #1a304d;
       font-size: 65px;
       font-weight: 600;
       line-height: 60px;
+      @media(max-width: 650px) {
+        width: 100%;
+      }
     }
     &-text {
       float: right;
@@ -31,6 +39,9 @@
       font-size: 21px;
       font-weight: 600;
       margin-top: 15px;
+      @media(max-width: 650px) {
+        width: 100%;
+      }
     }
   }
 }
@@ -55,6 +66,22 @@
     &:nth-child(4n+4) {
       margin-right: 0;
     }
+
+    @media(max-width: 625px) {
+      margin-right: 0;
+      width: 48%;
+      &:nth-child(odd) {
+        float: left;
+      }
+      &:nth-child(even) {
+        float: right;
+      }
+    }
+
+    @media(max-width: 450px) {
+      width: 100%;
+    }
+
     &-title {
       position: absolute;
       bottom: 15px;

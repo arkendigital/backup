@@ -1,0 +1,100 @@
+.survey {
+  &-container {
+    display: block;
+    padding: 25px;
+    background: #fff;
+  }
+  &-title {
+    display: block;
+    font-size: 29px;
+    font-weight: 600;
+    color: #1a304d;
+    margin-bottom: 25px;
+  }
+  &-sub-title {
+    display: block;
+    font-size: 22px;
+    font-weight: 600;
+    color: #0d72b9;
+    margin-top: 25px;
+  }
+
+  &-answer {
+    display: inline-block;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a304d;
+    padding: 25px 0;
+    border: 2px solid #0d72b9;
+    margin-top: 10px;
+    margin-right: 10px;
+    width: 135px;
+    cursor: pointer;
+
+    &-dropdown {
+      display: none;
+      position: absolute;
+      border: 2px solid #0d72b9;
+      width: 100%;
+      left: 0;
+      margin-left: -2px;
+      top: 100%;
+      background: #fff;
+      &-item {
+        display: block;
+        width: 100%;
+        border-top: 1px solid #fff;
+        padding: 10px 0;
+        background: #0d72b9;
+        color: #fff;
+        &:first-of-type {
+          border-top: none;
+        }
+      }
+    }
+
+    &-icon {
+      position: absolute;
+      top: calc(50% - 10px);
+      right: -20px;
+      &-wrap {
+        position: relative;
+      }
+    }
+
+    &:hover, &-active {
+      background: #0d72b9;
+      color: #fff;
+    }
+
+    &-has-dropdown {
+      position: relative;
+      &:hover {
+        background: #fff;
+        color: #1a304d;
+        .survey-answer-dropdown {
+          display: inline;
+        }
+      }
+    }
+
+    &-container {
+      display: block;
+      text-align: left;
+    }
+  }
+
+  &-button {
+    display: inline-block;
+    margin-right: 15px;
+    margin-top: 30px;
+    border-radius: 15px;
+    background: #1a304d;
+    color: #fff;
+    text-align: center;
+    padding: 5px 15px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}

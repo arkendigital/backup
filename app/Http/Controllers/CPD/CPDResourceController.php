@@ -35,8 +35,7 @@ class CPDResourceController extends Controller {
     /**
     * Get page Information
     */
-    $page = Page::where("slug", "cpd-resources")
-      ->first();
+    $page = Page::getPage(request()->route()->uri);
 
     /**
     * Set seo.

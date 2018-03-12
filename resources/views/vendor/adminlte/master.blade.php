@@ -97,7 +97,7 @@
 
     @include('sweet::alert')
 
-    <script src="{{ asset('js/app.js') }}"></script>
+    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
     @stack('scripts-before')
     @yield('adminlte_js')
     @stack('scripts-after')

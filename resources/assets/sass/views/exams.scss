@@ -1,0 +1,133 @@
+.exam-modules {
+  &-container {
+    display: block;
+    width: 100%;
+    padding: 100px 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  &-inner {
+    display: block;
+    width: 1040px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  &-slider {
+    display: block;
+    text-align: center;
+    &-button {
+      position: absolute;
+      top: calc(50% - 15px);
+      font-size: 35px;
+      color: #fff;
+      &-prev {
+        left: 0;
+      }
+      &-next {
+        right: 0;
+      }
+    }
+    &-wrap {
+      display: inline-block;
+      width: 750px;
+      padding: 0 75px;
+      position: relative;
+      .swiper-button-prev, .swiper-button-next {
+        display: none;
+      }
+    }
+    &-item {
+      display: inline-block;
+      background: #fff;
+      width: 125px;
+      height: 125px;
+      line-height: 125px;
+      color: #0f67a7;
+      font-size: 26px;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      &-active {
+        background: #0f67a7;
+        color: #fff;
+      }
+    }
+  }
+
+  &-info {
+    &-container {
+      display: inline-block;
+      width: 100%;
+      max-width: 910px;
+      background: #fff;
+      padding: 25px;
+      margin-top: 50px;
+    }
+    &-header {
+      display: inline-block;
+      width: 100%;
+      &-name {
+        float: left;
+        width: 100px;
+        height: 100px;
+        background: #0d72b9;
+        color: #fff;
+        line-height: 100px;
+        text-align: center;
+        font-size: 25px;
+        font-weight: 600;
+      }
+      &-content {
+        float: right;
+        width: calc(100% - 125px);
+        text-align: left;
+        &-title {
+          display: block;
+          margin-bottom: 15px;
+          color: #1a304d;
+          font-size: 30px;
+          font-weight: 600;
+        }
+        &-excerpt {
+          display: block;
+          color: #1a304d;
+          font-size: 18px;
+          line-height: 22px;
+          font-weight: 600;
+        }
+      }
+    }
+    &-section {
+      display: inline-block;
+      vertical-align: top;
+      border-left: 2px dotted $orange;
+      padding: 15px 35px;
+      width: calc(25% - 75px);
+      margin-top: 25px;
+      &:first-of-type {
+        border-left: none;
+      }
+      &-title {
+        display: block;
+        font-size: 26px;
+        font-weight: bold;
+      }
+      &-text {
+        display: block;
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 25px;
+      }
+      &-button {
+        display: inline-block;
+        margin-top: 12.5px;
+        font-size: 16px;
+        color: #fff;
+        text-decoration: none;
+        padding: 7.5px 20px;
+        border-radius: 15px;
+        background: #1a304d;
+      }
+    }
+  }
+}

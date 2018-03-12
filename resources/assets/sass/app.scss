@@ -12,6 +12,7 @@
 /**
 * Components.
 */
+@import "components/discussion-floater";
 @import "components/button";
 @import "components/carousel";
 @import "components/box-select";
@@ -19,6 +20,7 @@
 @import "components/item-value";
 @import "components/alert";
 @import "components/resources";
+@import "components/survey";
 
 /**
 * Views.
@@ -32,3 +34,5 @@
 @import "views/discussion";
 @import "views/404";
 @import "views/contact";
+@import "views/exams";
+@import "views/survey";

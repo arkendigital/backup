@@ -57,6 +57,7 @@ header {
         border-right: 2px solid #dbdbdb;
         padding: 0 6px;
         margin-left: -4px;
+        position: relative;
         a {
           text-decoration: none;
           color: #707070;
@@ -67,6 +68,32 @@ header {
           float: right;
           margin-top: 6px;
           margin-left: 5px;
+        }
+
+        ul {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background: #ffffff;
+          padding: 40px 15px 15px 15px;
+          text-align: left;
+          box-shadow: 8px 40px 50px rgba(0,0,0,0.25);
+          z-index: 20;
+          li {
+            border-right: none;
+            white-space: nowrap;
+            a {
+              display: block;
+              padding: 8px 0;
+              white-space: nowrap;
+            }
+          }
+        }
+        &:hover {
+          ul {
+            display: inline;
+          }
         }
       }
       li:last-of-type {
@@ -101,6 +128,41 @@ header {
     }
   }
 
+  .header-burger {
+    display: none;
+    float: right;
+    width: 80px;
+    padding: 2px 0;
+    margin-right: 25px;
+    cursor: pointer;
+    &:hover {
+      .header-burger-text {
+        color: #0d72b9;
+      }
+    }
+    &-icon {
+      float: left;
+      width: 25px;
+      margin-top: 1.5px;
+      div {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: #0d72b9;
+      }
+      div:nth-child(3n + 2) {
+        margin: 3px 0;
+      }
+    }
+    &-text {
+      float: right;
+      text-transform: uppercase;
+      color: #707070;
+      font-size: 15px;
+      font-weight: 600;
+    }
+  }
+
   .header-search {
     float: right;
     width: 85px;
@@ -118,4 +180,163 @@ header {
       text-transform: uppercase;
     }
   }
+
+  .nav-mobile-actions, .nav-account {
+    display: none;
+  }
+}
+
+
+/**
+* Responsive Navigation.
+*
+*/
+@media(max-width: 1100px) {
+
+  header {
+    > div {
+      width: 96%;
+    }
+  }
+
+  header .header-burger {
+    display: inline;
+  }
+
+  .navigation-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 49;
+    background: rgba(0,0,0,0.35);
+    cursor: pointer;
+  }
+
+  header nav {
+    display: none;
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background: #0d72b9;
+    z-index: 50;
+    text-align: center;
+    padding: 10px 0;
+    overflow-y: scroll;
+    > ul {
+      margin-bottom: 75px;
+    }
+    ul {
+      text-align: left;
+      li {
+        display: block;
+        border-right: none;
+        margin: 0;
+        padding-right: 30px;
+        position: inherit;
+        a {
+          display: inline-block;
+          width: calc(100% - 45px);
+          padding: 10px 0 10px 15px;
+          color: #ffffff!important;
+        }
+        img {
+          margin-top: 15px;
+        }
+
+        ul {
+          display: inline-block;
+          width: 100%;
+          position: relative;
+          top: auto;
+          left: auto;
+          padding: 0;
+          background: none;
+          box-shadow: none;
+          li {
+            a {
+              padding-left: 25px;
+              color: #ffffff!important;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  header .nav-account {
+    display: inline-block;
+    margin: 25px auto;
+    width: 90%;
+    text-align: left;
+    color: #ffffff;
+    > div {
+      display: inline-flex;
+      vertical-align: middle;
+      align-items: center;
+      width: 100%;
+    }
+    &-avatar {
+      float: left;
+      width: 75px;
+      border-radius: 75px;
+    }
+    &-info {
+      float: right;
+      width: calc(100% - 100px);
+      padding-left: 25px;
+      &-username {
+        display: block;
+        margin-bottom: 15px;
+        font-weight: 600;
+      }
+      a {
+        display: inline-block;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 14px;
+        margin-right: 35px;
+      }
+    }
+  }
+
+}
+
+
+@media(max-width: 650px) {
+
+  header {
+    text-align: center;
+
+    .header-logo {
+      float: none;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .header-email {
+      float: none;
+      display: block;
+      margin: 0 auto;
+      width: 100%;
+      text-align: center;
+      padding: 25px 0;
+    }
+
+    .header-burger {
+      float: none;
+      display: inline-block;
+      margin: 0;
+    }
+
+    .header-search, .header-account {
+      display: none;
+    }
+
+  }
+
 }

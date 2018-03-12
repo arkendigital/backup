@@ -31,8 +31,7 @@ class JobGraduateController extends Controller {
     /**
     * Get page Information
     */
-    $page = Page::where("slug", "jobs-graduate-jobs")
-      ->first();
+    $page = Page::getPage(request()->route()->uri);
 
     /**
     * Set seo.

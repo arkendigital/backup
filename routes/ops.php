@@ -30,11 +30,33 @@ Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function() 
     ]]);
 
     /**
+    * Sidebars.
+    */
+    Route::resource("/sidebars", "Sidebars\SidebarController", ["parameters" => [
+      "sidebars" => "sidebar"
+    ]]);
+    Route::get('/sidebars/{sidebar}/order', 'Sidebars\SidebarOrderController@index')->name("sidebars.order");
+    Route::patch('/sidebars/{sidebar}/order', 'Sidebars\SidebarOrderController@update');
+
+    /**
     * Pages.
     */
-    Route::resource("/pages", "Pages\PageController", ["parameters" => [
-      "pages" => "page"
+    Route::get("/pages", "Pages\PageController@index")->name("pages.index");
+    Route::get("/pages/create", "Pages\PageController@create")->name("pages.create");
+    Route::post("/pages/create", "Pages\PageController@store")->name("pages.store");
+    Route::get("/pages/{id}/edit", "Pages\PageController@edit")->name("pages.edit");
+    Route::patch("/pages/{id}/edit", "Pages\PageController@update")->name("pages.update");
+    Route::get("/pages/{id}/widgets", "Pages\PageController@addWidget")->name("pages.add.widget");
+    Route::post("/pages/{id}/widgets", "Pages\PageController@insertWidget");
+
+    /**
+    * Page Widgets.
+    */
+    Route::resource("/page-widgets", "Pages\PageWidgetController", ["parameters" => [
+      "page-widgets" => "widget"
     ]]);
+    Route::get('/page-widgets/{widget}/order', 'Pages\PageWidgetOrderController@index')->name("page-widgets.order");
+    Route::patch('/page-widgets/{widget}/order', 'Pages\PageWidgetOrderController@update');
 
     /**
     * Discussion Categories.
@@ -68,6 +90,20 @@ Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function() 
     ]]);
 
     /**
+    * Exam Categories.
+    */
+    Route::resource("/exam-categories", "Exams\ExamCategoryController", ["parameters" => [
+      "exam-categories" => "category"
+    ]]);
+
+    /**
+    * Exam Modules.
+    */
+    Route::resource("/exam-modules", "Exams\ExamModuleController", ["parameters" => [
+      "exam-modules" => "module"
+    ]]);
+
+    /**
     * Adverts.
     */
     Route::resource("/adverts", "Adverts\AdvertController", ["parameters" => [
@@ -94,5 +130,28 @@ Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function() 
     Route::resource("/cpd-links", "CPD\CPDLinkController", ["parameters" => [
       "cpd-links" => "link"
     ]]);
+
+    /**
+    * Slides.
+    */
+    Route::resource("/slides", "Slides\SlideController", ["parameters" => [
+      "slides" => "slide"
+    ]]);
+
+    /**
+    * Box Groups.
+    */
+    Route::resource("/box-groups", "BoxGroups\BoxGroupController", ["parameters" => [
+      "box-groups" => "group"
+    ]]);
+
+    /**
+    * Box Items.
+    */
+    Route::resource("/box-items", "BoxGroups\BoxItemController", ["parameters" => [
+      "box-items" => "item"
+    ]]);
+    Route::get('/box-items/{group}/order', 'BoxGroups\BoxItemOrderController@index')->name("box-items.order");
+    Route::patch('/box-items/{group}/order', 'BoxGroups\BoxItemOrderController@update');
 
 });

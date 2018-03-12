@@ -47,11 +47,12 @@
 
     <div class="clear"></div>
 
-    <div class="carousel">{{ $page->section->getField("exam", "exam_carousel") }}</div>
+    <div class="carousel">{{ $page->section->getField("exams", "exam_carousel") }}</div>
 
   </div><!-- /.website-container -->
 
-  @include("partials.exams-select")
+  @include("widgets.loop")
+
   @include("partials.join-discussion", [
     "advert" => isset($page_adverts[0]["discussion-widget"]) ? $page_adverts[0]["discussion-widget"] : [],
     "category_id" => $page->discussion_category_id
