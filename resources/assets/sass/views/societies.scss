@@ -1,0 +1,73 @@
+.society-map {
+  float: left;
+  width: 650px;
+  height: 350px;
+  margin-top: 20px;
+  background: #eee;
+  &-container {
+    display: inline-block;
+    width: 100%;
+    background: #fff;
+    padding: 20px;
+  }
+  &-title {
+    display: block;
+    color: #1a304d;
+    font-size: 29px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  &-search {
+    &-wrap {
+      display: inline-block;
+      width: 100%;
+    }
+    &-input {
+      float: left;
+      width: 400px;
+      border: 2px solid #d3d3d3;
+      background: #ffffff;
+      font-size: 18px;
+      padding: 10px;
+    }
+    &-text {
+      float: right;
+      font-size: 18px;
+      font-weight: 600;
+      color: #1a304d;
+      width: calc(100% - 450px);
+      line-height: 1.25;
+    }
+  }
+  &-list {
+    float: right;
+    width: calc(100% - 700px);
+    padding: 20px;
+    &-item {
+      display: block;
+      margin-bottom: 25px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 25px;
+      &:last-of-type {
+        border-bottom: none;
+      }
+      &-name, &-email {
+        display: block;
+        font-size: 22px;
+        font-weight: 600;
+        color: #1a304d;
+        margin-bottom: 7.5px;
+      }
+      &-button {
+        display: inline-block;
+        background: #1a304d;
+        color: #ffffff;
+        padding: 7.5px 30px;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 4px;
+        margin-top: 7.5px;
+      }
+    }
+  }
+}

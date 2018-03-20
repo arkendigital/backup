@@ -22,6 +22,7 @@ Route::get('/', 'HomeController@index')->name("index");
 * - CPD
 * - Uni Corner
 * - Discussion
+* - Societies
 *
 */
 require(base_path() . '/routes/jobs.php');
@@ -30,6 +31,7 @@ require(base_path() . '/routes/cvsupport.php');
 require(base_path() . '/routes/cpd.php');
 require(base_path() . '/routes/uni-corner.php');
 require(base_path() . '/routes/discussion.php');
+require(base_path() . '/routes/societies.php');
 
 /**
 * Pages

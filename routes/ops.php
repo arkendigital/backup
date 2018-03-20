@@ -154,4 +154,25 @@ Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function() 
     Route::get('/box-items/{group}/order', 'BoxGroups\BoxItemOrderController@index')->name("box-items.order");
     Route::patch('/box-items/{group}/order', 'BoxGroups\BoxItemOrderController@update');
 
+    /**
+    * Employers.
+    */
+    Route::resource("/employers", "Employers\EmployerController", ["parameters" => [
+      "employers" => "employer"
+    ]]);
+
+    /**
+    * Courses.
+    */
+    Route::resource("/courses", "Courses\CourseController", ["parameters" => [
+      "courses" => "course"
+    ]]);
+
+    /**
+    * Societies.
+    */
+    Route::resource("/societies", "Societies\SocietyController", ["parameters" => [
+      "societies" => "society"
+    ]]);
+
 });

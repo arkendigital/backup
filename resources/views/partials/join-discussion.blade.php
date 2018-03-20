@@ -40,7 +40,7 @@
             </div>
           </div>
         @endforeach
-        
+
       </div>
     </div>
 
@@ -53,6 +53,17 @@
   var swiper = new Swiper('.homepage-discussion-slider', {
     slidesPerView: 4,
     spaceBetween: 20,
+    breakpoints: {
+      550: {
+        slidesPerView: 1,
+      },
+      768: {
+        slidesPerView: 2,
+      },
+      1030: {
+        slidesPerView: 3,
+      }
+    }
   });
   </script>
 @endpush

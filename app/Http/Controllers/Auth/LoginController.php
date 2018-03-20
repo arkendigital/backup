@@ -60,8 +60,10 @@ class LoginController extends Controller {
    *
    * @return Response
    */
-  public function handleProviderCallback($provider)
-  {
+  public function handleProviderCallback($provider) {
+
+    try {
+
       $user = Socialite::driver($provider)->user();
       $method = 'handle'.ucfirst($provider).'User';
 
@@ -77,6 +79,13 @@ class LoginController extends Controller {
       Auth::login($authUser);
 
       return redirect()->route('index');
+
+    } catch(\Exception $e) {
+
+      return redirect(route("register"));
+
+    }
+
   }
 
   public function fetchProviderUser($apiResponse, $provider)

@@ -11,6 +11,7 @@
   &-inner {
     display: inline-block;
     width: 1140px;
+    max-width: 94%;
     text-align: left;
   }
 }
@@ -26,6 +27,19 @@
     font-weight: 500;
     display: inline-block;
     margin-left: 15px;
+    @media(max-width: 950px) {
+      display: block;
+      text-align: left;
+      margin-left: 0;
+    }
+    @media(max-width: 650px) {
+      text-align: center;
+    }
+  }
+  @media(max-width: 650px) {
+    float: none;
+    display: block;
+    text-align: center;
   }
 }
 
@@ -38,6 +52,13 @@
   border-radius: 25px;
   text-decoration: none;
   cursor: pointer;
+  @media(max-width: 650px) {
+    float: none;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 25px;
+    border-radius: 4px;
+  }
 }
 
 
@@ -47,6 +68,9 @@
 .discussion-sidebar {
   float: left;
   width: 295px;
+  @media(max-width: 950px) {
+    width: 100%;
+  }
 
   > div {
     display: block;
@@ -123,7 +147,10 @@
 
   &-container {
     float: right;
-    width: calc(100% - 310px); //835px;
+    width: calc(100% - 310px);
+    @media(max-width: 950px) {
+      width: 100%;
+    }
   }
 
   &-thread {
@@ -131,6 +158,7 @@
     width: calc(100% - 30px);
     border-bottom: 1px dotted #AAA;
     padding: 40px 0;
+    position: relative;
     &:last-of-type {
       border-bottom: none;
     }
@@ -143,11 +171,28 @@
         height: 75px;
         border-radius: 75px;
       }
+      @media(max-width: 500px) {
+        float: none;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 25px;
+      }
     }
     &-content {
       float: left;
-      width: 610px;
+      width: calc(100% - 175px);
       text-align: left;
+      @media(max-width: 650px) {
+        float: right;
+        width: calc(100% - 125px);
+      }
+      @media(max-width: 500px) {
+        float: none;
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        text-align: center;
+      }
       &-title {
         display: block;
         font-size: 18px;
@@ -167,6 +212,9 @@
         text-align: left;
         font-size: 12px;
         margin-top: 30px;
+        @media(max-width: 500px) {
+          text-align: center;
+        }
         &-subject {
           display: inline-block;
           color: $orange;
@@ -174,6 +222,11 @@
           margin-right: 15px;
           font-weight: 600;
           border-right: 1px solid #DDD;
+          @media(max-width: 650px) {
+            border-right: none;
+            display: block;
+            margin-bottom: 15px;
+          }
         }
         &-time {
           display: inline-block;
@@ -195,6 +248,16 @@
     font-size: 18px;
     font-weight: 600;
     color: #0d72b9;
+    @media(max-width: 650px) {
+      position: absolute;
+      top: 135px;
+      left: 40px;
+    }
+    @media(max-width: 500px) {
+      top: 25px;
+      right: 0;
+      left: auto;
+    }
   }
 }
 
@@ -207,10 +270,14 @@
   width: 100%;
   background: #FFFFFF;
   text-align: center;
+  position: relative;
 
   &-container {
     float: right;
     width: calc(100% - 310px); //835px;
+    @media(max-width: 950px) {
+      width: 100%;
+    }
   }
 
   &-thread {
@@ -230,11 +297,28 @@
         height: 75px;
         border-radius: 75px;
       }
+      @media(max-width: 500px) {
+        float: none;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 25px;
+      }
     }
     &-content {
       float: left;
       width: 76%;
       text-align: left;
+      @media(max-width: 650px) {
+        float: right;
+        width: calc(100% - 125px);
+      }
+      @media(max-width: 500px) {
+        float: none;
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        text-align: center;
+      }
       &-title {
         display: block;
         font-size: 18px;
@@ -255,6 +339,9 @@
         font-size: 12px;
         margin-top: 30px;
         margin-bottom: 40px;
+        @media(max-width: 500px) {
+          text-align: center;
+        }
         &-subject {
           display: inline-block;
           color: $orange;
@@ -281,6 +368,9 @@
       float: right;
       width: calc(100% - 145px);
       margin-right: 15px;
+      @media(max-width: 950px) {
+        width: calc(100% - 30px);
+      }
     }
   }
 
@@ -384,26 +474,17 @@
     text-align: left;
     width: 600px;
     max-height: calc(92% - 50px);
+    max-width: calc(92% - 100px);
     position: relative;
     overflow-y: auto;
+    @media(max-width: 950px) {
+      padding-bottom: 100px;
+      height: calc(100% - 125px);
+      width: calc(100% - 100px);
+      max-height: none;
+      max-width: none;
+    }
   }
-  /*
-  &-close {
-    position: absolute;
-    right: -17.5px;
-    top: -17.5px;
-    text-align: center;
-    width: 35px;
-    height: 35px;
-    line-height: 35px;
-    background: #1a304d;
-    color: #ffffff;
-    border-radius: 35px;
-    cursor: pointer;
-    font-size: 22px;
-    font-weight: 600;
-  }
-  */
   &-title {
     display: block;
     font-size: 28px;
@@ -412,6 +493,9 @@
     margin-bottom: 25px;
     padding-bottom: 25px;
     border-bottom: 1px dotted #1a304d;
+    @media(max-width: 950px) {
+      text-align: center;
+    }
   }
 
   &-form-item {
@@ -465,8 +549,26 @@
     border: none;
     margin-left: 25px;
     &-cancel {
-      // background: #335f99;
       opacity: 0.75;
+    }
+
+
+    @media(max-width: 950px) {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      width: 50%;
+      padding: 0;
+      height: 50px;
+      line-height: 50px;
+      border-radius: 0;
+      margin: 0;
+      outline: 0;
+      border: none;
+      &-cancel {
+        left: 0;
+        right: auto;
+      }
     }
   }
 }

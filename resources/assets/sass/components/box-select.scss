@@ -11,8 +11,11 @@
   }
   &-container {
     display: inline-block;
-    width: 100%;
+    width: 96%;
     max-width: 900px;
+    @media(max-width: 670px) {
+      width: 92%;
+    }
   }
   &-title {
     font-size: 31px;
@@ -45,6 +48,19 @@
     height: calc(100px - 20px);
     margin: 0 50px;
     margin-bottom: 40px;
+    @media(max-width: 900px) {
+      margin: 0 25px;
+      margin-bottom: 40px;
+    }
+    @media(max-width: 750px) {
+      margin: 0 12.5px;
+      margin-bottom: 40px;
+    }
+    @media(max-width: 670px) {
+      width: calc(100% - 26px);
+      margin: 0;
+      margin-bottom: 15px;
+    }
   }
 
   &-search {

@@ -3,7 +3,7 @@
 <footer>
 
   <div class="footer-social">
-    FIND US ON SOCIAL MEDIA
+    <span>FIND US ON SOCIAL MEDIA</span>
     <i class="fab fa-facebook"></i>
     <i class="fab fa-twitter-square"></i>
     <i class="fab fa-linkedin"></i>

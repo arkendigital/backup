@@ -71,6 +71,11 @@
         <li @if(request()->route()->getPrefix() == "/uni-corner") class="uni-corner-active" @endif>
           <a href="/uni-corner">Uni Corner</a>
           <img src="/images/icons/arrow-down.png" alt="" title="">
+          <ul>
+            @foreach((new App\Models\SectionSidebar)->getItems("uni-corner") as $item)
+              <li><a href="{{ $item->url }}">{{ $item->text }}</a></li>
+            @endforeach
+          </ul>
         </li>
         <li @if(request()->route()->getPrefix() == "/regional-societies") class="regional-societies-active" @endif>
           <a href="/regional-societies">Regional Societies</a>

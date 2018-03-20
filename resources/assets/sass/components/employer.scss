@@ -1,0 +1,97 @@
+.actuarial-employers {
+  display: inline-block;
+  width: 100%;
+  &-box {
+    float: left;
+    position: relative;
+    width: 24%;
+    height: 273px;
+    margin-bottom: 20px;
+    text-align: center;
+    background: $blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    &:nth-child(4n + 1) {
+      margin-right: 1.33%;
+    }
+    &:nth-child(4n + 2) {
+      margin-right: 1.33%;
+    }
+    &:nth-child(4n + 3) {
+      margin-right: 1.33%;
+    }
+    &:nth-child(4n + 4) {
+    }
+
+    @media(max-width: 625px) {
+      width: 48%;
+      height: 270px;
+      padding: 0;
+      margin-right: 0!important;
+      &:nth-child(odd) {
+        float: left;
+      }
+      &:nth-child(even) {
+        float: right;
+      }
+    }
+
+    @media(max-width: 450px) {
+      width: 100%;
+    }
+
+    &-logo {
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 15px;
+    }
+
+    &-name {
+      display: block;
+      color: #fff;
+      font-weight: 600;
+      font-size: 22px;
+    }
+  }
+  &-box-active {
+    background-color: #c2c2c2;
+  }
+}
+
+.actuarial-employers-view {
+  &-info {
+    display: block;
+    margin-bottom: 50px;
+    text-align: left;
+    &-logo {
+      display: inline-block;
+      vertical-align: bottom;
+    }
+    &-name {
+      display: inline-block;
+      font-size: 22px;
+      color: #1a304d;
+      font-weight: 600;
+      margin: 0 50px;
+      vertical-align: bottom;
+      p {
+        display: block;
+      }
+      p:last-of-type {
+        padding-top: 15px;
+      }
+    }
+    &-button {
+      display: inline-block;
+      vertical-align: bottom;
+      font-size: 16px;
+      background: #1a304d;
+      color: #fff;
+      padding: 7px 30px;
+      border-radius: 15px;
+      text-decoration: none;
+    }
+  }
+}

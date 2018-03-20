@@ -293,6 +293,45 @@ return [
         ],
 
 
+        /**
+        * Employers.
+        */
+        [
+          'header' => 'Employers',
+        ],
+        [
+          'text' => 'Manage Employers',
+          'url'  => 'ops/employers',
+          'icon'  => 'users',
+        ],
+
+
+        /**
+        * Societies.
+        */
+        [
+          'header' => 'Societies',
+        ],
+        [
+          'text' => 'Manage Societies',
+          'url'  => 'ops/societies',
+          'icon'  => 'users',
+        ],
+
+
+        /**
+        * Actuarial Courses.
+        */
+        [
+          'header' => 'Actuarial Courses',
+        ],
+        [
+          'text' => 'Manage Courses',
+          'url'  => 'ops/courses',
+          'icon'  => 'users',
+        ],
+
+
 
 
 

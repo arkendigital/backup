@@ -3,6 +3,9 @@
   width: 100%;
   background: #ffffff;
   text-align: left;
+  @media(max-width: 500px) {
+    text-align: center;
+  }
   &-item {
     display: inline-block;
     vertical-align: top;
@@ -11,12 +14,38 @@
     text-align: center;
     width: calc(24% - 45px);
     margin: 25px 0;
+    &:nth-child(4n + 4) {
+      border-right: none;
+    }
+
+    @media(max-width: 950px) {
+      width: calc(32% - 45px);
+      &:nth-child(4n + 3) {
+        border-right: none;
+      }
+      &:nth-child(4n + 4) {
+        border-right: 1px dotted $orange;
+      }
+    }
+
+    @media(max-width: 700px) {
+      width: calc(48% - 45px);
+      &:nth-child(odd) {
+        border-right: 1px dotted $orange;
+      }
+      &:nth-child(even) {
+        border-right: none;
+      }
+    }
+
+    @media(max-width: 500px) {
+      width: calc(98% - 45px);
+      border-right: none!important;
+    }
+
     &-with-padding {
       padding-top: 25px;
       padding-bottom: 25px;
-    }
-    &:nth-child(4n + 4) {
-      border-right: none;
     }
     &-icon {
       display: block;

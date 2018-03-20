@@ -1,8 +1,9 @@
 .survey-results {
   &-container {
-    display: block;
+    display: inline-block;
     background: #ffffff;
     padding: 25px;
+    width: calc(100% - 50px);
   }
   &-title {
     display: block;
@@ -14,7 +15,18 @@
 
   &-table {
     margin-bottom: 50px;
-    width: 475px;
+    width: 48%;
+    &:nth-child(odd) {
+      float: right;
+      clear: right;
+    }
+    &:nth-child(even) {
+      float: left;
+      clear: left;
+    }
+    @media(max-width: 1000px) {
+      width: 100%;
+    }
     td {
       padding: 5px 20px;
       border: 1px solid #aaa;

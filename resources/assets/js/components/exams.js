@@ -76,7 +76,7 @@ $(".survey-button-add").click(function(e) {
     success: function(response){
 
       if (response == "OK") {
-        swal("Result Added");
+        location.href = '/exams/exam-survey/#survey-form';
       }
 
     },
