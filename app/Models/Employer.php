@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Employer extends Model {
 
-  use SoftDeletes;
+  use SoftDeletes, Sluggable;
 
   /**
   * The attributes that are mass assignable.
