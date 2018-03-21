@@ -42,9 +42,13 @@
     font-weight: 600;
   }
 
-  ul {
+  ul, ol {
     list-style:disc;
     padding-left: 20px;
+    color: #1a304d;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 32px;
     li {
       margin: 10px 0;
     }

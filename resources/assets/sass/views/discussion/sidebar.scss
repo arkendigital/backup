@@ -1,0 +1,69 @@
+.discussion-sidebar {
+  float: left;
+  width: 295px;
+  @media(max-width: 950px) {
+    width: 100%;
+  }
+
+  > div {
+    display: block;
+    background: #ebebeb;
+    margin-bottom: 15px;
+    padding: 15px 20px;
+  }
+
+  &-search {
+    border: 1px solid #d3d3d3;
+    font-family: $font;
+    font-size: 12px;
+    font-weight: 600;
+    background-image: url(/images/icons/search.png);
+    background-repeat: no-repeat;
+    background-position: center left 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    height: 35px;
+    line-height: 35px;
+    outline: 0;
+    display: block;
+    width: calc(100% - 60px);
+    color: #b7b7b7;
+    &::placeholder {
+      color: #b7b7b7;
+    }
+  }
+
+  ul {
+    li {
+      display: block;
+      border-bottom: 1px dotted #AAA;
+      padding: 10px 0;
+      font-size: 18px;
+      font-weight: 600;
+      color: #707070;
+      min-height: 30px;
+      line-height: 30px;
+      .icon-container {
+        display: inline-block;
+        width: 35px;
+        text-align: center;
+        margin-right: 10px;
+        img {
+          max-width: 92%;
+          max-height: 100%;
+        }
+      }
+      span,img {
+        vertical-align: middle;
+      }
+      a {
+        text-decoration: none;
+        color: #707070;
+      }
+    }
+    li:last-of-type {
+      border-bottom: none;
+    }
+  }
+
+}

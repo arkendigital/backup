@@ -25,7 +25,8 @@ class Discussion extends Model {
       "content",
       "excerpt",
       "user_id",
-      "category_id"
+      "category_id",
+      "image_path"
     ];
 
     /**
@@ -82,11 +83,16 @@ class Discussion extends Model {
   * A discussion can have many replies.
   *
   * @return Illuminate\Database\Eloquent\Relations\HasMany
+  *
   */
   public function replies() {
     return $this->hasMany(DiscussionReply::class, 'discussion_id', 'id');
   }
 
+  /**
+  * Get the total amount of replies for the discussion.
+  *
+  */
   public function getReplyCountAttribute() {
 
     /**
@@ -100,10 +106,62 @@ class Discussion extends Model {
     $count = DiscussionReply::where("discussion_id", $discussion_id)
       ->count();
 
+    /**
+    * Return the count and make sure it is minimum 2 digits.
+    *
+    */
     if ($count < 10) {
       return "0".$count;
     } else {
       return $count;
+    }
+
+  }
+
+  /**
+  * Check if a user is allowed edit the discussion.
+  *
+  */
+  public function canEdit() {
+
+    /**
+    * Check owner.
+    *
+    */
+    if (auth()->user()->id == $this->id) {
+      return true;
+    }
+
+    /**
+    * Check admin.
+    *
+    */
+    else if (auth()->user()->hasRole("Super Administrator|Administrator")) {
+      return true;
+    }
+
+    else {
+      return false;
+    }
+
+  }
+
+  /**
+  * Get full URL of image.
+  *
+  */
+  public function getImageAttribute() {
+
+    if ($this->image_path != "") {
+
+      return env("S3_URL") . $this->image_path;
+
+    }
+
+    else {
+
+      return asset("/images/temp/homepage-discussion-1-bg.png");
+
     }
 
   }

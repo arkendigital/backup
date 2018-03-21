@@ -27,7 +27,7 @@
       @foreach($societies as $society)
         <a href="/regional-societies/{{ $society->slug }}" class="actuarial-employers-box">
           <div>
-            <img class="actuarial-employers-box-logo" alt="{{ $society->name }}" title="{{ $society->name }}" src="{{ asset("images/icons/ao-white.png") }}">
+            <img class="actuarial-employers-box-logo" alt="{{ $society->name }}" title="{{ $society->name }}" src="{{ $society->logo }}">
             <p class="actuarial-employers-box-name">{{ $society->name }}</p>
           </div>
         </a>

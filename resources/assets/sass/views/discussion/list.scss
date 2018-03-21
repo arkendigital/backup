@@ -1,0 +1,121 @@
+.discussion-list {
+  display: inline-block;
+  width: 100%;
+  background: #FFFFFF;
+  text-align: center;
+
+  &-container {
+    float: right;
+    width: calc(100% - 310px);
+    @media(max-width: 950px) {
+      width: 100%;
+    }
+  }
+
+  &-thread {
+    display: inline-block;
+    width: calc(100% - 30px);
+    border-bottom: 1px dotted #AAA;
+    padding: 40px 0;
+    position: relative;
+    &:last-of-type {
+      border-bottom: none;
+    }
+    &-avatar {
+      float: left;
+      width: 100px;
+      margin-right: 15px;
+      img {
+        width: 75px;
+        height: 75px;
+        border-radius: 75px;
+      }
+      @media(max-width: 500px) {
+        float: none;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 25px;
+      }
+    }
+    &-content {
+      float: left;
+      width: calc(100% - 175px);
+      text-align: left;
+      @media(max-width: 650px) {
+        float: right;
+        width: calc(100% - 125px);
+      }
+      @media(max-width: 500px) {
+        float: none;
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        text-align: center;
+      }
+      &-title {
+        display: block;
+        font-size: 18px;
+        font-weight: 600;
+        color: #0d72b9;
+        margin-bottom: 15px;
+        text-decoration: none;
+      }
+      &-text {
+        font-size: 12px;
+        font-weight: 600;
+        color: #1a304d;
+        line-height: 16px;
+      }
+      &-footer {
+        display: block;
+        text-align: left;
+        font-size: 12px;
+        margin-top: 30px;
+        @media(max-width: 500px) {
+          text-align: center;
+        }
+        &-subject {
+          display: inline-block;
+          color: $orange;
+          padding-right: 15px;
+          margin-right: 15px;
+          font-weight: 600;
+          border-right: 1px solid #DDD;
+          @media(max-width: 650px) {
+            border-right: none;
+            display: block;
+            margin-bottom: 15px;
+          }
+        }
+        &-time {
+          display: inline-block;
+          padding-right: 15px;
+          color: #959595;
+        }
+        &-user {
+          display: inline-block;
+          border-left: 1px solid #DDD;
+          padding-left: 15px;
+          color: #959595;
+        }
+      }
+    }
+  }
+
+  &-reply-count {
+    float: right;
+    font-size: 18px;
+    font-weight: 600;
+    color: #0d72b9;
+    @media(max-width: 650px) {
+      position: absolute;
+      top: 135px;
+      left: 40px;
+    }
+    @media(max-width: 500px) {
+      top: 25px;
+      right: 0;
+      left: auto;
+    }
+  }
+}

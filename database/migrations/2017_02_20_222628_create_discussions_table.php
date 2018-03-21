@@ -19,6 +19,7 @@ class CreateDiscussionsTable extends Migration
             $table->string('slug')->unique()->index();
             $table->text('content')->nullable();
             $table->string('excerpt')->nullable();
+            $table->string('image_path')->nullable();
             $table->integer('user_id')->index();
             $table->integer('category_id')->default('0')->nullable();
             $table->timestamps();

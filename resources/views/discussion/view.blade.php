@@ -9,6 +9,10 @@
 
       <h1 class="discussion-page-title">Discussion <span>{{ $category->name }}</span></h1>
 
+      @if($discussion->canEdit())
+        <a class="discussion-edit-button" href="{{ route("discussion.edit", compact("category", "discussion")) }}">Edit</a>
+      @endif
+
       <div class="clear"></div>
 
       @include("discussion.sidebar")
@@ -19,7 +23,7 @@
 
             <div class="discussion-view-thread-avatar">
               <img src="{{ $discussion->user->avatar }}" alt="{{ $discussion->user->username }}" title="{{ $discussion->user->username }}">
-            </div><!-- /.discussion-view-thread-avatar -->
+            </div>
 
             <div class="discussion-view-thread-content">
               <p class="discussion-view-thread-content-title">{{ $discussion->name }}</p>

@@ -1,0 +1,16 @@
+.discussion-pagination {
+  display: block;
+  margin: 15px 0;
+  text-align: left;
+  li {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 18px;
+    a {
+      color: #210e4c;
+      text-decoration: none;
+      padding: 7.5px 5px;
+      font-weight: 600;
+    }
+  }
+}

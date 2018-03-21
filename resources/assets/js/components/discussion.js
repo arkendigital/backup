@@ -47,7 +47,7 @@ $("#discussion-reply-form").submit(function(e) {
 });
 
 
-$('.discussion-view-reply-editor').trumbowyg({
+$('.discussion-view-reply-editor, .discussion-edit-content-editor').trumbowyg({
   svgPath: '/images/icons.svg',
   btns: [
     'strong', 'link', 'unorderedList', 'orderedList', 'undo', 'redo'

@@ -88,7 +88,7 @@ class Society extends Model {
 
     else {
 
-      return "";
+      return asset("images/icons/ao-white.png");
 
     }
 

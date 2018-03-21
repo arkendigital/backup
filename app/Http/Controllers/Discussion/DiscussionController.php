@@ -8,6 +8,7 @@ namespace App\Http\Controllers\Discussion;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Discussion as DiscussionRequest;
+use App\Http\Controllers\AWS\ImageController as AWS;
 
 /**
 * Load models.
@@ -132,6 +133,23 @@ class DiscussionController extends Controller {
     ]);
 
     /**
+    * Upload image if available.
+    *
+    */
+    if (request()->file("image")) {
+
+      $image_path = AWS::uploadImage(
+        request()->file("image"),
+        "discussion"
+      );
+
+      $discussion->update([
+        "image_path" => $image_path
+      ]);
+      
+    }
+
+    /**
     * Redirect and notify the user.
     */
     return redirect("/discussion/".$discussion->category->slug."/".$discussion->slug)
@@ -139,6 +157,89 @@ class DiscussionController extends Controller {
         "alert" => true,
         "alert_title" => "Success",
         "alert_message" => "Your discussion has been created!",
+        "alert_button" => "OK"
+      ]);
+
+  }
+
+  /**
+  * Show form for editing a discussion thread.
+  *
+  * @param DiscussionCategory $category
+  * @param Discussion $discussion
+  *
+  */
+  public function edit(DiscussionCategory $category, Discussion $discussion) {
+
+    /**
+    * Set SEO.
+    */
+    $this->seo()->setTitle("Editing '" . $discussion->name . "'");
+    $this->seo()->setDescription($discussion->excerpt);
+
+    /**
+    * Get a list of categories.
+    */
+    $categories = DiscussionCategory::all();
+
+    /**
+    * Display page.
+    *
+    */
+    return view("discussion.edit", compact(
+      "categories",
+      "category",
+      "discussion"
+    ));
+
+  }
+
+  /**
+  * Update discussion thread in database storage.
+  *
+  * @param DiscussionRequest $request
+  * @param DiscussionCategory $category
+  * @param Discussion $discussion
+  *
+  */
+  public function update(DiscussionRequest $request, DiscussionCategory $category, Discussion $discussion) {
+
+    /**
+    * Update in database.
+    *
+    */
+    $discussion->update([
+      "name" => request()->name,
+      "subject" => request()->subject,
+      "content" => request()->content
+    ]);
+
+    /**
+    * Upload new image if available.
+    *
+    */
+    if (request()->file("image")) {
+
+      $image_path = AWS::uploadImage(
+        request()->file("image"),
+        "discussion",
+        $discussion->image_path
+      );
+
+      $discussion->update([
+        "image_path" => $image_path
+      ]);
+    }
+
+    /**
+    * Redirect user.
+    *
+    */
+    return redirect(route("discussion.view", compact("category", "discussion")))
+      ->with([
+        "alert" => true,
+        "alert_title" => "Success",
+        "alert_message" => "Discussion has been updated!",
         "alert_button" => "OK"
       ]);
 

@@ -1,0 +1,64 @@
+.discussion-edit-form {
+  &-item {
+    display: block;
+    width: 100%;
+    margin-bottom: 25px;
+    text-align: left;
+    label {
+      display: block;
+      margin-bottom: 7.5px;
+      font-weight: 600;
+      color: #1a304d;
+    }
+    &-error {
+      display: block;
+      margin-bottom: 7.5px;
+      font-weight: 600;
+      color: $red;
+      border-left: 4px solid $red;
+      padding-left: 10px;
+    }
+
+    input, textarea, select {
+      -webkit-appearance: none;
+      display: block;
+      outline: 0;
+      width: calc(100% - 20px);
+      padding: 0 10px;
+      height: 35px;
+      font-size: 16px;
+      border: 1px solid #CCC;
+      &::placeholder {
+        color: #aaa;
+      }
+    }
+    textarea {
+      padding: 10px;
+      min-height: 125px;
+      max-height: 125px;
+      max-width: calc(100% - 20px);
+      min-width: calc(100% - 20px);
+    }
+    select {
+      width: calc(100% + 2px);
+      background: #ffffff;
+      border-radius: 0;
+      cursor: pointer;
+    }
+  }
+
+  &-submit {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 25px;
+    background: #1a304d;
+    color: #ffffff;
+    padding: 12.5px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+    outline: 0;
+    border: none;
+  }
+}

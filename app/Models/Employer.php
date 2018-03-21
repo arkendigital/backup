@@ -77,7 +77,7 @@ class Employer extends Model {
   public function getLogoAttribute() {
 
     if ($this->logo_path == "") {
-      return asset("images/defaults/avatar_default.jpg");
+      return asset("images/icons/ao-white.png");
     }
 
     return env("S3_URL") . $this->logo_path;

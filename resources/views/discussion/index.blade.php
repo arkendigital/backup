@@ -58,7 +58,7 @@
   </div><!-- ./discussion-container -->
 
   <div class="discussion-popover">
-    <form action="/discussion/" method="POST">
+    <form action="/discussion/" method="POST" enctype="multipart/form-data">
       {{ csrf_field() }}
       {{ method_field("POST") }}
 
@@ -76,6 +76,15 @@
       <div class="discussion-popover-form-item">
         <label>Subject</label>
         <input type="text" name="subject" placeholder="Enter a subject...">
+      </div>
+
+      <div class="discussion-popover-form-item">
+        <div class="file-upload-container file-upload" data-id="image" id="upload-container">
+          <i class="fas fa-cloud-upload-alt fa-2x"></i>
+          <span>Upload an image from your device</span>
+        </div>
+
+        <input type="file" id="image" name="image" class="file-upload-input" data-id="upload-container" style="display:none;">
       </div>
 
       @if(!isset($category->id) || isset($category->id) && $category->id == "")
