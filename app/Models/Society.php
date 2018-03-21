@@ -22,7 +22,12 @@ class Society extends Model {
     "postcode",
     "latitude",
     "longitude",
-    "city"
+    "city",
+    "email",
+    "link",
+    "image_path",
+    "logo_path",
+    "description"
   ];
 
   /**
@@ -68,5 +73,45 @@ class Society extends Model {
   *
   */
   protected $dates = ['deleted_at'];
+
+  /**
+  * Get full URL of logo.
+  *
+  */
+  public function getLogoAttribute() {
+
+    if ($this->logo_path != "") {
+
+      return env("S3_URL") . $this->logo_path;
+
+    }
+
+    else {
+
+      return "";
+
+    }
+
+  }
+
+  /**
+  * Get full URL of image.
+  *
+  */
+  public function getImageAttribute() {
+
+    if ($this->image_path != "") {
+
+      return env("S3_URL") . $this->image_path;
+
+    }
+
+    else {
+
+      return "";
+
+    }
+
+  }
 
 }

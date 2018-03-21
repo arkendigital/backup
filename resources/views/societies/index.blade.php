@@ -43,7 +43,7 @@
           {{ csrf_field() }}
           {{ method_field("POST") }}
 
-          <input class="society-map-search-input" type="text" name="search" placeholder="Enter search...">
+          <input class="society-map-search-input" type="text" name="search" placeholder="Enter your search...">
         </form>
         <p class="society-map-search-text">Ut eos enisciaspe ma dolorpo rerunti oreseque di ulparum etur seque vellaut int facea am inci uscius. Con comnis alictatus</p>
       </div>
@@ -190,6 +190,15 @@
           *
           */
           map.fitBounds(bounds);
+
+          /**
+          * Lets do a cheeky smooth scroll to the map.
+          * Just incase the user hasn't got it in view.
+          *
+          */
+          $('html, body').animate({
+            scrollTop: $("#map").offset().top - 20
+          }, 1000);
 
         },
         error: function(response) {

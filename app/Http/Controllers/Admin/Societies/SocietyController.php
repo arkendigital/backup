@@ -62,12 +62,75 @@ class SocietyController extends Controller {
   public function store(SocietyRequest $request) {
 
     /**
+    * Get location information.
+    *
+    */
+    $location = Location::fromPostcode(request()->postcode);
+
+    /**
     * Insert new society.
     *
     */
     $society = Society::create([
-      "name" => request()->name
+      "name" => request()->name,
+      "email" => request()->email,
+      "link" => request()->link,
+      "postcode" => request()->postcode,
+      "description" => request()->description,
+      "longitude" => $location->longitude,
+      "latitude" => $location->latitude,
+      "city" => $location->admin_district
     ]);
+
+    /**
+    * Upload society logo.
+    *
+    */
+    if (request()->file("logo")) {
+
+      /**
+      * Upload to S3.
+      *
+      */
+      $logo_path = AWS::uploadImage(
+        request()->file("logo"),
+        "societies/logos"
+      );
+
+      /**
+      * Add path for logo.
+      *
+      */
+      $society->update([
+        "logo_path" => $logo_path
+      ]);
+
+    }
+
+    /**
+    * Upload society image.
+    *
+    */
+    if (request()->file("image")) {
+
+      /**
+      * Upload to S3.
+      *
+      */
+      $image_path = AWS::uploadImage(
+        request()->file("image"),
+        "societies/images"
+      );
+
+      /**
+      * Add path for image.
+      *
+      */
+      $society->update([
+        "image_path" => $image_path
+      ]);
+
+    }
 
     /**
     * Redirect to edit page.
@@ -114,11 +177,66 @@ class SocietyController extends Controller {
     */
     $society->update([
       "name" => request()->name,
+      "email" => request()->email,
+      "link" => request()->link,
       "postcode" => request()->postcode,
+      "description" => request()->description,
       "longitude" => $location->longitude,
       "latitude" => $location->latitude,
       "city" => $location->admin_district
     ]);
+
+    /**
+    * Upload society logo.
+    *
+    */
+    if (request()->file("logo")) {
+
+      /**
+      * Upload to S3.
+      *
+      */
+      $logo_path = AWS::uploadImage(
+        request()->file("logo"),
+        "societies/logos",
+        $society->logo_path
+      );
+
+      /**
+      * Add path for logo.
+      *
+      */
+      $society->update([
+        "logo_path" => $logo_path
+      ]);
+
+    }
+
+    /**
+    * Upload society image.
+    *
+    */
+    if (request()->file("image")) {
+
+      /**
+      * Upload to S3.
+      *
+      */
+      $image_path = AWS::uploadImage(
+        request()->file("image"),
+        "societies/images",
+        $society->image_path
+      );
+
+      /**
+      * Add path for image.
+      *
+      */
+      $society->update([
+        "image_path" => $image_path
+      ]);
+
+    }
 
     /**
     * Redirect to edit page.

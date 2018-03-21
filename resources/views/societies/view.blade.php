@@ -5,11 +5,28 @@
   <div class="section-hero" style="background-image: url({{ $section->image }}); border-color: {{ $section->color }};"></div>
 
   <div class="website-container view-section" style="margin-bottom: 0;">
-    <div class="website-container-content website-container-content-full">
+    <div class="website-container-content">
 
       <h1>{{ $society->name }}</h1>
 
       {!! $society->description !!}
+
+    </div>
+    <div class="website-container-sidebar">
+
+      @if($society->image_path != "")
+        <img src="{{ $society->image }}" alt="{{ $society->name }}" title="{{ $society->name }}">
+      @endif
+
+      <div class="society-view-sidebar-info">
+        @if($society->logo_path != "")
+          <img src="{{ $society->logo }}" alt="{{ $society->name }}" title="{{ $society->name }}">
+        @endif
+
+        <p>{{ $society->name }}</p>
+        <p>{{ $society->email }}</p>
+        <a href="{{ $society->link }}">Join</a>
+      </div>
 
     </div>
 
@@ -20,7 +37,7 @@
 
     <div class="actuarial-employers">
       @foreach($societies as $loop_society)
-        <a href="/uni-corner/actuarial-societies/{{ $loop_society->slug }}" class="actuarial-employers-box @if($society->id == $loop_society->id) actuarial-employers-box-active @endif">
+        <a href="/regional-societies/{{ $loop_society->slug }}" class="actuarial-employers-box @if($society->id == $loop_society->id) actuarial-employers-box-active @endif">
           <div>
             <img class="actuarial-employers-box-logo" alt="{{ $loop_society->name }}" title="{{ $loop_society->name }}" src="{{ asset("images/icons/ao-white.png") }}">
             <p class="actuarial-employers-box-name">{{ $loop_society->name }}</p>
