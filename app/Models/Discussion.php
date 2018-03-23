@@ -128,7 +128,7 @@ class Discussion extends Model {
     * Check owner.
     *
     */
-    if (auth()->user()->id == $this->id) {
+    if (auth()->check() && auth()->user()->id == $this->id) {
       return true;
     }
 
@@ -136,7 +136,7 @@ class Discussion extends Model {
     * Check admin.
     *
     */
-    else if (auth()->user()->hasRole("Super Administrator|Administrator")) {
+    else if (auth()->check() && auth()->user()->hasRole("Super Administrator|Administrator")) {
       return true;
     }
 

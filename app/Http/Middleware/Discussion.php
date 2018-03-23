@@ -25,7 +25,7 @@ class Discussion
       * Check owner.
       *
       */
-      if (auth()->user()->id == $discussion_id) {
+      if (auth()->check() && auth()->user()->id == $discussion_id) {
         return $next($request);
       }
 
@@ -33,7 +33,7 @@ class Discussion
       * Check admin.
       *
       */
-      else if (auth()->user()->hasRole("Super Administrator|Administrator")) {
+      else if (auth()->check() && auth()->user()->hasRole("Super Administrator|Administrator")) {
         return $next($request);
       }
 
