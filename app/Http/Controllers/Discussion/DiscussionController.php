@@ -45,7 +45,7 @@ class DiscussionController extends Controller {
       ->when(request()->search, function($q) {
         return $q->where("name", "LIKE", "%".$_GET["search"]."%");
       })
-      ->when($category->id != '', function($q) {
+      ->when($category->id != '', function($q) use ($category) {
         return $q->where("category_id", $category->id);
       })
       ->paginate(6);
