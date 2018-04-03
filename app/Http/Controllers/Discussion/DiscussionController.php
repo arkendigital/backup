@@ -40,29 +40,22 @@ class DiscussionController extends Controller {
     *
     */
 
+    $discussions = Discussion::with('user', 'category')
+      ->withCount('replies')
+      ->when(request()->search, function($q) {
+        return $q->where("name", "LIKE", "%".$_GET["search"]."%");
+      })
+      ->when($category->id != '', function($q) {
+        return $q->where("category_id", $category->id);
+      })
+      ->paginate(6);
+    
+
     if (isset($_GET["search"])) {
-
-      $discussions = Discussion::where("name", "LIKE", "%".$_GET["search"]."%")
-        ->withCount('replies')
-        ->paginate(6);
-
       $category = new \stdClass();
       $category->name = $_GET["search"];
-
-    } else {
-
-      /**
-      * Category filtering.
-      */
-      if ($category->id == "") {
-        $discussions = Discussion::withCount('replies')->paginate(6);
-      } else {
-        $discussions = Discussion::withCount('replies')
-          ->where("category_id", $category->id)
-          ->paginate(6);
-      }
-
     }
+  
 
     /**
     * Display page.
@@ -94,6 +87,7 @@ class DiscussionController extends Controller {
     * Get a list of categories.
     */
     $categories = $this->getCategories();
+    $discussion->load('user', 'category', 'replies');
 
     /**
     * Display the view page.
@@ -185,6 +179,8 @@ class DiscussionController extends Controller {
     */
     $categories = $this->getCategories();
 
+    $discussion->load('user', 'category');
+
     /**
     * Display page.
     *
@@ -259,6 +255,7 @@ class DiscussionController extends Controller {
     */
     $categories = $this->getCategories();
 
+    // Grab the discussions, with the user and category, count the replies and order by the replies.
     $discussions = Discussion::with('user', 'category')
         ->withCount('replies')
         ->whereHas('replies')
@@ -295,7 +292,8 @@ class DiscussionController extends Controller {
     /**
     * Get a list of discussions.
     */
-    $discussions = Discussion::whereHas("replies")
+    $discussions = Discussion::with('user', 'category')
+      ->whereHas("replies")
       ->withCount('replies')
       ->paginate(6);
 
@@ -330,7 +328,8 @@ class DiscussionController extends Controller {
     /**
     * Get a list of discussions.
     */
-    $discussions = Discussion::doesntHave("replies")
+    $discussions = Discussion::with('user', 'category')
+      ->doesntHave("replies")
       ->withCount('replies')
       ->paginate(6);
 
