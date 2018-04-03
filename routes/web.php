@@ -23,6 +23,7 @@ Route::get('/', 'HomeController@index')->name("index");
 * - Uni Corner
 * - Discussion
 * - Societies
+* - Salary Survey
 *
 */
 require(base_path() . '/routes/jobs.php');
@@ -32,6 +33,7 @@ require(base_path() . '/routes/cpd.php');
 require(base_path() . '/routes/uni-corner.php');
 require(base_path() . '/routes/discussion.php');
 require(base_path() . '/routes/societies.php');
+require(base_path() . '/routes/salary-survey.php');
 
 /**
 * Pages

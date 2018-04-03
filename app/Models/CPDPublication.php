@@ -18,7 +18,7 @@ class CPDPublication extends Model {
   protected $fillable = [
     "name",
     "slug",
-    "file_path"
+    "link"
   ];
 
   /**
@@ -64,20 +64,6 @@ class CPDPublication extends Model {
   */
   public function getRouteKeyName() {
     return 'slug';
-  }
-
-  /**
-  * Get full file path.
-  *
-  */
-  public function getFileAttribute() {
-
-    if ($this->attributes["file_path"] == "") {
-      return "";
-    } else {
-      return env("S3_URL") . $this->attributes["file_path"];
-    }
-
   }
 
 

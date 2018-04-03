@@ -4,8 +4,8 @@
 
   <div class="section-hero" style="background-image: url(/images/temp/jobs-section-hero-bg.png); border-color: #d62731;"></div>
 
-  <div class="website-container view-section">
-    <div class="website-container-content">
+  <div class="website-container">
+    <div class="website-container-content view-section">
 
       <h1>Jobs</h1>
       <h2>Internships</h2>

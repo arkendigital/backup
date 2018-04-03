@@ -4,8 +4,8 @@
 
   <div class="section-hero" style="background-image: url({{ $page->section->image }}); border-color: {{ $page->section->color }};"></div>
 
-  <div class="website-container view-section">
-    <div class="website-container-content">
+  <div class="website-container">
+    <div class="website-container-content view-section">
 
       <h1>{{ $page->section->name }}</h1>
 

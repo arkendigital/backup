@@ -4,8 +4,8 @@
 
   <div class="section-hero" style="background-image: url({{ $page->section->image }}); border-color: {{ $page->section->color }};"></div>
 
-  <div class="website-container view-section">
-    <div class="website-container-content">
+  <div class="website-container">
+    <div class="website-container-content view-section">
 
       <h1>{{ $page->section->name }}</h1>
 
@@ -26,7 +26,7 @@
       @foreach($publications as $publication)
         <div class="resource-list-item">
           <img class="resource-list-item-icon" src="{{ asset("/images/cpd/publication.png") }}" alt="{{ $publication->name }}" title="{{ $publication->name }}">
-          <a class="resource-list-item-title" href="{{ $publication->file }}" target="_blank">{{ $publication->name }}</a>
+          <a class="resource-list-item-title" href="{{ $publication->link }}" target="_blank">{{ $publication->name }}</a>
         </div><!-- /.resource-list-item -->
       @endforeach
     </div><!-- /.resource-list -->

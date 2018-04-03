@@ -21,11 +21,11 @@
             </div>
 
             <div class="form-group">
-              <label for="excerpt">File</label>
-              @if($errors->has("file"))
-                <p class="text-danger">{{ $errors->first("file") }}</p>
+              <label for="link">Publication Link</label>
+              @if($errors->has("link"))
+                <p class="text-danger">{{ $errors->first("link") }}</p>
               @endif
-              <input type="file" class="form-control" name="file" id="file">
+              <input type="text" class="form-control" name="link" id="link" value="{{ old("link") }}" placeholder="Enter link to publication...">
             </div>
 
         </div>

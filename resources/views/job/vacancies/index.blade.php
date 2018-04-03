@@ -2,8 +2,8 @@
 
 @section("content")
 
-  <div class="website-container view-section">
-    <div class="website-container-content">
+  <div class="website-container">
+    <div class="website-container-content view-section">
 
       <h1>{{ $page->getField("page_title") }}</h1>
 

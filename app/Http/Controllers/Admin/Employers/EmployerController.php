@@ -159,4 +159,33 @@ class EmployerController extends Controller {
 
   }
 
+
+  /**
+  * Delete specific employer.
+  *
+  * @param Employer $employer
+  *
+  */
+  public function destroy(Employer $employer) {
+
+    /**
+    * Delete it.
+    *
+    */
+    $employer->delete();
+
+    /**
+    * Notify.
+    *
+    */
+    alert("Employer has been deleted")->persistent();
+
+    /**
+    * Redirect to the list.
+    *
+    */
+    return redirect(route("employers.index"));
+
+  }
+
 }

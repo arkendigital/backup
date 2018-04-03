@@ -33,6 +33,15 @@
                     <a class="btn btn-success btn-small" type="button" href="{{ route('societies.edit', $society) }}">
                       <i class="fa fa-pencil"></i>
                     </a>
+
+                    <a class="btn btn-danger btn-small delete-society" type="button" data-society-id="{{$society->id}}">
+                      <i class="fa fa-trash"></i>
+                    </a>
+
+                    <form action="{{ route('societies.destroy', $society) }}" method="POST" id="delete-society-{{$society->id}}">
+                      {{csrf_field()}}
+                      {{method_field("DELETE")}}
+                    </form>
                   </div>
                 </td>
               </tr>
@@ -47,5 +56,27 @@
       </div>
     </div>
   </div>
+
+@push('scripts-after')
+  <script>
+    $('.delete-society').on('click', function(){
+
+      var society_id = $(this).attr("data-society-id");
+
+      swal({
+        title: "Are you sure?",
+        text: "This society will be deleted and cannot be undone",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, delete",
+        closeOnConfirm: false
+      },
+      function(){
+        document.getElementById('delete-society-'+society_id).submit();
+      });
+    });
+  </script>
+@endpush
 
 @endsection

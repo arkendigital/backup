@@ -248,4 +248,33 @@ class SocietyController extends Controller {
 
   }
 
+
+  /**
+  * Delete specific society.
+  *
+  * @param Society $society
+  *
+  */
+  public function destroy(Society $society) {
+
+    /**
+    * Delete it.
+    *
+    */
+    $society->delete();
+
+    /**
+    * Notify.
+    *
+    */
+    alert("Society has been deleted")->persistent();
+
+    /**
+    * Redirect to the list.
+    *
+    */
+    return redirect(route("societies.index"));
+
+  }
+
 }

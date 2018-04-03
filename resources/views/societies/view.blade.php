@@ -5,7 +5,7 @@
   <div class="section-hero" style="background-image: url({{ $section->image }}); border-color: {{ $section->color }};"></div>
 
   <div class="website-container view-section" style="margin-bottom: 0;">
-    <div class="website-container-content">
+    <div class="website-container-content view-section">
 
       <h1>{{ $society->name }}</h1>
 

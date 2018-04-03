@@ -4,8 +4,8 @@
 
   <div class="section-hero" style="background-image: url({{ $section->image }}); border-color: {{ $section->color }};"></div>
 
-  <div class="website-container view-section">
-    <div class="website-container-content">
+  <div class="website-container">
+    <div class="website-container-content view-section">
 
       <h1>{{ $page->getField("page_title") }}</h1>
 
@@ -33,7 +33,7 @@
       ])
     @endif
   @endforeach
-  
+
   @include("partials.join-discussion", [
     "category_id" => $page->discussion_category_id
   ])

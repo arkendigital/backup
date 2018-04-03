@@ -63,25 +63,9 @@ class CPDPublicationController extends Controller {
     * Insert into database.
     */
     $publication = CPDPublication::create([
-      "name" => request()->name
+      "name" => request()->name,
+      "link" => request()->link
     ]);
-
-    /**
-    * Upload file.
-    */
-    if (request()->file("file")) {
-
-      AWS::setCustomName($publication->slug);
-
-      $file_path = AWS::uploadImage(
-        request()->file("file"),
-        "cpd-publications"
-      );
-
-      $publication->update([
-        "file_path" => $file_path
-      ]);
-    }
 
     /**
     * Redirect to publications index.
@@ -119,25 +103,9 @@ class CPDPublicationController extends Controller {
     *
     */
     $publication->update([
-      "name" => request()->name
+      "name" => request()->name,
+      "link" => request()->link
     ]);
-
-    /**
-    * Update file.
-    */
-    if (request()->file("file")) {
-
-      AWS::setCustomName($publication->slug);
-
-      $file_path = AWS::uploadImage(
-        request()->file("file"),
-        "cpd-publications"
-      );
-
-      $publication->update([
-        "file_path" => $file_path
-      ]);
-    }
 
     /**
     * Redirect to publications index.

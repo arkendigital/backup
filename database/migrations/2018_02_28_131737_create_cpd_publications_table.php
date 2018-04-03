@@ -10,7 +10,7 @@ class CreateCpdPublicationsTable extends Migration {
 		Schema::create('cpd_publications', function(Blueprint $table) {
 			$table->increments('id');
 			$table->string('name');
-			$table->string('file_path');
+			$table->text('link');
 			$table->timestamps();
 			$table->softDeletes();
 		});

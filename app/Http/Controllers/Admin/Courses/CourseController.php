@@ -120,4 +120,33 @@ class CourseController extends Controller {
 
   }
 
+
+  /**
+  * Delete specific course.
+  *
+  * @param Course $course
+  *
+  */
+  public function destroy(Course $course) {
+
+    /**
+    * Delete it.
+    *
+    */
+    $course->delete();
+
+    /**
+    * Notify.
+    *
+    */
+    alert("Course has been deleted")->persistent();
+
+    /**
+    * Redirect to the list.
+    *
+    */
+    return redirect(route("courses.index"));
+
+  }
+
 }

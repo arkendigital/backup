@@ -59,6 +59,13 @@
     margin: 0 auto;
   }
 
+  a {
+    text-decoration: none;
+    color: $blue;
+    border-bottom: 1px dotted #ccc;
+    padding-bottom: 2px;
+  }
+
 }
 
 

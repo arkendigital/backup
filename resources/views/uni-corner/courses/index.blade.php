@@ -4,8 +4,8 @@
 
   <div class="section-hero" style="background-image: url({{ $page->section->image }}); border-color: {{ $page->section->color }};"></div>
 
-  <div class="website-container view-section" style="margin-bottom: 0;">
-    <div class="website-container-content">
+  <div class="website-container" style="margin-bottom: 0;">
+    <div class="website-container-content view-section">
 
       <h1>{{ $page->getField("page_title") }}</h1>
 

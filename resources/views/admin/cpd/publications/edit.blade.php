@@ -21,14 +21,11 @@
             </div>
 
             <div class="form-group">
-              <label for="excerpt">File</label>
-              @if($publication->file_path != "")
-                - <a href="{{ $publication->file }}" target="_blank">View Currently Uploaded File</a>
+              <label for="link">Publication Link</label>
+              @if($errors->has("link"))
+                <p class="text-danger">{{ $errors->first("link") }}</p>
               @endif
-              @if($errors->has("file"))
-                <p class="text-danger">{{ $errors->first("file") }}</p>
-              @endif
-              <input type="file" class="form-control" name="file" id="file">
+              <input type="text" class="form-control" name="link" id="link" value="{{ $publication->link }}" placeholder="Enter link to publication...">
             </div>
 
         </div>
