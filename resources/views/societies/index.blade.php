@@ -34,6 +34,12 @@
       @endforeach
     </div>
 
+    <div class="discussion-pagination">
+      {{ $societies->links() }}
+
+      <br>
+    </div>
+
     <div class="society-map-container">
 
       <p class="society-map-title">Find your Society</p>

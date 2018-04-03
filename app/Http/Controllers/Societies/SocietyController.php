@@ -46,7 +46,7 @@ class SocietyController extends Controller {
     * Get a list of societies.
     *
     */
-    $societies = Society::all();
+    $societies = Society::paginate(8);
 
     /**
     * Display page.
