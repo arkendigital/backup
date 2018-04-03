@@ -4,17 +4,7 @@ namespace App\Http\Controllers\Admin\Courses;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-/**
-* Load modules.
-*
-*/
 use App\Models\Course;
-
-/**
-* Load requests.
-*
-*/
 use App\Http\Requests\Course as CourseRequest;
 
 class CourseController extends Controller {
@@ -30,14 +20,11 @@ class CourseController extends Controller {
     *
     */
     $courses = Course::all();
-
     /**
     * Display results.
     *
     */
-    return view("admin.courses.index", compact(
-      "courses"
-    ));
+    return view("admin.courses.index", compact('courses'));
 
   }
 
