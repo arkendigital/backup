@@ -145,7 +145,12 @@
             * Craft item HTML.
             *
             */
-            var item = '<div class="society-map-list-item"><p class="society-map-list-item-name">'+obj.name+'</p><p class="society-map-list-item-email">'+obj.email+'</p><a class="society-map-list-item-button" href="'+obj.link+'" target="_blank">Join</a></div>';
+            var item = '<div class="society-map-list-item"><p class="society-map-list-item-name">'+obj.name+'</p>'
+            
+            if (obj.email)
+              item = item + '<p class="society-map-list-item-email"><small>'+obj.email+'</small></p>'
+              
+            item = item + '<a class="society-map-list-item-button" href="'+obj.link+'" target="_blank">Join</a></div>';
 
             /**
             * Add the item onto the list of societies.
@@ -203,7 +208,7 @@
         },
         error: function(response) {
 
-          swal("We couldn't process your search at the moment, please try again later.");
+          swal("We couldn't find any results for your search. Please try again.");
 
         }
       });

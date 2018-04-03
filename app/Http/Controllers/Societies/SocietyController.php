@@ -124,17 +124,10 @@ class SocietyController extends Controller {
     * - location
     *
     */
-    $societies_name = Society::where("name", "LIKE", "%$search%")
+    $merged = Society::where("name", "LIKE", "%$search%")
+      ->orWhere("city", "LIKE", "%$search%")
       ->get();
 
-    $societies_location = Society::where("city", "LIKE", "%$search%")
-      ->get();
-
-    /**
-    * Merge the results.
-    *
-    */
-    $merged = $societies_name->merge($societies_location);
 
     /**
     * Return the results for the ajax to populate the map.
