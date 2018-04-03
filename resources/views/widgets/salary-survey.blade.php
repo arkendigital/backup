@@ -4,13 +4,13 @@
     <p class="box-select-title">A wealth of information</p>
     <p class="box-select-text">Surveys, salary expectations and more</p>
 
-    <a class="box-select-item" href="">Jobs</a>
-    <a class="box-select-item" href="">Surveys</a>
-    <a class="box-select-item" href="">Salary</a>
+    <a class="box-select-item" href="/jobs">Jobs</a>
+    <a class="box-select-item" href="/salary-survey">Surveys</a>
+    <a class="box-select-item" href="/salary-survey/results">Salary</a>
 
     <div class="clear"></div>
 
-    <a class="box-select-button margin-top--small">Join our discussion</a>
+    <a href="/discussion" class="box-select-button margin-top--small">Join our discussion</a>
 
   </div>
 </div><!-- /.box-select -->

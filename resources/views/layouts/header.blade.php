@@ -65,8 +65,14 @@
           </ul>
         </li>
         <li @if(request()->route()->getPrefix() == "/salary-survey") class="salary-survey-active" @endif>
-          <a href="">Salary Survey</a>
+          <a href="/salary-survey">Salary Survey</a>
           <img src="/images/icons/arrow-down.png" alt="" title="">
+
+          <ul>
+            @foreach((new App\Models\SectionSidebar)->getItems("salary-survey") as $item)
+              <li><a href="{{ $item->url }}">{{ $item->text }}</a></li>
+            @endforeach
+          </ul>
         </li>
         <li @if(request()->route()->getPrefix() == "/uni-corner") class="uni-corner-active" @endif>
           <a href="/uni-corner">Uni Corner</a>

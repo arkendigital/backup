@@ -49,7 +49,7 @@ class HomeController extends Controller {
     * Get a list of discussions.
     *
     */
-    $discussions = Discussion::take(8)
+    $discussions = Discussion::with('category')->take(8)
       ->get();
 
     /**
