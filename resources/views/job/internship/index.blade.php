@@ -18,7 +18,7 @@
         {{ csrf_field() }}
         {{ method_field("POST") }}
 
-        <input type="checkbox" name="experience[]" value="internship" checked>
+        <input type="checkbox" name="status[]" value="3" checked>
 
       </form>
 
@@ -40,6 +40,7 @@
   @include("partials.latest-jobs", [
     "status_id" => 3
   ])
+  
   @include("partials.join-discussion", [
     "category_id" => $page->discussion_category_id
   ])
