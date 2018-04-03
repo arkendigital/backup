@@ -41,7 +41,7 @@
               </div><!-- /.discussion-list-thread-content -->
 
               <div class="discussion-list-reply-count">
-                {{ $discussion->reply_count }}
+                {{ $discussion->replies_count }}
               </div><!-- /.discussion-list-reply-count -->
 
             </div><!-- /.discussion-list-thread -->

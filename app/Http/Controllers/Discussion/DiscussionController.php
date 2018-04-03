@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Discussion as DiscussionRequest;
 use App\Http\Controllers\AWS\ImageController as AWS;
+use Cache;
 
 /**
 * Load models.
@@ -29,7 +30,7 @@ class DiscussionController extends Controller {
     /**
     * Get a list of categories.
     */
-    $categories = DiscussionCategory::all();
+    $categories = $this->getCategories();
 
     /**
     * Get a list of discussions.
@@ -42,6 +43,7 @@ class DiscussionController extends Controller {
     if (isset($_GET["search"])) {
 
       $discussions = Discussion::where("name", "LIKE", "%".$_GET["search"]."%")
+        ->withCount('replies')
         ->paginate(6);
 
       $category = new \stdClass();
@@ -53,9 +55,10 @@ class DiscussionController extends Controller {
       * Category filtering.
       */
       if ($category->id == "") {
-        $discussions = Discussion::paginate(6);
+        $discussions = Discussion::withCount('replies')->paginate(6);
       } else {
-        $discussions = Discussion::where("category_id", $category->id)
+        $discussions = Discussion::withCount('replies')
+          ->where("category_id", $category->id)
           ->paginate(6);
       }
 
@@ -90,7 +93,7 @@ class DiscussionController extends Controller {
     /**
     * Get a list of categories.
     */
-    $categories = DiscussionCategory::all();
+    $categories = $this->getCategories();
 
     /**
     * Display the view page.
@@ -180,7 +183,7 @@ class DiscussionController extends Controller {
     /**
     * Get a list of categories.
     */
-    $categories = DiscussionCategory::all();
+    $categories = $this->getCategories();
 
     /**
     * Display page.
@@ -254,25 +257,13 @@ class DiscussionController extends Controller {
     /**
     * Get a list of categories.
     */
-    $categories = DiscussionCategory::all();
+    $categories = $this->getCategories();
 
-    /**
-    * Get a list of most popular discussions based on amount of replies.
-    */
-    $popular = DiscussionReply::select('discussion_id', \DB::raw('count(discussion_id) as count'))
-      ->groupBy('discussion_id')
-      ->orderBy('count','DESC')
-      ->take(18)
-      ->get()
-      ->pluck("discussion_id");
-
-    $ids = array_sort($popular, "count");
-
-    /**
-    * Get a list of discussions.
-    */
-    $discussions = Discussion::whereIn("id", $ids)
-      ->paginate(6);
+    $discussions = Discussion::with('user', 'category')
+        ->withCount('replies')
+        ->whereHas('replies')
+        ->orderBy('replies_count', 'desc')
+        ->paginate(6);
 
     /**
     * Define the category.
@@ -299,12 +290,13 @@ class DiscussionController extends Controller {
     /**
     * Get a list of categories.
     */
-    $categories = DiscussionCategory::all();
+    $categories = $this->getCategories();
 
     /**
     * Get a list of discussions.
     */
     $discussions = Discussion::whereHas("replies")
+      ->withCount('replies')
       ->paginate(6);
 
     /**
@@ -333,12 +325,13 @@ class DiscussionController extends Controller {
     /**
     * Get a list of categories.
     */
-    $categories = DiscussionCategory::all();
+    $categories = $this->getCategories();
 
     /**
     * Get a list of discussions.
     */
     $discussions = Discussion::doesntHave("replies")
+      ->withCount('replies')
       ->paginate(6);
 
     /**
@@ -357,6 +350,13 @@ class DiscussionController extends Controller {
     ));
 
 
+  }
+
+  protected function getCategories()
+  {
+    return Cache::remember('discussion_categories', 120, function() {
+      return DiscussionCategory::with('icon')->get();
+    });
   }
 
 }
