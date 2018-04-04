@@ -71,9 +71,17 @@ Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function() 
     Route::resource("/jobs", "Jobs\JobController", ["parameters" => [
       "jobs" => "job"
     ]]);
+
     Route::resource("/job-companies", "Jobs\JobCompanyController", ["parameters" => [
       "job-companies" => "company"
     ]]);
+
+    Route::get('/job-locations', 'Jobs\JobLocationController@index')->name('jobs.locations');
+    Route::get('/job-locations/create', 'Jobs\JobLocationController@create')->name('jobs.locations.create');
+    Route::put('/job-locations', 'Jobs\JobLocationController@store')->name('jobs.locations.store');
+    Route::get('/job-locations/{location}/edit', 'Jobs\JobLocationController@edit')->name('jobs.locations.edit');
+    Route::patch('/job-locations/{location}', 'Jobs\JobLocationController@update')->name('jobs.locations.update');
+    Route::delete('/job-locations/{location}/delete', 'Jobs\JobLocationController@destroy')->name('jobs.locations.delete');
 
     /**
     * Exam Resources.

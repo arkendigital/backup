@@ -176,10 +176,12 @@
                   <span class="job-list-item-list-value">&pound;{{ number_format($job->salary) }}</span>
                 </div>
 
+                @isset($job->location)
                 <div class="job-list-item-list">
                   <span class="job-list-item-list-key">Location</span>
                   <span class="job-list-item-list-value">{{ $job->location->name }}</span>
                 </div>
+                @endisset
 
                 <div class="job-list-item-list">
                   <span class="job-list-item-list-key">Date Posted</span>

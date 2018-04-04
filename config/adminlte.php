@@ -209,6 +209,12 @@ return [
             'icon'  => 'users',
             'can'   => 'jobs'
         ],
+        [
+          'text' => 'Manage Locations',
+          'url'  => 'ops/job-locations',
+          'icon'  => 'users',
+          'can'   => 'jobs'
+      ],
 
 
         /**

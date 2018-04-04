@@ -15,10 +15,14 @@
             <p class="job-view-header-right-item-left">Salary</p>
             <p class="job-view-header-right-item-right">&pound;{{ number_format($job->salary) }}</p>
           </div>
+
+          @isset($job->location)          
           <div class="job-view-header-right-item">
             <p class="job-view-header-right-item-left">Location</p>
             <p class="job-view-header-right-item-right">{{ $job->location->name }}</p>
           </div>
+          @endisset
+
           <div class="job-view-header-right-item">
             <p class="job-view-header-right-item-left">Date Posted</p>
             <p class="job-view-header-right-item-right">{{ $job->created_at->diffForHumans() }}</p>
