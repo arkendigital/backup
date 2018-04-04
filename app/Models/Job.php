@@ -75,4 +75,8 @@ class Job extends Model {
       return $this->hasOne(JobLocation::class, 'id', 'location_id');
     }
 
+    public function sector() {
+        return $this->hasOne(JobSector::class, 'id', 'sector_id');
+    }
+
 }

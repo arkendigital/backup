@@ -106,8 +106,11 @@
             <div>
               <p class="job-list-sidebar-item-title">SECTOR</p>
               <div class="job-list-sidebar-item">
-                <select class="job-list-sidebar-item-select">
-                  <option value="" class="job-list-sidebar-item-select-default">Banking and Finance</option>
+                <select name="sector" class="job-list-sidebar-item-select">
+                  <option value="" class="job-list-sidebar-item-select-default">All</option>
+                  @foreach ($sectors as $sector)
+                    <option value="{{ $sector->id }}" class="job-list-sidebar-item-select-default">{{ $sector->name }}</option>                  
+                  @endforeach
                 </select>
               </div>
             </div>
@@ -136,10 +139,19 @@
                 <span class="job-list-item-list-value">&pound;{{ number_format($job->salary) }}</span>
               </div>
 
+              @isset($job->location)
               <div class="job-list-item-list">
                 <span class="job-list-item-list-key">Location</span>
-                <span class="job-list-item-list-value">London</span>
+                <span class="job-list-item-list-value">{{ $job->location->name }}</span>
               </div>
+              @endisset
+
+              @isset($job->sector)
+                <div class="job-list-item-list">
+                  <span class="job-list-item-list-key">Sector</span>
+                  <span class="job-list-item-list-value">{{ $job->sector->name }}</span>
+                </div>
+              @endisset
 
               <div class="job-list-item-list">
                 <span class="job-list-item-list-key">Date Posted</span>
@@ -153,13 +165,13 @@
 
         <div style="display: block; padding: 25px 0; display: block; width: 100%; background: #1a304d; text-align: center; color: white; margin-top: 20px; margin-bottom: 30px;">SPONDERED LINK</div>
 
-        @if($jobs->isEmpty())
+        @if($jobs->isEmpty() && $featured_jobs->isEmpty())
 
           <div class="job-list-item job-list-item-featured">
             Sorry, we couldn't find any job vacancies.
           </div>
 
-        @else
+        @elseif($jobs->count() > 0)
 
           @foreach($jobs as $job)
             <div class="job-list-item">
@@ -180,6 +192,13 @@
                 <div class="job-list-item-list">
                   <span class="job-list-item-list-key">Location</span>
                   <span class="job-list-item-list-value">{{ $job->location->name }}</span>
+                </div>
+                @endisset
+
+                @isset($job->sector)
+                <div class="job-list-item-list">
+                  <span class="job-list-item-list-key">Sector</span>
+                  <span class="job-list-item-list-value">{{ $job->sector->name }}</span>
                 </div>
                 @endisset
 

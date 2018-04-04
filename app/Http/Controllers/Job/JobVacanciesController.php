@@ -15,6 +15,7 @@ use App\Models\Section;
 use App\Models\Page;
 use App\Models\Job;
 use App\Models\JobLocation;
+use App\Models\JobSector;
 use App\Models\JobCompany;
 
 class JobVacanciesController extends Controller {
@@ -45,16 +46,18 @@ class JobVacanciesController extends Controller {
     $this->seo()->setTitle($page->meta_title);
     $this->seo()->setDescription($page->meta_description);
 
+    $sectors = JobSector::orderBy('name')->get();
+
     /**
     * Get featured jobs.
     */
-    $featured_jobs = Job::where("featured", 1)
+    $featured_jobs = Job::with('company', 'location', 'sector')->where("featured", 1)
       ->get();
 
     /**
     * Get jobs.
     */
-    $jobs = Job::where("featured", 0);
+    $jobs = Job::with('company', 'location', 'sector')->where("featured", 0);
 
     /**
     * Apply filtering.
@@ -75,6 +78,10 @@ class JobVacanciesController extends Controller {
       $jobs = $jobs->whereIn("type", session()->get("job-filter-type"));
     }
 
+    if (session()->exists('job-filter-sector') && !empty(session()->get('job-filter-sector'))) {
+      $jobs = $jobs->where('sector_id', session()->get('job-filter-sector'));
+    }
+
     $jobs = $jobs->paginate(3);
 
     /**
@@ -84,7 +91,8 @@ class JobVacanciesController extends Controller {
       "featured_jobs",
       "jobs",
       "page",
-      "section"
+      "section",
+      'sectors'
     ));
 
   }
@@ -116,6 +124,10 @@ class JobVacanciesController extends Controller {
     * Set job type filter.
     */
     session()->put("job-filter-type", request()->type);
+
+
+    session()->put("job-filter-sector", request()->sector);
+    
 
     /**
     * Redirect back to job listing page.
