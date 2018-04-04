@@ -8,6 +8,8 @@ Route::namespace('Exam')->prefix('exams')->group(function() {
   Route::get('/exam-survey', 'ExamSurveyController@index');
   Route::post('/exam-survey', 'ExamSurveyController@submit');
   Route::get('/survey/results', 'ExamSurveyController@results');
-
+  Route::get('/centres', 'ExamCentreController@index');
+  Route::post('/centres', 'ExamCentreController@search');
+  
   Route::get('/{slug}', 'ExamIndividualController@moduleList');
 });

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Societies;
+namespace App\Http\Controllers\Exam;
 
 /**
 * Load modules.
@@ -13,12 +13,12 @@ use Illuminate\Http\Request;
 */
 use App\Models\Section;
 use App\Models\Page;
-use App\Models\Society;
+use App\Models\ExamCentre;
 
-class SocietyController extends Controller {
+class ExamCentreController extends Controller {
 
   /**
-  * Display the main regional societies page.
+  * Display the main exam centres page.
   *
   */
   public function index() {
@@ -43,19 +43,10 @@ class SocietyController extends Controller {
     $page_adverts = getArrayOfAdverts($page->id);
 
     /**
-    * Get a list of societies.
-    *
-    */
-    $societies = Society::paginate(8);
-
-    /**
     * Display page.
     *
     */
-    return view("societies.index", compact(
-      "page",
-      "societies"
-    ));
+    return view('exam.centres.index')->with(compact('page'));
 
   }
 
@@ -122,15 +113,19 @@ class SocietyController extends Controller {
     * Search for societies based on...
     * - name
     * - location
+    *
     */
-    $merged = Society::where('name', 'LIKE', "%$search%")
-      ->orWhere('city', 'LIKE', "%$search%")
+    $merged = ExamCentre::where("name", "LIKE", "%$search%")
+      ->orWhere("city", "LIKE", "%$search%")
       ->get();
+
 
     /**
     * Return the results for the ajax to populate the map.
     *
     */
     return json_encode($merged);
+
   }
+
 }

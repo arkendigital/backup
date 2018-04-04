@@ -1,13 +1,19 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-class CreateSocietiesTable extends Migration {
-
-	public function up()
-	{
-		Schema::create('societies', function(Blueprint $table) {
+class CreateExamCentresTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('exam_centres', function (Blueprint $table) {
 			$table->increments('id');
 			$table->string('name');
 			$table->string('slug');
@@ -22,11 +28,16 @@ class CreateSocietiesTable extends Migration {
 			$table->text('description')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
-		});
-	}
+        });
+    }
 
-	public function down()
-	{
-		Schema::drop('societies');
-	}
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('exam_centres');
+    }
 }

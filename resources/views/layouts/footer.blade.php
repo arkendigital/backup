@@ -4,9 +4,9 @@
 
   <div class="footer-social">
     <span>FIND US ON SOCIAL MEDIA</span>
-    <i class="fab fa-facebook"></i>
-    <i class="fab fa-twitter-square"></i>
-    <i class="fab fa-linkedin"></i>
+    <a href="{{ $facebook }}" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="{{ $twitter }}" target="_blank"><i class="fab fa-twitter-square"></i></a>
+    <a href="{{ $linkedin }}" target="_blank"><i class="fab fa-linkedin"></i></a>
   </div>
 
   <nav class="footer-nav">
@@ -21,7 +21,7 @@
         <a href="/cpd">CPD</a>
       </li>
       <li>
-        <a href="">Salary Survey</a>
+        <a href="/salary-survey">Salary Survey</a>
       </li>
       <li>
         <a href="/uni-corner">Uni Corner</a>
