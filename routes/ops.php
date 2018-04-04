@@ -83,6 +83,14 @@ Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function() 
     Route::patch('/job-locations/{location}', 'Jobs\JobLocationController@update')->name('jobs.locations.update');
     Route::delete('/job-locations/{location}/delete', 'Jobs\JobLocationController@destroy')->name('jobs.locations.delete');
 
+    Route::get('/job-sectors', 'Jobs\JobSectorController@index')->name('jobs.sectors');
+    Route::get('/job-sectors/create', 'Jobs\JobSectorController@create')->name('jobs.sectors.create');
+    Route::put('/job-sectors', 'Jobs\JobSectorController@store')->name('jobs.sectors.store');
+    Route::get('/job-sectors/{sector}/edit', 'Jobs\JobSectorController@edit')->name('jobs.sectors.edit');
+    Route::patch('/job-sectors/{sector}', 'Jobs\JobSectorController@update')->name('jobs.sectors.update');
+    Route::delete('/job-sectors/{sector}/delete', 'Jobs\JobSectorController@destroy')->name('jobs.sectors.delete');
+
+
     /**
     * Exam Resources.
     */

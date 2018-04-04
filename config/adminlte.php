@@ -214,7 +214,13 @@ return [
           'url'  => 'ops/job-locations',
           'icon'  => 'users',
           'can'   => 'jobs'
-      ],
+        ],
+        [
+          'text' => 'Manage Sectors',
+          'url'  => 'ops/job-sectors',
+          'icon'  => 'users',
+          'can'   => 'jobs'
+        ],
 
 
         /**
