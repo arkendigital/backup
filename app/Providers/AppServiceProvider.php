@@ -7,6 +7,8 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
+use App\Setting;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,6 +18,15 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+
+         // TODO: Look into this why this is triggering constantly
+         if (! $this->app->runningInConsole()) {
+            View::share([
+                'facebook' => Setting::get('facebook'),
+                'twitter' => Setting::get('twitter'),
+                'linkedin' => Setting::get('linkedin'),
+            ]);
+        }
 
         Blade::directive('rgba', function ($hex, $alpha = false) {
             $hex = str_replace('#', '', $hex);
