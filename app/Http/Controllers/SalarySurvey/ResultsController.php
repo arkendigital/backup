@@ -37,7 +37,7 @@ class ResultsController extends Controller
         $salary_sector_investments_permanent = $this->salaryBySectorExeperience('investments', 'permanent');
         $salary_sector_other_permanent = $this->salaryBySectorExeperience('other', 'permanent');
         // Sector/Contractor
-        $salary_sector_life_consultant = $this->salaryBySectorExeperience('life', 'contractor');
+        $salary_sector_life_contractor = $this->salaryBySectorExeperience('life', 'contractor');
         $salary_sector_gi_contractor = $this->salaryBySectorExeperience('gi', 'contractor');
         $salary_sector_pensions_contractor = $this->salaryBySectorExeperience('pensions', 'contractor');
         $salary_sector_investments_contractor = $this->salaryBySectorExeperience('investments', 'contractor');
@@ -59,7 +59,15 @@ class ResultsController extends Controller
             'salary_per_field_permanent',
             'salary_per_field_contractor',
             'salary_sector_life_permanent',
-            'salary_sector_life_consultant'
+            'salary_sector_life_contractor',
+            'salary_sector_gi_permanent',
+            'salary_sector_gi_contractor',
+            'salary_sector_pensions_permanent',
+            'salary_sector_pensions_contractor',
+            'salary_sector_investments_permanent',
+            'salary_sector_investments_contractor',
+            'salary_sector_other_permanent',
+            'salary_sector_other_contractor'
         ));
     }
 
