@@ -878,7 +878,7 @@
           responsive: true,       
           title: {
 					  display: true,
-					  text: 'permanent Employees'
+					  text: 'Permanent Employees'
 				  },     
           legend: {
             display: false
