@@ -24,25 +24,43 @@
       <h3>Average Salary vs Experience</h3>
     
       <div style="width:49%; height: 270px; display: inline-block;">
-        <canvas id="permanant_salary_experience"></canvas>
+        <canvas id="permanent_salary_experience"></canvas>
       </div>
       <div style="width:49%; height: 270px; display: inline-block;">
         <canvas id="contractors_salary_experience"></canvas>
       </div>
     </div>
 
+    <br><br><br>
+    
+    <div class="salary-survey-results-container">
+        <h3>Average Salary vs Experience Per Sector</h3>
+
+        <h4>Life</h4>
+        <div style="width:49%; height: 270px; display: inline-block;">
+            <canvas id="salary_sector_life_permanent"></canvas>
+        </div>
+
+        <div style="width:49%; height: 270px; display: inline-block;">
+            <canvas id="salary_sector_life_consultant"></canvas>
+        </div>
+    </div>  
+    
+    <br><br><br>
+    
+
      <div class="salary-survey-results-container">
       <h3>Average Salary Per Sector</h3>
      
       <div style="width:49%; height: 270px; display: inline-block;">
-        <canvas id="salary_per_sector_permanant"></canvas>
+        <canvas id="salary_per_sector_permanent"></canvas>
       </div>
       <div style="width:49%; height: 270px; display: inline-block;">
         <canvas id="salary_per_sector_contractors"></canvas>
       </div>
 
       <div style="width:49%; height: 270px; display: inline-block;">
-        <canvas id="salary_per_field_permanant"></canvas>
+        <canvas id="salary_per_field_permanent"></canvas>
       </div>
       <div style="width:49%; height: 270px; display: inline-block;">
         <canvas id="salary_per_field_contractors"></canvas>
@@ -69,18 +87,18 @@
   @push("scripts-after")
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
     <script>
-    var myChart = new Chart(document.getElementById("permanant_salary_experience").getContext('2d'), {
+    var myChart = new Chart(document.getElementById('permanent_salary_experience').getContext('2d'), {
         type: 'line',
         data: {
             labels: ["1-4", "5-9", "10-14", "15-19", "20+"],
             datasets: [{
                 label: '',
                 data: [
-                  {{ $graph_one->one_four }},
-                  {{ $graph_one->five_nine }},
-                  {{ $graph_one->ten_fourteen }},
-                  {{ $graph_one->fifteen_ninteen }},
-                  {{ $graph_one->twenty_plus }}
+                  {{ $salary_vs_exerience_permanent->one_four }},
+                  {{ $salary_vs_exerience_permanent->five_nine }},
+                  {{ $salary_vs_exerience_permanent->ten_fourteen }},
+                  {{ $salary_vs_exerience_permanent->fifteen_ninteen }},
+                  {{ $salary_vs_exerience_permanent->twenty_plus }}
                 ],
                 backgroundColor: 'transparent',
                 borderColor: '#a7b819',
@@ -91,7 +109,7 @@
           responsive: true,       
           title: {
 					  display: true,
-					  text: 'Permanant Employees'
+					  text: 'permanent Employees'
 				  },     
           legend: {
             display: false
@@ -122,18 +140,18 @@
         }
     });
 
-    var myChart = new Chart(document.getElementById("contractors_salary_experience").getContext('2d'), {
+    var myChart = new Chart(document.getElementById('contractors_salary_experience').getContext('2d'), {
         type: 'line',
         data: {
             labels: ["1-4", "5-9", "10-14", "15-19", "20+"],
             datasets: [{
                 label: '',
                 data: [
-                  {{ $graph_two->one_four }},
-                  {{ $graph_two->five_nine }},
-                  {{ $graph_two->ten_fourteen }},
-                  {{ $graph_two->fifteen_ninteen }},
-                  {{ $graph_two->twenty_plus }}
+                  {{ $salary_vs_exerience_contractor->one_four }},
+                  {{ $salary_vs_exerience_contractor->five_nine }},
+                  {{ $salary_vs_exerience_contractor->ten_fourteen }},
+                  {{ $salary_vs_exerience_contractor->fifteen_ninteen }},
+                  {{ $salary_vs_exerience_contractor->twenty_plus }}
                 ],
                 backgroundColor: 'transparent',
                 borderColor: '#ef7900',
@@ -175,18 +193,124 @@
         }
     });
 
-    var myChart = new Chart(document.getElementById('salary_per_sector_permanant').getContext('2d'), {
+    var myChart = new Chart(document.getElementById('salary_sector_life_permanent').getContext('2d'), {
+        type: 'line',
+        data: {
+            labels: ["1-4", "5-9", "10-14", "15-19", "20+"],
+            datasets: [{
+                label: '',
+                data: [
+                  {{ $salary_sector_life_permanent->one_four }},
+                  {{ $salary_sector_life_permanent->five_nine }},
+                  {{ $salary_sector_life_permanent->ten_fourteen }},
+                  {{ $salary_sector_life_permanent->fifteen_ninteen }},
+                  {{ $salary_sector_life_permanent->twenty_plus }}
+                ],
+                backgroundColor: 'transparent',
+                borderColor: '#a7b819',
+                borderWidth: 2
+            }]
+        },
+        options: {
+          responsive: true,       
+          title: {
+					  display: true,
+					  text: 'permanent Employees'
+				  },     
+          legend: {
+            display: false
+          },
+          tooltips: {
+            enabled: false
+          },
+          scales: {
+              yAxes: [{
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Average Salary (£k)'
+                  },
+                  ticks: {
+                      beginAtZero:true
+                  }
+              }],
+              xAxes: [{
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Experience in years'
+                  },
+                  ticks: {
+                      beginAtZero:true
+                  }
+              }]
+          }
+        }
+    });
+
+    var myChart = new Chart(document.getElementById('salary_sector_life_consultant').getContext('2d'), {
+        type: 'line',
+        data: {
+            labels: ["1-4", "5-9", "10-14", "15-19", "20+"],
+            datasets: [{
+                label: '',
+                data: [
+                  {{ $salary_sector_life_consultant->one_four }},
+                  {{ $salary_sector_life_consultant->five_nine }},
+                  {{ $salary_sector_life_consultant->ten_fourteen }},
+                  {{ $salary_sector_life_consultant->fifteen_ninteen }},
+                  {{ $salary_sector_life_consultant->twenty_plus }}
+                ],
+                backgroundColor: 'transparent',
+                borderColor: '#ef7900',
+                borderWidth: 2
+            }]
+        },
+        options: {
+          responsive: true,       
+          title: {
+					  display: true,
+					  text: 'Contractors'
+				  },     
+          legend: {
+            display: false
+          },
+          tooltips: {
+            enabled: false
+          },
+          scales: {
+              yAxes: [{
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Annual Salary (£k)'
+                  },
+                  ticks: {
+                      beginAtZero:true
+                  }
+              }],
+              xAxes: [{
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Experience in years'
+                  },
+                  ticks: {
+                      beginAtZero:true
+                  }
+              }]
+          }
+        }
+    });
+
+    var myChart = new Chart(document.getElementById('salary_per_sector_permanent').getContext('2d'), {
         type: 'bar',
         data: {
             labels: ['Life', 'GI', 'Pensions', 'Investments', 'Other'],
             datasets: [{
                 label: '',
                 data: [
-                  {{ $salary_per_sector_permanant->life }},
-                  {{ $salary_per_sector_permanant->gi }},
-                  {{ $salary_per_sector_permanant->pensions }},
-                  {{ $salary_per_sector_permanant->investments }},
-                  {{ $salary_per_sector_permanant->other }}
+                  {{ $salary_per_sector_permanent->life }},
+                  {{ $salary_per_sector_permanent->gi }},
+                  {{ $salary_per_sector_permanent->pensions }},
+                  {{ $salary_per_sector_permanent->investments }},
+                  {{ $salary_per_sector_permanent->other }}
                 ],
                 backgroundColor: [
                   '#bac650',
@@ -203,7 +327,7 @@
           responsive: true,       
           title: {
 					  display: true,
-					  text: 'Permanant Employees'
+					  text: 'permanent Employees'
 				  },     
           legend: {
             display: false
@@ -293,17 +417,17 @@
         }
     });
 
-    var myChart = new Chart(document.getElementById('salary_per_field_permanant').getContext('2d'), {
+    var myChart = new Chart(document.getElementById('salary_per_field_permanent').getContext('2d'), {
         type: 'bar',
         data: {
             labels: ['Consultancy', 'Insurance', 'Reinsurance', 'Other'],
             datasets: [{
                 label: '',
                 data: [
-                  {{ $salary_per_field_permanant->consultancy }},
-                  {{ $salary_per_field_permanant->insurance }},
-                  {{ $salary_per_field_permanant->reinsurance }},
-                  {{ $salary_per_field_permanant->other }}
+                  {{ $salary_per_field_permanent->consultancy }},
+                  {{ $salary_per_field_permanent->insurance }},
+                  {{ $salary_per_field_permanent->reinsurance }},
+                  {{ $salary_per_field_permanent->other }}
                 ],
                 backgroundColor: [
                   '#3cb4e7',
@@ -319,7 +443,7 @@
           responsive: true,       
           title: {
 					  display: true,
-					  text: 'Permanant Employees'
+					  text: 'permanent Employees'
 				  },     
           legend: {
             display: false
