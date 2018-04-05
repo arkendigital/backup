@@ -30,17 +30,17 @@
         <table class="survey-results-table">
           <thead>
             <tr>
-              <td>EXAM</td>
-              <td class="bg-green">EASY</td>
-              <td class="bg-orange">MODERATE</td>
-              <td class="bg-red">DIFFICULT</td>
+              <th>EXAM</th>
+              <th class="bg-green">EASY</th>
+              <th class="bg-orange">MODERATE</th>
+              <th class="bg-red">DIFFICULT</th>
             </tr>
           </thead>
           <tbody>
             @foreach($category->getModules() as $module)
               <tr>
-                <td>{{ $module->name }}</td>
-                <td>{{ $module->getSurveyPercentage($module->getSurveyResult($module->id, "easy"), $module->getSurveyTotal($module->id)) }}</td>
+                <th>{{ $module->name }}</th>
+                <td>{{ $module->getSurveyPercentage($module->getSurveyResult($module->id, "easy"), $module->getSurveyTotal($module->id), 2) }}</td>
                 <td>{{ $module->getSurveyPercentage($module->getSurveyResult($module->id, "moderate"), $module->getSurveyTotal($module->id)) }}</td>
                 <td>{{ $module->getSurveyPercentage($module->getSurveyResult($module->id, "difficult"), $module->getSurveyTotal($module->id)) }}</td>
               </tr>
