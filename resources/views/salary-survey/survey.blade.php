@@ -28,11 +28,11 @@
       {{ csrf_field() }}
       {{ method_field("POST") }}
 
-      <input type="hidden1" id="type" name="type" value="">
-      <input type="hidden1" id="sector" name="sector" value="">
-      <input type="hidden1" id="field" name="field" value="">
-      <input type="hidden1" id="experience" name="experience" value="">
-      <input type="hidden1" id="qualifications" name="qualifications" value="">
+      <input type="hidden" id="type" name="type" value="">
+      <input type="hidden" id="sector" name="sector" value="">
+      <input type="hidden" id="field" name="field" value="">
+      <input type="hidden" id="experience" name="experience" value="">
+      <input type="hidden" id="qualifications" name="qualifications" value="">
 
       <!-- Q1 -->
       <div class="salary-survey-question-container">

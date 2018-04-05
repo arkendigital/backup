@@ -73,7 +73,6 @@
 
 }
 
-
 .salary-survey-footer {
   padding: 25px 0;
   button {
@@ -89,12 +88,27 @@
   }
 }
 
-
-
-
 .salary-survey-results-container {
-  display: inline-block;
   width: calc(100% - 40px);
   padding: 20px;
   background: #ffffff;
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: 60px;
+
+  h3, h4 {
+    width: 100%;
+  }
+
+  & > div {
+    width: 100%;
+
+    @media (min-width: 768px) {
+      width: 48%;    
+    }
+  }
+
+  canvas {
+    margin-bottom: 30px;
+  }
 }

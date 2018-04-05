@@ -23,77 +23,73 @@
     <div class="salary-survey-results-container">
       <h3>Average Salary vs Experience</h3>
     
-      <div style="width:49%; height: 270px; display: inline-block;">
+      <div>
         <canvas id="permanent_salary_experience"></canvas>
       </div>
-      <div style="width:49%; height: 270px; display: inline-block;">
+      <div>
         <canvas id="contractors_salary_experience"></canvas>
       </div>
     </div>
-
-    <br><br><br>
     
     <div class="salary-survey-results-container">
         <h3>Average Salary vs Experience Per Sector</h3>
 
         <h4>Life</h4>
-        <div style="width:49%; height: 270px; display: inline-block;">
+        <div>
             <canvas id="salary_sector_life_permanent"></canvas>
         </div>
-        <div style="width:49%; height: 270px; display: inline-block;">
+        <div>
             <canvas id="salary_sector_life_contractor"></canvas>
         </div>
 
         <h4>GI</h4>
-        <div style="width:49%; height: 270px; display: inline-block;">
+        <div>
             <canvas id="salary_sector_gi_permanent"></canvas>
         </div>
-        <div style="width:49%; height: 270px; display: inline-block;">
+        <div>
             <canvas id="salary_sector_gi_contractor"></canvas>
         </div>
 
         <h4>Pensions</h4>
-        <div style="width:49%; height: 270px; display: inline-block;">
+        <div>
             <canvas id="salary_sector_pensions_permanent"></canvas>
         </div>
-        <div style="width:49%; height: 270px; display: inline-block;">
+        <div>
             <canvas id="salary_sector_pensions_contractor"></canvas>
         </div>
 
         <h4>Investments</h4>
-        <div style="width:49%; height: 270px; display: inline-block;">
+        <div>
             <canvas id="salary_sector_investments_permanent"></canvas>
         </div>
-        <div style="width:49%; height: 270px; display: inline-block;">
+        <div>
             <canvas id="salary_sector_investments_contractor"></canvas>
         </div>
 
         <h4>Others</h4>
-        <div style="width:49%; height: 270px; display: inline-block;">
+        <div>
             <canvas id="salary_sector_other_permanent"></canvas>
         </div>
-        <div style="width:49%; height: 270px; display: inline-block;">
+        <div>
             <canvas id="salary_sector_other_contractor"></canvas>
         </div>
-    </div>  
-    
-    <br><br><br>
+    </div> 
     
 
      <div class="salary-survey-results-container">
       <h3>Average Salary Per Sector</h3>
      
-      <div style="width:49%; height: 270px; display: inline-block;">
+      <div>
         <canvas id="salary_per_sector_permanent"></canvas>
       </div>
-      <div style="width:49%; height: 270px; display: inline-block;">
+      <div>
         <canvas id="salary_per_sector_contractors"></canvas>
       </div>
 
-      <div style="width:49%; height: 270px; display: inline-block;">
+      <div>
         <canvas id="salary_per_field_permanent"></canvas>
       </div>
-      <div style="width:49%; height: 270px; display: inline-block;">
+      <div>
         <canvas id="salary_per_field_contractors"></canvas>
       </div>
     </div>
