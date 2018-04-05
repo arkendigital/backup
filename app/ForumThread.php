@@ -29,7 +29,7 @@ class ForumThread extends Model
             $builder->orderBy('updated_at', 'asc');
         });
 
-        static::created(function ($thread) {         
+        static::created(function ($thread) {
             Cache::forget('lastThread-f'.$thread->forum->id);
             Cache::forget('lastPoster-f'.$thread->forum->id);
 
@@ -178,7 +178,7 @@ class ForumThread extends Model
 
     /**
      * Get the last post in a thread
-     * 
+     *
      * return App\ForumPost
      */
     public function getlastPostAttribute()
@@ -227,5 +227,4 @@ class ForumThread extends Model
     {
         return $this->posts()->first();
     }
-
 }

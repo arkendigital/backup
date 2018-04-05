@@ -14,46 +14,45 @@ use Illuminate\Http\Request;
 use App\Models\Section;
 use App\Models\Page;
 
-class CVSupportController extends Controller {
+class CVSupportController extends Controller
+{
 
   /**
   * Define the section.
   */
-  public function __construct() {
-
-    $this->section = Section::where("slug", "cv-support")
+    public function __construct()
+    {
+        $this->section = Section::where("slug", "cv-support")
       ->first();
+    }
 
-  }
-
-  public function index() {
+    public function index()
+    {
 
     /**
     * Get page Information
     */
-    $page = Page::where("slug", "cv-support")
+        $page = Page::where("slug", "cv-support")
       ->first();
 
-    /**
-    * Set seo.
-    */
-    $this->seo()->setTitle($page->meta_title);
-    $this->seo()->setDescription($page->meta_description);
+        /**
+        * Set seo.
+        */
+        $this->seo()->setTitle($page->meta_title);
+        $this->seo()->setDescription($page->meta_description);
 
-    /**
-    * Get adverts for this page.
-    */
-    $page_adverts = getArrayOfAdverts($page->id);
+        /**
+        * Get adverts for this page.
+        */
+        $page_adverts = getArrayOfAdverts($page->id);
 
-    /**
-    * Display page.
-    */
-    return view("cvsupport.index", [
+        /**
+        * Display page.
+        */
+        return view("cvsupport.index", [
       "section" => $this->section,
       "page" => $page,
       "page_adverts" => $page_adverts
     ]);
-
-  }
-
+    }
 }

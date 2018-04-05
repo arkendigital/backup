@@ -4,14 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SectionField extends Model {
+class SectionField extends Model
+{
 
   /**
   * The attributes that are mass assignable.
   *
   * @var array
   */
-  protected $fillable = [
+    protected $fillable = [
     "section_id",
     "type",
     "name",
@@ -21,5 +22,4 @@ class SectionField extends Model {
 
     protected $table = 'sections_fields';
     public $timestamps = true;
-
 }

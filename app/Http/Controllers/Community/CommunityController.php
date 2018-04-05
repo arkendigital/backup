@@ -30,7 +30,7 @@ class CommunityController extends Controller
                 }
             })->paginate(20);
         } else {
-            $users = $user->all()->map(function($user) {
+            $users = $user->all()->map(function ($user) {
                 return $user;
             })->paginate(20);
         }

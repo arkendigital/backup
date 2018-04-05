@@ -9,7 +9,8 @@ use App\Models\Section;
 use App\Models\SectionSidebar;
 use App\Models\SectionSidebarItem;
 
-class SidebarOrderController extends Controller {
+class SidebarOrderController extends Controller
+{
 
   /**
   * Show page for updating the ordering of sidebar links.
@@ -17,24 +18,21 @@ class SidebarOrderController extends Controller {
   * @param SectionSidebar $sidebar
   *
   */
-  public function index(SectionSidebar $sidebar) {
-
-    return view("admin.sidebars.order", compact(
+    public function index(SectionSidebar $sidebar)
+    {
+        return view("admin.sidebars.order", compact(
       "sidebar"
     ));
-
-  }
-
-  public function update(Request $request) {
-
-    foreach(request()->order as $iteration => $sidebar_item_id) {
-      $order = ($iteration + 1);
-      $item = SectionSidebarItem::find($sidebar_item_id);
-      $item->update(["order" => $order]);
     }
 
-    return redirect()->back();
+    public function update(Request $request)
+    {
+        foreach (request()->order as $iteration => $sidebar_item_id) {
+            $order = ($iteration + 1);
+            $item = SectionSidebarItem::find($sidebar_item_id);
+            $item->update(["order" => $order]);
+        }
 
-  }
-
+        return redirect()->back();
+    }
 }

@@ -19,8 +19,8 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-         // TODO: Look into this why this is triggering constantly
-         if (! $this->app->runningInConsole()) {
+        // TODO: Look into this why this is triggering constantly
+        if (! $this->app->runningInConsole()) {
             View::share([
                 'facebook' => Setting::get('facebook'),
                 'twitter' => Setting::get('twitter'),

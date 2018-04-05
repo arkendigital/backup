@@ -16,105 +16,105 @@ use App\Models\Page;
 use App\Models\Survey;
 use App\Models\Exam\Category as ExamCategory;
 
-class ExamSurveyController extends Controller {
+class ExamSurveyController extends Controller
+{
 
   /**
   * Display page with survey on.
   *
   */
-  public function index() {
+    public function index()
+    {
 
     /**
     * Get page Information
     */
-    $page = Page::getPage(request()->route()->uri);
+        $page = Page::getPage(request()->route()->uri);
 
-    /**
-    * Set SEO.
-    */
-    $this->seo()->setTitle($page->meta_title);
-    $this->seo()->setDescription($page->meta_description);
+        /**
+        * Set SEO.
+        */
+        $this->seo()->setTitle($page->meta_title);
+        $this->seo()->setDescription($page->meta_description);
 
-    /**
-    * Get adverts for this page.
-    */
-    $page_adverts = getArrayOfAdverts($page->id);
+        /**
+        * Get adverts for this page.
+        */
+        $page_adverts = getArrayOfAdverts($page->id);
 
-    /**
-    * Get exam categories.
-    *
-    */
-    $categories = ExamCategory::all();
+        /**
+        * Get exam categories.
+        *
+        */
+        $categories = ExamCategory::all();
 
-    /**
-    * Display page with form.
-    *
-    */
-    return view("exam.survey.index", compact(
+        /**
+        * Display page with form.
+        *
+        */
+        return view("exam.survey.index", compact(
       "page",
       "categories"
     ));
+    }
 
-  }
-
-  /**
-  * Submit survey form.
-  *
-  * @param Request $request
-  *
-  */
-  public function submit(Request $request) {
+    /**
+    * Submit survey form.
+    *
+    * @param Request $request
+    *
+    */
+    public function submit(Request $request)
+    {
 
     /**
     * Add result to database.
     *
     */
-    $survey = Survey::create([
+        $survey = Survey::create([
       "module_id" => request()->module_id,
       "difficulty" => request()->difficulty
     ]);
 
-    return "OK";
+        return "OK";
+    }
 
-  }
-
-  /**
-  * Display survey results.
-  *
-  */
-  public function results() {
+    /**
+    * Display survey results.
+    *
+    */
+    public function results()
+    {
 
     /**
     * Get page Information
     */
-    $page = Page::getPage(request()->route()->uri);
+        $page = Page::getPage(request()->route()->uri);
 
-    /**
-    * Set SEO.
-    */
-    $this->seo()->setTitle($page->meta_title);
-    $this->seo()->setDescription($page->meta_description);
+        /**
+        * Set SEO.
+        */
+        $this->seo()->setTitle($page->meta_title);
+        $this->seo()->setDescription($page->meta_description);
 
-    /**
-    * Get adverts for this page.
-    */
-    $page_adverts = getArrayOfAdverts($page->id);
+        /**
+        * Get adverts for this page.
+        */
+        $page_adverts = getArrayOfAdverts($page->id);
 
-    /**
-    * Get exam categories.
-    *
-    */
-    $categories = ExamCategory::all();
+        /**
+        * Get exam categories.
+        *
+        */
+        $categories = ExamCategory::all();
 
-    /**
-    * Display page with form.
-    *
-    */
-    return view("exam.survey.results", compact(
+        /**
+        * Display page with form.
+        *
+        */
+        return view("exam.survey.results", compact(
       "page",
       "categories"
     ));
-
-  }
-
+    }
 }

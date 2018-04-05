@@ -13,29 +13,28 @@ use Illuminate\Http\Request;
 */
 use App\Models\Page;
 
-class CPDController extends Controller {
-
-  public function index() {
+class CPDController extends Controller
+{
+    public function index()
+    {
 
     /**
     * Get page Information
     */
-    $page = Page::where("slug", "cpd")
+        $page = Page::where("slug", "cpd")
       ->first();
 
-    /**
-    * Set seo.
-    */
-    $this->seo()->setTitle($page->meta_title);
-    $this->seo()->setDescription($page->meta_description);
+        /**
+        * Set seo.
+        */
+        $this->seo()->setTitle($page->meta_title);
+        $this->seo()->setDescription($page->meta_description);
 
-    /**
-    * Display page.
-    */
-    return view("cpd.index", compact(
+        /**
+        * Display page.
+        */
+        return view("cpd.index", compact(
       "page"
     ));
-
-  }
-
+    }
 }

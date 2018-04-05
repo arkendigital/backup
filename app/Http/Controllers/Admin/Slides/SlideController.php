@@ -18,177 +18,172 @@ use App\Models\Slide;
 */
 use App\Http\Requests\Slide as SlideRequest;
 
-class SlideController extends Controller {
+class SlideController extends Controller
+{
 
   /**
   * Display a list of slides by group.
   *
   */
-  public function index() {
+    public function index()
+    {
 
     /**
     * Get slide groups.
     *
     */
-    $groups = Slide::groupBy("slug")
+        $groups = Slide::groupBy("slug")
       ->get();
 
-    /**
-    * Display results.
-    *
-    */
-    return view("admin.slides.index", compact(
+        /**
+        * Display results.
+        *
+        */
+        return view("admin.slides.index", compact(
       "groups"
     ));
+    }
 
-  }
+    /**
+    * Display form for creating a new slide.
+    *
+    */
+    public function create()
+    {
+        return view("admin.slides.create");
+    }
 
-  /**
-  * Display form for creating a new slide.
-  *
-  */
-  public function create() {
-
-    return view("admin.slides.create");
-
-  }
-
-  /**
-  * Create a new slide in database storage.
-  *
-  * @param SlideRequest $request
-  *
-  */
-  public function store(SlideRequest $request) {
+    /**
+    * Create a new slide in database storage.
+    *
+    * @param SlideRequest $request
+    *
+    */
+    public function store(SlideRequest $request)
+    {
 
     /**
     * Store new slide.
     *
     */
-    $slide = Slide::create([
+        $slide = Slide::create([
       "slug" => request()->slug,
       "title" => request()->title,
       "text" => request()->text
     ]);
 
-    /**
-    * Upload slide image.
-    */
-    if (request()->file("image")) {
-
-      $image_path = AWS::uploadImage(
+        /**
+        * Upload slide image.
+        */
+        if (request()->file("image")) {
+            $image_path = AWS::uploadImage(
         request()->file("image"),
         "slides"
       );
 
-      $slide->update([
+            $slide->update([
         "image_path" => $image_path
       ]);
+        }
+
+        /**
+        * Notify user.
+        *
+        */
+        alert("Your slide has been uploaded!")->persistent();
+
+        /**
+        * Redirect to list view.
+        *
+        */
+        return redirect(route("slides.index"));
     }
 
     /**
-    * Notify user.
+    * Show form for editing a slide.
+    *
+    * @param Slide $slide
     *
     */
-    alert("Your slide has been uploaded!")->persistent();
-
-    /**
-    * Redirect to list view.
-    *
-    */
-    return redirect(route("slides.index"));
-
-  }
-
-  /**
-  * Show form for editing a slide.
-  *
-  * @param Slide $slide
-  *
-  */
-  public function edit(Slide $slide) {
-
-    return view("admin.slides.edit", compact(
+    public function edit(Slide $slide)
+    {
+        return view("admin.slides.edit", compact(
       "slide"
     ));
+    }
 
-  }
-
-  /**
-  * Update slide in database storage.
-  *
-  * @param Slide $slide
-  * @param SlideRequest $request
-  *
-  */
-  public function update(Slide $slide, SlideRequest $request) {
+    /**
+    * Update slide in database storage.
+    *
+    * @param Slide $slide
+    * @param SlideRequest $request
+    *
+    */
+    public function update(Slide $slide, SlideRequest $request)
+    {
 
     /**
     * Update slide in storage.
     *
     */
-    $slide->update([
+        $slide->update([
       "title" => request()->title,
       "text" => request()->text
     ]);
 
-    /**
-    * Upload slide image.
-    */
-    if (request()->file("image")) {
-
-      $image_path = AWS::uploadImage(
+        /**
+        * Upload slide image.
+        */
+        if (request()->file("image")) {
+            $image_path = AWS::uploadImage(
         request()->file("image"),
         "slides",
         $slide->image_path
       );
 
-      $slide->update([
+            $slide->update([
         "image_path" => $image_path
       ]);
+        }
 
+        /**
+        * Notify user.
+        *
+        */
+        alert("Your slide has been updated!")->persistent();
+
+        /**
+        * Redirect to list view.
+        *
+        */
+        return redirect(route("slides.index"));
     }
 
     /**
-    * Notify user.
+    * Delete slide in storage.
+    *
+    * @param Slide $slide
     *
     */
-    alert("Your slide has been updated!")->persistent();
-
-    /**
-    * Redirect to list view.
-    *
-    */
-    return redirect(route("slides.index"));
-
-  }
-
-  /**
-  * Delete slide in storage.
-  *
-  * @param Slide $slide
-  *
-  */
-  public function destroy(Slide $slide) {
+    public function destroy(Slide $slide)
+    {
 
     /**
     * Delete slide image.
     *
     */
-    AWS::deleteImage($slide->image_path);
+        AWS::deleteImage($slide->image_path);
 
-    /**
-    * Delete the slide.
-    *
-    */
-    $slide->delete();
+        /**
+        * Delete the slide.
+        *
+        */
+        $slide->delete();
 
-    /**
-    * Redirect to the slides list.
-    *
-    */
-    return redirect(route("slides.index"));
-
-  }
-
+        /**
+        * Redirect to the slides list.
+        *
+        */
+        return redirect(route("slides.index"));
+    }
 }

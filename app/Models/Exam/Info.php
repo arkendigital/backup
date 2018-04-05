@@ -5,17 +5,17 @@ namespace App\Models\Exam;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Info extends Model {
+class Info extends Model
+{
+    use SoftDeletes;
 
-  use SoftDeletes;
-
-  /**
-  * The attributes that are mass assignable.
-  *
-  * @var array
-  *
-  */
-  protected $fillable = [
+    /**
+    * The attributes that are mass assignable.
+    *
+    * @var array
+    *
+    */
+    protected $fillable = [
     "module_id",
     "name",
     "section_one_title",
@@ -32,28 +32,27 @@ class Info extends Model {
     "section_four_link"
   ];
 
-  /**
-  * Indicates which table this model relates to.
-  *
-  * @var string
-  *
-  */
-  protected $table = 'exam_modules_info';
+    /**
+    * Indicates which table this model relates to.
+    *
+    * @var string
+    *
+    */
+    protected $table = 'exam_modules_info';
 
-  /**
-  * Indicates if the model should be timestamped.
-  *
-  * @var bool
-  *
-  */
-  public $timestamps = true;
+    /**
+    * Indicates if the model should be timestamped.
+    *
+    * @var bool
+    *
+    */
+    public $timestamps = true;
 
-  /**
-  * The attributes that should be cast to carbon instances.
-  *
-  * @var array
-  *
-  */
-  protected $dates = ['deleted_at'];
-
+    /**
+    * The attributes that should be cast to carbon instances.
+    *
+    * @var array
+    *
+    */
+    protected $dates = ['deleted_at'];
 }

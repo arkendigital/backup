@@ -18,54 +18,54 @@ use App\Models\PageWidget;
 */
 use App\Http\Requests\PageWidget as PageWidgetRequest;
 
-class PageWidgetController extends Controller {
+class PageWidgetController extends Controller
+{
 
   /**
   * Show form for creating a new widget.
   *
   */
-  public function create() {
+    public function create()
+    {
 
     /**
     * Get a list of pages.
     *
     */
-    $pages = Page::all();
+        $pages = Page::all();
 
-    /**
-    * Display form.
-    *
-    */
-    return view("admin.pages.widgets.create", compact(
+        /**
+        * Display form.
+        *
+        */
+        return view("admin.pages.widgets.create", compact(
       "pages"
     ));
+    }
 
-  }
-
-  /**
-  * Store new widget in database storage.
-  *
-  * @param PageWidgetRequest $request
-  *
-  */
-  public function store(PageWidgetRequest $request) {
+    /**
+    * Store new widget in database storage.
+    *
+    * @param PageWidgetRequest $request
+    *
+    */
+    public function store(PageWidgetRequest $request)
+    {
 
     /**
     * Insert widget.
     *
     */
-    $widget = PageWidget::create([
+        $widget = PageWidget::create([
       "page_id" => request()->page_id,
       "name" => request()->name,
       "slug" => request()->slug
     ]);
 
-    /**
-    * Redirect to the page the widget was assigned to.
-    *
-    */
-    return redirect(route("pages.edit", $widget->page_id));
-
-  }
-
+        /**
+        * Redirect to the page the widget was assigned to.
+        *
+        */
+        return redirect(route("pages.edit", $widget->page_id));
+    }
 }

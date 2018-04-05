@@ -39,7 +39,7 @@ class RedirectController extends Controller
             return redirect()->route('index');
         }
 
-        $thread = ForumThread::select(['id', 'forum_id', 'slug'])->with('forum')->where('slug',$slug)->first();
+        $thread = ForumThread::select(['id', 'forum_id', 'slug'])->with('forum')->where('slug', $slug)->first();
         if (!$thread) {
             alert('You have upset the delicate balance of my internal housekeeper')->persistent('I\'m sorry!');
             return redirect()->route('index');
@@ -54,7 +54,7 @@ class RedirectController extends Controller
             return redirect()->route('index');
         }
 
-        $forum = Forum::select(['id', 'slug'])->where('slug',$slug)->first();
+        $forum = Forum::select(['id', 'slug'])->where('slug', $slug)->first();
         if (!$forum) {
             alert('You have upset the delicate balance of my internal housekeeper')->persistent('I\'m sorry!');
             return redirect()->route('index');

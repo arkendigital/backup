@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Hash;
 
 use App\Http\Requests\Register;
 
-class RegisterController extends Controller {
+class RegisterController extends Controller
+{
 
     /**
     * Handle a registration request for the application.
@@ -23,29 +24,28 @@ class RegisterController extends Controller {
     * @return \Illuminate\Http\Response
     *
     */
-    public function register(Register $request) {
+    public function register(Register $request)
+    {
 
       /**
       * Check if this user already exists.
       */
-      $check = User::where("email", request()->email)
+        $check = User::where("email", request()->email)
         ->orWhere("username", request()->username)
         ->first();
 
-      if ($check !== null) {
-
-        return redirect(route("register"))
+        if ($check !== null) {
+            return redirect(route("register"))
           ->withErrors([
             "exists" => "A user with these details already exists"
           ])
           ->withInput();
+        }
 
-      }
-
-      /**
-      * Add user to database.
-      */
-      $user = User::create([
+        /**
+        * Add user to database.
+        */
+        $user = User::create([
         "name" => request()->name,
         "email" => request()->email,
         "username" => request()->username,
@@ -54,17 +54,17 @@ class RegisterController extends Controller {
         "api_token" => str_random()
       ]);
 
-      Auth::loginUsingId($user->id);
+        Auth::loginUsingId($user->id);
 
-      /**
-      * Redirect user to account.
-      */
-      return redirect(route("account.index"));
-
+        /**
+        * Redirect user to account.
+        */
+        return redirect(route("account.index"));
     }
 
-    public function showRegistrationForm() {
-      return view("auth.register");
+    public function showRegistrationForm()
+    {
+        return view("auth.register");
     }
 
     /**
@@ -90,5 +90,4 @@ class RegisterController extends Controller {
             return redirect(route('index'));
         }
     }
-
 }

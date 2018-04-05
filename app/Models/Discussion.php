@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\User;
 use App\Models\DiscussionReply;
 
-class Discussion extends Model {
-
+class Discussion extends Model
+{
     use SoftDeletes, Sluggable;
 
     /**
@@ -41,8 +41,9 @@ class Discussion extends Model {
      *
      * @return array
      */
-    public function sluggable() {
-      return [
+    public function sluggable()
+    {
+        return [
         'slug' => [
           'source' => 'name',
         ],
@@ -52,118 +53,112 @@ class Discussion extends Model {
     /**
      * Get the route key name
      */
-    public function getRouteKeyName() {
-      return 'slug';
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 
 
 
-  /**
-  * A discussion has a user attached.
-  *
-  * @return Illuminate\Database\Eloquent\Relations\BelongsTo
-  *
-  */
-  public function user() {
-    return $this->belongsTo(User::class, 'user_id', 'id');
-  }
+    /**
+    * A discussion has a user attached.
+    *
+    * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+    *
+    */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 
 
-  /**
-  * A discussion belongs to a category.
-  *
-  * @return Illuminate\Database\Eloquent\Relations\BelongsTo
-  *
-  */
-  public function category() {
-    return $this->belongsTo(DiscussionCategory::class, 'category_id', 'id');
-  }
+    /**
+    * A discussion belongs to a category.
+    *
+    * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+    *
+    */
+    public function category()
+    {
+        return $this->belongsTo(DiscussionCategory::class, 'category_id', 'id');
+    }
 
-  /**
-  * A discussion can have many replies.
-  *
-  * @return Illuminate\Database\Eloquent\Relations\HasMany
-  *
-  */
-  public function replies() {
-    return $this->hasMany(DiscussionReply::class, 'discussion_id', 'id');
-  }
+    /**
+    * A discussion can have many replies.
+    *
+    * @return Illuminate\Database\Eloquent\Relations\HasMany
+    *
+    */
+    public function replies()
+    {
+        return $this->hasMany(DiscussionReply::class, 'discussion_id', 'id');
+    }
 
-  /**
-  * Get the total amount of replies for the discussion.
-  *
-  */
-  public function getReplyCountAttribute() {
+    /**
+    * Get the total amount of replies for the discussion.
+    *
+    */
+    public function getReplyCountAttribute()
+    {
 
     /**
     * Set discussion id.
     */
-    $discussion_id = $this->attributes["id"];
+        $discussion_id = $this->attributes["id"];
 
-    /**
-    * Get amount of replies for this discussion.
-    */
-    $count = DiscussionReply::where("discussion_id", $discussion_id)
+        /**
+        * Get amount of replies for this discussion.
+        */
+        $count = DiscussionReply::where("discussion_id", $discussion_id)
       ->count();
 
-    /**
-    * Return the count and make sure it is minimum 2 digits.
-    *
-    */
-    if ($count < 10) {
-      return "0".$count;
-    } else {
-      return $count;
+        /**
+        * Return the count and make sure it is minimum 2 digits.
+        *
+        */
+        if ($count < 10) {
+            return "0".$count;
+        } else {
+            return $count;
+        }
     }
 
-  }
-
-  /**
-  * Check if a user is allowed edit the discussion.
-  *
-  */
-  public function canEdit() {
+    /**
+    * Check if a user is allowed edit the discussion.
+    *
+    */
+    public function canEdit()
+    {
 
     /**
     * Check owner.
     *
     */
-    if (auth()->check() && auth()->user()->id == $this->id) {
-      return true;
+        if (auth()->check() && auth()->user()->id == $this->id) {
+            return true;
+        }
+
+        /**
+        * Check admin.
+        *
+        */
+        elseif (auth()->check() && auth()->user()->hasRole("Super Administrator|Administrator")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
-    * Check admin.
+    * Get full URL of image.
     *
     */
-    else if (auth()->check() && auth()->user()->hasRole("Super Administrator|Administrator")) {
-      return true;
+    public function getImageAttribute()
+    {
+        if ($this->image_path != "") {
+            return env("S3_URL") . $this->image_path;
+        } else {
+            return asset("/images/temp/homepage-discussion-1-bg.png");
+        }
     }
-
-    else {
-      return false;
-    }
-
-  }
-
-  /**
-  * Get full URL of image.
-  *
-  */
-  public function getImageAttribute() {
-
-    if ($this->image_path != "") {
-
-      return env("S3_URL") . $this->image_path;
-
-    }
-
-    else {
-
-      return asset("/images/temp/homepage-discussion-1-bg.png");
-
-    }
-
-  }
-
 }

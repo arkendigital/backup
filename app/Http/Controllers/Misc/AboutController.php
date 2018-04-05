@@ -13,36 +13,36 @@ use Illuminate\Http\Request;
 */
 use App\Models\Page;
 
-class AboutController extends Controller {
+class AboutController extends Controller
+{
 
   /**
   * Display page.
   *
   */
-  public function index() {
+    public function index()
+    {
 
     /**
     * Get page information.
     *
     */
-    $page = Page::getPage("about");
+        $page = Page::getPage("about");
 
 
-    /**
-    * Set SEO.
-    *
-    */
-    $this->seo()->setTitle($page->meta_title);
-    $this->seo()->setDescription($page->meta_description);
+        /**
+        * Set SEO.
+        *
+        */
+        $this->seo()->setTitle($page->meta_title);
+        $this->seo()->setDescription($page->meta_description);
 
-    /**
-    * Show page.
-    *
-    */
-    return view("misc.about", compact(
+        /**
+        * Show page.
+        *
+        */
+        return view("misc.about", compact(
       "page"
     ));
-
-  }
-
+    }
 }

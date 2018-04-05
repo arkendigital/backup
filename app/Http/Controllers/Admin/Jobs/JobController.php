@@ -9,69 +9,71 @@ use App\Models\Job;
 use App\Models\JobLocation;
 use App\Models\JobCompany;
 
-class JobController extends Controller {
+class JobController extends Controller
+{
 
   /**
   * List jobs.
   */
-  public function index() {
+    public function index()
+    {
 
     /**
     * Get jobs.
     */
-    $jobs = Job::all();
+        $jobs = Job::all();
 
-    /**
-    * Display results.
-    */
-    return view("admin.jobs.index", compact(
+        /**
+        * Display results.
+        */
+        return view("admin.jobs.index", compact(
       "jobs"
     ));
+    }
 
-  }
-
-  /**
-  * Show form for editing specified job.
-  *
-  * @param Job $job
-  *
-  */
-  public function edit(Job $job) {
+    /**
+    * Show form for editing specified job.
+    *
+    * @param Job $job
+    *
+    */
+    public function edit(Job $job)
+    {
 
     /**
     * Get list of locations.
     */
-    $locations = JobLocation::all();
+        $locations = JobLocation::all();
 
-    /**
-    * Get list of companies.
-    */
-    $companies = JobCompany::all();
+        /**
+        * Get list of companies.
+        */
+        $companies = JobCompany::all();
 
-    /**
-    * Display form / page.
-    */
-    return view("admin.jobs.edit", compact(
+        /**
+        * Display form / page.
+        */
+        return view("admin.jobs.edit", compact(
       "job",
       "locations",
       "companies"
     ));
+    }
 
-  }
-
-  /**
-  * Update specified job in database storage.
-  *
-  * @param Job $job
-  * @param Request $request
-  *
-  */
-  public function update(Job $job, Request $request) {
+    /**
+    * Update specified job in database storage.
+    *
+    * @param Job $job
+    * @param Request $request
+    *
+    */
+    public function update(Job $job, Request $request)
+    {
 
     /**
     * Update job.
     */
-    $job->update([
+        $job->update([
       "title" => request()->title,
       "excerpt" => request()->excerpt,
       "content" => request()->content,
@@ -82,47 +84,47 @@ class JobController extends Controller {
       "featured" => request()->featured
     ]);
 
+        /**
+        * Redirect back to edit page.
+        */
+        return redirect()->back();
+    }
+
     /**
-    * Redirect back to edit page.
+    * Show form for creating a new job.
     */
-    return redirect()->back();
-
-  }
-
-  /**
-  * Show form for creating a new job.
-  */
-  public function create() {
+    public function create()
+    {
 
     /**
     * Get list of locations.
     */
-    $locations = JobLocation::all();
+        $locations = JobLocation::all();
 
-    /**
-    * Get list of companies.
-    */
-    $companies = JobCompany::all();
+        /**
+        * Get list of companies.
+        */
+        $companies = JobCompany::all();
 
-    return view("admin.jobs.create", compact(
+        return view("admin.jobs.create", compact(
       "locations",
       "companies"
     ));
+    }
 
-  }
-
-  /**
-  * Store new job in database storage.
-  *
-  * @param JobRequest $request
-  *
-  */
-  public function store(JobRequest $request) {
+    /**
+    * Store new job in database storage.
+    *
+    * @param JobRequest $request
+    *
+    */
+    public function store(JobRequest $request)
+    {
 
     /**
     * Create job.
     */
-    $job = Job::create([
+        $job = Job::create([
       "title" => request()->title,
       "excerpt" => request()->excerpt,
       "content" => request()->content,
@@ -133,13 +135,11 @@ class JobController extends Controller {
       "featured" => request()->featured
     ]);
 
-    /**
-    * Redirect to edit page.
-    */
-    return redirect(route("jobs.edit", compact(
+        /**
+        * Redirect to edit page.
+        */
+        return redirect(route("jobs.edit", compact(
       "job"
     )));
-
-  }
-
+    }
 }

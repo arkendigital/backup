@@ -10,132 +10,130 @@ use App\Http\Requests\ExamResource as ExamResourceRequest;
 
 use App\Models\ExamResource;
 
-class ExamResourceController extends Controller {
+class ExamResourceController extends Controller
+{
 
   /**
   * Display a list of exam resources.
   *
   */
-  public function index() {
+    public function index()
+    {
 
     /**
     * Get list of exam resources.
     */
-    $resources = ExamResource::all();
+        $resources = ExamResource::all();
 
-    /**
-    * Display results.
-    */
-    return view("admin.exams.resources.index", compact(
+        /**
+        * Display results.
+        */
+        return view("admin.exams.resources.index", compact(
       "resources"
     ));
+    }
 
-  }
+    /**
+    * Show form for creating a new exam resource.
+    *
+    */
+    public function create()
+    {
+        return view("admin.exams.resources.create");
+    }
 
-  /**
-  * Show form for creating a new exam resource.
-  *
-  */
-  public function create() {
-
-    return view("admin.exams.resources.create");
-
-  }
-
-  /**
-  * Create a new exam resource in database storage.
-  *
-  * @param ExamResourceRequest $request
-  *
-  */
-  public function store(ExamResourceRequest $request) {
+    /**
+    * Create a new exam resource in database storage.
+    *
+    * @param ExamResourceRequest $request
+    *
+    */
+    public function store(ExamResourceRequest $request)
+    {
 
     /**
     * Create new resource in storage.
     */
-    $resource = ExamResource::create([
+        $resource = ExamResource::create([
       "name" => request()->name,
       "excerpt" => request()->excerpt,
       "content" => request()->content
     ]);
 
-    /**
-    * Upload icon.
-    */
-    if (request()->file("icon")) {
-      $icon_path = AWS::uploadImage(
+        /**
+        * Upload icon.
+        */
+        if (request()->file("icon")) {
+            $icon_path = AWS::uploadImage(
         request()->file("icon"),
         "exam-resources"
       );
 
-      $resource->update([
+            $resource->update([
         "icon_path" => $icon_path
       ]);
+        }
+
+        /**
+        * Redirect to edit page.
+        */
+        return redirect(route("exam-resources.edit", compact(
+      "resource"
+    )));
     }
 
     /**
-    * Redirect to edit page.
+    * Show form for editing resource.
+    *
+    * @param ExamResource $resource
+    *
     */
-    return redirect(route("exam-resources.edit", compact(
-      "resource"
-    )));
-
-  }
-
-  /**
-  * Show form for editing resource.
-  *
-  * @param ExamResource $resource
-  *
-  */
-  public function edit(ExamResource $resource) {
-
-    return view("admin.exams.resources.edit", compact(
+    public function edit(ExamResource $resource)
+    {
+        return view("admin.exams.resources.edit", compact(
       "resource"
     ));
+    }
 
-  }
-
-  /**
-  * Update specified resource in database storage.
-  *
-  * @param ExamResource $resource
-  * @param ExamResourceRequest $request
-  *
-  */
-  public function update(ExamResource $resource, ExamResourceRequest $request) {
+    /**
+    * Update specified resource in database storage.
+    *
+    * @param ExamResource $resource
+    * @param ExamResourceRequest $request
+    *
+    */
+    public function update(ExamResource $resource, ExamResourceRequest $request)
+    {
 
     /**
     * Create new resource in storage.
     */
-    $resource->update([
+        $resource->update([
       "name" => request()->name,
       "excerpt" => request()->excerpt,
       "content" => request()->content
     ]);
 
-    /**
-    * Upload icon.
-    */
-    if (request()->file("icon")) {
-      $icon_path = AWS::uploadImage(
+        /**
+        * Upload icon.
+        */
+        if (request()->file("icon")) {
+            $icon_path = AWS::uploadImage(
         request()->file("icon"),
         "exam-resources",
         $resource->icon_path
       );
 
-      $resource->update([
+            $resource->update([
         "icon_path" => $icon_path
       ]);
-    }
+        }
 
-    /**
-    * Redirect to edit page.
-    */
-    return redirect(route("exam-resources.edit", compact(
+        /**
+        * Redirect to edit page.
+        */
+        return redirect(route("exam-resources.edit", compact(
       "resource"
     )));
-
-  }
-
+    }
 }

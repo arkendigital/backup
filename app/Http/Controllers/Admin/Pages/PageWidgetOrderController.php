@@ -12,40 +12,39 @@ use Illuminate\Http\Request;
 use App\Models\Page;
 use App\Models\PageWidget;
 
-class PageWidgetOrderController extends Controller {
+class PageWidgetOrderController extends Controller
+{
 
   /**
   * Display page for changing the order.
   *
   */
-  public function index($page_id) {
+    public function index($page_id)
+    {
 
     /**
     * Get page.
     *
     */
-    $page = Page::find($page_id);
+        $page = Page::find($page_id);
 
-    /**
-    * Show page.
-    *
-    */
-    return view("admin.pages.widgets.order", compact(
+        /**
+        * Show page.
+        *
+        */
+        return view("admin.pages.widgets.order", compact(
       "page"
     ));
-
-  }
-
-  public function update(Request $request) {
-
-    foreach(request()->order as $iteration => $widget_id) {
-      $order = ($iteration + 1);
-      $item = PageWidget::find($widget_id);
-      $item->update(["order" => $order]);
     }
 
-    return redirect()->back();
+    public function update(Request $request)
+    {
+        foreach (request()->order as $iteration => $widget_id) {
+            $order = ($iteration + 1);
+            $item = PageWidget::find($widget_id);
+            $item->update(["order" => $order]);
+        }
 
-  }
-
+        return redirect()->back();
+    }
 }

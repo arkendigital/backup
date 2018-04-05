@@ -18,7 +18,7 @@ class InviteOnly
     {
         if (auth()->guest()) {
             if (request()->isMethod('post')) {
-                return $next($request);   
+                return $next($request);
             }
 
             if (!in_array(request()->route()->getName(), ['checkInvite', 'registerInvitedUser', 'verifyEmail', 'mailTracker_l', 'login', 'password.request', 'password.reset'])) {

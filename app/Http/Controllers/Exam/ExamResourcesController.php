@@ -15,7 +15,8 @@ use App\Models\Section;
 use App\Models\Page;
 use App\Models\ExamResource;
 
-class ExamResourcesController extends Controller {
+class ExamResourcesController extends Controller
+{
 
   /**
   * Set SEO for pages.
@@ -23,65 +24,63 @@ class ExamResourcesController extends Controller {
   * @param object $page
   *
   */
-  private function set_seo($page) {
+    private function set_seo($page)
+    {
+        $this->seo()->setTitle($page->meta_title);
+        $this->seo()->setDescription($page->meta_description);
+    }
 
-    $this->seo()->setTitle($page->meta_title);
-    $this->seo()->setDescription($page->meta_description);
-
-  }
-
-  public function index() {
+    public function index()
+    {
 
     /**
     * Get page Information
     */
-    $page = Page::getPage(request()->route()->uri);
+        $page = Page::getPage(request()->route()->uri);
 
-    /**
-    * Set seo.
-    */
-    $this->set_seo($page);
+        /**
+        * Set seo.
+        */
+        $this->set_seo($page);
 
-    /**
-    * Get a list of resources.
-    */
-    $resources = ExamResource::all();
+        /**
+        * Get a list of resources.
+        */
+        $resources = ExamResource::all();
 
-    /**
-    * Get adverts for this page.
-    */
-    $page_adverts = getArrayOfAdverts($page->id);
+        /**
+        * Get adverts for this page.
+        */
+        $page_adverts = getArrayOfAdverts($page->id);
 
-    /**
-    * Display page.
-    */
-    return view("exam.resources.index", compact(
+        /**
+        * Display page.
+        */
+        return view("exam.resources.index", compact(
       "page",
       "resources",
       "page_adverts"
     ));
+    }
 
-  }
-
-  /**
-  * Display a specific exam resource.
-  *
-  * @param ExamResource $exam_resource
-  *
-  */
-  public function view(ExamResource $exam_resource) {
+    /**
+    * Display a specific exam resource.
+    *
+    * @param ExamResource $exam_resource
+    *
+    */
+    public function view(ExamResource $exam_resource)
+    {
 
     /**
     * Get section.
     */
-    $section = Section::where("slug", "exams")
+        $section = Section::where("slug", "exams")
       ->first();
 
-    return view("exam.resources.view", [
+        return view("exam.resources.view", [
       "resource" => $exam_resource,
       "section" => $section
     ]);
-
-  }
-
+    }
 }

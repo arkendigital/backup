@@ -4,14 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SalarySurvey extends Model {
+class SalarySurvey extends Model
+{
 
   /**
   * The attributes that are mass assignable.
   *
   * @var array
   */
-  protected $fillable = [
+    protected $fillable = [
     "type",
     "sector",
     "field",
@@ -23,5 +24,4 @@ class SalarySurvey extends Model {
 
     protected $table = 'salary_survery';
     public $timestamps = true;
-
 }

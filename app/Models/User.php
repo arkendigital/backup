@@ -135,17 +135,17 @@ class User extends Authenticatable
 
 
 
-  /**
-  * Get the avatar attribute
-  *
-  * @return string
-  */
-  public function getAvatarAttribute() {
-    if (!$this->avatar_path) {
-      return asset("images/defaults/avatar_default.jpg");
+    /**
+    * Get the avatar attribute
+    *
+    * @return string
+    */
+    public function getAvatarAttribute()
+    {
+        if (!$this->avatar_path) {
+            return asset("images/defaults/avatar_default.jpg");
+        }
+        // return asset('storage/'. $this->avatar_path);
+        return env("S3_URL") . $this->avatar_path;
     }
-    // return asset('storage/'. $this->avatar_path);
-    return env("S3_URL") . $this->avatar_path;
-  }
-
 }

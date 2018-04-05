@@ -13,8 +13,7 @@ class JobSector extends Model
     {
         parent::boot();
 
-        static::deleting(function($sector)
-        {
+        static::deleting(function ($sector) {
             Job::where('sector_id', $sector->id)
                 ->update(['sector_id' => null]);
         });
@@ -24,5 +23,4 @@ class JobSector extends Model
     {
         return $this->belongsToMany('JobSector', 'id', 'sector_id');
     }
-
 }

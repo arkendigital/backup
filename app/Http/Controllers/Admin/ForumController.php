@@ -145,6 +145,5 @@ class ForumController extends Controller
             alert()->info('No last thread found');
             return back();
         }
-
     }
 }

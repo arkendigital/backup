@@ -18,7 +18,7 @@ class ReactionController extends Controller
             $reaction = new Reaction($request->all());
             $reaction->save();
             echo json_encode($reaction);
-            // Event::fire( new ReactionCreated() );
+        // Event::fire( new ReactionCreated() );
         } else {
             echo json_encode('err');
         }

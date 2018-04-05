@@ -34,7 +34,7 @@ class ProfileController extends Controller
 
     /**
      * Follow the specified user
-     * 
+     *
      * @param  \App\Profile $profile
      * @return Illuminate\Http\Response
      */
@@ -47,7 +47,7 @@ class ProfileController extends Controller
 
     /**
      * Unfollow the specified user
-     * 
+     *
      * @param  \App\Profile $profile
      * @return Illuminate\Http\Response
      */

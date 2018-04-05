@@ -6,8 +6,8 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class DiscussionCategory extends Model {
-
+class DiscussionCategory extends Model
+{
     use SoftDeletes, Sluggable;
 
     /**
@@ -36,8 +36,9 @@ class DiscussionCategory extends Model {
      *
      * @return array
      */
-    public function sluggable() {
-      return [
+    public function sluggable()
+    {
+        return [
         'slug' => [
           'source' => 'name',
         ],
@@ -47,27 +48,27 @@ class DiscussionCategory extends Model {
     /**
      * Get the route key name
      */
-    public function getRouteKeyName() {
-      return 'slug';
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 
-  /**
-  * A category has an icon.
-  *
-  * @return \Illuminate\Database\Eloquent\Relations\HasOne
-  */
-  public function icon() {
-    return $this->hasOne(DiscussionIcon::class, 'id', 'icon_id');
-  }
+    /**
+    * A category has an icon.
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasOne
+    */
+    public function icon()
+    {
+        return $this->hasOne(DiscussionIcon::class, 'id', 'icon_id');
+    }
 
-  /**
-  * Get the fully qualified path of the discussion category.
-  *
-  */
-  public function getGetURLAttribute() {
-
-    return env("APP_URL")."/discussion/".$this->slug;
-
-  }
-
+    /**
+    * Get the fully qualified path of the discussion category.
+    *
+    */
+    public function getGetURLAttribute()
+    {
+        return env("APP_URL")."/discussion/".$this->slug;
+    }
 }

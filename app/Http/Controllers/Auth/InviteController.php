@@ -14,7 +14,7 @@ class InviteController extends Controller
 
     /**
      * Check an invite code is valid and display a registration form
-     * 
+     *
      * @return Illuminate\View\View
      */
     public function check(Request $request)
@@ -35,7 +35,7 @@ class InviteController extends Controller
 
     /**
      * Register the invited user
-     * 
+     *
      * @return Illuminate\Http\Response
      */
     public function registerInvitedUser(Request $request)

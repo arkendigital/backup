@@ -19,59 +19,60 @@ use App\Models\Society;
 */
 use App\Http\Requests\Society as SocietyRequest;
 
-class SocietyController extends Controller {
+class SocietyController extends Controller
+{
 
   /**
   * Display a list of societies.
   *
   */
-  public function index() {
+    public function index()
+    {
 
     /**
     * Gather list of societies.
     *
     */
-    $societies = Society::all();
+        $societies = Society::all();
 
-    /**
-    * Display results.
-    *
-    */
-    return view("admin.societies.index", compact(
+        /**
+        * Display results.
+        *
+        */
+        return view("admin.societies.index", compact(
       "societies"
     ));
+    }
 
-  }
+    /**
+    * Display form for creating a new society.
+    *
+    */
+    public function create()
+    {
+        return view("admin.societies.create");
+    }
 
-  /**
-  * Display form for creating a new society.
-  *
-  */
-  public function create() {
-
-    return view("admin.societies.create");
-
-  }
-
-  /**
-  * Create a new society in database storage.
-  *
-  * @param SocietyRequest $request
-  *
-  */
-  public function store(SocietyRequest $request) {
+    /**
+    * Create a new society in database storage.
+    *
+    * @param SocietyRequest $request
+    *
+    */
+    public function store(SocietyRequest $request)
+    {
 
     /**
     * Get location information.
     *
     */
-    $location = Location::fromPostcode(request()->postcode);
+        $location = Location::fromPostcode(request()->postcode);
 
-    /**
-    * Insert new society.
-    *
-    */
-    $society = Society::create([
+        /**
+        * Insert new society.
+        *
+        */
+        $society = Society::create([
       "name" => request()->name,
       "email" => request()->email,
       "link" => request()->link,
@@ -82,100 +83,97 @@ class SocietyController extends Controller {
       "city" => $location->admin_district
     ]);
 
-    /**
-    * Upload society logo.
-    *
-    */
-    if (request()->file("logo")) {
+        /**
+        * Upload society logo.
+        *
+        */
+        if (request()->file("logo")) {
 
       /**
       * Upload to S3.
       *
       */
-      $logo_path = AWS::uploadImage(
+            $logo_path = AWS::uploadImage(
         request()->file("logo"),
         "societies/logos"
       );
 
-      /**
-      * Add path for logo.
-      *
-      */
-      $society->update([
+            /**
+            * Add path for logo.
+            *
+            */
+            $society->update([
         "logo_path" => $logo_path
       ]);
+        }
 
-    }
-
-    /**
-    * Upload society image.
-    *
-    */
-    if (request()->file("image")) {
+        /**
+        * Upload society image.
+        *
+        */
+        if (request()->file("image")) {
 
       /**
       * Upload to S3.
       *
       */
-      $image_path = AWS::uploadImage(
+            $image_path = AWS::uploadImage(
         request()->file("image"),
         "societies/images"
       );
 
-      /**
-      * Add path for image.
-      *
-      */
-      $society->update([
+            /**
+            * Add path for image.
+            *
+            */
+            $society->update([
         "image_path" => $image_path
       ]);
+        }
 
+        /**
+        * Redirect to edit page.
+        *
+        */
+        return redirect(route("societies.edit", compact(
+      "society"
+    )));
     }
 
     /**
-    * Redirect to edit page.
+    * Display form for editing a society.
+    *
+    * @param Society $society
     *
     */
-    return redirect(route("societies.edit", compact(
-      "society"
-    )));
-
-  }
-
-  /**
-  * Display form for editing a society.
-  *
-  * @param Society $society
-  *
-  */
-  public function edit(Society $society) {
-
-    return view("admin.societies.edit", compact(
+    public function edit(Society $society)
+    {
+        return view("admin.societies.edit", compact(
       "society"
     ));
+    }
 
-  }
-
-  /**
-  * Update society in database storage.
-  *
-  * @param SocietyRequest $request
-  * @param Society $society
-  *
-  */
-  public function update(SocietyRequest $request, Society $society) {
+    /**
+    * Update society in database storage.
+    *
+    * @param SocietyRequest $request
+    * @param Society $society
+    *
+    */
+    public function update(SocietyRequest $request, Society $society)
+    {
 
     /**
     * Get location information.
     *
     */
-    $location = Location::fromPostcode(request()->postcode);
+        $location = Location::fromPostcode(request()->postcode);
 
-    /**
-    * Update society.
-    *
-    */
-    $society->update([
+        /**
+        * Update society.
+        *
+        */
+        $society->update([
       "name" => request()->name,
       "email" => request()->email,
       "link" => request()->link,
@@ -186,95 +184,91 @@ class SocietyController extends Controller {
       "city" => $location->admin_district
     ]);
 
-    /**
-    * Upload society logo.
-    *
-    */
-    if (request()->file("logo")) {
+        /**
+        * Upload society logo.
+        *
+        */
+        if (request()->file("logo")) {
 
       /**
       * Upload to S3.
       *
       */
-      $logo_path = AWS::uploadImage(
+            $logo_path = AWS::uploadImage(
         request()->file("logo"),
         "societies/logos",
         $society->logo_path
       );
 
-      /**
-      * Add path for logo.
-      *
-      */
-      $society->update([
+            /**
+            * Add path for logo.
+            *
+            */
+            $society->update([
         "logo_path" => $logo_path
       ]);
+        }
 
-    }
-
-    /**
-    * Upload society image.
-    *
-    */
-    if (request()->file("image")) {
+        /**
+        * Upload society image.
+        *
+        */
+        if (request()->file("image")) {
 
       /**
       * Upload to S3.
       *
       */
-      $image_path = AWS::uploadImage(
+            $image_path = AWS::uploadImage(
         request()->file("image"),
         "societies/images",
         $society->image_path
       );
 
-      /**
-      * Add path for image.
-      *
-      */
-      $society->update([
+            /**
+            * Add path for image.
+            *
+            */
+            $society->update([
         "image_path" => $image_path
       ]);
+        }
 
-    }
-
-    /**
-    * Redirect to edit page.
-    *
-    */
-    return redirect(route("societies.edit", compact(
+        /**
+        * Redirect to edit page.
+        *
+        */
+        return redirect(route("societies.edit", compact(
       "society"
     )));
+    }
 
-  }
 
-
-  /**
-  * Delete specific society.
-  *
-  * @param Society $society
-  *
-  */
-  public function destroy(Society $society) {
+    /**
+    * Delete specific society.
+    *
+    * @param Society $society
+    *
+    */
+    public function destroy(Society $society)
+    {
 
     /**
     * Delete it.
     *
     */
-    $society->delete();
+        $society->delete();
 
-    /**
-    * Notify.
-    *
-    */
-    alert("Society has been deleted")->persistent();
+        /**
+        * Notify.
+        *
+        */
+        alert("Society has been deleted")->persistent();
 
-    /**
-    * Redirect to the list.
-    *
-    */
-    return redirect(route("societies.index"));
-
-  }
-
+        /**
+        * Redirect to the list.
+        *
+        */
+        return redirect(route("societies.index"));
+    }
 }

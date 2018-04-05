@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class JobCompany extends Model {
+class JobCompany extends Model
+{
 
   /**
   * The attributes that are mass assignable.
   *
   * @var array
   */
-  protected $fillable = [
+    protected $fillable = [
     "name",
     "logo_path",
     "description"
@@ -29,16 +30,16 @@ class JobCompany extends Model {
 
 
 
-  /**
-  * Get the avatar attribute
-  *
-  * @return string
-  */
-  public function getLogoAttribute() {
-    if (!$this->logo_path) {
-      return "https://statewideguttercompany.com/wp-content/uploads/2012/07/logo-placeholder.jpg";
+    /**
+    * Get the avatar attribute
+    *
+    * @return string
+    */
+    public function getLogoAttribute()
+    {
+        if (!$this->logo_path) {
+            return "https://statewideguttercompany.com/wp-content/uploads/2012/07/logo-placeholder.jpg";
+        }
+        return env("S3_URL") . $this->logo_path;
     }
-    return env("S3_URL") . $this->logo_path;
-  }
-
 }

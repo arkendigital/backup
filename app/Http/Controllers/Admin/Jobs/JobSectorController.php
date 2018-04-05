@@ -8,11 +8,11 @@ use App\Models\JobSector;
 
 class JobSectorController extends Controller
 {
-/**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    /**
+         * Display a listing of the resource.
+         *
+         * @return \Illuminate\Http\Response
+         */
     public function index()
     {
         $sectors = JobSector::all();

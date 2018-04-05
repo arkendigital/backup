@@ -40,11 +40,11 @@ class UserController extends Controller
                 if ($user->first_letter == strtoupper($filter)) {
                     return $user;
                 }
-            })->sortBy(function($user) {
+            })->sortBy(function ($user) {
                 return $user->name;
             })->paginate(20);
         } else {
-            $users = $user->all()->map(function($user) {
+            $users = $user->all()->map(function ($user) {
                 return $user;
             })->paginate(20);
         }

@@ -13,36 +13,36 @@ use Illuminate\Http\Request;
 */
 use App\Models\Page;
 
-class PrivacyController extends Controller {
+class PrivacyController extends Controller
+{
 
   /**
   * Display page.
   *
   */
-  public function index() {
+    public function index()
+    {
 
     /**
     * Get page information.
     *
     */
-    $page = Page::getPage("privacy-cookies");
+        $page = Page::getPage("privacy-cookies");
 
 
-    /**
-    * Set SEO.
-    *
-    */
-    $this->seo()->setTitle($page->meta_title);
-    $this->seo()->setDescription($page->meta_description);
+        /**
+        * Set SEO.
+        *
+        */
+        $this->seo()->setTitle($page->meta_title);
+        $this->seo()->setDescription($page->meta_description);
 
-    /**
-    * Show page.
-    *
-    */
-    return view("misc.privacy", compact(
+        /**
+        * Show page.
+        *
+        */
+        return view("misc.privacy", compact(
       "page"
     ));
-
-  }
-
+    }
 }

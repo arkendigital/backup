@@ -19,61 +19,63 @@ use App\Models\Exam\Info as ExamModuleInfo;
 */
 use App\Http\Requests\ExamModule as ExamModuleRequest;
 
-class ExamModuleController extends Controller {
+class ExamModuleController extends Controller
+{
 
   /**
   * Show form for creating a new module.
   *
   */
-  public function create() {
+    public function create()
+    {
 
     /**
     * Get category.
     *
     */
-    $category = ExamCategory::find($_GET["category_id"]);
+        $category = ExamCategory::find($_GET["category_id"]);
 
-    /**
-    * Module sections.
-    *
-    */
-    $module_sections = $this->getModuleSections();
+        /**
+        * Module sections.
+        *
+        */
+        $module_sections = $this->getModuleSections();
 
-    /**
-    * Show page.
-    *
-    */
-    return view("admin.exams.modules.create", compact(
+        /**
+        * Show page.
+        *
+        */
+        return view("admin.exams.modules.create", compact(
       "category",
       "module_sections"
     ));
+    }
 
-  }
-
-  /**
-  * Insert new module into the database.
-  *
-  * @param ExamModuleRequest $request
-  *
-  */
-  public function store(ExamModuleRequest $request) {
+    /**
+    * Insert new module into the database.
+    *
+    * @param ExamModuleRequest $request
+    *
+    */
+    public function store(ExamModuleRequest $request)
+    {
 
     /**
     * Add module to database.
     *
     */
-    $module = ExamModule::create([
+        $module = ExamModule::create([
       "category_id" => request()->category_id,
       "name" => request()->name,
       "slug" => strtolower(str_slug(request()->name)),
       "excerpt" => request()->excerpt
     ]);
 
-    /**
-    * Add info to database.
-    *
-    */
-    $info = ExamModuleInfo::create([
+        /**
+        * Add info to database.
+        *
+        */
+        $info = ExamModuleInfo::create([
       "module_id" => $module->id,
       "name" => request()->info_name,
       "section_one_title" => request()->section_one_title,
@@ -90,79 +92,79 @@ class ExamModuleController extends Controller {
       "section_four_link" => request()->section_four_link
     ]);
 
-    /**
-    * Get exam category.
-    *
-    */
-    $category = $module->category;
+        /**
+        * Get exam category.
+        *
+        */
+        $category = $module->category;
 
-    /**
-    * Redirect to category view.
-    *
-    */
-    return redirect(route("exam-categories.edit", compact(
+        /**
+        * Redirect to category view.
+        *
+        */
+        return redirect(route("exam-categories.edit", compact(
       "category"
     )));
+    }
 
-  }
-
-  /**
-  * Show form for editing a module.
-  *
-  * @param ExamModule $module
-  *
-  */
-  public function edit(ExamModule $module) {
+    /**
+    * Show form for editing a module.
+    *
+    * @param ExamModule $module
+    *
+    */
+    public function edit(ExamModule $module)
+    {
 
     /**
     * Get category.
     *
     */
-    $category = $module->category;
+        $category = $module->category;
 
-    /**
-    * Module sections.
-    *
-    */
-    $module_sections = $this->getModuleSections();
+        /**
+        * Module sections.
+        *
+        */
+        $module_sections = $this->getModuleSections();
 
-    /**
-    * Show page.
-    *
-    */
-    return view("admin.exams.modules.edit", compact(
+        /**
+        * Show page.
+        *
+        */
+        return view("admin.exams.modules.edit", compact(
       "module",
       "category",
       "module_sections"
     ));
+    }
 
-  }
-
-  /**
-  * Update a specific module.
-  *
-  * @param ExamModule $module
-  * @param ExamModuleRequest $request
-  *
-  */
-  public function update(ExamModule $module, ExamModuleRequest $request) {
+    /**
+    * Update a specific module.
+    *
+    * @param ExamModule $module
+    * @param ExamModuleRequest $request
+    *
+    */
+    public function update(ExamModule $module, ExamModuleRequest $request)
+    {
 
     /**
     * Update module in database.
     *
     */
-    $module->update([
+        $module->update([
       "category_id" => request()->category_id,
       "name" => request()->name,
       "slug" => strtolower(str_slug(request()->name)),
       "excerpt" => request()->excerpt,
     ]);
 
-    /**
-    * Update module info.
-    *
-    */
-    $module->info->update([
+        /**
+        * Update module info.
+        *
+        */
+        $module->info->update([
       "name" => request()->info_name,
       "section_one_title" => request()->section_one_title,
       "section_one_text" => request()->section_one_text,
@@ -178,35 +180,32 @@ class ExamModuleController extends Controller {
       "section_four_link" => request()->section_four_link
     ]);
 
-    /**
-    * Get exam category.
-    *
-    */
-    $category = $module->category;
+        /**
+        * Get exam category.
+        *
+        */
+        $category = $module->category;
 
-    /**
-    * Redirect to category view.
-    *
-    */
-    return redirect(route("exam-categories.edit", compact(
+        /**
+        * Redirect to category view.
+        *
+        */
+        return redirect(route("exam-categories.edit", compact(
       "category"
     )));
+    }
 
-  }
-
-  /**
-  * Get module sections for loop.
-  *
-  */
-  private function getModuleSections() {
-
-    return [
+    /**
+    * Get module sections for loop.
+    *
+    */
+    private function getModuleSections()
+    {
+        return [
       "one",
       "two",
       "three",
       "four"
     ];
-
-  }
-
+    }
 }

@@ -10,98 +10,98 @@ use App\Models\Section;
 use App\Models\SectionField;
 use App\Models\SectionSidebar;
 
-class SectionController extends Controller {
+class SectionController extends Controller
+{
 
   /**
   * Display a list of available sections to manage.
   */
-  public function index() {
+    public function index()
+    {
 
     /**
     * Get sections.
     */
-    $sections = Section::all();
+        $sections = Section::all();
+
+        /**
+        * Display results.
+        */
+        return view("admin.sections.index", compact("sections"));
+    }
 
     /**
-    * Display results.
+    * Edit a section.
+    *
+    * @param Section @section
+    *
     */
-    return view("admin.sections.index", compact("sections"));
-
-  }
-
-  /**
-  * Edit a section.
-  *
-  * @param Section @section
-  *
-  */
-  public function edit(Section $section) {
+    public function edit(Section $section)
+    {
 
     /**
     * Get sidebars.
     *
     */
-    $sidebars = SectionSidebar::all();
+        $sidebars = SectionSidebar::all();
 
-    /**
-    * Display edit form / page.
-    */
-    return view("admin.sections.edit", compact(
+        /**
+        * Display edit form / page.
+        */
+        return view("admin.sections.edit", compact(
       "section",
       "sidebars"
     ));
+    }
 
-  }
-
-  /**
-  * Update the specified section.
-  *
-  * @param Section $section
-  * @param Request $request
-  *
-  */
-  public function update(Section $section, Request $request) {
+    /**
+    * Update the specified section.
+    *
+    * @param Section $section
+    * @param Request $request
+    *
+    */
+    public function update(Section $section, Request $request)
+    {
 
     /**
     * Update in database storage.
     */
-    $section->update(array_merge(request()->except(["_method", "_token", "image"])));
+        $section->update(array_merge(request()->except(["_method", "_token", "image"])));
 
-    /**
-    * Upload image.
-    */
-    if (request()->file("image")) {
-      $image_path = AWS::uploadImage(
+        /**
+        * Upload image.
+        */
+        if (request()->file("image")) {
+            $image_path = AWS::uploadImage(
         request()->file("image"),
         "section",
         $section->image_path
       );
 
-      $section->update([
+            $section->update([
         "image_path" => $image_path
       ]);
-    }
+        }
 
-    /**
-    * Save custom fields.
-    */
-    if(!empty(request()->field)) {
-      foreach(request()->field as $key => $field) {
-        $section_field = SectionField::where("key", $key)
+        /**
+        * Save custom fields.
+        */
+        if (!empty(request()->field)) {
+            foreach (request()->field as $key => $field) {
+                $section_field = SectionField::where("key", $key)
           ->where("section_id", $section->id)
           ->first();
 
-        $section_field->update([
+                $section_field->update([
           "value" => $field
         ]);
-      }
+            }
+        }
+
+        /**
+        * Redirect back
+        */
+        return redirect()->back();
     }
-
-    /**
-    * Redirect back
-    */
-    return redirect()->back();
-
-  }
-
 }

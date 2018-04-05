@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class DiscussionIcon extends Model {
+class DiscussionIcon extends Model
+{
 
     /**
      * The attributes that are mass assignable.
@@ -15,5 +16,4 @@ class DiscussionIcon extends Model {
       "icon",
       "name"
     ];
-
 }

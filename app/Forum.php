@@ -48,7 +48,7 @@ class Forum extends Model
 
     /**
      * A forum can have many children
-     * 
+     *
      * @return Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function children()
@@ -68,7 +68,7 @@ class Forum extends Model
 
     /**
      * Get the last post in a thread
-     * 
+     *
      * return App\ForumPost
      */
     public function getlastThreadAttribute()
@@ -84,7 +84,7 @@ class Forum extends Model
 
     /**
      * Get the last post in a thread
-     * 
+     *
      * return App\ForumPost
      */
     public function getlastPostAttribute()

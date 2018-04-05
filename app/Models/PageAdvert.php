@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PageAdvert extends Model {
-
-  protected $fillable = [
+class PageAdvert extends Model
+{
+    protected $fillable = [
     "page_id",
     "advert_id",
     "slug"
@@ -20,8 +20,8 @@ class PageAdvert extends Model {
     *
     * @return Illuminate\Database\Eloquent\Relations\HasOne
     */
-    public function advert() {
-      return $this->hasOne(Advert::class, 'id', 'advert_id');
+    public function advert()
+    {
+        return $this->hasOne(Advert::class, 'id', 'advert_id');
     }
-
 }

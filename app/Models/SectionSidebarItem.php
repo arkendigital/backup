@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SectionSidebarItem extends Model {
+class SectionSidebarItem extends Model
+{
 
   /**
   * The attributes that are mass assignable.
@@ -12,7 +13,7 @@ class SectionSidebarItem extends Model {
   * @var array
   *
   */
-  protected $fillable = [
+    protected $fillable = [
     "sidebar_id",
     "page_id",
     "link_text",
@@ -20,29 +21,29 @@ class SectionSidebarItem extends Model {
     "order"
   ];
 
-  /**
-  * Indicates which table this model relates to.
-  *
-  * @var string
-  *
-  */
-  protected $table = 'sections_sidebars_items';
+    /**
+    * Indicates which table this model relates to.
+    *
+    * @var string
+    *
+    */
+    protected $table = 'sections_sidebars_items';
 
-  /**
-  * Indicates if the model should be timestamped.
-  *
-  * @var bool
-  *
-  */
-  public $timestamps = true;
+    /**
+    * Indicates if the model should be timestamped.
+    *
+    * @var bool
+    *
+    */
+    public $timestamps = true;
 
-  /**
-  * A sidebar item has one page.
-  *
-  * @return \Illuminate\Database\Eloquent\Relations\HasOne
-  */
-  public function page() {
-    return $this->hasOne(Page::class, 'id', 'page_id');
-  }
-
+    /**
+    * A sidebar item has one page.
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasOne
+    */
+    public function page()
+    {
+        return $this->hasOne(Page::class, 'id', 'page_id');
+    }
 }
