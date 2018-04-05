@@ -61,12 +61,11 @@ class ContactController extends Controller
         * Redirect user.
         *
         */
-        return redirect(route("index"))
-      ->with([
-        "alert" => true,
-        "alert_title" => "Success",
-        "alert_message" => "Your message has been sent to us",
-        "alert_button" => "OK"
-      ]);
+        return redirect(route("index"))->with([
+            "alert" => true,
+            "alert_title" => "Success",
+            "alert_message" => "Your message has been sent to us",
+            "alert_button" => "OK"
+        ]);
     }
 }

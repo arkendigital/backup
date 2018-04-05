@@ -9,6 +9,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Mail;
+use App\Setting;
 
 class SendContactEmail implements ShouldQueue
 {
@@ -33,6 +34,6 @@ class SendContactEmail implements ShouldQueue
     {
         $email = new Contact($this->contact_submission);
 
-        Mail::to("stephen@fifteen.co.uk")->send($email);
+        Mail::to(Setting::get('admin_email'))->send($email);
     }
 }

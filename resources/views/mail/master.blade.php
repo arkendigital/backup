@@ -32,7 +32,7 @@
       <div class="box box--narrow" style="background-color:#FFF;-webkit-box-shadow:0 0 2px 0 rgba(0, 0, 0, 0.25);box-shadow:0 0 2px 0 rgba(0, 0, 0, 0.25);margin:20px 0;padding:20px;clear:both;float:left;width:65%;margin:20px auto;float:none;">
         <div class="box__container">
           <h1 class="box__title box__title--centered" style="border-bottom:1px solid rgba(18, 18, 18, 0.4);float:left;width:100%;clear:both;text-align:center;">
-            <img src="http://network.filesnation.download/images/logo.svg" alt="gamefront.com">
+            Actuaries Online
           </h1>
           <div class="box__content" style="width:100%;float:left;clear:both;margin-bottom:20px;padding:20px 0;width:60%;margin:20px auto;float:none;">
             @yield('content')
