@@ -4,21 +4,26 @@
   max-width: 96%;
   width: 1140px;
   &-content {
-    float: left;
-    width: 820px;
-    max-width: 100%;
+    @media (min-width: 768px) {
+      float: left;
+      width: calc(100% - 280px);
+      max-width: 100%;      
+    }
     margin-bottom: 50px;
     &-full {
       width: 100%;
     }
   }
   &-sidebar {
-    float: right;
-    width: 175px;
-    width: 265px;
-    text-align: right;
+
     margin-bottom: 50px;
     margin-top: 60px;
+
+    @media (min-width: 768px) {
+      float: right;
+      width: 265px;
+      text-align: right;
+    }
     a {
       display: block;
       font-weight: 600;

@@ -15,18 +15,19 @@
 
   &-table {
     margin-bottom: 50px;
-    width: 48%;
-    
-    &:nth-child(odd) {
-      float: right;
-      clear: right;
-    }
-    &:nth-child(even) {
-      float: left;
-      clear: left;
-    }
-    @media(max-width: 1000px) {
-      width: 100%;
+    width: 100%;
+
+    @media (min-width: 1000px) {
+      width: 48%;
+      
+      &:nth-child(odd) {
+        float: right;
+        clear: right;
+      }
+      &:nth-child(even) {
+        float: left;
+        clear: left;
+      }
     }
     td, th {
       padding: 5px 20px;
