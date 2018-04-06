@@ -148,10 +148,14 @@
   }
 
   &-box {
-    display: inline-block;
-    width: 27%;
-    margin: 2.5%;
-    vertical-align: top;
+    margin: 2.5% 30px 2.5% 2.5%;
+
+    @media (min-width: 650px) {
+      display: inline-block;
+      width: 27%;
+      vertical-align: top;
+    }
+
     &:first-of-type {
       margin-left: 0;
     }
@@ -192,8 +196,10 @@
   }
 
   &-box-additional {
-    display: inline-flex;
-    flex: 1;
+    @media (min-width: 650px) {
+      display: inline-flex;
+      flex: 1;
+    }
     align-items: center;
     width: 100%;
     max-width: 980px;
@@ -202,8 +208,13 @@
     }
 
     &-tabs {
-      float: left;
       width: 175px;
+      margin: 0 auto 20px;;
+      
+      @media (min-width: 650px) {
+        float: left;
+        margin: 0;
+      }
       a {
         display: block;
         width: 100%;
@@ -219,9 +230,11 @@
       }
     }
     &-content {
-      float: right;
-      width: calc(100% - 175px);
-      margin-left: 25px;
+      @media (min-width: 650px) {  
+        float: right;
+        width: calc(100% - 175px);
+        margin-left: 25px;      
+      }
       text-align: left;
       &-title {
         display: block;
