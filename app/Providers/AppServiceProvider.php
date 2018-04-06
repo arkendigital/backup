@@ -19,7 +19,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        // TODO: Look into this why this is triggering constantly
         if (! $this->app->runningInConsole()) {
             View::share([
                 'facebook' => Setting::get('facebook'),
@@ -51,9 +50,9 @@ class AppServiceProvider extends ServiceProvider
             $page = $page ?: LengthAwarePaginator::resolveCurrentPage($pageName);
 
             return new LengthAwarePaginator($this->forPage($page, $perPage), $total ?: $this->count(), $perPage, $page, [
-            'path' => LengthAwarePaginator::resolveCurrentPath(),
-            'pageName' => $pageName,
-          ]);
+                'path' => LengthAwarePaginator::resolveCurrentPath(),
+                'pageName' => $pageName,
+            ]);
         });
     }
 }
