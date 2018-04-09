@@ -27,12 +27,28 @@
           Location
         </div>
 
-        <input type="text" name="filter-location" class="job-list-banner-location-search" placeholder="e.g. London">
 
-        <div class="job-list-banner-sort-by">
-          Sort by
-          <span>Date</span>
-        </div>
+        <form action="/jobs/vacancies" method="POST" id="jobFiltering">
+          {{ csrf_field() }}
+
+          <input type="text" name="location" class="job-list-banner-location-search" placeholder="e.g. London" 
+            @if (session()->exists('job-filter-location') && !empty(session()->get('job-filter-location')))
+              value="{{ session()->get('job-filter-location') }}"
+            @endif
+          >
+
+          <div class="job-list-banner-sort-by">
+            Sort by
+            <select name="order">
+              <option value="created_at-desc" @if(session()->get('job-filter-order') == 'created_at-desc') selected @endif>Date (Newest First)</option>            
+              <option value="created_at-asc" @if(session()->get('job-filter-order') == 'created_at-asc') selected @endif>Date (Oldest First)</option>
+              <option value="salary-asc" @if(session()->get('job-filter-order') == 'salary-asc') selected @endif>Salary (Lowest First)</option>
+              <option value="salary-desc" @if(session()->get('job-filter-order') == 'salary-desc') selected @endif>Salary (Hightest First)</option>
+            </select>
+          </div>
+
+          <button type="submit">Update</button>
+        </form>
 
         <div class="job-list-banner-showing">
           Showing {{ $jobs->firstItem() }}-{{ $jobs->lastItem() }} of {{ $jobs->total() }}

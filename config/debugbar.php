@@ -112,7 +112,7 @@ return [
         'route'           => false,  // Current route information
         'auth'            => false, // Display Laravel authentication status
         'gate'            => false, // Display Laravel Gate checks
-        'session'         => false,  // Display session data
+        'session'         => true,  // Display session data
         'symfony_request' => false,  // Only one can be enabled..
         'mail'            => false,  // Catch mail messages
         'laravel'         => false, // Laravel version and environment

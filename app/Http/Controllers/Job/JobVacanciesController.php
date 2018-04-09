@@ -27,7 +27,7 @@ class JobVacanciesController extends Controller
     public function __construct()
     {
         $this->section = Section::where("slug", "jobs")
-      ->first();
+            ->first();
     }
 
     /**
@@ -52,8 +52,9 @@ class JobVacanciesController extends Controller
         /**
         * Get featured jobs.
         */
-        $featured_jobs = Job::with('company', 'location', 'sector')->where("featured", 1)
-      ->get();
+        $featured_jobs = Job::with('company', 'location', 'sector')
+            ->where("featured", 1)
+            ->get();
 
         /**
         * Get jobs.
@@ -83,18 +84,33 @@ class JobVacanciesController extends Controller
             $jobs = $jobs->where('sector_id', session()->get('job-filter-sector'));
         }
 
-        $jobs = $jobs->paginate(3);
+        if (session()->exists('job-filter-location') && !empty(session()->get('job-filter-location'))) {
+            $jobs = $jobs->whereHas('location', function ($q) {
+                $q->where('name', 'LIKE', '%' . session()->get('job-filter-location') . '%');
+            });
+        }
+
+        if (! session()->exists('job-filter-order')) {
+            session()->put("job-filter-order", 'created_at-desc');
+        }
+
+        if (session()->exists('job-filter-order') && !empty(session()->get('job-filter-order'))) {
+            $order = explode('-', session()->get('job-filter-order'));
+            $jobs = $jobs->orderBy($order[0], $order[1]);
+        }
+
+        $jobs = $jobs->paginate(6);
 
         /**
         * Display results.
         */
         return view("job.vacancies.index", compact(
-      "featured_jobs",
-      "jobs",
-      "page",
-      "section",
-      'sectors'
-    ));
+            "featured_jobs",
+            "jobs",
+            "page",
+            "section",
+            'sectors'
+        ));
     }
 
     /**
@@ -105,31 +121,17 @@ class JobVacanciesController extends Controller
     */
     public function set_filtering(Request $request)
     {
-
-    /**
-    * Set job keyword search filter.
-    */
-        session()->put("job-filter-keyword", request()->keyword);
-
-        /**
-        * Set job status filter.
-        */
-        session()->put("job-filter-status", request()->status);
-
-        /**
-        * Set job experience filter.
-        */
-        session()->put("job-filter-experience", request()->experience);
-
-        /**
-        * Set job type filter.
-        */
-        session()->put("job-filter-type", request()->type);
-
-
-        session()->put("job-filter-sector", request()->sector);
+        if (request()->location) {
+            session()->put("job-filter-location", request()->location);
+            session()->put("job-filter-order", request()->order);
+        } else {
+            session()->put("job-filter-keyword", request()->keyword);
+            session()->put("job-filter-status", request()->status);
+            session()->put("job-filter-experience", request()->experience);
+            session()->put("job-filter-type", request()->type);
+            session()->put("job-filter-sector", request()->sector);
+        }
     
-
         /**
         * Redirect back to job listing page.
         */
@@ -162,8 +164,8 @@ class JobVacanciesController extends Controller
         * Display job.
         */
         return view("job.vacancies.view", compact(
-      "job",
-      "page"
-    ));
+            "job",
+            "page"
+        ));
     }
 }
