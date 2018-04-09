@@ -48,6 +48,8 @@
     height: calc(100px - 20px);
     margin: 0 50px;
     margin-bottom: 40px;
+    transition: .3s all ease-in-out;
+
     @media(max-width: 900px) {
       margin: 0 25px;
       margin-bottom: 40px;
@@ -60,6 +62,11 @@
       width: calc(100% - 26px);
       margin: 0;
       margin-bottom: 15px;
+    }
+
+    &:hover, &:focus {
+      background-color: #FFFFFF;
+      color: rgb(26, 48, 77);
     }
   }
 
