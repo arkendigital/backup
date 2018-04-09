@@ -45,3 +45,25 @@ footer {
     }
   }
 }
+
+.footer-social a {
+  transition: .3s all ease-in-out;
+}
+
+.footer-social--facebook {
+  &:hover, &:focus {
+    color: #4867aa;
+  }
+}
+
+.footer-social--twitter {
+  &:hover, &:focus {
+    color: #1da1f2;
+  }
+}
+
+.footer-social--linkedin {
+  &:hover, &:focus {
+    color: #0077b5;
+  }
+}
