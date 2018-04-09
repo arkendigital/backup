@@ -40,7 +40,7 @@
           <a href="/exams">Exams</a>
           <img src="/images/icons/arrow-down.png" alt="" title="">
           <ul>
-            @foreach((new App\Models\SectionSidebar)->getItems("exams") as $item)
+            @foreach($navigation_items['exams'] as $item)
               <li><a href="{{ $item->url }}">{{ $item->text }}</a></li>
             @endforeach
           </ul>
@@ -49,7 +49,7 @@
           <a href="/jobs">Jobs</a>
           <img src="/images/icons/arrow-down.png" alt="" title="">
           <ul>
-            @foreach((new App\Models\SectionSidebar)->getItems("jobs") as $item)
+            @foreach($navigation_items['jobs'] as $item)
               <li><a href="{{ $item->url }}">{{ $item->text }}</a></li>
             @endforeach
           </ul>
@@ -58,7 +58,7 @@
           <a href="/cpd">CPD</a>
           <img src="/images/icons/arrow-down.png" alt="" title="">
           <ul>
-            @foreach((new App\Models\SectionSidebar)->getItems("cpd") as $item)
+            @foreach($navigation_items['cpd'] as $item)
               <li><a href="{{ $item->url }}">{{ $item->text }}</a></li>
             @endforeach
           </ul>
@@ -68,7 +68,7 @@
           <img src="/images/icons/arrow-down.png" alt="" title="">
 
           <ul>
-            @foreach((new App\Models\SectionSidebar)->getItems("salary-survey") as $item)
+            @foreach($navigation_items['salary-survey'] as $item)
               <li><a href="{{ $item->url }}">{{ $item->text }}</a></li>
             @endforeach
           </ul>
@@ -77,7 +77,7 @@
           <a href="/uni-corner">Uni Corner</a>
           <img src="/images/icons/arrow-down.png" alt="" title="">
           <ul>
-            @foreach((new App\Models\SectionSidebar)->getItems("uni-corner") as $item)
+            @foreach($navigation_items['uni-corner'] as $item)
               <li><a href="{{ $item->url }}">{{ $item->text }}</a></li>
             @endforeach
           </ul>

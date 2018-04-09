@@ -12,10 +12,9 @@
       {!! $page->getField("page_content") !!}
 
     </div>
+
     <div class="website-container-sidebar">
-      @include("partials.sidebar", [
-        "sidebar" => $page->section->sidebar
-      ])
+      @include("partials.sidebar.exams")
     </div>
 
     <div class="clear"></div>

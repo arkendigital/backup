@@ -100,4 +100,9 @@ class SectionSidebar extends Model
 
         return $items;
     }
+
+    public function items()
+    {
+        return $this->hasMany(SectionSidebarItem::class, 'sidebar_id', 'id');
+    }
 }
