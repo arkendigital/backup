@@ -1,6 +1,5 @@
 <header>
   <div>
-
     <a href="/">
       <img src="/images/logo.png" alt="Actuaries Online" title="Actuaries Online" class="header-logo">
     </a>
@@ -103,8 +102,10 @@
     </nav>
 
     <div class="header-search">
-      <img src="/images/icons/search.png" alt="" title="">
-      <input type="text" placeholder="SEARCH">
+      <form action="{{route('search') }}" method="" class="search-form">
+        <button type="submit"><img src="/images/icons/search.png" alt="" title=""></button>
+        <input type="text" name="q" placeholder="Search">
+      </form>
     </div>
 
     <div class="header-burger">

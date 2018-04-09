@@ -11,5 +11,5 @@ Route::namespace('Exam')->prefix('exams')->group(function() {
   Route::get('/centres', 'ExamCentreController@index');
   Route::post('/centres', 'ExamCentreController@search');
   
-  Route::get('/{slug}', 'ExamIndividualController@moduleList');
+  Route::get('/{slug}', 'ExamIndividualController@moduleList')->name('exam.show');
 });

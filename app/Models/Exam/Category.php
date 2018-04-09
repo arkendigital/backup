@@ -56,4 +56,9 @@ class Category extends Model
       ->orderBy("order")
       ->get();
     }
+
+    public function modules()
+    {
+        return $this->hasMany(Module::class, 'category_id', 'id');
+    }
 }

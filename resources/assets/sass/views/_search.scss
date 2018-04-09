@@ -1,0 +1,73 @@
+.view-section ul.tab-nav {
+    list-style: none;
+    margin: 10px 0;
+    padding: 0;
+
+    @media (min-width: 500px) {
+        display: inline-flex;
+    }
+
+    li {
+        margin-right: 20px;
+        margin-bottom: 10px;
+        display: inline-block;
+    }
+
+    a {
+        padding: 10px;
+        border: 2px solid #0d72b9;
+        transition: .3s all ease-in-out;
+        display: inline-block;
+    }
+
+    a.current {
+        background: #0d72b9;
+        color: white;
+    }
+}
+
+.tab-content {
+    h3 {
+        font-size: 24px;
+        font-weight: 600;
+    }
+}
+
+.search__item {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+
+    &:last-of-type {
+        margin-bottom: 0;
+        border-bottom: 0;
+    }
+
+    .tab-pages & {
+        border-bottom: 0;
+    }
+}
+
+
+// .view-section {
+p.search__date {
+    font-size: 14px;
+    margin: 10px 0 0;
+    line-height: 1.5;
+}
+
+p.search__excerpt {
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 15px 0 5px;
+}
+// }
+
+.tab-content {
+    transition: .3s all ease-in-out;
+}
+
+.tab-content-hidden {
+    display: none;
+}
+

@@ -57,6 +57,7 @@ Route::get('/about', 'Misc\AboutController@index')->name("about");
 
 
 
+Route::get('search', 'Search\SearchController@index')->name('search');
 
 
 
