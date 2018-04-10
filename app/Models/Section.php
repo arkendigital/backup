@@ -98,10 +98,10 @@ class Section extends Model
         return env("S3_URL") . $image_path;
     }
 
-    public function ScopeGetField($query, $section, $key)
+    public function getField($section, $key)
     {
         $new_section = Section::where("slug", $section)
-      ->first();
+             ->first();
 
         if ($new_section !== null) {
             foreach ($new_section->fields as $field) {

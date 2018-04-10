@@ -46,7 +46,13 @@
       @endforeach
     </div>
 
-    <div class="carousel">{{ $page->section->getField("exams", "exam_carousel") }}</div>
+        <div class="carousel">
+      <div class="ticker">
+      @foreach (json_decode($page->section->getField("exams", "exam_carousel")) as $item)
+        <p class="ticker__item">{{ $item }}</p>
+      @endforeach
+      </div>
+    </div>
 
     <div class="clear margin-bottom--medium"></div>
 

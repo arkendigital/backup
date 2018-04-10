@@ -50,7 +50,14 @@
         <div class="form-group">
           <label for="{{ $field->key }}">{{ $field->name }}</label>
           @if($field->type == "string")
-            <input type="text" class="form-control" name="field[{{ $field->key }}]" id="{{ $field->key }}" value="{{ $field->value }}">
+
+            @if ($field->key == 'exam_carousel')
+              @foreach (json_decode($field->value) as $key => $value)
+              <input type="text" class="form-control" name="field[{{ $field->key }}][]" id="{{ $field->key }}_{{ $key }}" value="{{ $value }}">
+              @endforeach         
+            @else
+              <input type="text" class="form-control" name="field[{{ $field->key }}]" id="{{ $field->key }}" value="{{ $field->value }}">          
+            @endif
           @elseif($field->type == "text")
             <textarea class="form-control editor" name="field[{{ $field->key }}]" id="{{ $field->key }}">{{ $field->value }}</textarea>
           @endif

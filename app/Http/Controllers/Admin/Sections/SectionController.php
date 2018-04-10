@@ -74,14 +74,14 @@ class SectionController extends Controller
         */
         if (request()->file("image")) {
             $image_path = AWS::uploadImage(
-        request()->file("image"),
-        "section",
-        $section->image_path
-      );
+                request()->file("image"),
+                "section",
+                $section->image_path
+            );
 
             $section->update([
-        "image_path" => $image_path
-      ]);
+                "image_path" => $image_path
+            ]);
         }
 
         /**
@@ -90,12 +90,12 @@ class SectionController extends Controller
         if (!empty(request()->field)) {
             foreach (request()->field as $key => $field) {
                 $section_field = SectionField::where("key", $key)
-          ->where("section_id", $section->id)
-          ->first();
+                    ->where("section_id", $section->id)
+                    ->first();
 
                 $section_field->update([
-          "value" => $field
-        ]);
+                    "value" => is_array($field) ? json_encode($field) : $field
+                ]);
             }
         }
 

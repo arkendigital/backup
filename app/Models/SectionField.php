@@ -13,12 +13,12 @@ class SectionField extends Model
   * @var array
   */
     protected $fillable = [
-    "section_id",
-    "type",
-    "name",
-    "key",
-    "value"
-  ];
+      "section_id",
+      "type",
+      "name",
+      "key",
+      "value"
+    ];
 
     protected $table = 'sections_fields';
     public $timestamps = true;
