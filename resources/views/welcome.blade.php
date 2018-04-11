@@ -40,7 +40,9 @@
       $(".homepage-hero").slick({
         autoplay: true,
         arrows: false,
-        adaptiveHeight: true
+        adaptiveHeight: true,
+        speed: 600,
+        autoplaySpeed: 6000        
       });
     </script>
 
