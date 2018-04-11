@@ -20,9 +20,11 @@
 
     <div class="clear"></div>
 
-    @include('partials.carousel-ticker')
-
     </div>
+  </div>
+
+  <div class="website-container">
+      @include('partials.carousel-ticker')
   </div>
 
   <div class="website-container">

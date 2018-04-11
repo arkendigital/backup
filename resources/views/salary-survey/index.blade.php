@@ -20,7 +20,7 @@
 
     <div class="clear"></div>
 
-    @include('partials.carousel-ticker');
+    @include('partials.carousel-ticker')
 
     <div class="clear margin-bottom--medium"></div>
 

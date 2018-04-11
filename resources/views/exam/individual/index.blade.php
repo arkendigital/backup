@@ -24,10 +24,8 @@
 
     <div class="clear"></div>
 
-    <div class="website-container">
-        @include('partials.carousel-ticker')
+    @include('partials.carousel-ticker')
 
-    </div>
     </div>
 
   </div><!-- /.website-container -->

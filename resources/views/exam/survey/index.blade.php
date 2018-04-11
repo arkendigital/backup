@@ -73,9 +73,7 @@
 
     <div class="clear"></div>
 
-    <div class="website-container">
-        @include('partials.carousel-ticker')
-    </div>
+    @include('partials.carousel-ticker')
 
   </div><!-- /.website-container -->
 
