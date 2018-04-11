@@ -11,7 +11,7 @@
 
       <h2>{{ $page->getField("page_title") }}</h2>
 
-      <p>{!! $page->getField("page_content") !!}</p>
+      {!! $page->getField("page_content") !!}
 
     </div>
     <div class="website-container-sidebar">

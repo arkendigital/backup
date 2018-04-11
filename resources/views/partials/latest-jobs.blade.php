@@ -44,7 +44,7 @@
 
     <div class="clear"></div>
 
-    <img src="/images/icons/arrow-down--white.png" alt="Scroll Down" title="Scroll Down">
+    {{-- <img src="/images/icons/arrow-down--white.png" alt="Scroll Down" title="Scroll Down"> --}}
 
   </div>
 </div><!-- /.box-select -->
