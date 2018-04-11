@@ -14,9 +14,9 @@ class SectionSidebar extends Model
   *
   */
     protected $fillable = [
-    "name",
-    "slug"
-  ];
+        "name",
+        "slug"
+    ];
 
     /**
     * Indicates which table this model relates to.
@@ -41,8 +41,8 @@ class SectionSidebar extends Model
     public function getPages()
     {
         return SectionSidebarItem::where("sidebar_id", $this->attributes["id"])
-      ->where("page_id", "!=", 0)
-      ->get();
+            ->where("page_id", "!=", 0)
+            ->get();
     }
 
     /**
@@ -52,27 +52,27 @@ class SectionSidebar extends Model
     public function getLinks()
     {
         return SectionSidebarItem::where("sidebar_id", $this->attributes["id"])
-      ->where("page_id", 0)
-      ->get();
+            ->where("page_id", 0)
+            ->get();
     }
 
     /**
     * Get a combination of pages and links
-    *
+    * @deprecated
     */
     public function getItems($slug = "")
     {
         if ($slug == "") {
             $all = SectionSidebarItem::where("sidebar_id", $this->attributes["id"])
-        ->orderBy("order", "ASC")
-        ->get();
+                ->orderBy("order", "ASC")
+                ->get();
         } else {
             $sidebar = SectionSidebar::where("slug", $slug)
-        ->first();
+                ->first();
 
             $all = SectionSidebarItem::where("sidebar_id", $sidebar->id)
-        ->orderBy("order", "ASC")
-        ->get();
+                ->orderBy("order", "ASC")
+                ->get();
         }
 
         $items = collect();

@@ -16,21 +16,21 @@ class Info extends Model
     *
     */
     protected $fillable = [
-    "module_id",
-    "name",
-    "section_one_title",
-    "section_one_text",
-    "section_one_link",
-    "section_two_title",
-    "section_two_text",
-    "section_two_link",
-    "section_three_title",
-    "section_three_text",
-    "section_three_link",
-    "section_four_title",
-    "section_four_text",
-    "section_four_link"
-  ];
+        "module_id",
+        "name",
+        "section_one_title",
+        "section_one_text",
+        "section_one_link",
+        "section_two_title",
+        "section_two_text",
+        "section_two_link",
+        "section_three_title",
+        "section_three_text",
+        "section_three_link",
+        "section_four_title",
+        "section_four_text",
+        "section_four_link"
+    ];
 
     /**
     * Indicates which table this model relates to.

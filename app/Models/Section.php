@@ -16,12 +16,12 @@ class Section extends Model
     *
     */
     protected $fillable = [
-    "name",
-    "color",
-    "slug",
-    "image_path",
-    "sidebar_id"
-  ];
+        "name",
+        "color",
+        "slug",
+        "image_path",
+        "sidebar_id"
+    ];
 
     /**
     * Indicates which table this model relates to.

@@ -16,14 +16,14 @@ class Employer extends Model
     * @var array
     */
     protected $fillable = [
-    "name",
-    "slug",
-    "email",
-    "description",
-    "logo_path",
-    "link",
-    "sector_id"
-  ];
+        "name",
+        "slug",
+        "email",
+        "description",
+        "logo_path",
+        "link",
+        "sector_id"
+    ];
 
     /**
     * Indicates which table this model relates to.
@@ -56,10 +56,10 @@ class Employer extends Model
     public function sluggable()
     {
         return [
-      "slug" => [
-        "source" => "name",
-      ],
-    ];
+            "slug" => [
+                "source" => "name",
+            ],
+        ];
     }
 
     /**

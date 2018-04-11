@@ -13,7 +13,7 @@ class DiscussionIcon extends Model
      * @var array
      */
     protected $fillable = [
-      "icon",
-      "name"
+        "icon",
+        "name"
     ];
 }

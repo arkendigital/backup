@@ -16,7 +16,7 @@ class JobLocation extends Model
 
         static::deleting(function ($location) {
             Job::where('location_id', $location->id)
-        ->update(['location_id' => null]);
+                ->update(['location_id' => null]);
         });
     }
 }

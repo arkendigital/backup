@@ -15,10 +15,10 @@ class Advert extends Model
     * @var array
     */
     protected $fillable = [
-    "name",
-    "url",
-    "image_path"
-  ];
+        "name",
+        "url",
+        "image_path"
+    ];
 
     /**
     * Indicates which table this model relates to.

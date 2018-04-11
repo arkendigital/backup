@@ -16,12 +16,12 @@ class CPDResource extends Model
     * @var array
     */
     protected $fillable = [
-    "name",
-    "slug",
-    "excerpt",
-    "content",
-    "icon_path"
-  ];
+        "name",
+        "slug",
+        "excerpt",
+        "content",
+        "icon_path"
+    ];
 
     /**
     * Indicates which table this model relates to.
@@ -54,10 +54,10 @@ class CPDResource extends Model
     public function sluggable()
     {
         return [
-      'slug' => [
-        'source' => 'name',
-      ],
-    ];
+            'slug' => [
+                'source' => 'name',
+            ],
+        ];
     }
 
     /**

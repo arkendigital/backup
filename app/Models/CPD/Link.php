@@ -15,9 +15,9 @@ class Link extends Model
     * @var array
     */
     protected $fillable = [
-    "name",
-    "link"
-  ];
+        "name",
+        "link"
+    ];
 
     /**
     * Indicates which table this model relates to.

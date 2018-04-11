@@ -14,12 +14,12 @@ class Slide extends Model
   *
   */
     protected $fillable = [
-    "slug",
-    "title",
-    "text",
-    "order",
-    "image_path"
-  ];
+        "slug",
+        "title",
+        "text",
+        "order",
+        "image_path"
+    ];
 
     /**
     * Indicates which table this model relates to.
@@ -44,7 +44,7 @@ class Slide extends Model
     public function getSlides($slug)
     {
         return Slide::where("slug", $slug)
-      ->get();
+            ->get();
     }
 
     /**

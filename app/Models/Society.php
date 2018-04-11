@@ -17,18 +17,18 @@ class Society extends Model
     *
     */
     protected $fillable = [
-    "name",
-    "slug",
-    "postcode",
-    "latitude",
-    "longitude",
-    "city",
-    "email",
-    "link",
-    "image_path",
-    "logo_path",
-    "description"
-  ];
+        "name",
+        "slug",
+        "postcode",
+        "latitude",
+        "longitude",
+        "city",
+        "email",
+        "link",
+        "image_path",
+        "logo_path",
+        "description"
+    ];
 
     /**
     * Return the sluggable configuration array for this model.
@@ -38,10 +38,10 @@ class Society extends Model
     public function sluggable()
     {
         return [
-      "slug" => [
-        "source" => "name",
-      ],
-    ];
+            "slug" => [
+                "source" => "name",
+            ],
+        ];
     }
 
     /**

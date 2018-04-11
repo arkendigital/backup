@@ -14,11 +14,11 @@ class BoxItem extends Model
   *
   */
     protected $fillable = [
-    "group_id",
-    "title",
-    "link",
-    "order"
-  ];
+        "group_id",
+        "title",
+        "link",
+        "order"
+    ];
 
     /**
     * Indicates which table this model relates to.

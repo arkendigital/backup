@@ -20,13 +20,13 @@ class Module extends Model
     *
     */
     protected $fillable = [
-    "category_id",
-    "name",
-    "slug",
-    "excerpt",
-    "description",
-    "order"
-  ];
+        "category_id",
+        "name",
+        "slug",
+        "excerpt",
+        "description",
+        "order"
+    ];
 
     /**
     * Indicates which table this model relates to.
@@ -77,14 +77,14 @@ class Module extends Model
     public function getSurveyResult($module_id, $difficulty)
     {
         return Survey::where("module_id", $module_id)
-      ->where("difficulty", $difficulty)
-      ->count();
+            ->where("difficulty", $difficulty)
+            ->count();
     }
 
     public function getSurveyTotal($module_id)
     {
         return Survey::where("module_id", $module_id)
-      ->count();
+            ->count();
     }
 
     public function getSurveyPercentage($result, $total)

@@ -13,13 +13,13 @@ class PageWidget extends Model
   * @var array
   */
     protected $fillable = [
-    "page_id",
-    "is_visible",
-    "widget_id",
-    "name",
-    "slug",
-    "order"
-  ];
+        "page_id",
+        "is_visible",
+        "widget_id",
+        "name",
+        "slug",
+        "order"
+    ];
 
     /**
     * The attributes that should be cast to carbon instances.
@@ -63,6 +63,6 @@ class PageWidget extends Model
     public function getBoxGroup($slug)
     {
         return BoxGroup::where("widget_slug", $slug)
-      ->first();
+            ->first();
     }
 }

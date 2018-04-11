@@ -16,10 +16,10 @@ class CPDPublication extends Model
     * @var array
     */
     protected $fillable = [
-    "name",
-    "slug",
-    "link"
-  ];
+        "name",
+        "slug",
+        "link"
+    ];
 
     /**
     * Indicates which table this model relates to.
@@ -53,10 +53,10 @@ class CPDPublication extends Model
     public function sluggable()
     {
         return [
-      'slug' => [
-        'source' => 'name',
-      ],
-    ];
+            'slug' => [
+                'source' => 'name',
+            ],
+        ];
     }
 
     /**

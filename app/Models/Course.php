@@ -17,10 +17,10 @@ class Course extends Model
     *
     */
     protected $fillable = [
-    "name",
-    "slug",
-    "description"
-  ];
+        "name",
+        "slug",
+        "description"
+    ];
 
     /**
     * Return the sluggable configuration array for this model.
@@ -30,10 +30,10 @@ class Course extends Model
     public function sluggable()
     {
         return [
-      "slug" => [
-        "source" => "name",
-      ],
-    ];
+            "slug" => [
+                "source" => "name",
+            ],
+        ];
     }
 
     /**

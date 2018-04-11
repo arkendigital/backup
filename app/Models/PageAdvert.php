@@ -7,12 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class PageAdvert extends Model
 {
     protected $fillable = [
-    "page_id",
-    "advert_id",
-    "slug"
-  ];
+        "page_id",
+        "advert_id",
+        "slug"
+    ];
 
     protected $table = 'pages_adverts';
+    
     public $timestamps = true;
 
     /**

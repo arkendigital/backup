@@ -7,19 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class SectionSidebarItem extends Model
 {
 
-  /**
-  * The attributes that are mass assignable.
-  *
-  * @var array
-  *
-  */
+    /**
+     * The attributes that are mass assignable.
+    *
+    * @var array
+    *
+    */
     protected $fillable = [
-    "sidebar_id",
-    "page_id",
-    "link_text",
-    "url",
-    "order"
-  ];
+        "sidebar_id",
+        "page_id",
+        "link_text",
+        "url",
+        "order"
+    ];
 
     /**
     * Indicates which table this model relates to.

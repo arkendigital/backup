@@ -19,14 +19,14 @@ class Discussion extends Model
      * @var array
      */
     protected $fillable = [
-      "name",
-      "slug",
-      "subject",
-      "content",
-      "excerpt",
-      "user_id",
-      "category_id",
-      "image_path"
+        "name",
+        "slug",
+        "subject",
+        "content",
+        "excerpt",
+        "user_id",
+        "category_id",
+        "image_path"
     ];
 
     /**
@@ -98,10 +98,9 @@ class Discussion extends Model
     */
     public function getReplyCountAttribute()
     {
-
-    /**
-    * Set discussion id.
-    */
+        /**
+        * Set discussion id.
+        */
         $discussion_id = $this->attributes["id"];
 
         /**

@@ -7,28 +7,24 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class JobCompany extends Model
 {
-
-  /**
-  * The attributes that are mass assignable.
-  *
-  * @var array
-  */
-    protected $fillable = [
-    "name",
-    "logo_path",
-    "description"
-  ];
-
-
-
-    protected $table = 'job_companies';
-    public $timestamps = true;
-
     use SoftDeletes;
 
+    /**
+     * The attributes that are mass assignable.
+    *
+    * @var array
+    */
+    protected $fillable = [
+        "name",
+        "logo_path",
+        "description"
+    ];
+
+    protected $table = 'job_companies';
+    
+    public $timestamps = true;
+
     protected $dates = ['deleted_at'];
-
-
 
     /**
     * Get the avatar attribute

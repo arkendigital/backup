@@ -18,9 +18,9 @@ class Category extends Model
     *
     */
     protected $fillable = [
-    "name",
-    "slug"
-  ];
+        "name",
+        "slug"
+    ];
 
     /**
     * Indicates which table this model relates to.
@@ -53,8 +53,8 @@ class Category extends Model
     public function getModules()
     {
         return ExamModule::where("category_id", $this->attributes["id"])
-      ->orderBy("order")
-      ->get();
+            ->orderBy("order")
+            ->get();
     }
 
     public function modules()

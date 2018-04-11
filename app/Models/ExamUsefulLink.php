@@ -7,22 +7,22 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ExamUsefulLink extends Model
 {
+    use SoftDeletes;
 
-  /**
-  * The attributes that are mass assignable.
-  *
-  * @var array
-  */
+    /**
+     * The attributes that are mass assignable.
+    *
+    * @var array
+    */
     protected $fillable = [
-    "name",
-    "link",
-    "official"
-  ];
+        "name",
+        "link",
+        "official"
+    ];
 
     protected $table = 'exam_useful_links';
-    public $timestamps = true;
 
-    use SoftDeletes;
+    public $timestamps = true;
 
     protected $dates = ['deleted_at'];
 }

@@ -15,17 +15,16 @@ class Job extends Model
     * @var array
     */
     protected $fillable = [
-    "title",
-    "slug",
-    "excerpt",
-    "content",
-    "salary",
-    "location_id",
-    "company_id",
-    "featured",
-    "apply_link"
-  ];
-
+        "title",
+        "slug",
+        "excerpt",
+        "content",
+        "salary",
+        "location_id",
+        "company_id",
+        "featured",
+        "apply_link"
+    ];
 
 
     protected $table = 'job_vacancies';
@@ -41,10 +40,10 @@ class Job extends Model
     public function sluggable()
     {
         return [
-      'slug' => [
-        'source' => 'title',
-      ],
-    ];
+            'slug' => [
+                'source' => 'title',
+            ],
+        ];
     }
 
     /**
@@ -56,12 +55,10 @@ class Job extends Model
     }
 
 
-
     /**
     * A job has a company.
     *
     * @return Illuminate\Database\Eloquent\Relations\HasOne
-    *
     */
     public function company()
     {
@@ -72,7 +69,6 @@ class Job extends Model
     * A job has a location.
     *
     * @return Illuminate\Database\Eloquent\Relations\HasOne
-    *
     */
     public function location()
     {
