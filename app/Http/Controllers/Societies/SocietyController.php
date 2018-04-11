@@ -2,33 +2,16 @@
 
 namespace App\Http\Controllers\Societies;
 
-/**
-* Load modules.
-*/
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-/**
-* Load models.
-*/
 use App\Models\Section;
 use App\Models\Page;
 use App\Models\Society;
 
 class SocietyController extends Controller
 {
-
-  /**
-  * Display the main regional societies page.
-  *
-  */
     public function index()
     {
-
-    /**
-    * Get page information.
-    *
-    */
         $page = Page::getPage(request()->route()->uri);
 
         /**
@@ -55,9 +38,9 @@ class SocietyController extends Controller
         *
         */
         return view("societies.index", compact(
-      "page",
-      "societies"
-    ));
+            "page",
+            "societies"
+        ));
     }
 
     /**
@@ -85,7 +68,7 @@ class SocietyController extends Controller
         *
         */
         $section = Section::where("slug", "regional-societies")
-      ->first();
+            ->first();
 
         /**
         * Get a list of societies.
@@ -98,11 +81,11 @@ class SocietyController extends Controller
         *
         */
         return view("societies.view", compact(
-      "society",
-      "societies",
-      "page",
-      "section"
-    ));
+            "society",
+            "societies",
+            "page",
+            "section"
+        ));
     }
 
     /**
@@ -126,8 +109,8 @@ class SocietyController extends Controller
         * - location
         */
         $merged = Society::where('name', 'LIKE', "%$search%")
-      ->orWhere('city', 'LIKE', "%$search%")
-      ->get();
+            ->orWhere('city', 'LIKE', "%$search%")
+            ->get();
 
         /**
         * Return the results for the ajax to populate the map.

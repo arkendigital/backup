@@ -1,6 +1,6 @@
 <?php
 
-Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function() {
+Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function () {
 
     Route::get('/', 'AdminController@index')->name('ops');
     Route::redirect('/index', '/ops', 301);
@@ -190,5 +190,4 @@ Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function() 
     Route::resource("/societies", "Societies\SocietyController", ["parameters" => [
       "societies" => "society"
     ]]);
-
 });

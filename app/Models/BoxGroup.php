@@ -16,11 +16,11 @@ class BoxGroup extends Model
     *
     */
     protected $fillable = [
-    "name",
-    "text",
-    "widget_slug",
-    "image_path"
-  ];
+        "name",
+        "text",
+        "widget_slug",
+        "image_path"
+    ];
 
     /**
     * Indicates which table this model relates to.
@@ -63,8 +63,8 @@ class BoxGroup extends Model
     public function getItems()
     {
         return BoxItem::where("group_id", $this->attributes["id"])
-      ->orderBy("order")
-      ->get();
+            ->orderBy("order")
+            ->get();
     }
 
     /**
