@@ -52,17 +52,21 @@ class CourseController extends Controller
     *
     */
         $course = Course::create([
-      "name" => request()->name,
-      "description" => request()->description
-    ]);
+          "name" => request()->name,
+          "description" => request()->description
+        ]);
+
+
+        alert()->success('Course Created');
+        
 
         /**
         * Redirect to edit page.
         *
         */
         return redirect(route("courses.edit", compact(
-      "course"
-    )));
+            "course"
+        )));
     }
 
     /**
@@ -93,10 +97,13 @@ class CourseController extends Controller
     *
     */
         $course->update([
-      "name" => request()->name,
-      "description" => request()->description
-    ]);
+          "name" => request()->name,
+          "description" => request()->description
+        ]);
 
+        alert()->success('Course Updated');
+
+    
         /**
         * Redirect to edit page.
         *

@@ -81,6 +81,9 @@ class PageController extends Controller
       "meta_description" => request()->meta_description
     ]);
 
+
+        alert()->success('Page Created');
+    
         /**
         * Redirect to page edit form.
         */
@@ -213,6 +216,9 @@ class PageController extends Controller
         ->update(["is_visible" => 0]);
         }
 
+
+        alert()->success('Page Updated');
+        
         /**
         * Redirect to page edit form.
         */
