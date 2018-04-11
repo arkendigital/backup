@@ -14,10 +14,10 @@
     <div class="box-header with-border">
       <h3 class="box-title">Sidebar Information</h3>
     </div>
-    <div class="box-body">
 
+    <div class="box-body">
       <div class="table-responsive">
-        <table class="table table-hover" id="datatable-nopaging">
+        <table class="table table-hover">
           <thead>
             <tr>
               <th>Order</th>
@@ -48,10 +48,9 @@
   </div>
 
 </form>
-
 @push("scripts-after")
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
   <script>
   $( function() {
     $( "#sortable" ).sortable();
@@ -59,5 +58,5 @@
   } );
   </script>
 @endpush
-
 @endsection
+

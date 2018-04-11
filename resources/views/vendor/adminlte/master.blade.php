@@ -19,10 +19,10 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/AdminLTE.min.css') }}">
 
-    @if(config('adminlte.plugins.datatables'))
+    {{-- @if(config('adminlte.plugins.datatables')) --}}
         <!-- DataTables -->
         <link rel="stylesheet" href="//cdn.datatables.net/v/bs/dt-1.10.13/datatables.min.css">
-    @endif
+    {{-- @endif --}}
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -56,13 +56,14 @@
 
     <script src="{{ asset('vendor/adminlte/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
     <script src="{{ asset('vendor/adminlte/bootstrap/js/bootstrap.min.js') }}"></script>
-    @if(config('adminlte.plugins.datatables'))
+    {{-- @if(config('adminlte.plugins.datatables')) --}}
         <!-- DataTables -->
         <script src="//cdn.datatables.net/v/bs/dt-1.10.13/datatables.min.js"></script>
-    @endif
+    {{-- @endif --}}
 
     <script>
     $(function () {
+        if ($('#datatable').length) {
             $('#datatable').DataTable({
                 "paging": true,
                 "lengthChange": true,
@@ -71,7 +72,9 @@
                 "info": false,
                 "autoWidth": true,
             });
+        }
 
+        if ($('#datatable-nopaging').length) {
             $('#datatable-nopaging').DataTable({
                 "paging": false,
                 "lengthChange": false,
@@ -80,7 +83,9 @@
                 "info": false,
                 "autoWidth": false
             });
+        }
 
+        if ($('#datatable-noordering').length) {
             $('#datatable-noordering').DataTable({
                 "paging": false,
                 "lengthChange": false,
@@ -89,7 +94,8 @@
                 "info": false,
                 "autoWidth": false
             });
-        });
+        }
+    });
     </script>
 
     <!-- Scripts -->

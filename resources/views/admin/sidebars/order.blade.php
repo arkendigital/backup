@@ -17,7 +17,7 @@
     <div class="box-body">
 
       <div class="table-responsive">
-        <table class="table table-hover" id="datatable-nopaging">
+        <table class="table table-hover">
           <thead>
             <tr>
               <th>Order</th>
@@ -50,7 +50,6 @@
 </form>
 
 @push("scripts-after")
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
   $( function() {
