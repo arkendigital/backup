@@ -15,7 +15,13 @@
   </div>
 
   <div class="website-container">
-    <div class="carousel">Exam Entry Opens Monday 29 January 2018 • Exam Entry Opens Monday 29 January 2018 • Exam Entry Opens Monday 29 January 2018</div>
+    <div class="carousel">
+      <div class="ticker">
+      @foreach (json_decode($page->section->getField("exams", "exam_carousel")) as $item)
+        <p class="ticker__item">{{ $item }}</p>
+      @endforeach
+      </div>
+    </div>
 
     <div class="homepage-sections">
       @foreach($sections as $section)
