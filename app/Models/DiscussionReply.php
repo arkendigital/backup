@@ -15,10 +15,10 @@ class DiscussionReply extends Model
     * @var array
     */
     protected $fillable = [
-    "discussion_id",
-    "user_id",
-    "content"
-  ];
+        "discussion_id",
+        "user_id",
+        "content"
+    ];
 
     /**
     * Indicates which table this model relates to.

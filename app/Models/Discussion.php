@@ -58,8 +58,6 @@ class Discussion extends Model
         return 'slug';
     }
 
-
-
     /**
     * A discussion has a user attached.
     *
@@ -91,7 +89,7 @@ class Discussion extends Model
     */
     public function replies()
     {
-        return $this->hasMany(DiscussionReply::class, 'discussion_id', 'id');
+        return $this->hasMany('App\Models\DiscussionReply', 'discussion_id', 'id');
     }
 
     /**

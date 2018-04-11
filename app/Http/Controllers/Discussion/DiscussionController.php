@@ -2,18 +2,11 @@
 
 namespace App\Http\Controllers\Discussion;
 
-/**
-* Load modules.
-*/
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Discussion as DiscussionRequest;
 use App\Http\Controllers\AWS\ImageController as AWS;
 use Cache;
-
-/**
-* Load models.
-*/
 use App\Models\Discussion;
 use App\Models\DiscussionCategory;
 use App\Models\DiscussionReply;
@@ -22,34 +15,19 @@ class DiscussionController extends Controller
 {
     public function index(DiscussionCategory $category)
     {
-
-    /**
-    * Set seo.
-    */
         $this->seo()->setTitle("Discussion");
 
-        /**
-        * Get a list of categories.
-        */
         $categories = $this->getCategories();
 
-        /**
-        * Get a list of discussions.
-        *
-        * - Get if is using the search
-        * - Check if user has filtered by category
-        *
-        */
-
         $discussions = Discussion::with('user', 'category')
-      ->withCount('replies')
-      ->when(request()->search, function ($q) {
-          return $q->where("name", "LIKE", "%".$_GET["search"]."%");
-      })
-      ->when($category->id != '', function ($q) use ($category) {
-          return $q->where("category_id", $category->id);
-      })
-      ->paginate(6);
+            ->withCount('replies')
+            ->when(request()->search, function ($q) {
+                return $q->where("name", "LIKE", "%".$_GET["search"]."%");
+            })
+            ->when($category->id != '', function ($q) use ($category) {
+                return $q->where("category_id", $category->id);
+            })
+            ->paginate(6);
     
 
         if (isset($_GET["search"])) {
@@ -57,15 +35,11 @@ class DiscussionController extends Controller
             $category->name = $_GET["search"];
         }
   
-
-        /**
-        * Display page.
-        */
         return view("discussion.index", compact(
-      "category",
-      "categories",
-      "discussions"
-    ));
+            "category",
+            "categories",
+            "discussions"
+        ));
     }
 
     /**
@@ -77,27 +51,17 @@ class DiscussionController extends Controller
     */
     public function view(DiscussionCategory $category, Discussion $discussion)
     {
-
-    /**
-    * Set SEO.
-    */
         $this->seo()->setTitle($discussion->name);
         $this->seo()->setDescription($discussion->excerpt);
 
-        /**
-        * Get a list of categories.
-        */
         $categories = $this->getCategories();
-        $discussion->load('user', 'category', 'replies');
+        $discussion->with('user', 'category', 'replies');
 
-        /**
-        * Display the view page.
-        */
         return view("discussion.view", compact(
-      "categories",
-      "category",
-      "discussion"
-    ));
+            "categories",
+            "category",
+            "discussion"
+        ));
     }
 
     /**
@@ -122,39 +86,29 @@ class DiscussionController extends Controller
         * Store new discussion in database storage
         */
         $discussion = Discussion::create([
-      "name" => request()->name,
-      "subject" => request()->subject,
-      "excerpt" => $excerpt,
-      "content" => request()->content,
-      "category_id" => request()->category_id,
-      "user_id" => auth()->user()->id
-    ]);
+            "name" => request()->name,
+            "subject" => request()->subject,
+            "excerpt" => $excerpt,
+            "content" => request()->content,
+            "category_id" => request()->category_id,
+            "user_id" => auth()->user()->id
+        ]);
 
-        /**
-        * Upload image if available.
-        *
-        */
+        /* Upload image if available. */
         if (request()->file("image")) {
-            $image_path = AWS::uploadImage(
-        request()->file("image"),
-        "discussion"
-      );
+            $image_path = AWS::uploadImage(request()->file("image"), "discussion");
 
             $discussion->update([
-        "image_path" => $image_path
-      ]);
+                "image_path" => $image_path
+            ]);
         }
 
-        /**
-        * Redirect and notify the user.
-        */
-        return redirect("/discussion/".$discussion->category->slug."/".$discussion->slug)
-      ->with([
-        "alert" => true,
-        "alert_title" => "Success",
-        "alert_message" => "Your discussion has been created!",
-        "alert_button" => "OK"
-      ]);
+        return redirect("/discussion/".$discussion->category->slug."/".$discussion->slug)->with([
+            "alert" => true,
+            "alert_title" => "Success",
+            "alert_message" => "Your discussion has been created!",
+            "alert_button" => "OK"
+        ]);
     }
 
     /**
@@ -167,28 +121,18 @@ class DiscussionController extends Controller
     public function edit(DiscussionCategory $category, Discussion $discussion)
     {
 
-    /**
-    * Set SEO.
-    */
         $this->seo()->setTitle("Editing '" . $discussion->name . "'");
         $this->seo()->setDescription($discussion->excerpt);
 
-        /**
-        * Get a list of categories.
-        */
         $categories = $this->getCategories();
 
-        $discussion->load('user', 'category');
+        $discussion->with('user', 'category');
 
-        /**
-        * Display page.
-        *
-        */
         return view("discussion.edit", compact(
-      "categories",
-      "category",
-      "discussion"
-    ));
+            "categories",
+            "category",
+            "discussion"
+        ));
     }
 
     /**
@@ -202,43 +146,27 @@ class DiscussionController extends Controller
     public function update(DiscussionRequest $request, DiscussionCategory $category, Discussion $discussion)
     {
 
-    /**
-    * Update in database.
-    *
-    */
         $discussion->update([
-      "name" => request()->name,
-      "subject" => request()->subject,
-      "content" => request()->content
-    ]);
+            "name" => request()->name,
+            "subject" => request()->subject,
+            "content" => request()->content
+        ]);
 
-        /**
-        * Upload new image if available.
-        *
-        */
+ 
         if (request()->file("image")) {
-            $image_path = AWS::uploadImage(
-        request()->file("image"),
-        "discussion",
-        $discussion->image_path
-      );
+            $image_path = AWS::uploadImage(request()->file("image"), "discussion", $discussion->image_path);
 
             $discussion->update([
-        "image_path" => $image_path
-      ]);
+                "image_path" => $image_path
+            ]);
         }
 
-        /**
-        * Redirect user.
-        *
-        */
-        return redirect(route("discussion.view", compact("category", "discussion")))
-      ->with([
-        "alert" => true,
-        "alert_title" => "Success",
-        "alert_message" => "Discussion has been updated!",
-        "alert_button" => "OK"
-      ]);
+        return redirect(route("discussion.view", compact("category", "discussion")))->with([
+            "alert" => true,
+            "alert_title" => "Success",
+            "alert_message" => "Discussion has been updated!",
+            "alert_button" => "OK"
+        ]);
     }
 
 
@@ -247,33 +175,24 @@ class DiscussionController extends Controller
     */
     public function popular()
     {
-
-    /**
-    * Get a list of categories.
-    */
         $categories = $this->getCategories();
 
         // Grab the discussions, with the user and category, count the replies and order by the replies.
         $discussions = Discussion::with('user', 'category')
-        ->withCount('replies')
-        ->whereHas('replies')
-        ->orderBy('replies_count', 'desc')
-        ->paginate(6);
+            ->withCount('replies')
+            ->whereHas('replies')
+            ->orderBy('replies_count', 'desc')
+            ->paginate(6);
 
-        /**
-        * Define the category.
-        */
+
         $category = new \stdClass();
         $category->name = "Popular threads";
 
-        /**
-        * Display page.
-        */
         return view("discussion.index", compact(
-      "category",
-      "categories",
-      "discussions"
-    ));
+            "category",
+            "categories",
+            "discussions"
+        ));
     }
 
     /**
@@ -281,34 +200,21 @@ class DiscussionController extends Controller
     */
     public function answered()
     {
-
-    /**
-    * Get a list of categories.
-    */
         $categories = $this->getCategories();
 
-        /**
-        * Get a list of discussions.
-        */
         $discussions = Discussion::with('user', 'category')
-      ->whereHas("replies")
-      ->withCount('replies')
-      ->paginate(6);
+            ->whereHas("replies")
+            ->withCount('replies')
+            ->paginate(6);
 
-        /**
-        * Define the category.
-        */
         $category = new \stdClass();
         $category->name = "Answered";
 
-        /**
-        * Display page.
-        */
         return view("discussion.index", compact(
-      "category",
-      "categories",
-      "discussions"
-    ));
+            "category",
+            "categories",
+            "discussions"
+        ));
     }
 
     /**
@@ -316,21 +222,14 @@ class DiscussionController extends Controller
     */
     public function unanswered()
     {
-
-    /**
-    * Get a list of categories.
-    */
         $categories = $this->getCategories();
 
-        /**
-        * Get a list of discussions.
-        */
         $discussions = Discussion::with('user', 'category')
-      ->doesntHave("replies")
-      ->withCount('replies')
-      ->paginate(6);
+            ->doesntHave("replies")
+            ->withCount('replies')
+            ->paginate(6);
 
-        /**
+            /**
         * Define the category.
         */
         $category = new \stdClass();
@@ -340,15 +239,19 @@ class DiscussionController extends Controller
         * Display page.
         */
         return view("discussion.index", compact(
-      "category",
-      "categories",
-      "discussions"
-    ));
+            "category",
+            "categories",
+            "discussions"
+        ));
     }
 
+    /**
+     * Get the categories from the database, cache these so that we aren't messing about with constant loading.
+     * Remember for 1440mins (24 hours)
+     */
     protected function getCategories()
     {
-        return Cache::remember('discussion_categories', 120, function () {
+        return Cache::remember('discussion_categories', 1440, function () {
             return DiscussionCategory::with('icon')->get();
         });
     }
