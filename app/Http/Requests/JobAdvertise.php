@@ -25,11 +25,11 @@ class JobAdvertise extends FormRequest
     public function rules()
     {
         return [
-      "company_name" => "required|string",
-      "name" => "required|string",
-      "email" => "required|string",
-      "phone" => "required|numeric",
-      "comment" => "required"
-    ];
+            "company_name" => "required|string",
+            "name" => "required|string",
+            "email" => "required|string",
+            "phone" => "required|numeric",
+            "comment" => "required"
+        ];
     }
 }

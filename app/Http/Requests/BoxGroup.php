@@ -25,8 +25,8 @@ class BoxGroup extends FormRequest
     public function rules()
     {
         return [
-      "name" => "required|string|max:50",
-      "widget_slug" => "required"
-    ];
+            "name" => "required|string|max:50",
+            "widget_slug" => "required"
+        ];
     }
 }

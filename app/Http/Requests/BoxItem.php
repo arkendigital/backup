@@ -25,8 +25,8 @@ class BoxItem extends FormRequest
     public function rules()
     {
         return [
-      "title" => "required|string|max:50",
-      "link" => "required"
-    ];
+            "title" => "required|string|max:50",
+            "link" => "required"
+        ];
     }
 }

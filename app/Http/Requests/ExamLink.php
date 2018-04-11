@@ -25,9 +25,9 @@ class ExamLink extends FormRequest
     public function rules()
     {
         return [
-      "name" => "required|string|max:30",
-      "link" => "required|url",
-      "official" => "required"
-    ];
+            "name" => "required|string|max:30",
+            "link" => "required|url",
+            "official" => "required"
+        ];
     }
 }

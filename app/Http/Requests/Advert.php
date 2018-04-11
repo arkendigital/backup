@@ -25,8 +25,8 @@ class Advert extends FormRequest
     public function rules()
     {
         return [
-      "name" => "required|string|max:50",
-      "url" => "required|url"
-    ];
+            "name" => "required|string|max:50",
+            "url" => "required|url"
+        ];
     }
 }

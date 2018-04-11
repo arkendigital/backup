@@ -25,8 +25,8 @@ class ExamModule extends FormRequest
     public function rules()
     {
         return [
-      "category_id" => "required",
-      "name" => "required|string|max:50"
-    ];
+            "category_id" => "required",
+            "name" => "required|string|max:50"
+        ];
     }
 }

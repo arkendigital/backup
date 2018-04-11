@@ -25,8 +25,8 @@ class PageWidget extends FormRequest
     public function rules()
     {
         return [
-      "name" => "required|string|max:50",
-      "slug" => "required"
-    ];
+            "name" => "required|string|max:50",
+            "slug" => "required"
+        ];
     }
 }

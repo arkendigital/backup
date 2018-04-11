@@ -42,7 +42,7 @@ class PrivacyController extends Controller
         *
         */
         return view("misc.privacy", compact(
-      "page"
-    ));
+            "page"
+        ));
     }
 }

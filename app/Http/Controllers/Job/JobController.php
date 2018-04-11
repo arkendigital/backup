@@ -24,7 +24,7 @@ class JobController extends Controller
     public function __construct()
     {
         $this->section = Section::where("slug", "jobs")
-      ->first();
+            ->first();
     }
 
     public function index()
@@ -34,7 +34,7 @@ class JobController extends Controller
     * Get page Information
     */
         $page = Page::where("slug", "jobs")
-      ->first();
+            ->first();
 
         /**
         * Set seo.
@@ -51,9 +51,9 @@ class JobController extends Controller
         * Display page.
         */
         return view("job.index", [
-      "section" => $this->section,
-      "page" => $page,
-      "page_adverts" => $page_adverts
-    ]);
+            "section" => $this->section,
+            "page" => $page,
+            "page_adverts" => $page_adverts
+        ]);
     }
 }

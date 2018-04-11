@@ -25,13 +25,13 @@ class Job extends FormRequest
     public function rules()
     {
         return [
-      "title" => "required|string",
-      "excerpt" => "required|string",
-      "content" => "required|string",
-      "salary" => "required|numeric",
-      "location_id" => "required",
-      "company_id" => "required",
-      "apply_link" => "required|url"
-    ];
+            "title" => "required|string",
+            "excerpt" => "required|string",
+            "content" => "required|string",
+            "salary" => "required|numeric",
+            "location_id" => "required",
+            "company_id" => "required",
+            "apply_link" => "required|url"
+        ];
     }
 }

@@ -25,8 +25,8 @@ class Employer extends FormRequest
     public function rules()
     {
         return [
-      "name" => "required|string|max:25",
-      "link" => "url"
-    ];
+            "name" => "required|string|max:25",
+            "link" => "url"
+        ];
     }
 }

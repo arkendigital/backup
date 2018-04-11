@@ -48,9 +48,9 @@ class CoursesController extends Controller
         $courses = Course::all();
 
         return view("uni-corner.courses.index", compact(
-      "page",
-      "courses"
-    ));
+            "page",
+            "courses"
+        ));
     }
 
     /**
@@ -62,7 +62,7 @@ class CoursesController extends Controller
     public function view(Course $course)
     {
         return view("uni-corner.courses.view", compact(
-      "course"
-    ));
+            "course"
+        ));
     }
 }

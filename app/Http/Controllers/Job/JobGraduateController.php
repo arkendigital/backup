@@ -23,7 +23,7 @@ class JobGraduateController extends Controller
     public function __construct()
     {
         $this->section = Section::where("slug", "jobs")
-      ->first();
+            ->first();
     }
 
     public function index()
@@ -49,8 +49,8 @@ class JobGraduateController extends Controller
         * Display page.
         */
         return view("job.graduate.index", compact(
-      "page",
-      "page_adverts"
-    ));
+            "page",
+            "page_adverts"
+        ));
     }
 }

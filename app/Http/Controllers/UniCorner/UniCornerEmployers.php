@@ -48,9 +48,9 @@ class UniCornerEmployers extends Controller
         $employers = Employer::all();
 
         return view("uni-corner.employers", compact(
-      "page",
-      "employers"
-    ));
+            "page",
+            "employers"
+        ));
     }
 
     /**
@@ -78,7 +78,7 @@ class UniCornerEmployers extends Controller
         *
         */
         $section = Section::where("slug", "uni-corner")
-      ->first();
+            ->first();
 
         /**
         * Get a list of societies / employers.
@@ -91,10 +91,10 @@ class UniCornerEmployers extends Controller
         *
         */
         return view("uni-corner.employer", compact(
-      "employer",
-      "employers",
-      "section",
-      "page"
-    ));
+            "employer",
+            "employers",
+            "section",
+            "page"
+        ));
     }
 }

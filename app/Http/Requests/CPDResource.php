@@ -25,9 +25,9 @@ class CPDResource extends FormRequest
     public function rules()
     {
         return [
-      "name" => "required|string|max:30",
-      "excerpt" => "required|string|max:50",
-      "content" => "required"
-    ];
+            "name" => "required|string|max:30",
+            "excerpt" => "required|string|max:50",
+            "content" => "required"
+        ];
     }
 }

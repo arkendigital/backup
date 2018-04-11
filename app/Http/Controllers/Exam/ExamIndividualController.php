@@ -58,11 +58,11 @@ class ExamIndividualController extends Controller
         * Display results.
         */
         return view("exam.individual.index", compact(
-      "page",
-      "page_adverts",
-      "category",
-      "categories"
-    ));
+            "page",
+            "page_adverts",
+            "category",
+            "categories"
+        ));
     }
 
     /**
@@ -94,29 +94,29 @@ class ExamIndividualController extends Controller
         */
         $categories = collect();
         $category = ExamCategory::where("slug", $slug)
-      ->first();
+            ->first();
 
         /**
         * Sections.
         *
         */
         $module_sections = [
-      "one",
-      "two",
-      "three",
-      "four"
-    ];
+            "one",
+            "two",
+            "three",
+            "four"
+        ];
 
         /**
         * Display page.
         *
         */
         return view("exam.individual.index", compact(
-      "page",
-      "page_adverts",
-      "category",
-      "categories",
-      "module_sections"
-    ));
+            "page",
+            "page_adverts",
+            "category",
+            "categories",
+            "module_sections"
+        ));
     }
 }

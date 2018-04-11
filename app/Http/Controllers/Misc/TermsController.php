@@ -42,7 +42,7 @@ class TermsController extends Controller
         *
         */
         return view("misc.terms", compact(
-      "page"
-    ));
+            "page"
+        ));
     }
 }

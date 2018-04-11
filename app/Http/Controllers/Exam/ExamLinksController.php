@@ -35,13 +35,13 @@ class ExamLinksController extends Controller
         * Get list official useful links.
         */
         $official_links = ExamUsefulLink::where("official", 1)
-      ->get();
+            ->get();
 
         /**
         * Get list non-official useful links.
         */
         $unofficial_links = ExamUsefulLink::where("official", 0)
-      ->get();
+            ->get();
 
         /**
         * Get adverts for this page.
@@ -52,10 +52,10 @@ class ExamLinksController extends Controller
         * Display results.
         */
         return view("exam.links.index", compact(
-      "page",
-      "official_links",
-      "unofficial_links",
-      "page_adverts"
-    ));
+            "page",
+            "official_links",
+            "unofficial_links",
+            "page_adverts"
+        ));
     }
 }

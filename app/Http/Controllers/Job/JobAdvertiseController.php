@@ -39,8 +39,8 @@ class JobAdvertiseController extends Controller
         * Display page.
         */
         return view("job.advertise.index", compact(
-      "page"
-    ));
+            "page"
+        ));
     }
 
     /**
@@ -73,12 +73,11 @@ class JobAdvertiseController extends Controller
         * Redirect user.
         *
         */
-        return redirect(route("index"))
-      ->with([
-        "alert" => true,
-        "alert_title" => "Success",
-        "alert_message" => "Your message has been sent to us",
-        "alert_button" => "OK"
-      ]);
+        return redirect(route("index"))->with([
+            "alert" => true,
+            "alert_title" => "Success",
+            "alert_message" => "Your message has been sent to us",
+            "alert_button" => "OK"
+        ]);
     }
 }

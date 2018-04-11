@@ -23,7 +23,7 @@ class UniCornerWhatIsController extends Controller
     public function __construct()
     {
         $this->section = Section::where("slug", "uni-corner")
-      ->first();
+            ->first();
     }
 
     public function index()
@@ -49,8 +49,8 @@ class UniCornerWhatIsController extends Controller
         * Display page.
         */
         return view("uni-corner.what", compact(
-      "page",
-      "page_adverts"
-    ));
+            "page",
+            "page_adverts"
+        ));
     }
 }

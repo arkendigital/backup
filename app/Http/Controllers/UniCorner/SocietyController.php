@@ -48,9 +48,9 @@ class SocietyController extends Controller
         $societies = Society::all();
 
         return view("uni-corner.societies.index", compact(
-      "page",
-      "societies"
-    ));
+            "page",
+            "societies"
+        ));
     }
 
     /**
@@ -78,7 +78,7 @@ class SocietyController extends Controller
         *
         */
         $section = Section::where("slug", "uni-corner")
-      ->first();
+            ->first();
 
         /**
         * Get a list of societies.
@@ -91,10 +91,10 @@ class SocietyController extends Controller
         *
         */
         return view("uni-corner.societies.view", compact(
-      "society",
-      "societies",
-      "page",
-      "section"
-    ));
+            "society",
+            "societies",
+            "page",
+            "section"
+        ));
     }
 }

@@ -25,8 +25,8 @@ class JobCompany extends FormRequest
     public function rules()
     {
         return [
-      "name" => "required|string",
-      "description" => "required"
-    ];
+            "name" => "required|string",
+            "description" => "required"
+        ];
     }
 }

@@ -25,8 +25,8 @@ class AccountPassword extends FormRequest
     public function rules()
     {
         return [
-      "old_password" => "required",
-      "new_password" => "required|confirmed"
-    ];
+            "old_password" => "required",
+            "new_password" => "required|confirmed"
+        ];
     }
 }

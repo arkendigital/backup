@@ -25,9 +25,9 @@ class Slide extends FormRequest
     public function rules()
     {
         return [
-      "title" => "required|string|max:50",
-      "text" => "required|string|max:150",
-      "slug" => "required|string"
-    ];
+            "title" => "required|string|max:50",
+            "text" => "required|string|max:150",
+            "slug" => "required|string"
+        ];
     }
 }

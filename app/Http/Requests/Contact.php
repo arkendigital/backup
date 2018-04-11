@@ -25,11 +25,11 @@ class Contact extends FormRequest
     public function rules()
     {
         return [
-      "first_name" => "required|string|max:30",
-      "second_name" => "required|string|max:30",
-      "email" => "required|email",
-      "phone" => "required|numeric",
-      "comment" => "required",
-    ];
+            "first_name" => "required|string|max:30",
+            "second_name" => "required|string|max:30",
+            "email" => "required|email",
+            "phone" => "required|numeric",
+            "comment" => "required",
+        ];
     }
 }

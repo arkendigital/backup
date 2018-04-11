@@ -25,9 +25,9 @@ class Discussion extends FormRequest
     public function rules()
     {
         return [
-      "name" => "required|string",
-      "subject" => "required|string",
-      "content" => "required",
-    ];
+            "name" => "required|string",
+            "subject" => "required|string",
+            "content" => "required",
+        ];
     }
 }

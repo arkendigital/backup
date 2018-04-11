@@ -53,9 +53,9 @@ class ExamSurveyController extends Controller
         *
         */
         return view("exam.survey.index", compact(
-      "page",
-      "categories"
-    ));
+            "page",
+            "categories"
+        ));
     }
 
     /**
@@ -72,9 +72,9 @@ class ExamSurveyController extends Controller
     *
     */
         $survey = Survey::create([
-      "module_id" => request()->module_id,
-      "difficulty" => request()->difficulty
-    ]);
+            "module_id" => request()->module_id,
+            "difficulty" => request()->difficulty
+        ]);
 
         return "OK";
     }
@@ -113,8 +113,8 @@ class ExamSurveyController extends Controller
         *
         */
         return view("exam.survey.results", compact(
-      "page",
-      "categories"
-    ));
+            "page",
+            "categories"
+        ));
     }
 }

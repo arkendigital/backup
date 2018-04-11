@@ -57,10 +57,10 @@ class ExamResourcesController extends Controller
         * Display page.
         */
         return view("exam.resources.index", compact(
-      "page",
-      "resources",
-      "page_adverts"
-    ));
+            "page",
+            "resources",
+            "page_adverts"
+        ));
     }
 
     /**
@@ -76,11 +76,11 @@ class ExamResourcesController extends Controller
     * Get section.
     */
         $section = Section::where("slug", "exams")
-      ->first();
+            ->first();
 
         return view("exam.resources.view", [
-      "resource" => $exam_resource,
-      "section" => $section
-    ]);
+            "resource" => $exam_resource,
+            "section" => $section
+        ]);
     }
 }
