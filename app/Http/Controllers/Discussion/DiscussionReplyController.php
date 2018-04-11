@@ -34,10 +34,10 @@ class DiscussionReplyController extends Controller
     * Store reply in database storage.
     */
         $reply = DiscussionReply::create([
-      "discussion_id" => $discussion->id,
-      "user_id" => auth()->user()->id,
-      "content" => request()->content
-    ]);
+            "discussion_id" => $discussion->id,
+            "user_id" => auth()->user()->id,
+            "content" => request()->content
+        ]);
 
         return view("discussion.partials.reply", compact("reply"));
 
@@ -48,12 +48,11 @@ class DiscussionReplyController extends Controller
         /**
         * Redirect back to the discussion.
         */
-        return redirect("/discussion/".$category->slug."/".$discussion->slug)
-      ->with([
-        "alert" => true,
-        "alert_title" => "Success",
-        "alert_message" => "Your reply has been posted!",
-        "alert_button" => "OK"
-      ]);
+        return redirect("/discussion/".$category->slug."/".$discussion->slug)->with([
+            "alert" => true,
+            "alert_title" => "Success",
+            "alert_message" => "Your reply has been posted!",
+            "alert_button" => "OK"
+        ]);
     }
 }

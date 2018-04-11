@@ -22,7 +22,7 @@ class CPDController extends Controller
     * Get page Information
     */
         $page = Page::where("slug", "cpd")
-      ->first();
+            ->first();
 
         /**
         * Set seo.
@@ -34,7 +34,7 @@ class CPDController extends Controller
         * Display page.
         */
         return view("cpd.index", compact(
-      "page"
-    ));
+            "page"
+        ));
     }
 }

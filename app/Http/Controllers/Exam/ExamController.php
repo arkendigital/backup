@@ -23,7 +23,7 @@ class ExamController extends Controller
     public function __construct()
     {
         $this->section = Section::where("slug", "exam")
-      ->first();
+          ->first();
     }
 
     /**
@@ -45,7 +45,7 @@ class ExamController extends Controller
     * Get page Information
     */
         $page = Page::where("slug", "exams")
-      ->first();
+            ->first();
 
         /**
         * Set seo.
@@ -61,9 +61,9 @@ class ExamController extends Controller
         * Display page.
         */
         return view("exam.index", [
-      "section" => $this->section,
-      "page" => $page,
-      "page_adverts" => $page_adverts
-    ]);
+            "section" => $this->section,
+            "page" => $page,
+            "page_adverts" => $page_adverts
+        ]);
     }
 }

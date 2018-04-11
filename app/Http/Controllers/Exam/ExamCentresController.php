@@ -76,7 +76,7 @@ class ExamCentreController extends Controller
         *
         */
         $section = Section::where("slug", "regional-societies")
-      ->first();
+            ->first();
 
         /**
         * Get a list of societies.
@@ -89,11 +89,11 @@ class ExamCentreController extends Controller
         *
         */
         return view("societies.view", compact(
-      "society",
-      "societies",
-      "page",
-      "section"
-    ));
+            "society",
+            "societies",
+            "page",
+            "section"
+        ));
     }
 
     /**
@@ -118,8 +118,8 @@ class ExamCentreController extends Controller
         *
         */
         $merged = ExamCentre::where("name", "LIKE", "%$search%")
-      ->orWhere("city", "LIKE", "%$search%")
-      ->get();
+            ->orWhere("city", "LIKE", "%$search%")
+            ->get();
 
 
         /**

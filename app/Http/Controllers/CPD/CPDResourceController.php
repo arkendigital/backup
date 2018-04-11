@@ -57,10 +57,10 @@ class CPDResourceController extends Controller
         * Display page.
         */
         return view("cpd.resources.index", compact(
-      "page",
-      "resources",
-      "page_adverts"
-    ));
+            "page",
+            "resources",
+            "page_adverts"
+        ));
     }
 
     /**
@@ -76,7 +76,7 @@ class CPDResourceController extends Controller
     * Get section.
     */
         $section = Section::where("slug", "cpd")
-      ->first();
+            ->first();
 
         /**
         * Set SEO.
@@ -85,8 +85,8 @@ class CPDResourceController extends Controller
         $this->seo()->setDescription($cpd_resource->excerpt);
 
         return view("cpd.resources.view", [
-      "resource" => $cpd_resource,
-      "section" => $section
-    ]);
+            "resource" => $cpd_resource,
+            "section" => $section
+        ]);
     }
 }

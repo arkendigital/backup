@@ -23,7 +23,7 @@ class CVSupportController extends Controller
     public function __construct()
     {
         $this->section = Section::where("slug", "cv-support")
-      ->first();
+            ->first();
     }
 
     public function index()
@@ -33,7 +33,7 @@ class CVSupportController extends Controller
     * Get page Information
     */
         $page = Page::where("slug", "cv-support")
-      ->first();
+            ->first();
 
         /**
         * Set seo.
@@ -50,9 +50,9 @@ class CVSupportController extends Controller
         * Display page.
         */
         return view("cvsupport.index", [
-      "section" => $this->section,
-      "page" => $page,
-      "page_adverts" => $page_adverts
-    ]);
+            "section" => $this->section,
+            "page" => $page,
+            "page_adverts" => $page_adverts
+        ]);
     }
 }

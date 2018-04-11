@@ -49,8 +49,8 @@ class CPDPublicationController extends Controller
         *
         */
         return view("cpd.publications.index", compact(
-      "publications",
-      "page"
-    ));
+            "publications",
+            "page"
+        ));
     }
 }

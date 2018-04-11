@@ -49,8 +49,8 @@ class CPDLinkController extends Controller
         *
         */
         return view("cpd.links.index", compact(
-      "links",
-      "page"
-    ));
+            "links",
+            "page"
+        ));
     }
 }
