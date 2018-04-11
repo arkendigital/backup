@@ -66,7 +66,7 @@ class Page extends Model
     public static function getPage($slug)
     {
         $page = Page::where("slug", $slug)
-      ->first();
+            ->first();
 
         if (null === $page) {
             $return = new \stdClass();
@@ -78,10 +78,6 @@ class Page extends Model
             return $page;
         }
     }
-
-
-
-
 
     /**
     * A page can have many custom fields.
@@ -123,7 +119,7 @@ class Page extends Model
         return $this->hasMany(PageWidget::class, 'page_id', 'id');
     }
 
-    public function ScopeGetField($query, $key, $type = "")
+    public function getField($key, $type = "")
     {
         foreach ($this->fields as $field) {
             if ($field->key == $key) {
@@ -136,6 +132,7 @@ class Page extends Model
                 return $return;
             }
         }
+
         return '';
     }
 

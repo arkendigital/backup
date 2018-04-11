@@ -17,7 +17,8 @@
   <div class="website-container">
     <div class="carousel">
       <div class="ticker">
-      @foreach (json_decode($page->section->getField("exams", "exam_carousel")) as $item)
+      {{-- @php $page = new \App\Models\Page::where('name', 'Exams')->first(); @endphp --}}
+      @foreach (json_decode($exams->section->getField("exams", "exam_carousel")) as $item)
         <p class="ticker__item">{{ $item }}</p>
       @endforeach
       </div>

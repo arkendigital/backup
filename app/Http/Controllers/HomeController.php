@@ -27,6 +27,7 @@ class HomeController extends Controller
     *
     */
         $page = Page::getPage("homepage");
+        $exams = Page::where('slug', 'exams')->first();
 
         /**
         * Set SEO.
@@ -59,11 +60,12 @@ class HomeController extends Controller
         *
         */
         return view("welcome", compact(
-      "sections",
-      "discussions",
-      "slides",
-      "page"
-    ));
+          "sections",
+          "discussions",
+          "slides",
+          "page",
+          'exams'
+        ));
     }
 
     /**
