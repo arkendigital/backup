@@ -33,8 +33,8 @@ class PageWidgetOrderController extends Controller
         *
         */
         return view("admin.pages.widgets.order", compact(
-      "page"
-    ));
+            "page"
+        ));
     }
 
     public function update(Request $request)

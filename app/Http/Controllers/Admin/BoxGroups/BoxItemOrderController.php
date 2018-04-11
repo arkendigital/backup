@@ -20,8 +20,8 @@ class BoxItemOrderController extends Controller
     public function index(BoxGroup $group)
     {
         return view("admin.boxes.items.order", compact(
-      "group"
-    ));
+            "group"
+        ));
     }
 
     public function update(Request $request)

@@ -29,8 +29,8 @@ class AdvertController extends Controller
         * Display results.
         */
         return view("admin.adverts.index", compact(
-      "adverts"
-    ));
+            "adverts"
+        ));
     }
 
     /**
@@ -55,30 +55,30 @@ class AdvertController extends Controller
     * Insert into database.
     */
         $advert = Advert::create([
-      "name" => request()->name,
-      "url" => request()->url
-    ]);
+            "name" => request()->name,
+            "url" => request()->url
+        ]);
 
         /**
         * Upload advert image.
         */
         if (request()->file("image")) {
             $image_path = AWS::uploadImage(
-        request()->file("image"),
-        "adverts"
-      );
+                request()->file("image"),
+                "adverts"
+            );
 
             $account->update([
-        "image_path" => $image_path
-      ]);
+                "image_path" => $image_path
+            ]);
         }
 
         /**
         * Redirect user to edit page.
         */
         return redirect(route("adverts.edit", compact(
-      "advert"
-    )));
+            "advert"
+        )));
     }
 
     /**
@@ -90,8 +90,8 @@ class AdvertController extends Controller
     public function edit(Advert $advert)
     {
         return view("admin.adverts.edit", compact(
-      "advert"
-    ));
+            "advert"
+        ));
     }
 
     /**
@@ -108,23 +108,23 @@ class AdvertController extends Controller
     * Insert into database.
     */
         $advert->update([
-      "name" => request()->name,
-      "url" => request()->url
-    ]);
+            "name" => request()->name,
+            "url" => request()->url
+        ]);
 
         /**
         * Upload advert image.
         */
         if (request()->file("image")) {
             $image_path = AWS::uploadImage(
-        request()->file("image"),
-        "adverts",
-        $advert->image_path
-      );
+                request()->file("image"),
+                "adverts",
+                $advert->image_path
+            );
 
             $advert->update([
-        "image_path" => $image_path
-      ]);
+                "image_path" => $image_path
+            ]);
         }
 
         /**

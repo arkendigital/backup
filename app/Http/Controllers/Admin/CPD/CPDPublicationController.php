@@ -38,8 +38,8 @@ class CPDPublicationController extends Controller
         * Display results.
         */
         return view("admin.cpd.publications.index", compact(
-      "publications"
-    ));
+            "publications"
+        ));
     }
 
     /**
@@ -64,9 +64,9 @@ class CPDPublicationController extends Controller
     * Insert into database.
     */
         $publication = CPDPublication::create([
-      "name" => request()->name,
-      "link" => request()->link
-    ]);
+            "name" => request()->name,
+            "link" => request()->link
+        ]);
 
         /**
         * Redirect to publications index.
@@ -84,8 +84,8 @@ class CPDPublicationController extends Controller
     public function edit(CPDPublication $publication)
     {
         return view("admin.cpd.publications.edit", compact(
-      "publication"
-    ));
+            "publication"
+        ));
     }
 
     /**
@@ -103,16 +103,16 @@ class CPDPublicationController extends Controller
     *
     */
         $publication->update([
-      "name" => request()->name,
-      "link" => request()->link
-    ]);
+            "name" => request()->name,
+            "link" => request()->link
+        ]);
 
         /**
         * Redirect to publications index.
         *
         */
         return redirect(route("cpd-publications.edit", compact(
-      "publication"
-    )));
+            "publication"
+        )));
     }
 }

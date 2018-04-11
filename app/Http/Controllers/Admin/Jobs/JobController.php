@@ -27,8 +27,8 @@ class JobController extends Controller
         * Display results.
         */
         return view("admin.jobs.index", compact(
-      "jobs"
-    ));
+            "jobs"
+        ));
     }
 
     /**
@@ -54,10 +54,10 @@ class JobController extends Controller
         * Display form / page.
         */
         return view("admin.jobs.edit", compact(
-      "job",
-      "locations",
-      "companies"
-    ));
+            "job",
+            "locations",
+            "companies"
+        ));
     }
 
     /**
@@ -74,15 +74,15 @@ class JobController extends Controller
     * Update job.
     */
         $job->update([
-      "title" => request()->title,
-      "excerpt" => request()->excerpt,
-      "content" => request()->content,
-      "salary" => request()->salary,
-      "location_id" => request()->location_id,
-      "company_id" => request()->company_id,
-      "apply_link" => request()->apply_link,
-      "featured" => request()->featured
-    ]);
+            "title" => request()->title,
+            "excerpt" => request()->excerpt,
+            "content" => request()->content,
+            "salary" => request()->salary,
+            "location_id" => request()->location_id,
+            "company_id" => request()->company_id,
+            "apply_link" => request()->apply_link,
+            "featured" => request()->featured
+        ]);
 
         /**
         * Redirect back to edit page.
@@ -107,9 +107,9 @@ class JobController extends Controller
         $companies = JobCompany::all();
 
         return view("admin.jobs.create", compact(
-      "locations",
-      "companies"
-    ));
+            "locations",
+            "companies"
+        ));
     }
 
     /**
@@ -125,21 +125,21 @@ class JobController extends Controller
     * Create job.
     */
         $job = Job::create([
-      "title" => request()->title,
-      "excerpt" => request()->excerpt,
-      "content" => request()->content,
-      "salary" => request()->salary,
-      "location_id" => request()->location_id,
-      "company_id" => request()->company_id,
-      "apply_link" => request()->apply_link,
-      "featured" => request()->featured
-    ]);
+            "title" => request()->title,
+            "excerpt" => request()->excerpt,
+            "content" => request()->content,
+            "salary" => request()->salary,
+            "location_id" => request()->location_id,
+            "company_id" => request()->company_id,
+            "apply_link" => request()->apply_link,
+            "featured" => request()->featured
+        ]);
 
         /**
         * Redirect to edit page.
         */
         return redirect(route("jobs.edit", compact(
-      "job"
-    )));
+            "job"
+        )));
     }
 }

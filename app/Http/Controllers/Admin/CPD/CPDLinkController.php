@@ -30,8 +30,8 @@ class CPDLinkController extends Controller
         * Display results.
         */
         return view("admin.cpd.links.index", compact(
-      "links"
-    ));
+            "links"
+        ));
     }
 
     /**
@@ -56,16 +56,16 @@ class CPDLinkController extends Controller
     * Add into storage.
     */
         $link = Link::create([
-      "name" => request()->name,
-      "link" => request()->link
-    ]);
+            "name" => request()->name,
+            "link" => request()->link
+        ]);
 
         /**
         * Redirect to edit page.
         */
         return redirect(route("cpd-links.edit", compact(
-      "link"
-    )));
+            "link"
+        )));
     }
 
     /**
@@ -77,8 +77,8 @@ class CPDLinkController extends Controller
     public function edit(Link $link)
     {
         return view("admin.cpd.links.edit", compact(
-      "link"
-    ));
+            "link"
+        ));
     }
 
     /**
@@ -95,9 +95,9 @@ class CPDLinkController extends Controller
     * Update link in storage.
     */
         $link->update([
-      "name" => request()->name,
-      "link" => request()->link
-    ]);
+            "name" => request()->name,
+            "link" => request()->link
+        ]);
 
         /**
         * Redirect to edit page.

@@ -25,8 +25,8 @@ class DiscussionCategoryController extends Controller
         * Display results.
         */
         return view("admin.discussions.categories.index", compact(
-      "categories"
-    ));
+            "categories"
+        ));
     }
 
     /**
@@ -44,8 +44,8 @@ class DiscussionCategoryController extends Controller
         * Display the form.
         */
         return view("admin.discussions.categories.create", compact(
-      "categories"
-    ));
+            "categories"
+        ));
     }
 
     /**
@@ -61,10 +61,10 @@ class DiscussionCategoryController extends Controller
     * Insert into storage.
     */
         $category = DiscussionCategory::create([
-      "name" => request()->name,
-      "parent_id" => request()->parent_id,
-      "icon_id" => request()->icon_id
-    ]);
+            "name" => request()->name,
+            "parent_id" => request()->parent_id,
+            "icon_id" => request()->icon_id
+        ]);
 
         /**
         * Redirect to edit page.
@@ -95,10 +95,10 @@ class DiscussionCategoryController extends Controller
         * Display the form.
         */
         return view("admin.discussions.categories.edit", compact(
-      "category",
-      "categories",
-      "icons"
-    ));
+            "category",
+            "categories",
+            "icons"
+        ));
     }
 
     /**
@@ -115,10 +115,10 @@ class DiscussionCategoryController extends Controller
     * Update category.
     */
         $category->update([
-      "name" => request()->name,
-      "parent_id" => request()->parent_id,
-      "icon_id" => request()->icon_id
-    ]);
+            "name" => request()->name,
+            "parent_id" => request()->parent_id,
+            "icon_id" => request()->icon_id
+        ]);
 
         /**
         * Redirect user back to edit view.

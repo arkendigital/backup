@@ -40,8 +40,8 @@ class BoxItemController extends Controller
         *
         */
         return view("admin.boxes.items.create", compact(
-      "group"
-    ));
+            "group"
+        ));
     }
 
     /**
@@ -58,10 +58,10 @@ class BoxItemController extends Controller
     *
     */
         $item = BoxItem::create([
-      "group_id" => request()->group_id,
-      "title" => request()->title,
-      "link" => request()->link
-    ]);
+            "group_id" => request()->group_id,
+            "title" => request()->title,
+            "link" => request()->link
+        ]);
 
         /**
         * Redirect back to the group.
@@ -79,8 +79,8 @@ class BoxItemController extends Controller
     public function edit(BoxItem $item)
     {
         return view("admin.boxes.items.edit", compact(
-      "item"
-    ));
+            "item"
+        ));
     }
 
     /**
@@ -98,9 +98,9 @@ class BoxItemController extends Controller
     *
     */
         $item->update([
-      "title" => request()->title,
-      "link" => request()->link
-    ]);
+            "title" => request()->title,
+            "link" => request()->link
+        ]);
 
         /**
         * Redirect back to the group.

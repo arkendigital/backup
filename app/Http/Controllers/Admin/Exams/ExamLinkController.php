@@ -24,21 +24,21 @@ class ExamLinkController extends Controller
     * Get official links.
     */
         $official_links = ExamUsefulLink::where("official", 1)
-      ->get();
+            ->get();
 
         /**
         * Get unofficial links.
         */
         $unofficial_links = ExamUsefulLink::where("official", 0)
-      ->get();
+            ->get();
 
         /**
         * Display results.
         */
         return view("admin.exams.links.index", compact(
-      "official_links",
-      "unofficial_links"
-    ));
+            "official_links",
+            "unofficial_links"
+        ));
     }
 
     /**
@@ -63,17 +63,17 @@ class ExamLinkController extends Controller
     * Add into storage.
     */
         $link = ExamUsefulLink::create([
-      "name" => request()->name,
-      "link" => request()->link,
-      "official" => request()->official
-    ]);
+            "name" => request()->name,
+            "link" => request()->link,
+            "official" => request()->official
+        ]);
 
         /**
         * Redirect to edit page.
         */
         return redirect(route("exam-links.edit", compact(
-      "link"
-    )));
+            "link"
+        )));
     }
 
     /**
@@ -85,8 +85,8 @@ class ExamLinkController extends Controller
     public function edit(ExamUsefulLink $link)
     {
         return view("admin.exams.links.edit", compact(
-      "link"
-    ));
+            "link"
+        ));
     }
 
     /**
@@ -103,10 +103,10 @@ class ExamLinkController extends Controller
     * Update link in storage.
     */
         $link->update([
-      "name" => request()->name,
-      "link" => request()->link,
-      "official" => request()->official
-    ]);
+            "name" => request()->name,
+            "link" => request()->link,
+            "official" => request()->official
+        ]);
 
         /**
         * Redirect to edit page.

@@ -56,26 +56,25 @@ class AccountController extends Controller
             $size = AWS::setCustomSize([200,200]);
 
             $image_path = AWS::uploadImage(
-        request()->file("image"),
-        "user",
-        $account->avatar_path
-      );
+                request()->file("image"),
+                "user",
+                $account->avatar_path
+            );
 
             $account->update([
-        "avatar_path" => $image_path
-      ]);
+                "avatar_path" => $image_path
+            ]);
         }
 
         /**
         * Redirect user.
         */
-        return redirect(route("account.index"))
-      ->with([
-        "alert" => true,
-        "alert_title" => "Success",
-        "alert_message" => "Account has been updated!",
-        "alert_button" => "OK"
-      ]);
+        return redirect(route("account.index"))->with([
+            "alert" => true,
+            "alert_title" => "Success",
+            "alert_message" => "Account has been updated!",
+            "alert_button" => "OK"
+        ]);
     }
 
     /**
@@ -96,13 +95,12 @@ class AccountController extends Controller
       /**
       * Redirect user.
       */
-            return redirect(route("account.index"))
-        ->with([
-          "alert" => true,
-          "alert_title" => "Update Failed",
-          "alert_message" => "The password you entered did not match your current password.",
-          "alert_button" => "OK"
-        ]);
+            return redirect(route("account.index"))->with([
+                "alert" => true,
+                "alert_title" => "Update Failed",
+                "alert_message" => "The password you entered did not match your current password.",
+                "alert_button" => "OK"
+            ]);
         }
 
         /**
@@ -110,18 +108,17 @@ class AccountController extends Controller
         *
         */
         auth()->user()->update([
-      "password" =>  bcrypt(request()->new_password)
-    ]);
+            "password" =>  bcrypt(request()->new_password)
+        ]);
 
         /**
         * Redirect user.
         */
-        return redirect(route("account.index"))
-      ->with([
+        return redirect(route("account.index"))->with([
         "alert" => true,
         "alert_title" => "Success",
         "alert_message" => "Your password has been updated!",
         "alert_button" => "Great!"
-      ]);
+        ]);
     }
 }

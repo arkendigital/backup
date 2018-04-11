@@ -39,10 +39,10 @@ class DiscussionCategory extends Model
     public function sluggable()
     {
         return [
-        'slug' => [
-          'source' => 'name',
-        ],
-      ];
+            'slug' => [
+                'source' => 'name',
+            ],
+        ];
     }
 
     /**

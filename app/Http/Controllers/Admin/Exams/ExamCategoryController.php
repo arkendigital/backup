@@ -40,8 +40,8 @@ class ExamCategoryController extends Controller
         *
         */
         return view("admin.exams.categories.index", compact(
-      "categories"
-    ));
+            "categories"
+        ));
     }
 
     /**
@@ -67,17 +67,17 @@ class ExamCategoryController extends Controller
     *
     */
         $category = ExamCategory::create([
-      "name" => request()->name,
-      "slug" => str_slug(request()->name)
-    ]);
+            "name" => request()->name,
+            "slug" => str_slug(request()->name)
+        ]);
 
         /**
         * Redirect to edit page.
         *
         */
         return redirect(route("exam-categories.edit", compact(
-      "category"
-    )));
+            "category"
+        )));
     }
 
     /**
@@ -94,7 +94,7 @@ class ExamCategoryController extends Controller
     *
     */
         return view("admin.exams.categories.edit", compact(
-      "category"
-    ));
+            "category"
+        ));
     }
 }

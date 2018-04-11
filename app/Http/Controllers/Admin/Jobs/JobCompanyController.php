@@ -28,8 +28,8 @@ class JobCompanyController extends Controller
         * Display results.
         */
         return view("admin.jobs.companies.index", compact(
-      "companies"
-    ));
+            "companies"
+        ));
     }
 
     /**
@@ -49,33 +49,33 @@ class JobCompanyController extends Controller
     public function store(JobCompanyRequest $request)
     {
 
-    /**
-    * Insert company to storage.
-    */
+        /**
+        * Insert company to storage.
+        */
         $company = JobCompany::create([
-      "name" => request()->name
-    ]);
+            "name" => request()->name
+        ]);
 
         /**
         * Upload image.
         */
         if (request()->file("logo_path")) {
             $logo_path = AWS::uploadImage(
-        request()->file("logo_path"),
-        "companies"
-      );
+                request()->file("logo_path"),
+                "companies"
+            );
 
             $company->update([
-        "logo_path" => $logo_path
-      ]);
+                "logo_path" => $logo_path
+            ]);
         }
 
         /**
         * Redirect to edit page.
         */
         return redirect(route("job-companies.edit", compact(
-      "company"
-    )));
+            "company"
+        )));
     }
 
     /**
@@ -84,8 +84,8 @@ class JobCompanyController extends Controller
     public function edit(JobCompany $company)
     {
         return view("admin.jobs.companies.edit", compact(
-      "company"
-    ));
+            "company"
+        ));
     }
 
     /**
@@ -102,29 +102,29 @@ class JobCompanyController extends Controller
     * Insert company to storage.
     */
         $company->update([
-      "name" => request()->name,
-      "description" => request()->description
-    ]);
+            "name" => request()->name,
+            "description" => request()->description
+        ]);
 
         /**
         * Upload image.
         */
         if (request()->file("logo_path")) {
             $logo_path = AWS::uploadImage(
-        request()->file("logo_path"),
-        "companies"
-      );
+                request()->file("logo_path"),
+                "companies"
+            );
 
             $company->update([
-        "logo_path" => $logo_path
-      ]);
+                "logo_path" => $logo_path
+            ]);
         }
 
         /**
         * Redirect to edit page.
         */
         return redirect(route("job-companies.edit", compact(
-      "company"
-    )));
+            "company"
+        )));
     }
 }

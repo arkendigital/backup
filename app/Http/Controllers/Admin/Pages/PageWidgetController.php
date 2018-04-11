@@ -39,8 +39,8 @@ class PageWidgetController extends Controller
         *
         */
         return view("admin.pages.widgets.create", compact(
-      "pages"
-    ));
+            "pages"
+        ));
     }
 
     /**
@@ -57,10 +57,10 @@ class PageWidgetController extends Controller
     *
     */
         $widget = PageWidget::create([
-      "page_id" => request()->page_id,
-      "name" => request()->name,
-      "slug" => request()->slug
-    ]);
+            "page_id" => request()->page_id,
+            "name" => request()->name,
+            "slug" => request()->slug
+        ]);
 
         /**
         * Redirect to the page the widget was assigned to.

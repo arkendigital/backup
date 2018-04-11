@@ -33,8 +33,8 @@ class SidebarController extends Controller
         *
         */
         return view("admin.sidebars.index", compact(
-      "sidebars"
-    ));
+            "sidebars"
+        ));
     }
 
     /**
@@ -55,16 +55,16 @@ class SidebarController extends Controller
         *
         */
         $misc_pages = Page::where("section_id", "")
-      ->get();
+            ->get();
 
         /**
         * Display page.
         *
         */
         return view("admin.sidebars.create", compact(
-      "sections",
-      "misc_pages"
-    ));
+            "sections",
+            "misc_pages"
+        ));
     }
 
     /**
@@ -81,17 +81,17 @@ class SidebarController extends Controller
     *
     */
         $sidebar = SectionSidebar::create([
-      "name" => request()->name,
-      "slug" => str_slug(request()->name)
-    ]);
+            "name" => request()->name,
+            "slug" => str_slug(request()->name)
+        ]);
 
         /**
         * Redirect to the edit page.
         *
         */
         return redirect(route("sidebars.edit", compact(
-      "sidebar"
-    )));
+            "sidebar"
+        )));
     }
 
     /**
@@ -114,18 +114,18 @@ class SidebarController extends Controller
         *
         */
         $misc_pages = Page::where("section_id", "")
-      ->get();
+            ->get();
 
         /**
         * Display page.
         *
         */
         return view("admin.sidebars.edit", compact(
-      "sections",
-      "misc_pages",
-      "sidebar",
-      "current_pages_ids"
-    ));
+            "sections",
+            "misc_pages",
+            "sidebar",
+            "current_pages_ids"
+        ));
     }
 
     /**
@@ -143,15 +143,15 @@ class SidebarController extends Controller
     *
     */
         $sidebar->update([
-      "name" => request()->name
-    ]);
+            "name" => request()->name
+        ]);
 
         /**
         * Redirect to the edit page.
         *
         */
         return redirect(route("sidebars.edit", compact(
-      "sidebar"
-    )));
+            "sidebar"
+        )));
     }
 }

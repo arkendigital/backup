@@ -33,15 +33,15 @@ class SlideController extends Controller
     *
     */
         $groups = Slide::groupBy("slug")
-      ->get();
+            ->get();
 
         /**
         * Display results.
         *
         */
         return view("admin.slides.index", compact(
-      "groups"
-    ));
+            "groups"
+        ));
     }
 
     /**
@@ -67,23 +67,23 @@ class SlideController extends Controller
     *
     */
         $slide = Slide::create([
-      "slug" => request()->slug,
-      "title" => request()->title,
-      "text" => request()->text
-    ]);
+            "slug" => request()->slug,
+            "title" => request()->title,
+            "text" => request()->text
+        ]);
 
         /**
         * Upload slide image.
         */
         if (request()->file("image")) {
             $image_path = AWS::uploadImage(
-        request()->file("image"),
-        "slides"
-      );
+                request()->file("image"),
+                "slides"
+            );
 
             $slide->update([
-        "image_path" => $image_path
-      ]);
+                "image_path" => $image_path
+            ]);
         }
 
         /**
@@ -108,8 +108,8 @@ class SlideController extends Controller
     public function edit(Slide $slide)
     {
         return view("admin.slides.edit", compact(
-      "slide"
-    ));
+            "slide"
+        ));
     }
 
     /**
@@ -127,23 +127,23 @@ class SlideController extends Controller
     *
     */
         $slide->update([
-      "title" => request()->title,
-      "text" => request()->text
-    ]);
+            "title" => request()->title,
+            "text" => request()->text
+        ]);
 
         /**
         * Upload slide image.
         */
         if (request()->file("image")) {
             $image_path = AWS::uploadImage(
-        request()->file("image"),
-        "slides",
-        $slide->image_path
-      );
+                request()->file("image"),
+                "slides",
+                $slide->image_path
+            );
 
             $slide->update([
-        "image_path" => $image_path
-      ]);
+                "image_path" => $image_path
+            ]);
         }
 
         /**

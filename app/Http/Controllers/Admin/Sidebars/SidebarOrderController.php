@@ -21,8 +21,8 @@ class SidebarOrderController extends Controller
     public function index(SectionSidebar $sidebar)
     {
         return view("admin.sidebars.order", compact(
-      "sidebar"
-    ));
+            "sidebar"
+        ));
     }
 
     public function update(Request $request)

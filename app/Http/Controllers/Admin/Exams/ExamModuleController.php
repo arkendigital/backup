@@ -46,9 +46,9 @@ class ExamModuleController extends Controller
         *
         */
         return view("admin.exams.modules.create", compact(
-      "category",
-      "module_sections"
-    ));
+            "category",
+            "module_sections"
+        ));
     }
 
     /**
@@ -65,32 +65,32 @@ class ExamModuleController extends Controller
     *
     */
         $module = ExamModule::create([
-      "category_id" => request()->category_id,
-      "name" => request()->name,
-      "slug" => strtolower(str_slug(request()->name)),
-      "excerpt" => request()->excerpt
-    ]);
+            "category_id" => request()->category_id,
+            "name" => request()->name,
+            "slug" => strtolower(str_slug(request()->name)),
+            "excerpt" => request()->excerpt
+        ]);
 
         /**
         * Add info to database.
         *
         */
         $info = ExamModuleInfo::create([
-      "module_id" => $module->id,
-      "name" => request()->info_name,
-      "section_one_title" => request()->section_one_title,
-      "section_one_text" => request()->section_one_text,
-      "section_one_link" => request()->section_one_link,
-      "section_two_title" => request()->section_two_title,
-      "section_two_text" => request()->section_two_text,
-      "section_two_link" => request()->section_two_link,
-      "section_three_title" => request()->section_three_title,
-      "section_three_text" => request()->section_three_text,
-      "section_three_link" => request()->section_three_link,
-      "section_four_title" => request()->section_four_title,
-      "section_four_text" => request()->section_four_text,
-      "section_four_link" => request()->section_four_link
-    ]);
+            "module_id" => $module->id,
+            "name" => request()->info_name,
+            "section_one_title" => request()->section_one_title,
+            "section_one_text" => request()->section_one_text,
+            "section_one_link" => request()->section_one_link,
+            "section_two_title" => request()->section_two_title,
+            "section_two_text" => request()->section_two_text,
+            "section_two_link" => request()->section_two_link,
+            "section_three_title" => request()->section_three_title,
+            "section_three_text" => request()->section_three_text,
+            "section_three_link" => request()->section_three_link,
+            "section_four_title" => request()->section_four_title,
+            "section_four_text" => request()->section_four_text,
+            "section_four_link" => request()->section_four_link
+        ]);
 
         /**
         * Get exam category.
@@ -103,8 +103,8 @@ class ExamModuleController extends Controller
         *
         */
         return redirect(route("exam-categories.edit", compact(
-      "category"
-    )));
+            "category"
+        )));
     }
 
     /**
@@ -133,10 +133,10 @@ class ExamModuleController extends Controller
         *
         */
         return view("admin.exams.modules.edit", compact(
-      "module",
-      "category",
-      "module_sections"
-    ));
+            "module",
+            "category",
+            "module_sections"
+        ));
     }
 
     /**
@@ -154,31 +154,31 @@ class ExamModuleController extends Controller
     *
     */
         $module->update([
-      "category_id" => request()->category_id,
-      "name" => request()->name,
-      "slug" => strtolower(str_slug(request()->name)),
-      "excerpt" => request()->excerpt,
-    ]);
+            "category_id" => request()->category_id,
+            "name" => request()->name,
+            "slug" => strtolower(str_slug(request()->name)),
+            "excerpt" => request()->excerpt,
+        ]);
 
         /**
         * Update module info.
         *
         */
         $module->info->update([
-      "name" => request()->info_name,
-      "section_one_title" => request()->section_one_title,
-      "section_one_text" => request()->section_one_text,
-      "section_one_link" => request()->section_one_link,
-      "section_two_title" => request()->section_two_title,
-      "section_two_text" => request()->section_two_text,
-      "section_two_link" => request()->section_two_link,
-      "section_three_title" => request()->section_three_title,
-      "section_three_text" => request()->section_three_text,
-      "section_three_link" => request()->section_three_link,
-      "section_four_title" => request()->section_four_title,
-      "section_four_text" => request()->section_four_text,
-      "section_four_link" => request()->section_four_link
-    ]);
+            "name" => request()->info_name,
+            "section_one_title" => request()->section_one_title,
+            "section_one_text" => request()->section_one_text,
+            "section_one_link" => request()->section_one_link,
+            "section_two_title" => request()->section_two_title,
+            "section_two_text" => request()->section_two_text,
+            "section_two_link" => request()->section_two_link,
+            "section_three_title" => request()->section_three_title,
+            "section_three_text" => request()->section_three_text,
+            "section_three_link" => request()->section_three_link,
+            "section_four_title" => request()->section_four_title,
+            "section_four_text" => request()->section_four_text,
+            "section_four_link" => request()->section_four_link
+        ]);
 
         /**
         * Get exam category.
@@ -191,8 +191,8 @@ class ExamModuleController extends Controller
         *
         */
         return redirect(route("exam-categories.edit", compact(
-      "category"
-    )));
+            "category"
+        )));
     }
 
     /**
@@ -202,10 +202,10 @@ class ExamModuleController extends Controller
     private function getModuleSections()
     {
         return [
-      "one",
-      "two",
-      "three",
-      "four"
-    ];
+            "one",
+            "two",
+            "three",
+            "four"
+        ];
     }
 }

@@ -29,8 +29,8 @@ class CPDResourceController extends Controller
         * Display results.
         */
         return view("admin.cpd.resources.index", compact(
-      "resources"
-    ));
+            "resources"
+        ));
     }
 
     /**
@@ -55,31 +55,31 @@ class CPDResourceController extends Controller
     * Create new resource in storage.
     */
         $resource = CPDResource::create([
-      "name" => request()->name,
-      "excerpt" => request()->excerpt,
-      "content" => request()->content
-    ]);
+            "name" => request()->name,
+            "excerpt" => request()->excerpt,
+            "content" => request()->content
+        ]);
 
         /**
         * Upload icon.
         */
         if (request()->file("icon")) {
             $icon_path = AWS::uploadImage(
-        request()->file("icon"),
-        "cpd-resources"
-      );
+                request()->file("icon"),
+                "cpd-resources"
+            );
 
             $resource->update([
-        "icon_path" => $icon_path
-      ]);
+                "icon_path" => $icon_path
+            ]);
         }
 
         /**
         * Redirect to edit page.
         */
         return redirect(route("cpd-resources.edit", compact(
-      "resource"
-    )));
+            "resource"
+        )));
     }
 
     /**
@@ -91,8 +91,8 @@ class CPDResourceController extends Controller
     public function edit(CPDResource $resource)
     {
         return view("admin.cpd.resources.edit", compact(
-      "resource"
-    ));
+            "resource"
+        ));
     }
 
     /**
@@ -109,31 +109,31 @@ class CPDResourceController extends Controller
     * Create new resource in storage.
     */
         $resource->update([
-      "name" => request()->name,
-      "excerpt" => request()->excerpt,
-      "content" => request()->content
-    ]);
+            "name" => request()->name,
+            "excerpt" => request()->excerpt,
+            "content" => request()->content
+        ]);
 
         /**
         * Upload icon.
         */
         if (request()->file("icon")) {
             $icon_path = AWS::uploadImage(
-        request()->file("icon"),
-        "cpd-resources",
-        $resource->icon_path
-      );
+                request()->file("icon"),
+                "cpd-resources",
+                $resource->icon_path
+            );
 
             $resource->update([
-        "icon_path" => $icon_path
-      ]);
+                "icon_path" => $icon_path
+            ]);
         }
 
         /**
         * Redirect to edit page.
         */
         return redirect(route("cpd-resources.edit", compact(
-      "resource"
-    )));
+            "resource"
+        )));
     }
 }

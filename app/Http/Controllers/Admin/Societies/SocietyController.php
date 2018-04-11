@@ -40,8 +40,8 @@ class SocietyController extends Controller
         *
         */
         return view("admin.societies.index", compact(
-      "societies"
-    ));
+            "societies"
+        ));
     }
 
     /**
@@ -73,15 +73,15 @@ class SocietyController extends Controller
         *
         */
         $society = Society::create([
-      "name" => request()->name,
-      "email" => request()->email,
-      "link" => request()->link,
-      "postcode" => request()->postcode,
-      "description" => request()->description,
-      "longitude" => $location->longitude,
-      "latitude" => $location->latitude,
-      "city" => $location->admin_district
-    ]);
+            "name" => request()->name,
+            "email" => request()->email,
+            "link" => request()->link,
+            "postcode" => request()->postcode,
+            "description" => request()->description,
+            "longitude" => $location->longitude,
+            "latitude" => $location->latitude,
+            "city" => $location->admin_district
+        ]);
 
         /**
         * Upload society logo.
@@ -94,17 +94,17 @@ class SocietyController extends Controller
       *
       */
             $logo_path = AWS::uploadImage(
-        request()->file("logo"),
-        "societies/logos"
-      );
+                request()->file("logo"),
+                "societies/logos"
+            );
 
             /**
             * Add path for logo.
             *
             */
             $society->update([
-        "logo_path" => $logo_path
-      ]);
+                "logo_path" => $logo_path
+            ]);
         }
 
         /**
@@ -118,17 +118,17 @@ class SocietyController extends Controller
       *
       */
             $image_path = AWS::uploadImage(
-        request()->file("image"),
-        "societies/images"
-      );
+                request()->file("image"),
+                "societies/images"
+            );
 
             /**
             * Add path for image.
             *
             */
             $society->update([
-        "image_path" => $image_path
-      ]);
+                "image_path" => $image_path
+            ]);
         }
 
         /**
@@ -136,8 +136,8 @@ class SocietyController extends Controller
         *
         */
         return redirect(route("societies.edit", compact(
-      "society"
-    )));
+            "society"
+        )));
     }
 
     /**
@@ -149,8 +149,8 @@ class SocietyController extends Controller
     public function edit(Society $society)
     {
         return view("admin.societies.edit", compact(
-      "society"
-    ));
+            "society"
+        ));
     }
 
     /**
@@ -174,15 +174,15 @@ class SocietyController extends Controller
         *
         */
         $society->update([
-      "name" => request()->name,
-      "email" => request()->email,
-      "link" => request()->link,
-      "postcode" => request()->postcode,
-      "description" => request()->description,
-      "longitude" => $location->longitude,
-      "latitude" => $location->latitude,
-      "city" => $location->admin_district
-    ]);
+        "name" => request()->name,
+        "email" => request()->email,
+        "link" => request()->link,
+        "postcode" => request()->postcode,
+        "description" => request()->description,
+        "longitude" => $location->longitude,
+        "latitude" => $location->latitude,
+        "city" => $location->admin_district
+        ]);
 
         /**
         * Upload society logo.
@@ -195,18 +195,18 @@ class SocietyController extends Controller
       *
       */
             $logo_path = AWS::uploadImage(
-        request()->file("logo"),
-        "societies/logos",
-        $society->logo_path
-      );
+                request()->file("logo"),
+                "societies/logos",
+                $society->logo_path
+            );
 
             /**
             * Add path for logo.
             *
             */
             $society->update([
-        "logo_path" => $logo_path
-      ]);
+                "logo_path" => $logo_path
+            ]);
         }
 
         /**
@@ -220,18 +220,18 @@ class SocietyController extends Controller
       *
       */
             $image_path = AWS::uploadImage(
-        request()->file("image"),
-        "societies/images",
-        $society->image_path
-      );
+                request()->file("image"),
+                "societies/images",
+                $society->image_path
+            );
 
             /**
             * Add path for image.
             *
             */
             $society->update([
-        "image_path" => $image_path
-      ]);
+                "image_path" => $image_path
+            ]);
         }
 
         /**
@@ -239,8 +239,8 @@ class SocietyController extends Controller
         *
         */
         return redirect(route("societies.edit", compact(
-      "society"
-    )));
+            "society"
+        )));
     }
 
 

@@ -42,8 +42,8 @@ class BoxGroupController extends Controller
         *
         */
         return view("admin.boxes.groups.index", compact(
-      "box_groups"
-    ));
+            "box_groups"
+        ));
     }
 
     /**
@@ -64,8 +64,8 @@ class BoxGroupController extends Controller
         *
         */
         return view("admin.boxes.groups.create", compact(
-      "widgets"
-    ));
+            "widgets"
+        ));
     }
 
     /**
@@ -82,17 +82,17 @@ class BoxGroupController extends Controller
     *
     */
         $group = BoxGroup::create([
-      "name" => request()->name,
-      "widget_slug" => request()->widget_slug
-    ]);
+            "name" => request()->name,
+            "widget_slug" => request()->widget_slug
+        ]);
 
         /**
         * Redirect to edit page.
         *
         */
         return redirect(route("box-groups.edit", compact(
-      "group"
-    )));
+            "group"
+        )));
     }
 
     /**
@@ -115,9 +115,9 @@ class BoxGroupController extends Controller
         *
         */
         return view("admin.boxes.groups.edit", compact(
-      "widgets",
-      "group"
-    ));
+            "widgets",
+            "group"
+        ));
     }
 
     /**
@@ -135,10 +135,10 @@ class BoxGroupController extends Controller
     *
     */
         $group->update([
-      "name" => request()->name,
-      "text" => request()->text,
-      "widget_slug" => request()->widget_slug,
-    ]);
+            "name" => request()->name,
+            "text" => request()->text,
+            "widget_slug" => request()->widget_slug,
+        ]);
 
         /**
         * Upload the image.
@@ -146,14 +146,14 @@ class BoxGroupController extends Controller
         */
         if (request()->file("image")) {
             $image_path = AWS::uploadImage(
-        request()->file("image"),
-        "boxes",
-        $group->image_path
-      );
+                request()->file("image"),
+                "boxes",
+                $group->image_path
+            );
 
             $group->update([
-        "image_path" => $image_path
-      ]);
+                "image_path" => $image_path
+            ]);
         }
 
         /**
@@ -161,7 +161,7 @@ class BoxGroupController extends Controller
         *
         */
         return redirect(route("box-groups.edit", compact(
-      "group"
-    )));
+            "group"
+        )));
     }
 }

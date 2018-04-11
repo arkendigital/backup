@@ -39,8 +39,8 @@ class EmployerController extends Controller
         *
         */
         return view("admin.employers.index", compact(
-      "employers"
-    ));
+            "employers"
+        ));
     }
 
     /**
@@ -66,11 +66,11 @@ class EmployerController extends Controller
     *
     */
         $employer = Employer::create([
-      "name" => request()->name,
-      "link" => request()->link,
-      "email" => request()->email,
-      "description" => request()->description
-    ]);
+            "name" => request()->name,
+            "link" => request()->link,
+            "email" => request()->email,
+            "description" => request()->description
+        ]);
 
         /**
         * Upload crest / icon.
@@ -78,13 +78,13 @@ class EmployerController extends Controller
         */
         if (request()->file("icon")) {
             $logo_path = AWS::uploadImage(
-        request()->file("icon"),
-        "employers"
-      );
+                request()->file("icon"),
+                "employers"
+            );
 
             $employer->update([
-        "logo_path" => $logo_path
-      ]);
+                "logo_path" => $logo_path
+            ]);
         }
 
         /**
@@ -92,8 +92,8 @@ class EmployerController extends Controller
         *
         */
         return redirect(route("employers.edit", compact(
-      "employer"
-    )));
+            "employer"
+        )));
     }
 
     /**
@@ -105,8 +105,8 @@ class EmployerController extends Controller
     public function edit(Employer $employer)
     {
         return view("admin.employers.edit", compact(
-      "employer"
-    ));
+            "employer"
+        ));
     }
 
     /**
@@ -124,11 +124,11 @@ class EmployerController extends Controller
     *
     */
         $employer->update([
-      "name" => request()->name,
-      "link" => request()->link,
-      "email" => request()->email,
-      "description" => request()->description
-    ]);
+           "name" => request()->name,
+            "link" => request()->link,
+            "email" => request()->email,
+            "description" => request()->description
+        ]);
 
         /**
         * Upload crest / icon.
@@ -136,14 +136,14 @@ class EmployerController extends Controller
         */
         if (request()->file("icon")) {
             $logo_path = AWS::uploadImage(
-        request()->file("icon"),
-        "employers",
-        $employer->logo_path
-      );
+                request()->file("icon"),
+                "employers",
+                $employer->logo_path
+            );
 
             $employer->update([
-        "logo_path" => $logo_path
-      ]);
+                "logo_path" => $logo_path
+            ]);
         }
 
         /**
@@ -151,8 +151,8 @@ class EmployerController extends Controller
         *
         */
         return redirect(route("employers.edit", compact(
-      "employer"
-    )));
+            "employer"
+        )));
     }
 
 
