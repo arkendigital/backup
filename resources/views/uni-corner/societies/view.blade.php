@@ -18,7 +18,7 @@
 
   <div class="website-container">
 
-    <div class="carousel">{{ $page->section->getField("exams", "exam_carousel") }}</div>
+    @include('partials.carousel-ticker')
 
     <div class="actuarial-employers">
       @foreach($societies as $loop_society)

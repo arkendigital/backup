@@ -31,7 +31,7 @@
       <a class="actuarial-employers-view-info-button" href="{{ $employer->link }}" target="_blank">Join</a>
     </div>
 
-    <div class="carousel">{{ $page->section->getField("exams", "exam_carousel") }}</div>
+    @include('partials.carousel-ticker')
 
     <div class="actuarial-employers">
       @foreach($employers as $loop_employer)

@@ -15,14 +15,9 @@
   </div>
 
   <div class="website-container">
-    <div class="carousel">
-      <div class="ticker">
-      {{-- @php $page = new \App\Models\Page::where('name', 'Exams')->first(); @endphp --}}
-      @foreach (json_decode($exams->section->getField("exams", "exam_carousel")) as $item)
-        <p class="ticker__item">{{ $item }}</p>
-      @endforeach
-      </div>
-    </div>
+    @include('partials.carousel-ticker', [
+      'page' => $exams
+    ])
 
     <div class="homepage-sections">
       @foreach($sections as $section)

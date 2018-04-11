@@ -34,7 +34,7 @@
       @endforeach
     </div>
 
-    <div class="carousel">{{ $page->section->getField("exams", "exam_carousel") }}</div>
+    @include('partials.carousel-ticker')
 
     <div class="clear margin-bottom--medium"></div>
 
