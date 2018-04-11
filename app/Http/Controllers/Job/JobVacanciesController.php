@@ -84,7 +84,7 @@ class JobVacanciesController extends Controller
             $jobs = $jobs->where('sector_id', session()->get('job-filter-sector'));
         }
 
-        if (session()->exists('job-filter-location') && !empty(session()->get('job-filter-location'))) {
+        if (session()->exists('job-filter-location') && session()->get('job-filter-location') != '') {
             $jobs = $jobs->whereHas('location', function ($q) {
                 $q->where('name', 'LIKE', '%' . session()->get('job-filter-location') . '%');
             });
@@ -121,7 +121,7 @@ class JobVacanciesController extends Controller
     */
     public function set_filtering(Request $request)
     {
-        if (request()->location) {
+        if (isset(request()->type)) {
             session()->put("job-filter-location", request()->location);
             session()->put("job-filter-order", request()->order);
         } else {
@@ -131,7 +131,8 @@ class JobVacanciesController extends Controller
             session()->put("job-filter-type", request()->type);
             session()->put("job-filter-sector", request()->sector);
         }
-    
+
+
         /**
         * Redirect back to job listing page.
         */

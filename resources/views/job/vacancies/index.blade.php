@@ -31,6 +31,7 @@
         <form action="/jobs/vacancies" method="POST" id="jobFiltering">
           {{ csrf_field() }}
 
+          <input type="hidden" name="type" value="topsearch">
           <input type="text" name="location" class="job-list-banner-location-search" placeholder="e.g. London" 
             @if (session()->exists('job-filter-location') && !empty(session()->get('job-filter-location')))
               value="{{ session()->get('job-filter-location') }}"
@@ -125,13 +126,14 @@
                 <select name="sector" class="job-list-sidebar-item-select">
                   <option value="" class="job-list-sidebar-item-select-default">All</option>
                   @foreach ($sectors as $sector)
-                    <option value="{{ $sector->id }}" class="job-list-sidebar-item-select-default">{{ $sector->name }}</option>                  
+                    <option value="{{ $sector->id }}" class="job-list-sidebar-item-select-default"
+                    @if(session()->exists("job-filter-sector") && session()->get("job-filter-sector") == $sector->id) selected @endif>{{ $sector->name }}</option>                  
                   @endforeach
                 </select>
               </div>
             </div>
 
-            <p><a class="job-list-sidebar-button" onclick="document.getElementById('jobFiltering').submit()">Search</a></p>
+            <p><button class="btn job-list-sidebar-button" type="submit">Search</button></p>
 
           </div><!-- /.job-list-sidebar-inner -->
         </form>
