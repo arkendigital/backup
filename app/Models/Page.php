@@ -21,13 +21,13 @@ class Page extends Model
     * @var array
     */
     protected $fillable = [
-    "name",
-    "slug",
-    "section_id",
-    "discussion_category_id",
-    "meta_title",
-    "meta_description"
-  ];
+        "name",
+        "slug",
+        "section_id",
+        "discussion_category_id",
+        "meta_title",
+        "meta_description"
+    ];
 
     /**
     * The attributes that should be cast to carbon instances.
@@ -44,10 +44,10 @@ class Page extends Model
     public function sluggable()
     {
         return [
-      'slug' => [
-        'source' => 'name',
-      ],
-    ];
+            'slug' => [
+                'source' => 'name',
+            ],
+        ];
     }
 
     /**
@@ -136,18 +136,16 @@ class Page extends Model
         return '';
     }
 
-
-    public function ScopeGetAdvert($query, $slug)
+    public function getAdvert($slug)
     {
         $page_advert = PageAdvert::where("page_id", $this->id)
-      ->where("slug", $slug)
-      ->first();
+            ->where("slug", $slug)
+            ->first();
 
         $advert = Advert::find($page_advert->advert_id);
 
         return $advert;
     }
-
     /**
     * Check to see if a widget on a specific page is visible
     *
@@ -155,7 +153,7 @@ class Page extends Model
     public function widgetIsVisible($slug = "")
     {
         $widget = PageWidget::where("slug", $slug)
-      ->first();
+            ->first();
 
         if ($widget !== null) {
             if ($widget->is_visible) {
@@ -173,7 +171,7 @@ class Page extends Model
     public function getWidgets()
     {
         return PageWidget::where("page_id", $this->attributes["id"])
-      ->orderBy("order", "ASC")
-      ->get();
+            ->orderBy("order", "ASC")
+            ->get();
     }
 }

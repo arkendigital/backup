@@ -49,9 +49,9 @@ class SectionController extends Controller
         * Display edit form / page.
         */
         return view("admin.sections.edit", compact(
-      "section",
-      "sidebars"
-    ));
+            "section",
+            "sidebars"
+        ));
     }
 
     /**
@@ -64,9 +64,9 @@ class SectionController extends Controller
     public function update(Section $section, Request $request)
     {
 
-    /**
-    * Update in database storage.
-    */
+        /**
+         * Update in database storage.
+         */
         $section->update(array_merge(request()->except(["_method", "_token", "image"])));
 
         /**

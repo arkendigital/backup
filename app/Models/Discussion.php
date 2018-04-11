@@ -44,10 +44,10 @@ class Discussion extends Model
     public function sluggable()
     {
         return [
-        'slug' => [
-          'source' => 'name',
-        ],
-      ];
+            'slug' => [
+                'source' => 'name',
+            ],
+        ];
     }
 
     /**
@@ -108,7 +108,7 @@ class Discussion extends Model
         * Get amount of replies for this discussion.
         */
         $count = DiscussionReply::where("discussion_id", $discussion_id)
-      ->count();
+            ->count();
 
         /**
         * Return the count and make sure it is minimum 2 digits.
@@ -123,24 +123,12 @@ class Discussion extends Model
 
     /**
     * Check if a user is allowed edit the discussion.
-    *
     */
     public function canEdit()
     {
-
-    /**
-    * Check owner.
-    *
-    */
         if (auth()->check() && auth()->user()->id == $this->id) {
             return true;
-        }
-
-        /**
-        * Check admin.
-        *
-        */
-        elseif (auth()->check() && auth()->user()->hasRole("Super Administrator|Administrator")) {
+        } elseif (auth()->check() && auth()->user()->hasRole("Super Administrator|Administrator")) {
             return true;
         } else {
             return false;

@@ -1,6 +1,6 @@
 <?php
 
-Route::namespace('Auth')->group(function() {
+Route::namespace('Auth')->group(function () {
     Route::get('login/{provider}', 'LoginController@redirectToProvider')->name('socialAuth');
     Route::get('login/{provider}/callback', 'LoginController@handleProviderCallback')->name('socialCallback');
 });

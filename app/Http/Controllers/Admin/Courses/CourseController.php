@@ -78,8 +78,8 @@ class CourseController extends Controller
     public function edit(Course $course)
     {
         return view("admin.courses.edit", compact(
-      "course"
-    ));
+            "course"
+        ));
     }
 
     /**
@@ -91,54 +91,31 @@ class CourseController extends Controller
     */
     public function update(CourseRequest $request, Course $course)
     {
+        /* @todo: No validation */
 
-    /**
-    * Update course.
-    *
-    */
         $course->update([
-          "name" => request()->name,
-          "description" => request()->description
+            "name" => request()->name,
+            "description" => request()->description
         ]);
 
         alert()->success('Course Updated');
 
-    
-        /**
-        * Redirect to edit page.
-        *
-        */
         return redirect(route("courses.edit", compact(
-      "course"
-    )));
+            "course"
+        )));
     }
-
 
     /**
     * Delete specific course.
     *
     * @param Course $course
-    *
     */
     public function destroy(Course $course)
     {
-
-    /**
-    * Delete it.
-    *
-    */
         $course->delete();
 
-        /**
-        * Notify.
-        *
-        */
         alert("Course has been deleted")->persistent();
 
-        /**
-        * Redirect to the list.
-        *
-        */
         return redirect(route("courses.index"));
     }
 }
