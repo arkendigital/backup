@@ -1,4 +1,4 @@
-<div class="box-select box-select--dark-blue box-select-padding-bottom--large" style="background-image:url({{ $group->image }});">
+<div class="box-select box-select--dark-blue box-select-padding-bottom--large" style="background-image:url({{ $group->image ?? '' }});">
   <div class="box-select-container">
 
     <p class="box-select-title">Where your numbers add up</p>
