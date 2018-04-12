@@ -154,12 +154,17 @@ Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function ()
       "slides" => "slide"
     ]]);
 
+    Route::get('/box-groups/wealth-of-information', 'WealthOfInformation@index');
+    Route::get('/box-groups/wealth-of-information/{wealth}/edit', 'WealthOfInformation@edit')->name('wealth.edit');
+    Route::patch('/box-groups/wealth-of-information/{wealth}', 'WealthOfInformation@update')->name('wealth.update');
+    
     /**
     * Box Groups.
     */
     Route::resource("/box-groups", "BoxGroups\BoxGroupController", ["parameters" => [
       "box-groups" => "group"
     ]]);
+
 
     /**
     * Box Items.

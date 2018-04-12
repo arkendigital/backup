@@ -173,6 +173,11 @@ return [
             'url'  => 'ops/box-groups',
             'icon'  => 'users',
         ],
+        [
+          'text' => 'Wealth of Information',
+          'url'  => 'ops/box-groups/wealth-of-information',
+          'icon'  => 'users',
+        ],
 
 
         /**

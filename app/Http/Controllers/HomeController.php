@@ -6,6 +6,7 @@ use App\Models\Page;
 use App\Models\Section;
 use App\Models\Discussion;
 use App\Models\Slide;
+use App\Models\WealthOfInformation;
 
 class HomeController extends Controller
 {
@@ -45,6 +46,9 @@ class HomeController extends Controller
         $discussions = Discussion::with('category')->take(8)
             ->get();
 
+
+        $wealth_of_information = WealthOfInformation::all();
+
         /**
         * Show the homepage!!!
         *
@@ -54,7 +58,8 @@ class HomeController extends Controller
             "discussions",
             "slides",
             "page",
-            'exams'
+            'exams',
+            'wealth_of_information'
         ));
     }
 
