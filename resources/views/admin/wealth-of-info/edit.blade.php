@@ -39,9 +39,10 @@
 
         <div class="box-body">
             <h3>Topics</h3>
+            
+            <div class="box-infos">
 
             @if ($wealth->data)
-                <div class="box-infos">
                 @foreach ($wealth->data as $key => $data)
                     @if (! $loop->first)
                         <hr>
@@ -67,8 +68,9 @@
                         
                     </div>
                 @endforeach
-                </div>
             @endif
+            </div>
+            
             <br>
             <a href="javascript:void(0)" class="btn btn-primary" id="add-box-info">Add Topic</a>
         </div>
