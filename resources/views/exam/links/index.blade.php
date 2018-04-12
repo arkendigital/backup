@@ -36,7 +36,7 @@
       <div class="clear"></div>
 
       <h2>Non-Official external websites</h2>
-      <p><strong>Uteos enisciaspe ma dolorpo rerunti oreseque di ulparum etur seque vellaut int facea am inci uscius. Con comnis alictatus veligni hillessequia core, sin peribea quatem nost.</strong></p>
+      <p><strong>See the below 'non-official' external websites for keeping calm, revision techniques, flashcard app and a fab Youtuber who explains complex actuarial things in simple terms:</strong></p>
       <div class="resource-list">
         @foreach($unofficial_links as $link)
           <div class="resource-list-item resource-list-item-with-padding">
