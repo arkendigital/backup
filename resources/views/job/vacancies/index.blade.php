@@ -148,7 +148,9 @@
 
             <div class="job-list-item-content">
 
-              <p class="job-list-item-title">{{ $job->title }}</p>
+              <a href="/jobs/vacancies/{{ $job->slug }}"><p class="job-list-item-title">
+                {{ $job->title }}
+              </p></a>
 
               <p class="job-list-item-text">{{ $job->excerpt }}</p>
 
