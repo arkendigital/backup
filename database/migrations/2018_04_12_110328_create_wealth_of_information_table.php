@@ -15,11 +15,12 @@ class CreateWealthOfInformationTable extends Migration
     {
         Schema::create('wealth_of_information', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title'); 
             $table->string('slug');
-            $table->string('title');
+            $table->string('colour');
             $table->string('content');
             $table->string('icon_path')->nullable(true);
-            $table->json('data');
+            $table->json('data')->nullable(true);
             $table->timestamps();
         });
     }
