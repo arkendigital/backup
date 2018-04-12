@@ -156,6 +156,10 @@
       vertical-align: top;
     }
 
+    &:hover {
+      cursor: pointer;
+    }
+
     &:first-of-type {
       margin-left: 0;
     }
