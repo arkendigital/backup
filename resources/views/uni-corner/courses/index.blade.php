@@ -39,9 +39,9 @@
     <div class="clear margin-bottom--medium"></div>
 
     @if(isset($page_adverts[0]["main-content"]))
-      <a href="{{ $page_adverts[0]["main-content"]["url"] }}" target="_blank">
-        <img src="{{ $page_adverts[0]["main-content"]["image"] }}" alt="" title="">
-      </a>
+      @include('partials.advert', [
+        'advert' => $page_adverts[0]["main-content"]
+      ])
     @endif
 
   </div><!-- /.website-container -->

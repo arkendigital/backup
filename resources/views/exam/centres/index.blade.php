@@ -52,7 +52,7 @@
     <div class="clear margin-bottom--medium"></div>
 
     @if(isset($page_adverts[0]["main-content"]))
-      <a href="{{ $page_adverts[0]["main-content"]["url"] }}" target="_blank">
+      <a href="{{ $page_adverts[0]["main-content"]["url"] }}" target="_blank" class="advert-box">
         <img src="{{ $page_adverts[0]["main-content"]["image"] }}" alt="" title="">
       </a>
     @endif
