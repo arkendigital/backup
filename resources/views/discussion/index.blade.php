@@ -9,7 +9,9 @@
 
       <h1 class="discussion-page-title">Discussion <span>{{ isset($category) ? $category->name : "" }}</span></h1>
 
-      <a class="discussion-add-button">Create Discussion</a>
+      @if (auth()->user())
+        <a class="discussion-add-button">Create Discussion</a>
+      @endif
 
       <div class="clear"></div>
 
@@ -57,6 +59,7 @@
     </div><!-- /.discussion-container-inner -->
   </div><!-- ./discussion-container -->
 
+  @if (auth()->user())
   <div class="discussion-popover">
     <form action="/discussion/" method="POST" enctype="multipart/form-data">
       {{ csrf_field() }}
@@ -114,5 +117,6 @@
 
     </form>
   </div>
+  @endif
 
 @endsection
