@@ -105,6 +105,11 @@
     font-weight: 600;
     font-size: 18px;
     border-radius: 25px;
+    transition: .3s all ease-in-out;
+
+    &:hover {
+      background: lighten(#002157, 5%)
+    }
   }
 }
 
