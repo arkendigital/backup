@@ -70,6 +70,42 @@
   }
 }
 
+.slick-next,
+.slick-prev {
+  z-index: 40;
+  width: 30px;
+  height: 30px;
+
+  &:before {
+    color: #000;
+    background: rgba(255,255,255,0.5);
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    line-height: 30px;
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+  }
+}
+
+.slick-next {
+  right: 30px;
+
+  &:before {
+    content: '›';
+  }
+}
+
+.slick-prev {
+  left: 20px;
+
+  &:before {
+    content: '‹';
+  }
+}
+
 
 /**
 * Website Sections Boxes.

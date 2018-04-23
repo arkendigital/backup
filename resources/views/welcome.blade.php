@@ -38,7 +38,8 @@
     <script>
       $(".homepage-hero").slick({
         autoplay: true,
-        arrows: false,
+        arrows: true,
+        dots: true,
         adaptiveHeight: true,
         speed: 600,
         autoplaySpeed: 6000
