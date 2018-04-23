@@ -10,9 +10,10 @@
       <p>{!! $page->getField("page_content") !!}</p>
 
     </div>
+
     <div class="website-container-sidebar">
-      @include("partials.sidebar.jobs", [
-        "key" => "vacancies"
+      @include("partials.sidebar", [
+        "sidebar" => $page->section->sidebar
       ])
     </div>
 
@@ -32,7 +33,7 @@
           {{ csrf_field() }}
 
           <input type="hidden" name="type" value="topsearch">
-          <input type="text" name="location" class="job-list-banner-location-search" placeholder="e.g. London" 
+          <input type="text" name="location" class="job-list-banner-location-search" placeholder="e.g. London"
             @if (session()->exists('job-filter-location') && !empty(session()->get('job-filter-location')))
               value="{{ session()->get('job-filter-location') }}"
             @endif
@@ -41,7 +42,7 @@
           <div class="job-list-banner-sort-by">
             Sort by
             <select name="order">
-              <option value="created_at-desc" @if(session()->get('job-filter-order') == 'created_at-desc') selected @endif>Date (Newest First)</option>            
+              <option value="created_at-desc" @if(session()->get('job-filter-order') == 'created_at-desc') selected @endif>Date (Newest First)</option>
               <option value="created_at-asc" @if(session()->get('job-filter-order') == 'created_at-asc') selected @endif>Date (Oldest First)</option>
               <option value="salary-asc" @if(session()->get('job-filter-order') == 'salary-asc') selected @endif>Salary (Lowest First)</option>
               <option value="salary-desc" @if(session()->get('job-filter-order') == 'salary-desc') selected @endif>Salary (Hightest First)</option>
@@ -127,7 +128,7 @@
                   <option value="" class="job-list-sidebar-item-select-default">All</option>
                   @foreach ($sectors as $sector)
                     <option value="{{ $sector->id }}" class="job-list-sidebar-item-select-default"
-                    @if(session()->exists("job-filter-sector") && session()->get("job-filter-sector") == $sector->id) selected @endif>{{ $sector->name }}</option>                  
+                    @if(session()->exists("job-filter-sector") && session()->get("job-filter-sector") == $sector->id) selected @endif>{{ $sector->name }}</option>
                   @endforeach
                 </select>
               </div>

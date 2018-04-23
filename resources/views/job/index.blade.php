@@ -12,8 +12,11 @@
       {!! $page->getField("page_content") !!}
 
     </div>
+
     <div class="website-container-sidebar">
-      @include("partials.sidebar.jobs")
+      @include("partials.sidebar", [
+        "sidebar" => $page->section->sidebar
+      ])
     </div>
 
     <div class="clear"></div>

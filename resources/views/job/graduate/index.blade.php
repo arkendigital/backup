@@ -23,8 +23,11 @@
       </form>
 
     </div>
+
     <div class="website-container-sidebar">
-      @include("partials.sidebar.jobs", ["key" => "graduates"])
+      @include("partials.sidebar", [
+        "sidebar" => $page->section->sidebar
+      ])
     </div>
 
     <div class="clear"></div>

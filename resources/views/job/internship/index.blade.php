@@ -23,8 +23,11 @@
       </form>
 
     </div>
+
     <div class="website-container-sidebar">
-      @include("partials.sidebar.jobs", ["key" => "internships"])
+      @include("partials.sidebar", [
+        "sidebar" => $page->section->sidebar
+      ])
     </div>
 
     <div class="clear"></div>
@@ -40,7 +43,7 @@
   @include("partials.latest-jobs", [
     "status_id" => 3
   ])
-  
+
   @include("partials.join-discussion", [
     "category_id" => $page->discussion_category_id
   ])
