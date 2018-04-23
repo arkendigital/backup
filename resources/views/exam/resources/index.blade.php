@@ -25,8 +25,10 @@
     <div class="resource-list">
       @foreach($resources as $resource)
         <div class="resource-list-item">
-          <img class="resource-list-item-icon" src="{{ $resource->icon }}" alt="{{ $resource->name }}" title="{{ $resource->name }}">
-          <a class="resource-list-item-title" href="/exams/resources/{{ $resource->slug }}">{{ $resource->name }}</a>
+          <a class="resource-list-item-title" href="/exams/resources/{{ $resource->slug }}">
+            <img class="resource-list-item-icon" src="{{ $resource->icon }}" alt="{{ $resource->name }}" title="{{ $resource->name }}"><br>
+            {{ $resource->name }}
+          </a>
           <p class="resource-list-item-text">{{ $resource->excerpt }}</p>
         </div><!-- /.resource-list-item -->
       @endforeach

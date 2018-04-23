@@ -124,7 +124,7 @@ class EmployerController extends Controller
     *
     */
         $employer->update([
-           "name" => request()->name,
+            "name" => request()->name,
             "link" => request()->link,
             "email" => request()->email,
             "description" => request()->description

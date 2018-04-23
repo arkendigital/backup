@@ -72,9 +72,13 @@
         height: 155px;
         border-radius: 155px;
         border: 2px solid #707070;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
       p {
-        font-size: 20px;
+        font-size: 16px;
         color: #707070;
       }
     }

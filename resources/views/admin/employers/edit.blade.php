@@ -21,7 +21,7 @@
             </div>
 
             <div class="form-group">
-              <label for="description">Description <sup class="text-danger">* (mandatory)</sup></label>
+              <label for="description">Description</label>
               @if($errors->has("description"))
                 <p class="text-danger">{{ $errors->first("description") }}</p>
               @endif
@@ -37,7 +37,7 @@
             </div>
 
             <div class="form-group">
-              <label for="email">Email <sup class="text-danger">* (mandatory)</sup></label>
+              <label for="email">Email</label>
               @if($errors->has("email"))
                 <p class="text-danger">{{ $errors->first("email") }}</p>
               @endif
@@ -45,7 +45,7 @@
             </div>
 
             <div class="form-group">
-              <label for="name">Icon / Crest <sup class="text-danger">* (mandatory)</sup></label>
+              <label for="name">Icon / Crest</label>
               @if($employer->logo_path != "")
                 <p><img src="{{ $employer->logo }}" alt="" title="" style="max-height: 100px;"></p>
               @endif

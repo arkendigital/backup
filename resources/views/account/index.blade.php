@@ -39,7 +39,7 @@
           <div class="account_page_wrap_photo_wrap">
             <img src="{{ auth()->user()->avatar }}" alt="" title="" class="account_page_form_photo" id="avatar-image">
             <input type="file" name="image" style="display: none;" id="avatar">
-            <p>Edit photo</p>
+            <p>Click to photo to edit</p>
           </div>
 
           <div class="clear"></div>
