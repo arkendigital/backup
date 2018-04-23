@@ -142,12 +142,18 @@
         </div>
 
         <div id="salary-survey-footer-after-submission" style="display: none;">
-          Thank you for taking part
-          <a href="/salary-survey/results"><button type="button">See results</button></a>
-          <button type="button">Discuss Salaries</button>
+          <p>
+            Thank you for taking part.
+            <a href="/salary-survey/results" class="button button--dark-blue">See results</a>
+            <a href="{{ url('/discussion/discuss-salaries') }}" class="button button--dark-blue">Discuss Salaries</a>
+          </p>
 
-          Looking for more detailed results?
-          <button type="button">Download here</button>
+          <br><br>
+
+          <p>
+            Looking for more detailed results?
+            <a href="#" target="_blank" class="button button--dark-blue">Download here</a>
+        </p>
         </div>
 
       </div>
