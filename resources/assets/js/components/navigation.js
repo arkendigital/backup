@@ -20,6 +20,6 @@ function showNav() {
   $(".navigation-overlay").fadeIn();
   $("nav").show();
   $("nav").animate({
-    width: "400px"
+    width: "85%"
   });
 }
