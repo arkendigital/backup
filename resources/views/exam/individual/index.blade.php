@@ -57,9 +57,6 @@
                 <div class="exam-modules-slider-item @if($key == 0) exam-modules-slider-item-active @endif swiper-slide" data-module-id="{{ $module->id }}">{{ $module->name }}</div>
               @endforeach
             </div>
-
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
           </div>
 
           <div class="exam-modules-slider-button exam-modules-slider-button-prev"><</div>
