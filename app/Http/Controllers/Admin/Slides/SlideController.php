@@ -69,7 +69,8 @@ class SlideController extends Controller
         $slide = Slide::create([
             "slug" => request()->slug,
             "title" => request()->title,
-            "text" => request()->text
+            "text" => request()->text,
+            'link' => request()->link
         ]);
 
         /**
@@ -128,7 +129,8 @@ class SlideController extends Controller
     */
         $slide->update([
             "title" => request()->title,
-            "text" => request()->text
+            "text" => request()->text,
+            'link' => request()->link
         ]);
 
         /**

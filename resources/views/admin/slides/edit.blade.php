@@ -36,6 +36,11 @@
         <input type="file" class="form-control" name="image" id="image">
       </div>
 
+      <div class="form-group">
+        <label for="link">Link</label>
+        <input type="url" class="form-control" name="link" id="link" placeholder="Enter a link for the slide" value="{{ $slide->link }}">
+      </div>
+
     </div>
   </div>
 

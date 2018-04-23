@@ -7,9 +7,17 @@
     <div class="homepage-hero-slide" style="background-image: url({{ $slide->image }});">
 
       <div>
+        @if ($slide->link)
+          <a href="{{ $slide->link }}">
+        @endif
+
         <p class="homepage-hero-slide-title">{{ $slide->title }}</p>
         <div class="clear"></div>
         <p class="homepage-hero-slide-text">{{ $slide->text }}</p>
+
+        @if ($slide->link)
+          </a>
+        @endif
       </div>
 
       <span class="overlay"></span>
