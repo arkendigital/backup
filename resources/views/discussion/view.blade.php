@@ -71,11 +71,11 @@
           </form>
         </div><!-- /.discussion-view-reply -->
         @else
-          <div class="discussion-view margin-top--small">
+          <div class="discussion-view margin-top--small discussion-login-register">
             <div class="discussion-view-thread" style="padding-bottom: 40px;">
-              <a class="button button--large button--dark-blue" href="{{ route("register") }}">REGISTER TO REPLY</a>
-              &nbsp;&nbsp;or&nbsp;&nbsp;
-              <a class="button button--large button--dark-blue" href="{{ route("login") }}?from={{ urlencode(url()->full()) }}">LOGIN</a>
+              <p><a class="button button--large button--dark-blue" href="{{ route("register") }}">REGISTER TO REPLY</a>
+              <span>or</span>
+              <a class="button button--large button--dark-blue" href="{{ route("login") }}?from={{ urlencode(url()->full()) }}">LOGIN</a></p>
             </div>
           </div>
         @endif

@@ -67,3 +67,13 @@
 @import "discussion/pagination";
 @import "discussion/popover";
 @import "discussion/view";
+
+.discussion-login-register {
+  span {
+    margin: 20px;
+
+    @media (max-width: 600px) {
+      display: block;
+    }
+  }
+}

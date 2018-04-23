@@ -5,6 +5,8 @@
   <div class="homepage-hero">
     @foreach($slides as $slide)
     <div class="homepage-hero-slide" style="background-image: url({{ $slide->image }});">
+      <span class="overlay"></span>
+
       <div>
         <p class="homepage-hero-slide-title">{{ $slide->title }}</p>
         <div class="clear"></div>
@@ -37,7 +39,7 @@
         arrows: false,
         adaptiveHeight: true,
         speed: 600,
-        autoplaySpeed: 6000        
+        autoplaySpeed: 6000
       });
     </script>
 

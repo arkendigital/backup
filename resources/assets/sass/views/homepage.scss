@@ -9,16 +9,37 @@
   &-slide {
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: 0 50%;
     padding: 180px 0;
     text-align: center;
+    position: relative;
+
+    @media (min-width: 768px) {
+      background-position: 0 50%;
+    }
+
     > div {
       display: inline-block;
       text-align: right;
       width: 96%;
       max-width: 1140px;
+      z-index: 21;
+
       @media(max-width: 650px) {
         text-align: center;
+      }
+    }
+
+    @media (max-width: 769px) {
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba($yellow, 0.3);
+        display: block;
+        z-index: -1;
       }
     }
     &-title {
@@ -31,6 +52,7 @@
       @media(max-width: 900px) {
         max-width: none;
         width: 100%;
+        font-size: 52px;
       }
     }
     &-text {
@@ -214,7 +236,7 @@
     &-tabs {
       width: 175px;
       margin: 0 auto 20px;;
-      
+
       @media (min-width: 650px) {
         float: left;
         margin: 0;
@@ -234,10 +256,10 @@
       }
     }
     &-content {
-      @media (min-width: 650px) {  
+      @media (min-width: 650px) {
         float: right;
         width: calc(100% - 175px);
-        margin-left: 25px;      
+        margin-left: 25px;
       }
       text-align: left;
       &-title {
