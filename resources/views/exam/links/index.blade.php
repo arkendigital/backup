@@ -27,8 +27,9 @@
       <div class="resource-list margin-bottom--medium">
         @foreach($official_links as $link)
           <div class="resource-list-item resource-list-item-with-padding">
-            <img class="resource-list-item-icon resource-list-item-icon-small" src="/images/icons/ao.png" alt="Actuaries Online" title="Actuaries Online">
-            <a class="resource-list-item-title" href="{{ $link->link }}" target="_blank">{{ $link->name }}</a>
+             <a class="resource-list-item-title" href="{{ $link->link }}" target="_blank">
+              <img class="resource-list-item-icon resource-list-item-icon-small" src="/images/icons/ao.png" alt="Actuaries Online" title="Actuaries Online"><br>
+              {{ $link->name }}</a>
           </div><!-- /.resource-list-item -->
         @endforeach
       </div><!-- /.resource-list -->
@@ -40,8 +41,9 @@
       <div class="resource-list">
         @foreach($unofficial_links as $link)
           <div class="resource-list-item resource-list-item-with-padding">
-            <img class="resource-list-item-icon resource-list-item-icon-small" src="/images/icons/ao.png" alt="Actuaries Online" title="Actuaries Online">
-            <a class="resource-list-item-title" href="{{ $link->link }}" target="_blank">{{ $link->name }}</a>
+            <a class="resource-list-item-title" href="{{ $link->link }}" target="_blank">
+              <img class="resource-list-item-icon resource-list-item-icon-small" src="/images/icons/ao.png" alt="Actuaries Online" title="Actuaries Online"><br>
+              {{ $link->name }}</a>
           </div><!-- /.resource-list-item -->
         @endforeach
       </div><!-- /.resource-list -->
