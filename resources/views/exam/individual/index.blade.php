@@ -62,8 +62,8 @@
             <div class="swiper-button-next"></div>
           </div>
 
-          <span class="exam-modules-slider-button exam-modules-slider-button-prev"><</span>
-          <span class="exam-modules-slider-button exam-modules-slider-button-next">></span>
+          <div class="exam-modules-slider-button exam-modules-slider-button-prev"><</div>
+          <div class="exam-modules-slider-button exam-modules-slider-button-next">></div>
         </div>
 
         @foreach($category->getModules() as $key => $module)
@@ -114,6 +114,10 @@
       var swiper = new Swiper('.exam-modules-slider', {
         slidesPerView: 4,
         spaceBetween: 50,
+        navigation: {
+          nextEl: '.exam-modules-slider-button-next',
+          prevEl: '.exam-modules-slider-button-prev',
+        },
       });
     });
     </script>
