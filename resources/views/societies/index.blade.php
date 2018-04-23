@@ -152,11 +152,12 @@
             *
             */
             var item = '<div class="society-map-list-item"><p class="society-map-list-item-name">'+obj.name+'</p>'
-            
+
             if (obj.email)
               item = item + '<p class="society-map-list-item-email"><small>'+obj.email+'</small></p>'
-              
-            item = item + '<a class="society-map-list-item-button" href="'+obj.link+'" target="_blank">Join</a></div>';
+
+            if (obj.link)
+              item = item + '<a class="society-map-list-item-button" href="'+obj.link+'" target="_blank">Join</a></div>';
 
             /**
             * Add the item onto the list of societies.

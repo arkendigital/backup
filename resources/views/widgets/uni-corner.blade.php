@@ -10,12 +10,13 @@
 
     <div class="clear"></div>
 
-    <div class="box-select-search">
+    <p><a href="{{ url('/uni-corner/actuarial-societies') }}" class="button button--large button--orange">Find Your University</a></p> <br>
+
+    {{-- <div class="box-select-search">
       <input type="text" name="unicorner_search" id="unicorner-search">
       <label for="unicorner-search">Search your university</label>
-    </div>
+    </div> --}}
 
-    <img src="/images/icons/arrow-down--white.png" alt="Scroll Down" title="Scroll Down">
 
   </div>
 </div><!-- /.box-select -->

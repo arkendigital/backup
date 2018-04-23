@@ -1,34 +1,37 @@
-@extends('layouts.master')
+<!DOCTYPE html>
+<html class="login_page">
+  <head>
+    <title>Reset Password</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset("css/app.css") }}">
+  </head>
+  <body class="login_page">
 
-@section('content')
-<section class="site__container">
-    <div class="col-12">
-        <div class="box">
-            <span class="box__title">Reset Password</span>
-            <div class="box__content">
-                @if (session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-                @endif
-                <form method="POST" action="{{ route('password.email') }}">
-                    {{ csrf_field() }}
+    <a href="/">
+      <img src="/images/logo.png" alt="Actuaries Online" title="Actuaries Online" class="login_page_logo">
+    </a>
 
-                    <label for="email">E-Mail Address</label>
-                    <input id="email" type="email" class="form__input" name="email" value="{{ old('email') }}" required>
-
-                    @if ($errors->has('email'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('email') }}</strong>
-                        </span>
-                    @endif
-
-                    <button type="submit" class="btn btn-primary">
-                        Send Password Reset Link
-                    </button>
-                </form>
-            </div>
+    <form class="login_page_form" method="POST" action="{{ route('password.email') }}">
+        <div class="login_page_form_actions">
+            <a href="{{ route("register") }}" class="login_page_form_actions_item">Sign up</a>
+            <a href="{{ route("login") }}" class="login_page_form_actions_item">Log in</a>
         </div>
-    </div>
-</section>
-@endsection
+
+        <p class="login_page_form_text">To reset your password, please enter your email and instructions will be sent to you.</p>
+
+        {{ csrf_field() }}
+
+        <div class="login_page_form_item">
+            <label class="login_page_form_item_label" for="email">E-Mail Address</label>
+            @if($errors->has("email"))
+                <p class="login_page_form_item_error">{{ $errors->first("email") }}</p>
+            @endif
+            <input id="email" type="email" class="login_page_form_item_input" name="email" value="{{ old('email') }}" required>
+        </div>
+
+        <button type="submit" class="login_page_form_submit" style="margin-top: -10px">
+            Send Password Reset Link
+        </button>
+    </form>
+  </body>
+</html>

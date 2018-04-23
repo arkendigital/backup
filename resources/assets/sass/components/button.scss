@@ -5,6 +5,8 @@
   font-size: 18px;
   text-decoration: none;
   color: #FFFFFF;
+  transition: .3s all ease-in-out;
+
   &--large {
     padding: 10px 25px;
     border-radius: 25px;
@@ -13,8 +15,14 @@
 
 .button--orange {
   background: $orange;
+  &:hover {
+    background: lighten($orange, 5%);
+  }
 }
 
 .button--dark-blue {
   background: $darkblue;
+  &:hover {
+    background: lighten($darkblue, 5%);
+  }
 }

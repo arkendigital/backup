@@ -48,6 +48,8 @@
         <input class="login_page_form_item_input" type="password" name="password" id="password" value="{{ old("password") }}">
       </div>
 
+      <p>Forgot your password? <a href="{{ url('/password/reset') }}" title="reset password">Click here to reset it</a></p>
+
       <input class="login_page_form_submit" value="Log in" type="submit">
     </form>
 
