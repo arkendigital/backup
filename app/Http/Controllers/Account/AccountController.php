@@ -69,7 +69,7 @@ class AccountController extends Controller
         /**
         * Redirect user.
         */
-        return redirect(route("account.index"))->with([
+        return redirect(url("/account"))->with([
             "alert" => true,
             "alert_title" => "Success",
             "alert_message" => "Account has been updated!",

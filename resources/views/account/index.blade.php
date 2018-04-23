@@ -36,13 +36,10 @@
             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cras justo odio, dapibus ac facilisis in, ege ras justo dapibus ac facilisis</p>
           </div>
 
-          <div class="account_page_wrap_photo_wrap">
-            <img src="{{ auth()->user()->avatar }}" alt="" title="" class="account_page_form_photo" id="avatar-image">
-            <input type="file" name="image" style="display: none;" id="avatar">
-            <p>Click to photo to edit</p>
-          </div>
 
           <div class="clear"></div>
+
+          <br><br>
 
           <h2 class="account_page_wrap_title">Account Details</h2>
 
@@ -78,7 +75,13 @@
             <input class="account_page_form_item_input" required type="text" name="username" id="username" @if(null === old("username")) value="{{ auth()->user()->username }}" @else value="{{old("username")}}" @endif>
           </div>
 
-          <input class="account_page_form_submit" value="Update my details" type="submit">
+          <div class="account_page_form_item account_image">
+            <img src="{{ auth()->user()->avatar }}" alt="" title="" class="account_page_form_photo" id="avatar-image">
+            <input type="file" name="image" style="display: none;" id="avatar">
+            <p>Click photo to edit</p>
+          </div>
+
+          <input class="account_page_form_submit" value="Update my details" type="submit" style="margin-top: -15px">
 
         </form>
 
