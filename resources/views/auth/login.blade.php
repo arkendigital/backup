@@ -27,15 +27,9 @@
       <p class="login_page_form_text">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cras justo odio,dapibus ac facilisis in, ege ras justo dapibus ac facilisis</p>
 
       <div class="login_page_form_social">
-        <a href="{{ route('socialAuth', 'facebook') }}">
-          <i class="fa fa-facebook-official fa-2x"></i>
-        </a>
-
-        <a href="{{ route('socialAuth', 'twitter') }}">
-          <i class="fa fa-twitter-square fa-2x"></i>
-        </a>
-
-        <i class="fa fa-linkedin-square fa-2x"></i>
+          <a href="{{ $facebook }}" target="_blank" class="footer-social--facebook"><i class="fa fa-facebook-official fa-2x"></i></a>  &nbsp;
+          <a href="{{ $twitter }}" target="_blank" class="footer-social--twitter"><i class="fa fa-twitter-square fa-2x"></i></a> &nbsp;
+          <a href="{{ $linkedin }}" target="_blank" class="footer-social--linkedin"><i class="fa fa-linkedin-square fa-2x"></i></a>
       </div>
 
       <div class="login_page_form_item">
