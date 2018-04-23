@@ -41,6 +41,8 @@
       float: left;
       width: 76%;
       text-align: left;
+      word-wrap: break-word;
+
       @media(max-width: 650px) {
         float: right;
         width: calc(100% - 125px);
