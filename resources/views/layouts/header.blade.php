@@ -84,7 +84,6 @@
         </li>
         <li @if(request()->route()->getPrefix() == "/regional-societies") class="regional-societies-active" @endif>
           <a href="/regional-societies">Regional Societies</a>
-          <img src="/images/icons/arrow-down.png" alt="" title="">
         </li>
         <li @if(request()->route()->getPrefix() == "/discussion") class="discussion-active" @endif>
           <a href="/discussion">Discussion</a>
