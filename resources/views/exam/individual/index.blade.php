@@ -16,6 +16,7 @@
       {!! $page->getField("page_content") !!}
 
     </div>
+
     <div class="website-container-sidebar">
       @include("partials.sidebar", [
         "sidebar" => $page->section->sidebar

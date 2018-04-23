@@ -14,9 +14,10 @@
       <p>{!! $resource->content !!}</p>
 
     </div>
+
     <div class="website-container-sidebar">
-      @include("partials.sidebar.exams", [
-        "key" => "resources"
+      @include("partials.sidebar", [
+        "sidebar" => $page->section->sidebar
       ])
     </div>
 
