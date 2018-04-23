@@ -5,13 +5,15 @@
   <div class="homepage-hero">
     @foreach($slides as $slide)
     <div class="homepage-hero-slide" style="background-image: url({{ $slide->image }});">
-      <span class="overlay"></span>
 
       <div>
         <p class="homepage-hero-slide-title">{{ $slide->title }}</p>
         <div class="clear"></div>
         <p class="homepage-hero-slide-text">{{ $slide->text }}</p>
       </div>
+
+      <span class="overlay"></span>
+
     </div>
     @endforeach
   </div>
