@@ -32,7 +32,6 @@
 
   </div><!-- /.website-container -->
 
-
   @include("widgets.loop")
 
   @include("partials.join-discussion", [

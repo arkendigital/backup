@@ -7,7 +7,7 @@
     @media (min-width: 768px) {
       float: left;
       width: calc(100% - 280px);
-      max-width: 100%;      
+      max-width: 100%;
     }
     margin-bottom: 50px;
     &-full {
@@ -163,4 +163,10 @@
     display: inline-block;
     margin: 0 auto;
   }
+}
+
+.sidebar-menu--title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #0d72b9;
 }
