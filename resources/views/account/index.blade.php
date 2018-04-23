@@ -44,7 +44,7 @@
 
           <div class="clear"></div>
 
-          <h2 class="account_page_wrap_title">Account details</h2>
+          <h2 class="account_page_wrap_title">Account Details</h2>
 
           <div class="account_page_form_item">
             <label class="account_page_form_item_label" for="name">Your Name</label>
