@@ -101,7 +101,7 @@
     </nav>
 
     <div class="header-search">
-      <form action="{{route('search') }}" method="" class="search-form">
+      <form action="{{ route('search') }}" method="" class="search-form">
         <button type="submit"><img src="/images/icons/search.png" alt="" title=""></button>
         <input type="text" name="q" placeholder="Search">
       </form>

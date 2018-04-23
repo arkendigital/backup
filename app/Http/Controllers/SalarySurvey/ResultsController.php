@@ -20,11 +20,13 @@ class ResultsController extends Controller
         // Get page information.
         $page = Page::getPage(request()->route()->uri);
 
+        // dd($page);
+
         // Set SEO.
         $this->seo()->setTitle($page->meta_title);
         $this->seo()->setDescription($page->meta_description);
 
-        // Get adverts for this page.        
+        // Get adverts for this page.
         $page_adverts = getArrayOfAdverts($page->id);
 
         // Experience.
@@ -96,7 +98,7 @@ class ResultsController extends Controller
             $twenty_plus = SalarySurvey::where('experience', '20+')
                 ->where('type', $type)
                 ->avg('annual_salary');
-          
+
             $results->one_four = round($one_four / 1000);
             $results->five_nine = round($five_nine / 1000);
             $results->ten_fourteen = round($ten_fourteen / 1000);
@@ -142,7 +144,7 @@ class ResultsController extends Controller
         });
     }
 
-     
+
     private function averageSalaryPerField($type)
     {
         return Cache::remember('average_salary_per_field_' . $type, '60', function () use ($type) {
