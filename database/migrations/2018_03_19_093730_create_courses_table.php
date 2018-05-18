@@ -11,7 +11,7 @@ class CreateCoursesTable extends Migration {
 			$table->increments('id');
 			$table->string('name');
 			$table->string('slug')->index();
-			$table->text('description')->nullable();
+			$table->string('link')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});

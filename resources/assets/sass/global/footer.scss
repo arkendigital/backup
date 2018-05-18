@@ -6,17 +6,15 @@ footer {
   .footer-social {
     i {
       margin: 0 5px;
-      font-size: 24px;
+      font-size: 40px;
       vertical-align: middle;
     }
     a {
       color: #959595;
     }
-    @media(max-width: 500px) {
-      span {
+    span {
         display: block;
         margin-bottom: 25px;
-      }
     }
   }
   .footer-nav {

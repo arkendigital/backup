@@ -8,7 +8,7 @@ $(".navigation-overlay").click(function() {
 
 
 function hideNav() {
-  $("body").css("overflow", "visible");
+  $("html, body").removeClass("navigation-active");
   $(".navigation-overlay").fadeOut();
   $("nav").animate({
     width: "0"
@@ -16,7 +16,7 @@ function hideNav() {
 }
 
 function showNav() {
-  $("body").css("overflow", "hidden");
+  $("html, body").addClass("navigation-active");
   $(".navigation-overlay").fadeIn();
   $("nav").show();
   $("nav").animate({

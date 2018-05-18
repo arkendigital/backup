@@ -19,6 +19,13 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('internal_marketing')->nullable()->index();
+            $table->string('external_marketing')->nullable()->index();
+            $table->string('arn')->nullable();
+            $table->string('current_role')->nullable();
+            $table->string('company_name')->nullable();
+            $table->string('location')->nullable();
+            $table->string('experience')->nullable();
             $table->string('email_token')->nullable();
             $table->string('api_token', 60)->unique();
             $table->tinyInteger('verified')->default(0);

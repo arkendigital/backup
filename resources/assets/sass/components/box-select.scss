@@ -6,6 +6,8 @@
   width: 100%;
   padding: 60px 0;
   text-align: center;
+  position: relative;
+  z-index: 2;
   * {
     color: #FFFFFF;
   }
@@ -17,6 +19,20 @@
       width: 92%;
     }
   }
+
+  &--with-fade {
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(250,250,250,0.95) 35%, rgba(250,250,250,0));
+      z-index: -1;
+    }
+  }
+
   &-title {
     font-size: 31px;
     font-weight: 600;
@@ -110,6 +126,19 @@
     &:hover {
       background: lighten(#002157, 5%)
     }
+
+    &--white {
+        background: transparent;
+        color: #fff;
+        border: 2px solid #fff;
+
+        &:hover {
+            background: #fff;
+            color: #002157;
+        }
+
+    }
+
   }
 }
 

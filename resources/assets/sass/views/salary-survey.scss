@@ -75,6 +75,20 @@
 
 .salary-survey-footer {
   padding: 25px 0;
+
+  @media(max-width: 600px) {
+      text-align: center;
+
+      a {
+          display: block;
+          margin: 15px auto;
+          padding: 10px 0;
+          width: 100%;
+          max-width: 300px;
+      }
+
+  }
+
   button {
     display: inline-block;
     border: none;
@@ -109,7 +123,7 @@
     width: 100%;
 
     @media (min-width: 768px) {
-      width: 48%;    
+      width: 48%;
     }
   }
 

@@ -64,6 +64,7 @@
     color: $blue;
     border-bottom: 1px dotted #ccc;
     padding-bottom: 2px;
+    word-break: break-all;
   }
 
 }
@@ -75,6 +76,11 @@
   font-size: 22px;
   color: $blue;
   margin: 25px 0;
+
+  @media(max-width: 900px) {
+      width: 100%;
+  }
+
   span {
     float: left;
     width: calc(100% - 100px);
@@ -95,5 +101,12 @@
   &:last-of-type {
     float: right;
     text-align: right;
+
+
+    @media(max-width: 900px) {
+        float: left;
+        text-align: left;
+    }
+
   }
 }

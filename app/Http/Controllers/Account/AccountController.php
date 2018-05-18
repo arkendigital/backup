@@ -9,27 +9,19 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use JamesMills\Watchable\Models\Watch;
 use App\Http\Controllers\AWS\ImageController as AWS;
-
-/**
-* Load requests.
-*
-*/
-
 use App\Http\Requests\Account as AccountRequest;
 use App\Http\Requests\AccountPassword as AccountPasswordRequest;
+use App\Models\DiscussionReply;
+use App\Models\Discussion;
 
 class AccountController extends Controller
 {
 
-  /**
-  * Display account page.
-  */
+    /**
+    * Display account page.
+    */
     public function index()
     {
-
-    /**
-    * Show page.
-    */
         return view("account.index");
     }
 
@@ -42,12 +34,32 @@ class AccountController extends Controller
     public function update(AccountRequest $request)
     {
 
-    /**
-    * Update user details.
-    */
+        /**
+        * Update user details.
+        */
         $account = auth()->user();
 
-        $account->update(array_merge($request->except(["_token", "_method"])));
+        $account->update(array_merge($request->except(["_token", "_method", "internal_marketing", "external_marketing"])));
+
+        if (request()->has("internal_marketing")) {
+            $account->update([
+                "internal_marketing" => true
+            ]);
+        } else {
+            $account->update([
+                "internal_marketing" => false
+            ]);
+        }
+
+        if (request()->has("external_marketing")) {
+            $account->update([
+                "external_marketing" => true
+            ]);
+        } else {
+            $account->update([
+                "external_marketing" => false
+            ]);
+        }
 
         /**
         * Update avatar photo.
@@ -86,15 +98,15 @@ class AccountController extends Controller
     public function updatePassword(AccountPasswordRequest $request)
     {
 
-    /**
-    * Check they have entered the correct current password.
-    *
-    */
+        /**
+        * Check they have entered the correct current password.
+        *
+        */
         if (!password_verify(request()->old_password, auth()->user()->password)) {
 
-      /**
-      * Redirect user.
-      */
+            /**
+            * Redirect user.
+            */
             return redirect(route("account.index"))->with([
                 "alert" => true,
                 "alert_title" => "Update Failed",
@@ -115,10 +127,68 @@ class AccountController extends Controller
         * Redirect user.
         */
         return redirect(route("account.index"))->with([
-        "alert" => true,
-        "alert_title" => "Success",
-        "alert_message" => "Your password has been updated!",
-        "alert_button" => "Great!"
+            "alert" => true,
+            "alert_title" => "Success",
+            "alert_message" => "Your password has been updated!",
+            "alert_button" => "Great!"
         ]);
+    }
+
+    /**
+     * Delete users account
+     *
+     *
+     */
+    public function destroy()
+    {
+
+        $user = auth()->user();
+
+        /**
+         * Delete all discussion comments by this user
+         *
+         */
+        DiscussionReply::where("user_id", $user->id)
+            ->delete();
+
+        /**
+         * Delete all discussions made by this user and all of its comments
+         *
+         */
+        $discussions = Discussion::where("user_id", $user->id)
+            ->get();
+
+        foreach($discussions as $discussion) {
+
+            DiscussionReply::where("discussion_id", $discussion->id)
+                ->delete();
+
+            $discussion->delete();
+
+        }
+
+        /**
+         * Logout the user
+         *
+         */
+        auth()->logout();
+
+        /**
+         * Finally delete the user account
+         *
+         */
+        $user->delete();
+
+        /**
+         * Redirect user and show lovely front end popup
+         *
+         */
+        return redirect(url("/"))->with([
+            "alert" => true,
+            "alert_title" => "Success",
+            "alert_message" => "Your account has been deleted",
+            "alert_button" => "Thanks"
+        ]);
+
     }
 }

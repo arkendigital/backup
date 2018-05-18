@@ -29,6 +29,13 @@ class User extends Authenticatable
         "phone_number",
         'email',
         'password',
+        'internal_marketing',
+        'external_marketing',
+        'arn',
+        'current_role',
+        'company_name',
+        'location',
+        'experience',
         'email_token',
         'role_id',
         'verified',
@@ -149,5 +156,15 @@ class User extends Authenticatable
         }
         // return asset('storage/'. $this->avatar_path);
         return env("S3_URL") . $this->avatar_path;
+    }
+
+    /**
+     * Get the First Name of the user
+     *
+     */
+    public function getFirstNameAttribute()
+    {
+        $firstName = explode(' ', trim($this->attributes["name"]));
+        return $firstName[0];
     }
 }

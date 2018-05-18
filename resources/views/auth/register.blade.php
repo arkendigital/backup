@@ -63,11 +63,107 @@
       </div>
 
       <div class="login_page_form_item">
+        <label class="login_page_form_item_label" for="arn">Actuarial Reference Number (ARN)</label>
+        @if($errors->has("arn"))
+          <p class="login_page_form_item_error">{{ $errors->first("arn") }}</p>
+        @endif
+        <input class="login_page_form_item_input" type="text" name="arn" id="arn" value="{{ old("arn") }}">
+      </div>
+
+      <div class="login_page_form_item">
+        <label class="login_page_form_item_label" for="current_role">Current Role</label>
+        @if($errors->has("current_role"))
+          <p class="login_page_form_item_error">{{ $errors->first("current_role") }}</p>
+        @endif
+        <input class="login_page_form_item_input" type="text" name="current_role" id="current_role" value="{{ old("current_role") }}">
+      </div>
+
+      <div class="login_page_form_item">
+        <label class="login_page_form_item_label" for="company_name">Company</label>
+        @if($errors->has("company_name"))
+          <p class="login_page_form_item_error">{{ $errors->first("company_name") }}</p>
+        @endif
+        <input class="login_page_form_item_input" type="text" name="company_name" id="company_name" value="{{ old("company_name") }}">
+      </div>
+
+      <div class="login_page_form_item">
+        <label class="login_page_form_item_label" for="location">Location</label>
+        @if($errors->has("location"))
+          <p class="login_page_form_item_error">{{ $errors->first("location") }}</p>
+        @endif
+        <input class="login_page_form_item_input" type="text" name="location" id="location" value="{{ old("location") }}">
+      </div>
+
+      <div class="login_page_form_item">
+        <label class="login_page_form_item_label" for="experience">Years of Experience</label>
+        @if($errors->has("experience"))
+          <p class="login_page_form_item_error">{{ $errors->first("experience") }}</p>
+        @endif
+        <select name="experience" class="login_page_form_item_select">
+            <option value="">Select...</option>
+            @for($x = 1; $x < 25; $x++)
+                <option value="{{ $x }}" @if(old("experience") == $x) selected @endif>{{ $x }}</option>
+            @endfor
+            <option value="25+" @if(old("experience") == "25+") selected @endif>25+</option>
+        </select>
+      </div>
+
+      <div class="login_page_form_item">
         <label class="login_page_form_item_label" for="password">Create Password</label>
         @if($errors->has("password"))
           <p class="login_page_form_item_error">{{ $errors->first("password") }}</p>
         @endif
         <input class="login_page_form_item_input" type="password" name="password" id="password" value="{{ old("password") }}">
+      </div>
+
+      <div class="login_page_form_item">
+          <label class="login_page_form_item_label" for="terms">Terms and Conditions</label>
+          @if($errors->has("terms"))
+            <p class="login_page_form_item_error">{{ $errors->first("terms") }}</p>
+          @endif
+          <div class="login_page_form_item_checkbox_wrap">
+              <input type="checkbox" name="terms" id="terms" @if(old("terms")) checked @endif>
+              <label for="terms">I have read and agree to the <a href="{{ url("/terms-and-conditions") }}" target="_blank">terms and conditions</a> for registering and using this site</label>
+          </div>
+      </div>
+
+      <div class="login_page_form_item">
+          <label class="login_page_form_item_label" for="privacy">Cookies and Privacy</label>
+          @if($errors->has("privacy"))
+            <p class="login_page_form_item_error">{{ $errors->first("privacy") }}</p>
+          @endif
+          <div class="login_page_form_item_checkbox_wrap">
+              <input type="checkbox" name="privacy" id="privacy" @if(old("privacy")) checked @endif>
+              <label for="privacy">I have read and agree to the <a href="{{ url("/privacy-cookies") }}" target="_blank">cookies and privacy policy</a></label>
+          </div>
+      </div>
+
+      <div class="login_page_form_item">
+          <label class="login_page_form_item_label" for="internal_marketing">Internal Marketing</label>
+          <div class="login_page_form_item_checkbox_wrap">
+              <input type="checkbox" name="internal_marketing" id="internal_marketing"
+                @if(session()->exists("old"))
+                    @if(old("internal_marketing")) checked @endif
+                @else
+                    @if(auth()->user()->internal_marketing) checked @endif
+                @endif
+              >
+              <label for="internal_marketing">I would like to recieve marketing emails from actuaries.online</label>
+          </div>
+      </div>
+
+      <div class="login_page_form_item">
+          <label class="login_page_form_item_label" for="external_marketing">External Marketing</label>
+          <div class="login_page_form_item_checkbox_wrap">
+              <input type="checkbox" name="external_marketing" id="external_marketing"
+                @if(session()->exists("old"))
+                    @if(old("external_marketing")) checked @endif
+                @else
+                    @if(auth()->user()->external_marketing) checked @endif
+                @endif
+              >
+              <label for="external_marketing">I would like to recieve marketing emails your assosiated companies</label>
+          </div>
       </div>
 
       <input class="login_page_form_submit" value="Register" type="submit">

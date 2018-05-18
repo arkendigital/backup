@@ -64,7 +64,7 @@
             @if($errors->has("phone_number"))
               <p class="account_page_form_item_error">{{ $errors->first("phone_number") }}</p>
             @endif
-            <input class="account_page_form_item_input" required type="tel" name="phone_number" id="phone_number" @if(null === old("phone_number")) value="{{ auth()->user()->phone_number }}" @else value="{{old("phone_number")}}" @endif>
+            <input class="account_page_form_item_input" type="tel" name="phone_number" id="phone_number" @if(null === old("phone_number")) value="{{ auth()->user()->phone_number }}" @else value="{{old("phone_number")}}" @endif>
           </div>
 
           <div class="account_page_form_item">
@@ -73,6 +73,92 @@
               <p class="account_page_form_item_error">{{ $errors->first("username") }}</p>
             @endif
             <input class="account_page_form_item_input" required type="text" name="username" id="username" @if(null === old("username")) value="{{ auth()->user()->username }}" @else value="{{old("username")}}" @endif>
+          </div>
+
+          <div class="account_page_form_item">
+            <label class="account_page_form_item_label" for="arn">Actuarial Reference Number (ARN)</label>
+            @if($errors->has("arn"))
+              <p class="account_page_form_item_error">{{ $errors->first("arn") }}</p>
+            @endif
+            <input class="account_page_form_item_input" type="text" name="arn" id="arn" value="{{ session()->exists("errors") ? old("arn") : auth()->user()->arn }}">
+          </div>
+
+          <div class="account_page_form_item">
+            <label class="account_page_form_item_label" for="current_role">Current Role</label>
+            @if($errors->has("current_role"))
+              <p class="account_page_form_item_error">{{ $errors->first("current_role") }}</p>
+            @endif
+            <input class="account_page_form_item_input" type="text" name="current_role" id="current_role" value="{{ session()->exists("errors") ? old("current_role") : auth()->user()->current_role }}">
+          </div>
+
+          <div class="account_page_form_item">
+            <label class="account_page_form_item_label" for="company_name">Company</label>
+            @if($errors->has("company_name"))
+              <p class="account_page_form_item_error">{{ $errors->first("company_name") }}</p>
+            @endif
+            <input class="account_page_form_item_input" type="text" name="company_name" id="company_name" value="{{ session()->exists("errors") ? old("company_name") : auth()->user()->company_name }}">
+          </div>
+
+          <div class="account_page_form_item">
+            <label class="account_page_form_item_label" for="location">Location</label>
+            @if($errors->has("location"))
+              <p class="account_page_form_item_error">{{ $errors->first("location") }}</p>
+            @endif
+            <input class="account_page_form_item_input" type="text" name="location" id="location" value="{{ session()->exists("errors") ? old("location") : auth()->user()->location }}">
+          </div>
+
+          <div class="account_page_form_item">
+            <label class="account_page_form_item_label" for="experience">Years of Experience</label>
+            @if($errors->has("experience"))
+              <p class="account_page_form_item_error">{{ $errors->first("experience") }}</p>
+            @endif
+            <select name="experience" class="account_page_form_item_select">
+                <option value="">Select...</option>
+                @for($x = 1; $x < 25; $x++)
+                    <option value="{{ $x }}"
+                    @if(session()->exists("errors"))
+                        @if(old("experience") == $x) selected @endif
+                    @else
+                        @if(auth()->user()->experience == $x) selected @endif
+                    @endif
+                    >{{ $x }}</option>
+                @endfor
+                <option value="25+"
+                    @if(session()->exists("errors"))
+                        @if(old("experience") == "25+") selected @endif
+                    @else
+                        @if(auth()->user()->experience == "25+") selected @endif
+                    @endif
+                >25+</option>
+            </select>
+          </div>
+
+          <div class="account_page_form_item">
+              <label class="account_page_form_item_label" for="internal_marketing">Internal Marketing</label>
+              <div class="checkbox_wrapper">
+                  <input type="checkbox" name="internal_marketing" id="internal_marketing"
+                      @if(session()->exists("errors"))
+                          @if(old("internal_marketing")) checked @endif
+                      @else
+                          @if(auth()->user()->internal_marketing) checked @endif
+                      @endif
+                  >
+                  <label for="internal_marketing">I would like to recieve marketing emails from actuaries.online</label>
+              </div>
+          </div>
+
+          <div class="account_page_form_item">
+              <label class="account_page_form_item_label" for="external_marketing">External Marketing</label>
+              <div class="checkbox_wrapper">
+                  <input type="checkbox" name="external_marketing" id="external_marketing"
+                      @if(session()->exists("errors"))
+                          @if(old("external_marketing")) checked @endif
+                      @else
+                          @if(auth()->user()->external_marketing) checked @endif
+                      @endif
+                  >
+                  <label for="external_marketing">I would like to recieve marketing emails your assosiated companies</label>
+              </div>
           </div>
 
           <div class="account_page_form_item account_image">
@@ -121,9 +207,16 @@
 
             <div class="clear"></div>
 
-            <p><a href=""><input class="account_page_form_submit" value="Back" type="button" style="margin-top: 0;"></a></p>
+            <p><a href=""><input class="account_page_form_submit account_page_back" value="Back" type="button"></a></p>
           </div>
 
+        </form>
+
+        <p><button class="account_page_form_submit account_page_delete" type="button">Delete Account</button></p>
+
+        <form id="delete_account_form" action="{{ route("account.destroy", auth()->user()) }}" method="POST" style="display: none;">
+            {{ csrf_field() }}
+            {{ method_field("DELETE") }}
         </form>
 
       </div>

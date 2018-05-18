@@ -26,8 +26,23 @@ class Discussion extends FormRequest
     {
         return [
             "name" => "required|string",
-            "subject" => "required|string",
             "content" => "required",
+            "category_id" => "required"
+        ];
+    }
+
+    /**
+     * Set the validation messages that display on error
+     *
+     * @return array
+     *
+     */
+    public function messages()
+    {
+        return [
+            "name.required" => "Enter a title",
+            "content.required" => "Enter some content",
+            "category_id.required" => "Select a category to add this too"
         ];
     }
 }

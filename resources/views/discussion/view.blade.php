@@ -29,9 +29,11 @@
               <p class="discussion-view-thread-content-title">{{ $discussion->name }}</p>
               <span class="discussion-view-thread-content-text">{!! $discussion->content !!}</span>
 
+              <img class="discussion-view-thread-content-image" alt="" title="" src="{{ $discussion->image }}">
+
               <div class="discussion-view-thread-content-footer">
-                @if($discussion->subject != "")
-                  <p class="discussion-view-thread-content-footer-subject">{{ $discussion->subject }}</p>
+                @if($discussion->category)
+                  <p class="discussion-view-thread-content-footer-subject">{{ $discussion->category->name }}</p>
                 @endif
                 <p class="discussion-view-thread-content-footer-time">{{ $discussion->created_at->diffForHumans() }}</p>
                 <p class="discussion-view-thread-content-footer-user">by {{ $discussion->user->username }}</p>

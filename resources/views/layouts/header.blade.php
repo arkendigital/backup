@@ -6,12 +6,12 @@
 
     <a href="mailto:ask@actuaries.online" class="header-email">ask@actuaries.online</a>
 
-    <div class="header-account">
+    <div class="header-account @if(auth()->check()) header-account--is-loggedin @endif">
       @if(auth()->check())
         @if(auth()->user()->isAdmin())
           <a href="/ops" target="_blank">Admin<span class="header-account-oval"></span></a>
         @endif
-        <a href="{{ route("account.index") }}">My Account<span class="header-account-oval"></span></a>
+        <a href="{{ route("account.index") }}">{{ auth()->user()->first_name }}<span class="header-account-oval"></span></a>
         <a onclick="document.getElementById('logout-form').submit()" class="cursor-pointer">Logout<span class="header-account-oval"></span></a>
         <form id="logout-form" action="{{ route("logout") }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
       @else
@@ -102,10 +102,15 @@
 
     <div class="header-search">
       <form action="{{ route('search') }}" method="" class="search-form">
-        <button type="submit"><img src="/images/icons/search.png" alt="" title=""></button>
-        <input type="text" name="q" placeholder="Search">
+        <img src="/images/icons/search.png" alt="" title="">
+        {{-- <input type="text" name="q" placeholder="Search"> --}}
+        <span>Search</span>
       </form>
     </div>
+
+    <a href="/" class="header-home">
+        <i class="fas fa-home"></i>
+    </a>
 
     <div class="header-burger">
       <div class="header-burger-icon">
@@ -117,8 +122,12 @@
       <span class="header-burger-text">Menu</span>
     </div>
 
+    <i class="fas fa-search header-search-icon"></i>
+
   </div>
 </header>
+
+@include("partials.search")
 
 <div class="navigation-overlay"></div>
 

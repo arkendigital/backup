@@ -27,14 +27,15 @@ class DiscussionController extends Controller
             ->when($category->id != '', function ($q) use ($category) {
                 return $q->where("category_id", $category->id);
             })
+            ->orderBy("created_at", "DESC")
             ->paginate(6);
-    
+
 
         if (isset($_GET["search"])) {
             $category = new \stdClass();
             $category->name = $_GET["search"];
         }
-  
+
         return view("discussion.index", compact(
             "category",
             "categories",
@@ -73,9 +74,9 @@ class DiscussionController extends Controller
     public function store(DiscussionRequest $request)
     {
 
-    /**
-    * Get excerpt for discussion.
-    */
+        /**
+        * Get excerpt for discussion.
+        */
         if (isset(request()->excerpt) && request()->excerpt != "") {
             $excerpt = request()->excerpt;
         } else {
@@ -87,7 +88,6 @@ class DiscussionController extends Controller
         */
         $discussion = Discussion::create([
             "name" => request()->name,
-            "subject" => request()->subject,
             "excerpt" => $excerpt,
             "content" => request()->content,
             "category_id" => request()->category_id,
@@ -103,7 +103,7 @@ class DiscussionController extends Controller
             ]);
         }
 
-        return redirect("/discussion/".$discussion->category->slug."/".$discussion->slug)->with([
+        return redirect()->back()->with([
             "alert" => true,
             "alert_title" => "Success",
             "alert_message" => "Your discussion has been created!",
@@ -152,7 +152,7 @@ class DiscussionController extends Controller
             "content" => request()->content
         ]);
 
- 
+
         if (request()->file("image")) {
             $image_path = AWS::uploadImage(request()->file("image"), "discussion", $discussion->image_path);
 

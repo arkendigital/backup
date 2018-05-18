@@ -84,7 +84,7 @@
                   @if($module->info->{'section_'.$module_section_key.'_link'} == "")
                     <p class="exam-modules-info-section-text">{{ $module->info->{'section_'.$module_section_key.'_text'} }}</p>
                   @else
-                    <a class="exam-modules-info-section-button" href="{{ $module->info->{'section_'.$module_section_key.'_link'} }}">
+                    <a class="exam-modules-info-section-button" href="{{ $module->info->{'section_'.$module_section_key.'_link'} }}" target="_blank">
                       {{ $module->info->{'section_'.$module_section_key.'_text'} }}
                     </a>
                   @endif
@@ -116,6 +116,20 @@
           nextEl: '.exam-modules-slider-button-next',
           prevEl: '.exam-modules-slider-button-prev',
         },
+        breakpoints: {
+            // when window width is <= 500px
+            500: {
+              slidesPerView: 1
+            },
+            // when window width is <= 650px
+            650: {
+              slidesPerView: 2
+            },
+            // when window width is <= 900px
+            900: {
+              slidesPerView: 3
+            }
+          }
       });
     });
     </script>

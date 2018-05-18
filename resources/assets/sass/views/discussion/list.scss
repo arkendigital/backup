@@ -39,7 +39,7 @@
     }
     &-content {
       float: left;
-      width: calc(100% - 175px);
+      width: calc(100% - 225px);
       text-align: left;
       @media(max-width: 650px) {
         float: right;
@@ -110,7 +110,7 @@
     @media(max-width: 650px) {
       position: absolute;
       top: 135px;
-      left: 40px;
+      left: 10px;
     }
     @media(max-width: 500px) {
       top: 25px;

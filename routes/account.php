@@ -1,4 +1,5 @@
 <?php
+
 Route::resource('/account', 'Account\AccountController');
 Route::patch("/update-password", "Account\AccountController@updatePassword")->name("account.updatePassword");
 

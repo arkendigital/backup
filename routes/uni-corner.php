@@ -8,6 +8,7 @@ Route::namespace('UniCorner')->prefix('uni-corner')->group(function() {
   Route::get('/actuarial-employers/{employer}', 'UniCornerEmployers@view');
   Route::get('/uni-courses', 'CoursesController@index');
   Route::get('/uni-courses/{course}', 'CoursesController@view');
-  Route::get('/actuarial-societies', 'SocietyController@index');
-  Route::get('/actuarial-societies/{society}', 'SocietyController@view');
+  Route::get('/uni-societies', 'SocietyController@index');
+  Route::get('/uni-societies/{society}', 'SocietyController@view')
+    ->name("uni-societies.view");
 });

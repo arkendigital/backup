@@ -10,7 +10,7 @@
 
     <div class="clear"></div>
 
-    <p><a href="{{ url('/uni-corner/actuarial-societies') }}" class="button button--large button--orange">Find Your University</a></p> <br>
+    <p><a href="{{ url('/uni-corner/uni-courses') }}" class="button button--large button--orange">Find Your University</a></p> <br>
 
     {{-- <div class="box-select-search">
       <input type="text" name="unicorner_search" id="unicorner-search">

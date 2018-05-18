@@ -22,7 +22,7 @@
 
     <div class="actuarial-employers">
       @foreach($societies as $loop_society)
-        <a href="/uni-corner/actuarial-societies/{{ $loop_society->slug }}" class="actuarial-employers-box @if($society->id == $loop_society->id) actuarial-employers-box-active @endif">
+        <a href="{{ route("uni-societies.view", $loop_society) }}" class="actuarial-employers-box @if($society->id == $loop_society->id) actuarial-employers-box-active @endif">
           <div>
             <img class="actuarial-employers-box-logo" alt="{{ $loop_society->name }}" title="{{ $loop_society->name }}" src="{{ asset("images/icons/ao-white.png") }}">
             <p class="actuarial-employers-box-name">{{ $loop_society->name }}</p>

@@ -27,39 +27,67 @@ class RegisterController extends Controller
     public function register(Register $request)
     {
 
-      /**
-      * Check if this user already exists.
-      */
+        /**
+        * Check if this user already exists.
+        */
         $check = User::where("email", request()->email)
-        ->orWhere("username", request()->username)
-        ->first();
+            ->orWhere("username", request()->username)
+            ->first();
 
         if ($check !== null) {
             return redirect(route("register"))
-          ->withErrors([
-            "exists" => "A user with these details already exists"
-          ])
-          ->withInput();
+                ->withErrors([
+                    "exists" => "A user with these details already exists"
+                ])
+                ->withInput();
         }
 
         /**
         * Add user to database.
         */
         $user = User::create([
-        "name" => request()->name,
-        "email" => request()->email,
-        "username" => request()->username,
-        "password" => Hash::make(request()->password),
-        "email_token" => base64_encode(request()->email),
-        "api_token" => str_random()
-      ]);
+            "name" => request()->name,
+            "email" => request()->email,
+            "username" => request()->username,
+            "password" => Hash::make(request()->password),
+            "email_token" => base64_encode(request()->email),
+            "api_token" => str_random(),
+            "arn" => request()->arn,
+            "current_role" => request()->current_role,
+            "company_name" => request()->company_name,
+            "location" => request()->location,
+            "experience" => request()->experience
+        ]);
+
+        /**
+         * Check marketing preferences
+         *
+         */
+        if (request()->has("internal_marketing")) {
+            $user->update([
+                "internal_marketing" => true
+            ]);
+        }
+
+        if (request()->has("external_marketing")) {
+            $user->update([
+                "external_marketing" => true
+            ]);
+        }
 
         Auth::loginUsingId($user->id);
 
         /**
-        * Redirect user to account.
-        */
-        return redirect(route("account.index"));
+         * Redirect user and show a popup confirmation registration
+         *
+         */
+        return redirect(route("front.discussion.index"))->with([
+            "alert" => true,
+            "alert_title" => "Success",
+            "alert_message" => "Your account has been created!",
+            "alert_button" => "OK"
+        ]);
+
     }
 
     public function showRegistrationForm()

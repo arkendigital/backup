@@ -17,7 +17,7 @@
 
     <div class="website-container-sidebar">
       @include("partials.sidebar", [
-        "sidebar" => $page->section->sidebar
+        "sidebar" => $section->sidebar
       ])
     </div>
 

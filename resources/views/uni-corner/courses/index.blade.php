@@ -25,7 +25,7 @@
 
     <div class="actuarial-employers">
       @foreach($courses as $course)
-        <a href="/uni-corner/uni-courses/{{ $course->slug }}" class="actuarial-employers-box">
+        <a href="{{ $course->link }}" class="actuarial-employers-box" target="_blank">
           <div>
             <img class="actuarial-employers-box-logo" alt="{{ $course->name }}" title="{{ $course->name }}" src="{{ asset("images/icons/ao-white.png") }}">
             <p class="actuarial-employers-box-name">{{ $course->name }}</p>

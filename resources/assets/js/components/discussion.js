@@ -3,6 +3,7 @@
 *
 */
 $(".discussion-add-button").click(function() {
+  $("html, body").css("overflow", "hidden");
   $(".discussion-popover").addClass("discussion-popover-active");
 });
 
@@ -11,6 +12,7 @@ $(".discussion-add-button").click(function() {
 *
 */
 $(".discussion-popover-close").click(function() {
+  $("html, body").css("overflow", "scroll");
   $(this).closest(".discussion-popover").removeClass("discussion-popover-active");
 });
 

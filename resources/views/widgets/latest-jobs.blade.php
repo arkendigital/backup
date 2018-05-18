@@ -1,8 +1,8 @@
 <div class="box-select box-select-slider" style="background-image:url(/images/temp/homepage-latest-jobs-bg.png);">
   <div class="box-select-container">
 
-    <p class="box-select-title">The latest jobs here</p>
-    <p class="box-select-text">Click below to get the latest information on available jobs</p>
+    <p class="box-select-title">Featured Jobs</p>
+    <p class="box-select-text"></p>
 
     <div class="latest-jobs-slider swiper-container">
       <div class="swiper-wrapper">
@@ -40,7 +40,7 @@
 
     <div class="clear"></div>
 
-    <a class="box-select-button bg-dark-blue margin-top--medium margin-bottom--medium" href="/discussion/jobs">Join our discussion</a>
+    <a class="box-select-button box-select-button--white margin-top--medium margin-bottom--medium" href="/discussion/jobs">Join our discussion</a>
 
     <div class="clear"></div>
 

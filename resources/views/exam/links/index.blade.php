@@ -24,7 +24,7 @@
     <div class="clear"></div>
 
     <div class="view-section">
-      <h2>Official external websites</h2>
+      {{-- <h2>Official external websites</h2> --}}
       <div class="resource-list margin-bottom--medium">
         @foreach($official_links as $link)
           <div class="resource-list-item resource-list-item-with-padding">
@@ -37,8 +37,8 @@
 
       <div class="clear"></div>
 
-      <h2>Non-Official external websites</h2>
-      <p><strong>See the below 'non-official' external websites for keeping calm, revision techniques, flashcard app and a fab Youtuber who explains complex actuarial things in simple terms:</strong></p>
+      {{-- <h2>Non-Official external websites</h2> --}}
+      <p><strong>Here’s a few fun websites for keeping calm, revision techniques, flashcard app and a fab Youtuber who explains complex mathematics in simple terms</strong></p>
       <div class="resource-list">
         @foreach($unofficial_links as $link)
           <div class="resource-list-item resource-list-item-with-padding">

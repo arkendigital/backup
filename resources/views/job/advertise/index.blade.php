@@ -48,34 +48,61 @@ tent. quatem nost liae modi tectoru ptaturio illant.</p>
 
     </div><!-- /#advert-specification -->
 
-    <div class="advertising-toggle-item advertising-toggle-item-form display-none" id="advert-form">
+    <div class="advertising-toggle-item advertising-toggle-item-form @if(!$errors->any()) display-none @endif" id="advert-form">
       <form action="" method="POST">
         {{ csrf_field() }}
         {{ method_field("POST") }}
 
+        @if($errors->any())
+            <p class="advertising-toggle-item-form-error"><strong>There were some errors in your submission, please check below</strong></p>
+        @endif
+
         <div class="advertising-toggle-item-form-item">
+          @if($errors->has("company_name"))
+              <p class="advertising-toggle-item-form-error">{{ $errors->first("company_name") }}</p>
+          @endif
           <label>Company name</label>
-          <input type="text" name="company_name">
+          <input type="text" name="company_name" value="{{ old("company_name") }}">
         </div>
 
         <div class="advertising-toggle-item-form-item">
+          @if($errors->has("name"))
+              <p class="advertising-toggle-item-form-error">{{ $errors->first("name") }}</p>
+          @endif
           <label>Your name</label>
-          <input type="text" name="name">
+          <input type="text" name="name" value="{{ old("name") }}">
         </div>
 
         <div class="advertising-toggle-item-form-item">
+          @if($errors->has("phone"))
+              <p class="advertising-toggle-item-form-error">{{ $errors->first("phone") }}</p>
+          @endif
           <label>Contact number</label>
-          <input type="tel" name="phone">
+          <input type="tel" name="phone" value="{{ old("phone") }}">
         </div>
 
         <div class="advertising-toggle-item-form-item">
+          @if($errors->has("email"))
+              <p class="advertising-toggle-item-form-error">{{ $errors->first("email") }}</p>
+          @endif
+          @if($errors->has("email_confirmation"))
+              <p class="advertising-toggle-item-form-error">{{ $errors->first("email_confirmation") }}</p>
+          @endif
           <label>Email</label>
-          <input type="email" name="email">
+          <input type="email" name="email" value="{{ old("email") }}">
+        </div>
+
+        <div class="advertising-toggle-item-form-item">
+          <label>Confirm Email</label>
+          <input type="email" name="email_confirmation" value="{{ old("email_confirmation") }}">
         </div>
 
         <div class="advertising-toggle-item-form-item-full">
+          @if($errors->has("comment"))
+              <p class="advertising-toggle-item-form-error">{{ $errors->first("comment") }}</p>
+          @endif
           <label>Comment</label>
-          <textarea name="comment"></textarea>
+          <textarea name="comment">{{ old("comment") }}</textarea>
         </div>
 
         <button type="submit" class="advertising-toggle-item-form-submit">Submit</button>
@@ -97,5 +124,15 @@ tent. quatem nost liae modi tectoru ptaturio illant.</p>
   @include("partials.join-discussion", [
     "category_id" => $page->discussion_category_id
   ])
+
+  @if($errors->any())
+      @push("scripts-after")
+          <script>
+            $('html, body').animate({
+                scrollTop: $(".advertising-toggle-item-form").offset().top - 50
+            }, 1000);
+          </script>
+      @endpush
+  @endif
 
 @endsection

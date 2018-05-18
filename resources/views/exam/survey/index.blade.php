@@ -64,7 +64,7 @@
 
         <div class="clear"></div>
 
-        <a class="survey-button survey-button-add">Add Answers</a>
+        <a class="survey-button survey-button-add">Submit Answers</a>
         <a class="survey-button" href="/exams/survey/results">Show Results</a>
 
       </form>

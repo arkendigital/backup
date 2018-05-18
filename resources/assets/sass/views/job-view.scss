@@ -18,10 +18,28 @@
   &-left {
     float: left;
     width: 45%;
+
+    @media(max-width: $mobile) {
+        float: none;
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
   }
   &-right {
     float: right;
     width: 250px;
+
+    @media(max-width: $mobile) {
+        float: none;
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 300px;
+        margin-top: 25px;
+    }
+
     &-item {
       display: inline-block;
       width: 100%;
@@ -46,15 +64,40 @@
 *
 */
 .job-view-company {
-  &-logo {
-    float: left;
-    width: 265px;
-  }
-  &-info {
-    float: right;
-    width: calc(100% - 300px);
-    line-height: 1.5;
-  }
+    display: inline-block;
+    width: 100%;
+
+    &-logo {
+        float: left;
+        width: 265px;
+
+        @media(max-width: $mobile) {
+            float: none;
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 300px!important;
+
+        }
+
+    }
+
+    &-info {
+        float: right;
+        width: calc(100% - 300px);
+        line-height: 1.5;
+
+        @media(max-width: $mobile) {
+            float: none;
+            display: block;
+            margin: 0 auto;
+            margin-top: 25px;
+            width: 100%;
+            text-align: center;
+        }
+
+    }
+
 }
 
 
@@ -66,6 +109,11 @@
   display: inline-block;
   width: 100%;
   margin-bottom: 50px;
+
+  @media(max-width: $mobile) {
+      text-align: center;
+  }
+
   &-title {
     display: block;
     font-size: 22px;
@@ -79,7 +127,7 @@
   &-button {
     display: inline-block;
     margin-top: 10px;
-    padding: 5px 12.5px;
+    padding: 10px 25px;
     border-radius: 12.5px;
     color: #ffffff;
     cursor: pointer;

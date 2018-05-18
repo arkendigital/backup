@@ -9,7 +9,7 @@
 
       <h1>{{ $page->getField("page_title") }}</h1>
 
-      {!! $page->getField("page_content") !!}
+      <p>{!! $page->getField("page_content") !!}</p>
 
     </div>
     <div class="website-container-sidebar">
@@ -22,7 +22,7 @@
 
     <div class="salary-survey-results-container">
       <h3>Average Salary vs Experience</h3>
-    
+
       <div>
         <canvas id="permanent_salary_experience"></canvas>
       </div>
@@ -30,7 +30,7 @@
         <canvas id="contractors_salary_experience"></canvas>
       </div>
     </div>
-    
+
     <div class="salary-survey-results-container">
         <h3>Average Salary vs Experience Per Sector</h3>
 
@@ -73,12 +73,12 @@
         <div>
             <canvas id="salary_sector_other_contractor"></canvas>
         </div>
-    </div> 
-    
+    </div>
+
 
      <div class="salary-survey-results-container">
       <h3>Average Salary Per Sector</h3>
-     
+
       <div>
         <canvas id="salary_per_sector_permanent"></canvas>
       </div>
@@ -133,11 +133,11 @@
             }]
         },
         options: {
-          responsive: true,       
+          responsive: true,
           title: {
 					  display: true,
 					  text: 'Permanent Employees'
-				  },     
+				  },
           legend: {
             display: false
           },
@@ -148,7 +148,7 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Average Salary (£k)'
+                    labelString: 'Average Salary Per Year (£k)'
                   },
                   ticks: {
                       beginAtZero:true
@@ -186,11 +186,11 @@
             }]
         },
         options: {
-          responsive: true,       
+          responsive: true,
           title: {
 					  display: true,
 					  text: 'Contractors'
-				  },     
+				  },
           legend: {
             display: false
           },
@@ -239,11 +239,11 @@
             }]
         },
         options: {
-          responsive: true,       
+          responsive: true,
           title: {
 					  display: true,
 					  text: 'Permanent Employees'
-				  },     
+				  },
           legend: {
             display: false
           },
@@ -254,7 +254,7 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Average Salary (£k)'
+                    labelString: 'Average Salary Per Year (£k)'
                   },
                   ticks: {
                       beginAtZero:true
@@ -292,11 +292,11 @@
             }]
         },
         options: {
-          responsive: true,       
+          responsive: true,
           title: {
 					  display: true,
 					  text: 'Contractors'
-				  },     
+				  },
           legend: {
             display: false
           },
@@ -345,11 +345,11 @@
             }]
         },
         options: {
-          responsive: true,       
+          responsive: true,
           title: {
 					  display: true,
 					  text: 'Permanent Employees'
-				  },     
+				  },
           legend: {
             display: false
           },
@@ -360,7 +360,7 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Average Salary (£k)'
+                    labelString: 'Average Salary Per Year (£k)'
                   },
                   ticks: {
                       beginAtZero:true
@@ -394,11 +394,11 @@
             }]
         },
         options: {
-          responsive: true,       
+          responsive: true,
           title: {
 					  display: true,
 					  text: 'Contractors'
-				  },     
+				  },
           legend: {
             display: false
           },
@@ -447,11 +447,11 @@
             }]
         },
         options: {
-          responsive: true,       
+          responsive: true,
           title: {
 					  display: true,
 					  text: 'Permanent Employees'
-				  },     
+				  },
           legend: {
             display: false
           },
@@ -462,7 +462,7 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Average Salary (£k)'
+                    labelString: 'Average Salary Per Year (£k)'
                   },
                   ticks: {
                       beginAtZero:true
@@ -496,11 +496,11 @@
             }]
         },
         options: {
-          responsive: true,       
+          responsive: true,
           title: {
 					  display: true,
 					  text: 'Contractors'
-				  },     
+				  },
           legend: {
             display: false
           },
@@ -549,11 +549,11 @@
             }]
         },
         options: {
-          responsive: true,       
+          responsive: true,
           title: {
 					  display: true,
 					  text: 'Permanent Employees'
-				  },     
+				  },
           legend: {
             display: false
           },
@@ -564,7 +564,7 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Average Salary (£k)'
+                    labelString: 'Average Salary Per Year (£k)'
                   },
                   ticks: {
                       beginAtZero:true
@@ -598,11 +598,11 @@
             }]
         },
         options: {
-          responsive: true,       
+          responsive: true,
           title: {
 					  display: true,
 					  text: 'Contractors'
-				  },     
+				  },
           legend: {
             display: false
           },
@@ -651,11 +651,11 @@
             }]
         },
         options: {
-          responsive: true,       
+          responsive: true,
           title: {
 					  display: true,
 					  text: 'Permanent Employees'
-				  },     
+				  },
           legend: {
             display: false
           },
@@ -666,7 +666,7 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Average Salary (£k)'
+                    labelString: 'Average Salary Per Year (£k)'
                   },
                   ticks: {
                       beginAtZero:true
@@ -700,11 +700,11 @@
             }]
         },
         options: {
-          responsive: true,       
+          responsive: true,
           title: {
 					  display: true,
 					  text: 'Contractors'
-				  },     
+				  },
           legend: {
             display: false
           },
@@ -759,11 +759,11 @@
             }]
         },
         options: {
-          responsive: true,       
+          responsive: true,
           title: {
 					  display: true,
 					  text: 'Permanent Employees'
-				  },     
+				  },
           legend: {
             display: false
           },
@@ -774,7 +774,7 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Average Salary (£k)'
+                    labelString: 'Average Salary Per Year (£k)'
                   },
                   ticks: {
                       beginAtZero:true
@@ -818,11 +818,11 @@
             }]
         },
         options: {
-          responsive: true,       
+          responsive: true,
           title: {
 					  display: true,
 					  text: 'Contractors'
-				  },     
+				  },
           legend: {
             display: false
           },
@@ -875,11 +875,11 @@
             }]
         },
         options: {
-          responsive: true,       
+          responsive: true,
           title: {
 					  display: true,
 					  text: 'Permanent Employees'
-				  },     
+				  },
           legend: {
             display: false
           },
@@ -890,7 +890,7 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Average Salary (£k)'
+                    labelString: 'Average Salary Per Year (£k)'
                   },
                   ticks: {
                       beginAtZero:true
@@ -932,11 +932,11 @@
             }]
         },
         options: {
-          responsive: true,       
+          responsive: true,
           title: {
 					  display: true,
 					  text: 'Contractors'
-				  },     
+				  },
           legend: {
             display: false
           },
