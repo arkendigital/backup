@@ -121,7 +121,7 @@
           @if($errors->has("terms"))
             <p class="login_page_form_item_error">{{ $errors->first("terms") }}</p>
           @endif
-          <div class="login_page_form_item_checkbox_wrap">
+          <div class="checkbox_wrapper">
               <input type="checkbox" name="terms" id="terms" @if(old("terms")) checked @endif>
               <label for="terms">I have read and agree to the <a href="{{ url("/terms-and-conditions") }}" target="_blank">terms and conditions</a> for registering and using this site</label>
           </div>
@@ -132,7 +132,7 @@
           @if($errors->has("privacy"))
             <p class="login_page_form_item_error">{{ $errors->first("privacy") }}</p>
           @endif
-          <div class="login_page_form_item_checkbox_wrap">
+          <div class="checkbox_wrapper">
               <input type="checkbox" name="privacy" id="privacy" @if(old("privacy")) checked @endif>
               <label for="privacy">I have read and agree to the <a href="{{ url("/privacy-cookies") }}" target="_blank">cookies and privacy policy</a></label>
           </div>
@@ -140,12 +140,10 @@
 
       <div class="login_page_form_item">
           <label class="login_page_form_item_label" for="internal_marketing">Internal Marketing</label>
-          <div class="login_page_form_item_checkbox_wrap">
+          <div class="checkbox_wrapper">
               <input type="checkbox" name="internal_marketing" id="internal_marketing"
-                @if(session()->exists("old"))
+                @if(session()->exists("errors"))
                     @if(old("internal_marketing")) checked @endif
-                @else
-                    @if(auth()->user()->internal_marketing) checked @endif
                 @endif
               >
               <label for="internal_marketing">I would like to recieve marketing emails from actuaries.online</label>
@@ -154,12 +152,10 @@
 
       <div class="login_page_form_item">
           <label class="login_page_form_item_label" for="external_marketing">External Marketing</label>
-          <div class="login_page_form_item_checkbox_wrap">
+          <div class="checkbox_wrapper">
               <input type="checkbox" name="external_marketing" id="external_marketing"
-                @if(session()->exists("old"))
+                @if(session()->exists("errors"))
                     @if(old("external_marketing")) checked @endif
-                @else
-                    @if(auth()->user()->external_marketing) checked @endif
                 @endif
               >
               <label for="external_marketing">I would like to recieve marketing emails your assosiated companies</label>
