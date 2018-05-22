@@ -132,9 +132,17 @@
 <div class="navigation-overlay"></div>
 
 @if(request()->route()->getPrefix() != "/discussion")
-<a class="discussion-floater" href="/discussion">
-  <i class="far fa-3x fa-smile discussion-floater-icon"></i>
-  <p class="discussion-floater-title">Join our discussion</p>
-  <p class="discussion-floater-text">Here</p>
-</a>
+    <a class="discussion-floater" href="/discussion">
+      <i class="far fa-3x fa-smile discussion-floater-icon"></i>
+      <p class="discussion-floater-title">Join our discussion</p>
+      <p class="discussion-floater-text">Here</p>
+    </a>
+@endif
+
+@if(request()->route()->getName() != "suggestfeature.index")
+    <a class="feature-floater" href="{{ route("suggestfeature.index") }}">
+      <i class="fas fa-2x fa-bug discussion-floater-icon"></i>
+      <p class="discussion-floater-title">Suggest a Feature</p>
+      <p class="discussion-floater-text">Click Here</p>
+    </a>
 @endif

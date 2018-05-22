@@ -25,7 +25,11 @@
 
         <p>{{ $society->name }}</p>
         <p>{{ $society->email }}</p>
-        <a href="{{ $society->link }}">Join</a>
+        <p>{{ $society->postcode }}</p>
+
+        @if($society->link != "")
+            <a href="{{ $society->link }}" target="_blank">Join</a>
+        @endif
       </div>
 
     </div>

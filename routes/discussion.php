@@ -15,6 +15,12 @@ Route::namespace('Discussion')->prefix('discussion')->group(function() {
   Route::post('/', 'DiscussionController@store');
 
   /**
+  * Display a list of the recent discussion threads.
+  *
+  */
+  Route::get('/latest-messages', 'DiscussionController@latest');
+
+  /**
   * Display a list of the most popular discussion threads.
   *
   */

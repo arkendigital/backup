@@ -18,6 +18,7 @@ class SalarySurvey extends Model
         "experience",
         "qualifications",
         "annual_salary",
+        "daily_salary",
         "user_id"
     ];
 

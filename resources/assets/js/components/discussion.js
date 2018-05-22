@@ -55,3 +55,13 @@ $('.discussion-view-reply-editor, .discussion-edit-content-editor').trumbowyg({
     'strong', 'link', 'unorderedList', 'orderedList', 'undo', 'redo'
   ]
 });
+
+/**
+ * User clicks the reply button
+ *
+ */
+$(".discussion-button--reply").click(function() {
+    $('html, body').animate({
+        scrollTop: $(".discussion-view-reply").offset().top - 15
+    }, 1000);
+});

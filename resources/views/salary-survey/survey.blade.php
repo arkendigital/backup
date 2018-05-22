@@ -46,11 +46,12 @@
 
           <div class="salary-survey-question-answer-row">
             <div class="salary-survey-question-answer-clickable salary-survey-question-answer-clickable-type" data-key="type" data-value="permanent">Permanent</div>
-            <input class="salary-survey-question-answer-input" name="annual_salary" placeholder="Enter annual salary">
+            <input class="salary-survey-question-answer-input" name="annual_salary" id="input-permanent" placeholder="Enter annual salary" style="display: none;">
           </div>
 
           <div class="salary-survey-question-answer-row">
             <div class="salary-survey-question-answer-clickable salary-survey-question-answer-clickable-type" data-key="type" data-value="contractor">Contractor</div>
+            <input class="salary-survey-question-answer-input" name="daily_salary" id="input-contractor" placeholder="Enter daily salary" style="display: none;">
           </div>
 
         </div>

@@ -25,7 +25,7 @@
       <div class="job-list-banner">
 
         <div class="job-list-banner-location-label">
-          Location
+          Sort By
         </div>
 
 
@@ -33,14 +33,13 @@
           {{ csrf_field() }}
 
           <input type="hidden" name="type" value="topsearch">
-          <input type="text" name="location" class="job-list-banner-location-search" placeholder="e.g. London"
+          {{-- <input type="text" name="location" class="job-list-banner-location-search" placeholder="e.g. London"
             @if (session()->exists('job-filter-location') && !empty(session()->get('job-filter-location')))
               value="{{ session()->get('job-filter-location') }}"
             @endif
-          >
+          > --}}
 
           <div class="job-list-banner-sort-by">
-            Sort by
             <select name="order">
               <option value="created_at-desc" @if(session()->get('job-filter-order') == 'created_at-desc') selected @endif>Date (Newest First)</option>
               <option value="created_at-asc" @if(session()->get('job-filter-order') == 'created_at-asc') selected @endif>Date (Oldest First)</option>
@@ -49,7 +48,7 @@
             </select>
           </div>
 
-          <button type="submit">Update</button>
+          <button type="submit">Search</button>
         </form>
 
         <div class="job-list-banner-showing">
@@ -118,6 +117,43 @@
               <div class="job-list-sidebar-item checkbox-wrapper">
                 <input type="checkbox" class="job-list-sidebar-item-checkbox" id="type-employer" name="type[]" value="direct" @if(session()->exists("job-filter-type") && !empty(session()->get("job-filter-type")) && in_array("direct", session()->get("job-filter-type"))) checked @endif>
                 <label class="job-list-sidebar-item-label" for="type-employer">Direct Employer</label>
+              </div>
+            </div>
+
+            <div>
+              <p class="job-list-sidebar-item-title">LOCATION</p>
+              <div class="job-list-sidebar-item">
+                <select name="location" class="job-list-sidebar-item-select">
+                  <option value="" class="job-list-sidebar-item-select-default">All</option>
+                  @foreach ($locations as $location)
+                    <option value="{{ $location->id }}" class="job-list-sidebar-item-select-default"
+                    @if(session()->exists("job-filter-location") && session()->get("job-filter-location") == $location->id) selected @endif>{{ $location->name }}</option>
+                  @endforeach
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <p class="job-list-sidebar-item-title">SALARY</p>
+              <div class="job-list-sidebar-item">
+                <select name="salary" class="job-list-sidebar-item-select">
+                  <option value="all" class="job-list-sidebar-item-select-default">All</option>
+                  <option value="20000-40000" class="job-list-sidebar-item-select-default"
+                      @if(session()->exists("job-filter-salary-min") && session()->get("job-filter-salary-min") == "20000") selected @endif
+                  >20-40k</option>
+                  <option value="40000-60000" class="job-list-sidebar-item-select-default"
+                      @if(session()->exists("job-filter-salary-min") && session()->get("job-filter-salary-min") == "40000") selected @endif
+                  >40-60k</option>
+                  <option value="60000-80000" class="job-list-sidebar-item-select-default"
+                      @if(session()->exists("job-filter-salary-min") && session()->get("job-filter-salary-min") == "60000") selected @endif
+                  >60-80k</option>
+                  <option value="80000-100000" class="job-list-sidebar-item-select-default"
+                      @if(session()->exists("job-filter-salary-min") && session()->get("job-filter-salary-min") == "80000") selected @endif
+                  >80-100k</option>
+                  <option value="100000-5000000000" class="job-list-sidebar-item-select-default"
+                      @if(session()->exists("job-filter-salary-min") && session()->get("job-filter-salary-min") == "100000") selected @endif
+                  >100k+</option>
+                </select>
               </div>
             </div>
 
@@ -232,6 +268,12 @@
               <a class="job-list-item-button" href="/jobs/vacancies/{{ $job->slug }}">View</a>
             </div><!-- /.job-list-item -->
           @endforeach
+
+        @else
+
+            <div class="job-list-item job-list-item-featured">
+              Sorry, we couldn't find any job vacancies matching your search.
+            </div>
 
         @endif
 

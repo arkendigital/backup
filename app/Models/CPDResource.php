@@ -20,7 +20,8 @@ class CPDResource extends Model
         "slug",
         "excerpt",
         "content",
-        "icon_path"
+        "icon_path",
+        "link"
     ];
 
     /**

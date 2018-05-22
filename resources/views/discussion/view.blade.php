@@ -9,6 +9,10 @@
 
       <h1 class="discussion-page-title">Discussion <span>{{ $category->name }}</span></h1>
 
+      @if(auth()->check())
+          <a class="discussion-button--reply">Reply</a>
+      @endif
+
       @if($discussion->canEdit())
         <a class="discussion-edit-button" href="{{ route("discussion.edit", compact("category", "discussion")) }}">Edit</a>
       @endif

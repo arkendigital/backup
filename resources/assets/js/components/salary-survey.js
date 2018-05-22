@@ -42,6 +42,13 @@ $(".salary-survey-question-answer-clickable").click(function() {
   var key = $(this).attr("data-key");
   var value = $(this).attr("data-value");
 
+  if (key == "type") {
+      $(".salary-survey-question-answer-input").hide();
+
+      $("#input-"+value).show();
+
+  }
+
   /**
   * Update hidden field with value.
   *

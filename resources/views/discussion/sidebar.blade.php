@@ -17,6 +17,12 @@
         </a>
       </li>
       <li>
+        <a href="/discussion/latest-messages">
+          <div class="icon-container"><img src="{{ asset("/images/icons/discussion/all-threads.png") }}"></div>
+          <span>Latest Messages</span>
+        </a>
+      </li>
+      <li>
         <a href="/discussion/popular-threads">
           <div class="icon-container"><img src="{{ asset("/images/icons/discussion/popular-threads.png") }}"></div>
           <span>Popular threads</span>

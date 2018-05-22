@@ -59,3 +59,6 @@
   </nav>
 
 </footer>
+
+
+<i class="fas fa-chevron-circle-up site-scroll-to-top"></i>

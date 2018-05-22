@@ -53,6 +53,7 @@ class TakePartController extends Controller
             "experience" => request()->experience,
             "qualifications" => request()->qualifications,
             "annual_salary" => request()->annual_salary,
+            "daily_salary" => request()->daily_salary,
             "user_id" => $user_id
         ]);
 

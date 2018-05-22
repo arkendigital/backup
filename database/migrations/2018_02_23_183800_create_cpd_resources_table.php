@@ -14,6 +14,7 @@ class CreateCPDResourcesTable extends Migration {
 			$table->string('excerpt')->nullable();
 			$table->text('content')->nullable();
 			$table->string('icon_path')->nullable();
+            $table->string('link')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});

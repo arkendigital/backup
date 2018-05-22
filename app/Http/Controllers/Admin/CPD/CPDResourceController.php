@@ -57,7 +57,8 @@ class CPDResourceController extends Controller
         $resource = CPDResource::create([
             "name" => request()->name,
             "excerpt" => request()->excerpt,
-            "content" => request()->content
+            "content" => request()->content,
+            "link" => request()->link
         ]);
 
         /**
@@ -111,7 +112,8 @@ class CPDResourceController extends Controller
         $resource->update([
             "name" => request()->name,
             "excerpt" => request()->excerpt,
-            "content" => request()->content
+            "content" => request()->content,
+            "link" => request()->link
         ]);
 
         /**

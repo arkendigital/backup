@@ -39,7 +39,7 @@
         <p class="box-select-text"></p>
 
         @foreach($categories as $category)
-          <a class="box-select-item" href="/exams/{{ $category->slug }}">{{ $category->name }}</a>
+          <a class="box-select-item" href="/exams/{{ $category->slug }}#exam-modules-container-anchor">{{ $category->name }}</a>
         @endforeach
 
         <div class="clear margin-bottom--x-large"></div>
@@ -48,7 +48,7 @@
     </div><!-- /.box-select -->
   @else
 
-    <div class="exam-modules-container" style="background-image:url(/images/temp/exams-select-bg.png);">
+    <div id="exam-modules-container-anchor" class="exam-modules-container" style="background-image:url(/images/temp/exams-select-bg.png);">
       <div class="exam-modules-inner">
 
         <div class="exam-modules-slider-wrap">

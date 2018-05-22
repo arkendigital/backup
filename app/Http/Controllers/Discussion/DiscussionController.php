@@ -255,4 +255,26 @@ class DiscussionController extends Controller
             return DiscussionCategory::with('icon')->get();
         });
     }
+
+    /**
+    * Display a list of the latest discussions
+    */
+    public function latest()
+    {
+        $categories = $this->getCategories();
+
+        $discussions = Discussion::with('user', 'category')
+            ->withCount('replies')
+            ->orderBy("created_at", "DESC")
+            ->paginate(6);
+
+        $category = new \stdClass();
+        $category->name = "Latest Messages";
+
+        return view("discussion.index", compact(
+            "category",
+            "categories",
+            "discussions"
+        ));
+    }
 }

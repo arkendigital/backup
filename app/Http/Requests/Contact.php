@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\PhoneNumber;
 
 class Contact extends FormRequest
 {
@@ -28,7 +29,7 @@ class Contact extends FormRequest
             "first_name" => "required|string|max:30",
             "second_name" => "required|string|max:30",
             "email" => "required|email",
-            "phone" => "required|numeric",
+            "phone" => ["required", new PhoneNumber],
             "comment" => "required",
         ];
     }

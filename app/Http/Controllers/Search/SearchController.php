@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Job;
 use App\Models\Page;
-use App\Models\Exam\Category as ExamCategory;
 use App\Models\Discussion;
+use App\Models\Society;
+use App\Models\Exam\Category as ExamCategory;
 
 
 class SearchController extends Controller
@@ -17,16 +18,17 @@ class SearchController extends Controller
         $request->validate([
             'q' => 'required'
         ]);
-        
+
         $results = new \stdClass();
         $results->pages = $this->findPages($request->q);
         $results->jobs = $this->findJobs($request->q);
         $results->exams = $this->findExams($request->q);
+        $results->societies = $this->findSocieties($request->q);
         $results->discussions = $this->findDiscussions($request->q);
 
         return view('search.index')->with(compact('results'));
     }
-    
+
     private function findPages($query)
     {
         return Page::whereHas('fields', function ($q) use ($query) {
@@ -70,6 +72,15 @@ class SearchController extends Controller
             ->orWhereHas('category', function ($q) use ($query) {
                 $q->where('name', 'LIKE', '%' . $query . '%');
             })
+            ->latest()
+            ->take(6)
+            ->get();
+    }
+
+    private function findSocieties($query)
+    {
+        return Society::where('name', 'LIKE', '%' . $query . '%')
+            ->orWhere('city', 'LIKE', '%' . $query . '%')
             ->latest()
             ->take(6)
             ->get();

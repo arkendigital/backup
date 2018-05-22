@@ -10,6 +10,6 @@
 
     <div class="clear"></div>
 
-    <a href="/exams" class="box-select-button">Find out more</a>
+    <a href="/exams" class="box-select-button margin-top--medium">Find out more</a>
   </div>
 </div><!-- /.box-select -->

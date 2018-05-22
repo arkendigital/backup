@@ -201,7 +201,7 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Annual Salary (£k)'
+                    labelString: 'Average Salary Per Day (£)'
                   },
                   ticks: {
                       beginAtZero:true
@@ -307,7 +307,7 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Annual Salary (£k)'
+                    labelString: 'Average Salary Per Day (£)'
                   },
                   ticks: {
                       beginAtZero:true
@@ -386,6 +386,10 @@
             datasets: [{
                 label: '',
                 data: [
+                  {{ $salary_sector_gi_contractor->one_four }},
+                  {{ $salary_sector_gi_contractor->five_nine }},
+                  {{ $salary_sector_gi_contractor->ten_fourteen }},
+                  {{ $salary_sector_gi_contractor->fifteen_ninteen }},
                   {{ $salary_sector_gi_contractor->twenty_plus }}
                 ],
                 backgroundColor: 'transparent',
@@ -409,7 +413,7 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Annual Salary (£k)'
+                    labelString: 'Average Salary Per Day (£)'
                   },
                   ticks: {
                       beginAtZero:true
@@ -488,6 +492,10 @@
             datasets: [{
                 label: '',
                 data: [
+                  {{ $salary_sector_pensions_contractor->one_four }},
+                  {{ $salary_sector_pensions_contractor->five_nine }},
+                  {{ $salary_sector_pensions_contractor->ten_fourteen }},
+                  {{ $salary_sector_pensions_contractor->fifteen_ninteen }},
                   {{ $salary_sector_pensions_contractor->twenty_plus }}
                 ],
                 backgroundColor: 'transparent',
@@ -511,7 +519,7 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Annual Salary (£k)'
+                    labelString: 'Average Salary Per Day (£)'
                   },
                   ticks: {
                       beginAtZero:true
@@ -590,6 +598,10 @@
             datasets: [{
                 label: '',
                 data: [
+                  {{ $salary_sector_investments_contractor->twenty_plus }},
+                  {{ $salary_sector_investments_contractor->one_four }},
+                  {{ $salary_sector_investments_contractor->five_nine }},
+                  {{ $salary_sector_investments_contractor->fifteen_ninteen }},
                   {{ $salary_sector_investments_contractor->twenty_plus }}
                 ],
                 backgroundColor: 'transparent',
@@ -613,7 +625,7 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Annual Salary (£k)'
+                    labelString: 'Average Salary Per Day (£)'
                   },
                   ticks: {
                       beginAtZero:true
@@ -692,6 +704,10 @@
             datasets: [{
                 label: '',
                 data: [
+                  {{ $salary_sector_other_contractor->one_four }},
+                  {{ $salary_sector_other_contractor->five_nine }},
+                  {{ $salary_sector_other_contractor->ten_fourteen }},
+                  {{ $salary_sector_other_contractor->fifteen_ninteen }},
                   {{ $salary_sector_other_contractor->twenty_plus }}
                 ],
                 backgroundColor: 'transparent',
@@ -715,7 +731,7 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Annual Salary (£k)'
+                    labelString: 'Average Salary Per Day (£)'
                   },
                   ticks: {
                       beginAtZero:true

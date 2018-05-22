@@ -97,7 +97,7 @@ tent. quatem nost liae modi tectoru ptaturio illant.</p>
           <input type="email" name="email_confirmation" value="{{ old("email_confirmation") }}">
         </div>
 
-        <div class="advertising-toggle-item-form-item-full">
+        <div class="advertising-toggle-item-form-item advertising-toggle-item-form-item-full">
           @if($errors->has("comment"))
               <p class="advertising-toggle-item-form-error">{{ $errors->first("comment") }}</p>
           @endif

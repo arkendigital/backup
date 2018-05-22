@@ -59,7 +59,20 @@ class JobVacanciesController extends Controller
         /**
         * Get jobs.
         */
-        $jobs = Job::with('company', 'location', 'sector')->where("featured", 0);
+        $jobs = Job::with('company', 'location', 'sector')
+            ->where("featured", 0);
+
+        /**
+         * Get a list of job locations that have active jobs
+         *
+         */
+        $locations = Job::select("location_id")
+            ->groupBy("location_id")
+            ->get()
+            ->pluck("location_id");
+
+        $locations = JobLocation::whereIn("id", $locations)
+            ->get();
 
         /**
         * Apply filtering.
@@ -84,11 +97,23 @@ class JobVacanciesController extends Controller
             $jobs = $jobs->where('sector_id', session()->get('job-filter-sector'));
         }
 
+        if (session()->exists('job-filter-salary-min') && !empty(session()->get('job-filter-salary-min'))) {
+            $jobs = $jobs->where('salary', ">=", session()->get('job-filter-salary-min'));
+            $jobs = $jobs->where('salary', "<=", session()->get('job-filter-salary-max'));
+        }
+
+        if (session()->exists('job-filter-location') && session()->get('job-filter-location') != '') {
+            $jobs = $jobs->where("location_id", session()->get("job-filter-location"));
+        }
+
+        /*
+         * This code is for the old location search which is free type
         if (session()->exists('job-filter-location') && session()->get('job-filter-location') != '') {
             $jobs = $jobs->whereHas('location', function ($q) {
                 $q->where('name', 'LIKE', '%' . session()->get('job-filter-location') . '%');
             });
         }
+        */
 
         if (! session()->exists('job-filter-order')) {
             session()->put("job-filter-order", 'created_at-desc');
@@ -109,7 +134,8 @@ class JobVacanciesController extends Controller
             "jobs",
             "page",
             "section",
-            'sectors'
+            "sectors",
+            "locations"
         ));
     }
 
@@ -130,6 +156,21 @@ class JobVacanciesController extends Controller
             session()->put("job-filter-experience", request()->experience);
             session()->put("job-filter-type", request()->type);
             session()->put("job-filter-sector", request()->sector);
+            session()->put("job-filter-location", request()->location);
+
+            if (request()->salary != "all") {
+
+                $salary = explode("-",request()->salary);
+
+                session()->put("job-filter-salary-min", $salary[0]);
+                session()->put("job-filter-salary-max", $salary[1]);
+
+            } else {
+
+                session()->forget("job-filter-salary-min");
+                session()->forget("job-filter-salary-max");
+
+            }
         }
 
 

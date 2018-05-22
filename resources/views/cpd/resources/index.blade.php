@@ -25,9 +25,15 @@
     <div class="resource-list">
       @foreach($resources as $resource)
         <div class="resource-list-item">
-          <img class="resource-list-item-icon" src="{{ $resource->icon }}" alt="{{ $resource->name }}" title="{{ $resource->name }}">
-          <a class="resource-list-item-title" href="/cpd/resources/{{ $resource->slug }}">{{ $resource->name }}</a>
-          <p class="resource-list-item-text">{{ $resource->excerpt }}</p>
+          @if($resource->link == "")
+              <a href="/cpd/resources/{{ $resource->slug }}">
+          @else
+              <a href="{{ $resource->link }}" target="_blank">
+          @endif
+              <img class="resource-list-item-icon" src="{{ $resource->icon }}" alt="{{ $resource->name }}" title="{{ $resource->name }}">
+              <p class="resource-list-item-title">{{ $resource->name }}</p>
+              <p class="resource-list-item-text">{{ $resource->excerpt }}</p>
+          </a>
         </div><!-- /.resource-list-item -->
       @endforeach
     </div><!-- /.resource-list -->

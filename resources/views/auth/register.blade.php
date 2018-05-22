@@ -23,10 +23,14 @@
         <a href="{{ route("login") }}" class="login_page_form_actions_item">Log in</a>
       </div>
 
-      @if($errors->has("exists"))
-        <p class="login_page_form_item_error">{{ $errors->first("exists") }}</p>
+      @if($errors->any())
+          <p class="login_page_form_item_error">We were unable to register you due to some validation errors below, please attend to the fields marked red</p>
       @else
-        <p class="login_page_form_text">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cras justo odio,dapibus ac facilisis in, ege ras justo dapibus ac facilisis</p>
+          @if($errors->has("exists"))
+            <p class="login_page_form_item_error">{{ $errors->first("exists") }}</p>
+          @else
+            <p class="login_page_form_text">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cras justo odio,dapibus ac facilisis in, ege ras justo dapibus ac facilisis</p>
+          @endif
       @endif
 
       <div class="login_page_form_social">
@@ -38,7 +42,9 @@
           <i class="fa fa-twitter-square fa-2x"></i>
         </a>
 
-        <i class="fa fa-linkedin-square fa-2x"></i>
+        <a href="{{ route('socialAuth', 'linkedin') }}">
+            <i class="fa fa-linkedin-square fa-2x"></i>
+        </a>
       </div>
 
       <div class="login_page_form_item">
@@ -161,7 +167,7 @@
                     @if(old("external_marketing")) checked @endif
                 @endif
               >
-              <label for="external_marketing">I would like to recieve marketing emails your assosiated companies</label>
+              <label for="external_marketing">I would like to recieve marketing emails from your associated companies</label>
           </div>
       </div>
 

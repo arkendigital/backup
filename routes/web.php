@@ -42,6 +42,7 @@ require(base_path() . '/routes/salary-survey.php');
 * - Terms and Conditions
 * - Privacy and Cookies
 * - About
+* - Suggest a Feature
 *
 */
 Route::get('/contact', 'Contact\ContactController@index')->name("contact");
@@ -49,6 +50,8 @@ Route::post('/contact', 'Contact\ContactController@submit');
 Route::get('/terms-and-conditions', 'Misc\TermsController@index')->name("terms");
 Route::get('/privacy-cookies', 'Misc\PrivacyController@index')->name("privacy");
 Route::get('/about', 'Misc\AboutController@index')->name("about");
+Route::get('/suggest-a-feature', 'Misc\SuggestFeatureController@index')->name("suggestfeature.index");
+Route::post('/suggest-a-feature', 'Misc\SuggestFeatureController@submit')->name("suggestfeature.submit");
 
 
 

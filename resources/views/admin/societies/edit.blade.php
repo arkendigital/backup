@@ -21,6 +21,22 @@
             </div>
 
             <div class="form-group">
+              <label for="name">Email</label>
+              @if($errors->has("email"))
+                <p class="text-danger">{{ $errors->first("email") }}</p>
+              @endif
+              <input type="text" class="form-control" name="email" id="email" value="{{ $society->email }}" placeholder="Enter email...">
+            </div>
+
+            <div class="form-group">
+              <label for="name">Apply Link <sup class="text-danger">* (mandatory)</sup></label>
+              @if($errors->has("link"))
+                <p class="text-danger">{{ $errors->first("link") }}</p>
+              @endif
+              <input type="text" class="form-control" name="link" id="link" value="{{ $society->link }}" placeholder="Enter apply link...">
+            </div>
+
+            <div class="form-group">
               <label for="name">Postcode <sup class="text-danger">* (mandatory)</sup></label>
               @if($errors->has("postcode"))
                 <p class="text-danger">{{ $errors->first("postcode") }}</p>
