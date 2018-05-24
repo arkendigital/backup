@@ -22,6 +22,7 @@
 
 .button--dark-blue {
   background: $darkblue;
+  color: #fff!important;
   &:hover {
     background: lighten($darkblue, 5%);
   }

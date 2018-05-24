@@ -18,6 +18,11 @@
               @endif
               <input type="text" class="form-control" name="name" id="name" value="{{ $location->name }}" placeholder="Enter location name">
             </div>
+
+            <div class="form-group">
+              <label for="name">Region</label>
+              <p>{{ $location->region->name }}</p>
+            </div>
         </div>
 
         <div class="box-footer">

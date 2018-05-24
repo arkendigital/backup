@@ -4,7 +4,7 @@
     padding: 0;
 
     @media (min-width: 500px) {
-        display: inline-flex;
+        // display: inline-flex;
     }
 
     li {
@@ -70,4 +70,3 @@ p.search__excerpt {
 .tab-content-hidden {
     display: none;
 }
-

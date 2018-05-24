@@ -21,6 +21,7 @@ class Job extends Model
         "content",
         "salary",
         "location_id",
+        "region_id",
         "company_id",
         "featured",
         "apply_link"

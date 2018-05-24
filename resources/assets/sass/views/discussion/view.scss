@@ -18,6 +18,11 @@
     width: calc(100% - 30px);
     padding-top: 40px;
     border-bottom: 1px dotted #AAA;
+
+    &--no-border {
+        border-bottom: none;
+    }
+
     &:last-of-type {
       border-bottom: none;
     }

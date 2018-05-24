@@ -269,4 +269,58 @@ class ResultsController extends Controller
             return $results;
         });
     }
+
+    /**
+     * Download the survey results
+     *
+     */
+    public function download()
+    {
+
+        $this->seo()
+            ->setTitle("Download Salary Survey Results");
+
+        // Experience.
+        $salary_vs_exerience_permanent = $this->averageSalaryVsExperience('permanent');
+        $salary_vs_exerience_contractor = $this->averageSalaryVsExperience('contractor');
+        // Sector/permanent
+        $salary_sector_life_permanent = $this->salaryBySectorExeperience('life', 'permanent');
+        $salary_sector_gi_permanent = $this->salaryBySectorExeperience('gi', 'permanent');
+        $salary_sector_pensions_permanent = $this->salaryBySectorExeperience('pensions', 'permanent');
+        $salary_sector_investments_permanent = $this->salaryBySectorExeperience('investments', 'permanent');
+        $salary_sector_other_permanent = $this->salaryBySectorExeperience('other', 'permanent');
+        // Sector/Contractor
+        $salary_sector_life_contractor = $this->salaryBySectorExeperience('life', 'contractor');
+        $salary_sector_gi_contractor = $this->salaryBySectorExeperience('gi', 'contractor');
+        $salary_sector_pensions_contractor = $this->salaryBySectorExeperience('pensions', 'contractor');
+        $salary_sector_investments_contractor = $this->salaryBySectorExeperience('investments', 'contractor');
+        $salary_sector_other_contractor = $this->salaryBySectorExeperience('other', 'contractor');
+        // Per Sector
+        $salary_per_sector_permanent = $this->averageSalaryPerSector('permanent');
+        $salary_per_sector_contractor = $this->averageSalaryPerSector('contractor');
+        // Per Field
+        $salary_per_field_permanent = $this->averageSalaryPerField('permanent');
+        $salary_per_field_contractor = $this->averageSalaryPerField('contractor');
+
+        return view('salary-survey.results-download', compact(
+            'salary_vs_exerience_permanent',
+            'salary_vs_exerience_contractor',
+            'salary_per_sector_permanent',
+            'salary_per_sector_contractor',
+            'salary_per_field_permanent',
+            'salary_per_field_contractor',
+            'salary_sector_life_permanent',
+            'salary_sector_life_contractor',
+            'salary_sector_gi_permanent',
+            'salary_sector_gi_contractor',
+            'salary_sector_pensions_permanent',
+            'salary_sector_pensions_contractor',
+            'salary_sector_investments_permanent',
+            'salary_sector_investments_contractor',
+            'salary_sector_other_permanent',
+            'salary_sector_other_contractor'
+        ));
+
+
+    }
 }

@@ -21,6 +21,7 @@ $(".discussion-popover-close").click(function() {
 * Discussion reply form submission.
 *
 */
+/*
 $("#discussion-reply-form").submit(function(e) {
 
   e.preventDefault;
@@ -47,7 +48,7 @@ $("#discussion-reply-form").submit(function(e) {
   return false;
 
 });
-
+*/
 
 $('.discussion-view-reply-editor, .discussion-edit-content-editor').trumbowyg({
   svgPath: '/images/icons.svg',
@@ -65,3 +66,44 @@ $(".discussion-button--reply").click(function() {
         scrollTop: $(".discussion-view-reply").offset().top - 15
     }, 1000);
 });
+
+
+$(".discussion-sidebar__mobile-menu").click(function() {
+
+    if ($(".discussion-sidebar__categories").hasClass("active")) {
+
+        hideCategories();
+
+    }
+
+    else {
+
+        showCategories();
+
+    }
+
+});
+
+function showCategories()
+{
+
+    $(".discussion-sidebar__categories").addClass("active");
+    $(".discussion-sidebar__categories").slideDown();
+
+    $(".discussion-sidebar__mobile-menu span").html("Hide Categories");
+
+    $("html, body").animate({
+        scrollTop: $('.discussion-sidebar__mobile-menu').offset().top - 15
+    }, 1000);
+
+}
+
+function hideCategories()
+{
+
+    $(".discussion-sidebar__categories").removeClass("active");
+    $(".discussion-sidebar__categories").slideUp();
+
+    $(".discussion-sidebar__mobile-menu span").html("Show Categories");
+
+}

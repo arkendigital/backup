@@ -7,6 +7,7 @@ use App\Http\Requests\Job as JobRequest;
 
 use App\Models\Job;
 use App\Models\JobLocation;
+use App\Models\JobRegion;
 use App\Models\JobCompany;
 
 class JobController extends Controller
@@ -70,15 +71,23 @@ class JobController extends Controller
     public function update(Job $job, Request $request)
     {
 
-    /**
-    * Update job.
-    */
+        /**
+         * Get the region of a location
+         *
+         */
+        $location = JobLocation::find(request()->location_id);
+        $region = JobRegion::find($location->region_id);
+
+        /**
+        * Update job.
+        */
         $job->update([
             "title" => request()->title,
             "excerpt" => request()->excerpt,
             "content" => request()->content,
             "salary" => request()->salary,
             "location_id" => request()->location_id,
+            "region_id" => $region->id,
             "company_id" => request()->company_id,
             "apply_link" => request()->apply_link,
             "featured" => request()->featured
@@ -121,6 +130,13 @@ class JobController extends Controller
     public function store(JobRequest $request)
     {
 
+        /**
+         * Get the region of a location
+         *
+         */
+        $location = JobLocation::find(request()->location_id);
+        $region = JobRegion::find($location->region_id);
+
     /**
     * Create job.
     */
@@ -130,6 +146,7 @@ class JobController extends Controller
             "content" => request()->content,
             "salary" => request()->salary,
             "location_id" => request()->location_id,
+            "region_id" => $region->id,
             "company_id" => request()->company_id,
             "apply_link" => request()->apply_link,
             "featured" => request()->featured

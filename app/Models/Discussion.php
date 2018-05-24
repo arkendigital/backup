@@ -89,7 +89,8 @@ class Discussion extends Model
     */
     public function replies()
     {
-        return $this->hasMany('App\Models\DiscussionReply', 'discussion_id', 'id');
+        return $this->hasMany('App\Models\DiscussionReply', 'discussion_id', 'id')
+            ->orderBy("created_at", "DESC");
     }
 
     /**

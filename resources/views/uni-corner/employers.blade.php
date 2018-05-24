@@ -25,7 +25,11 @@
 
     <div class="actuarial-employers">
       @foreach($employers as $employer)
-        <a href="/uni-corner/actuarial-employers/{{ $employer->slug }}" class="actuarial-employers-box">
+        @if($employer->link != "")
+            <a href="{{ $employer->link }}" class="actuarial-employers-box" target="_blank">
+        @else
+            <a href="/uni-corner/actuarial-employers/{{ $employer->slug }}" class="actuarial-employers-box">
+        @endif
           <div>
             <img class="actuarial-employers-box-logo" alt="{{ $employer->name }}" title="{{ $employer->name }}" src="{{ $employer->logo }}">
             <p class="actuarial-employers-box-name">{{ $employer->name }}</p>

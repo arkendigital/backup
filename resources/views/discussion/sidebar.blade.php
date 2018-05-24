@@ -8,7 +8,18 @@
     </form>
   </div>
 
-  <div>
+  <div class="discussion-sidebar__mobile-menu">
+      <ul>
+          <li>
+            <a>
+              <div class="icon-container"><img src="{{ asset("/images/icons/discussion/categories.png") }}"></div>
+              <span>Show Categories</span>
+            </a>
+          </li>
+      </ul>
+  </div>
+
+  <div class="discussion-sidebar__categories">
     <ul>
       <li>
         <a href="/discussion">
@@ -18,7 +29,7 @@
       </li>
       <li>
         <a href="/discussion/latest-messages">
-          <div class="icon-container"><img src="{{ asset("/images/icons/discussion/all-threads.png") }}"></div>
+          <div class="icon-container"><img src="{{ asset("/images/icons/discussion/latest.png") }}"></div>
           <span>Latest Messages</span>
         </a>
       </li>
@@ -43,7 +54,7 @@
     </ul>
   </div>
 
-  <div>
+  <div class="discussion-sidebar__categories">
     <ul>
       @foreach($categories as $category)
       <li>

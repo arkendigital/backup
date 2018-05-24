@@ -17,6 +17,7 @@ use App\Models\Job;
 use App\Models\JobLocation;
 use App\Models\JobSector;
 use App\Models\JobCompany;
+use App\Models\JobRegion;
 
 class JobVacanciesController extends Controller
 {
@@ -75,6 +76,18 @@ class JobVacanciesController extends Controller
             ->get();
 
         /**
+         * Get a list of regions that have active jobs
+         *
+         */
+         $regions = Job::select("region_id")
+             ->groupBy("region_id")
+             ->get()
+             ->pluck("region_id");
+
+         $regions = JobRegion::whereIn("id", $regions)
+             ->get();
+
+        /**
         * Apply filtering.
         */
         if (session()->exists("job-filter-keyword") && session()->get("job-filter-keyword") != "") {
@@ -100,6 +113,10 @@ class JobVacanciesController extends Controller
         if (session()->exists('job-filter-salary-min') && !empty(session()->get('job-filter-salary-min'))) {
             $jobs = $jobs->where('salary', ">=", session()->get('job-filter-salary-min'));
             $jobs = $jobs->where('salary', "<=", session()->get('job-filter-salary-max'));
+        }
+
+        if (session()->exists('job-filter-region') && session()->get('job-filter-region') != '') {
+            $jobs = $jobs->where("region_id", session()->get("job-filter-region"));
         }
 
         if (session()->exists('job-filter-location') && session()->get('job-filter-location') != '') {
@@ -135,7 +152,8 @@ class JobVacanciesController extends Controller
             "page",
             "section",
             "sectors",
-            "locations"
+            "locations",
+            "regions"
         ));
     }
 
@@ -156,7 +174,23 @@ class JobVacanciesController extends Controller
             session()->put("job-filter-experience", request()->experience);
             session()->put("job-filter-type", request()->type);
             session()->put("job-filter-sector", request()->sector);
-            session()->put("job-filter-location", request()->location);
+
+
+
+            if (str_contains(request()->location, "all-region")) {
+
+                session()->forget("job-filter-location");
+
+                $region_string = request()->location;
+                $region_id = explode("-", $region_string)[2];
+                session()->put("job-filter-region", $region_id);
+
+            } else {
+
+                session()->put("job-filter-location", request()->location);
+                session()->forget("job-filter-region");
+
+            }
 
             if (request()->salary != "all") {
 

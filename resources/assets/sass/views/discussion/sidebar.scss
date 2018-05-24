@@ -10,6 +10,25 @@
     background: #ebebeb;
     margin-bottom: 15px;
     padding: 15px 20px;
+
+    @media(max-width: 950px) {
+        &.discussion-sidebar__categories {
+            display: none;
+        }
+    }
+
+    &.discussion-sidebar__mobile-menu {
+        display: none;
+        padding-top: 0;
+        padding-bottom: 0;
+        cursor: pointer;
+
+        @media(max-width: 950px) {
+            display: block;
+        }
+
+    }
+
   }
 
   &-search {

@@ -153,7 +153,7 @@
 
           <p>
             Looking for more detailed results?
-            <a href="#" target="_blank" class="button button--dark-blue">Download here</a>
+            <a href="{{ url("/salary-survey/download") }}" target="_blank" class="button button--dark-blue">Download here</a>
         </p>
         </div>
 

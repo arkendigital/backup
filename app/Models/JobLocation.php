@@ -19,4 +19,15 @@ class JobLocation extends Model
                 ->update(['location_id' => null]);
         });
     }
+
+
+    /**
+    * A job location has a region.
+    *
+    * @return Illuminate\Database\Eloquent\Relations\HasOne
+    */
+    public function region()
+    {
+        return $this->hasOne(JobRegion::class, 'id', 'region_id');
+    }
 }

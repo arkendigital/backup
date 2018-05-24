@@ -1,28 +1,10 @@
-@extends("layouts.master")
 
-@section("content")
-
-  <div class="section-hero" style="background-image: url({{ $page->section->image }}); border-color: {{ $page->section->color }};"></div>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+  <link href="{{ asset("css/vendor.css") }}" rel="stylesheet">
+  <link href="{{ asset("css/app.css") }}" rel="stylesheet">
 
   <div class="website-container">
-    <div class="website-container-content view-section">
-
-      <h1>{{ $page->getField("page_title") }}</h1>
-
-      <p>{!! $page->getField("page_content") !!}</p>
-
-      <p>
-          <a href="{{ url("/salary-survey/download") }}" target="_blank" class="button button--dark-blue">Download or Print</a>
-      </p>
-
-    </div>
-    <div class="website-container-sidebar">
-      @include("partials.sidebar", [
-        "sidebar" => $page->section->sidebar
-      ])
-    </div>
-
-    <div class="clear"></div>
 
     <div class="salary-survey-results-container">
       <h3>Average Salary vs Experience</h3>
@@ -98,24 +80,15 @@
       </div>
     </div>
 
-    <div class="clear margin-bottom--medium"></div>
-
-    @if(isset($page_adverts[0]["main-content"]))
-      @include('partials.advert', [
-        'advert' => $page_adverts[0]["main-content"]
-      ])
-    @endif
-
   </div><!-- /.website-container -->
 
 
-  @include("widgets.loop")
 
-  @include("partials.join-discussion", [
-    "category_id" => $page->discussion_category_id
-  ])
 
-  @push("scripts-after")
+    <script src="{{ asset("js/vendor.js") }}"></script>
+    <script src="{{ asset("js/editor.js") }}"></script>
+    <script src="{{ asset("js/app.js") }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
     <script>
     var myChart = new Chart(document.getElementById('permanent_salary_experience').getContext('2d'), {
@@ -137,6 +110,7 @@
             }]
         },
         options: {
+          animation: false,
           responsive: true,
           title: {
 					  display: true,
@@ -190,6 +164,7 @@
             }]
         },
         options: {
+          animation: false,
           responsive: true,
           title: {
 					  display: true,
@@ -243,6 +218,7 @@
             }]
         },
         options: {
+          animation: false,
           responsive: true,
           title: {
 					  display: true,
@@ -296,6 +272,7 @@
             }]
         },
         options: {
+          animation: false,
           responsive: true,
           title: {
 					  display: true,
@@ -349,6 +326,7 @@
             }]
         },
         options: {
+          animation: false,
           responsive: true,
           title: {
 					  display: true,
@@ -402,6 +380,7 @@
             }]
         },
         options: {
+          animation: false,
           responsive: true,
           title: {
 					  display: true,
@@ -455,6 +434,7 @@
             }]
         },
         options: {
+          animation: false,
           responsive: true,
           title: {
 					  display: true,
@@ -508,6 +488,7 @@
             }]
         },
         options: {
+          animation: false,
           responsive: true,
           title: {
 					  display: true,
@@ -561,6 +542,7 @@
             }]
         },
         options: {
+          animation: false,
           responsive: true,
           title: {
 					  display: true,
@@ -614,6 +596,7 @@
             }]
         },
         options: {
+          animation: false,
           responsive: true,
           title: {
 					  display: true,
@@ -667,6 +650,7 @@
             }]
         },
         options: {
+          animation: false,
           responsive: true,
           title: {
 					  display: true,
@@ -720,6 +704,7 @@
             }]
         },
         options: {
+          animation: false,
           responsive: true,
           title: {
 					  display: true,
@@ -779,6 +764,7 @@
             }]
         },
         options: {
+          animation: false,
           responsive: true,
           title: {
 					  display: true,
@@ -838,6 +824,7 @@
             }]
         },
         options: {
+          animation: false,
           responsive: true,
           title: {
 					  display: true,
@@ -895,6 +882,7 @@
             }]
         },
         options: {
+          animation: false,
           responsive: true,
           title: {
 					  display: true,
@@ -952,6 +940,7 @@
             }]
         },
         options: {
+          animation: false,
           responsive: true,
           title: {
 					  display: true,
@@ -985,7 +974,8 @@
           }
         }
     });
-    </script>
-  @endpush
 
-@endsection
+    $(function() {
+        window.print();
+    });
+    </script>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Jobs;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\JobLocation;
+use App\Models\JobRegion;
 
 class JobLocationController extends Controller
 {
@@ -26,7 +27,8 @@ class JobLocationController extends Controller
      */
     public function create()
     {
-        return view('admin.jobs.locations.create');
+        $regions = JobRegion::all();
+        return view('admin.jobs.locations.create', compact('regions'));
     }
 
     /**
@@ -38,11 +40,13 @@ class JobLocationController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'region_id' => 'required'
         ]);
 
         $location = new JobLocation();
         $location->name = $request->name;
+        $location->region_id = $request->region_id;
         $location->save();
 
         alert('Job location has been created')->persistent();
@@ -87,7 +91,7 @@ class JobLocationController extends Controller
 
         $location->name = $request->name;
         $location->save();
-                
+
         alert('Job location has been edited')->persistent();
 
         return redirect(route('jobs.locations.edit', $location));
@@ -102,7 +106,7 @@ class JobLocationController extends Controller
     public function destroy(JobLocation $location)
     {
         $location->delete();
-        
+
         alert('Job location has been deleted')->persistent();
 
         return redirect(route('jobs.locations'));

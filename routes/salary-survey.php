@@ -25,4 +25,10 @@ Route::namespace('SalarySurvey')->prefix('salary-survey')->group(function() {
   */
   Route::get('/results', 'ResultsController@index');
 
+  /**
+  * Download salary survey results
+  *
+  */
+  Route::get('/download', 'ResultsController@download');
+
 });

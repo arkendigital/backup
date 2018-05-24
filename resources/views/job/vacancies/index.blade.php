@@ -124,10 +124,21 @@
               <p class="job-list-sidebar-item-title">LOCATION</p>
               <div class="job-list-sidebar-item">
                 <select name="location" class="job-list-sidebar-item-select">
-                  <option value="" class="job-list-sidebar-item-select-default">All</option>
-                  @foreach ($locations as $location)
-                    <option value="{{ $location->id }}" class="job-list-sidebar-item-select-default"
-                    @if(session()->exists("job-filter-location") && session()->get("job-filter-location") == $location->id) selected @endif>{{ $location->name }}</option>
+                  <option value="" class="job-list-sidebar-item-select-default">All Regions and Locations</option>
+                  <option value="" disabled></option>
+                  @foreach($regions as $region)
+                      <option value="" disabled>Region - {{ $region->name }}</option>
+                      <option value="all-region-{{ $region->id }}"
+                          @if(session()->exists("job-filter-region") && session()->get("job-filter-region") == $region->id) selected @endif
+                      >All {{ $region->name }}</option>
+                      @foreach ($locations as $location)
+                        @if($location->region_id != $region->id)
+                            @continue
+                        @endif
+                        <option value="{{ $location->id }}" class="job-list-sidebar-item-select-default"
+                        @if(session()->exists("job-filter-location") && session()->get("job-filter-location") == $location->id) selected @endif>{{ $location->name }}</option>
+                      @endforeach
+                      <option value="" disabled></option>
                   @endforeach
                 </select>
               </div>

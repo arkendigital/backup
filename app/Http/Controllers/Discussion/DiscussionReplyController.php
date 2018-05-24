@@ -39,7 +39,7 @@ class DiscussionReplyController extends Controller
             "content" => request()->content
         ]);
 
-        return view("discussion.partials.reply", compact("reply"));
+        // return view("discussion.partials.reply", compact("reply"));
 
         /**
         * Notify user of creation.

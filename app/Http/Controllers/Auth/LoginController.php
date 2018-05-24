@@ -40,9 +40,13 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
 
-        if (isset(request()->forward)) {
-            $this->redirectTo = request()->forward;
-        }
+        /*
+         * This has been removed for now as they want ALL LOGINS to redirect to the discussion page
+         *
+            if (isset(request()->forward)) {
+                $this->redirectTo = request()->forward;
+            }
+        */
     }
 
     /**

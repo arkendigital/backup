@@ -18,6 +18,19 @@
               @endif
               <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" placeholder="Enter location name">
             </div>
+
+            <div class="form-group">
+              <label for="region_id">Region</label>
+              @if($errors->has("region_id"))
+                <p class="text-danger">{{ $errors->first("region_id") }}</p>
+              @endif
+              <select name="region_id" class="form-control">
+                  <option value="">Please select...</option>
+                  @foreach($regions as $region)
+                      <option value="{{ $region->id }}">{{ $region->name }}</option>
+                  @endforeach
+              </select>
+            </div>
         </div>
 
         <div class="box-footer">

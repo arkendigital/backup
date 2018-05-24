@@ -25,7 +25,11 @@
 
     <div class="actuarial-employers">
       @foreach($societies as $society)
-        <a href="{{ route("uni-societies.view", $society) }}" class="actuarial-employers-box">
+            @if($society->link != "")
+                <a href="{{ $society->link }}" class="actuarial-employers-box" target="_blank">
+            @else
+                <a href="{{ route("uni-societies.view", $society) }}" class="actuarial-employers-box">
+            @endif
           <div>
             <img class="actuarial-employers-box-logo" alt="{{ $society->name }}" title="{{ $society->name }}" src="{{ asset("images/icons/ao-white.png") }}">
             <p class="actuarial-employers-box-name">{{ $society->name }}</p>

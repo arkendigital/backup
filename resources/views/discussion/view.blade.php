@@ -23,7 +23,7 @@
 
       <div class="discussion-view-container">
         <div class="discussion-view">
-          <div class="discussion-view-thread">
+          <div class="discussion-view-thread @if($discussion->replies->isEmpty()) discussion-view-thread--no-border @endif">
 
             <div class="discussion-view-thread-avatar">
               <img src="{{ $discussion->user->avatar }}" alt="{{ $discussion->user->username }}" title="{{ $discussion->user->username }}">
@@ -33,7 +33,9 @@
               <p class="discussion-view-thread-content-title">{{ $discussion->name }}</p>
               <span class="discussion-view-thread-content-text">{!! $discussion->content !!}</span>
 
-              <img class="discussion-view-thread-content-image" alt="" title="" src="{{ $discussion->image }}">
+              @if($discussion->image_path != "")
+                  <img class="discussion-view-thread-content-image" alt="" title="" src="{{ $discussion->image }}">
+              @endif
 
               <div class="discussion-view-thread-content-footer">
                 @if($discussion->category)
@@ -50,9 +52,11 @@
 
           </div><!-- /.discussion-view-thread -->
 
-          @foreach($discussion->replies as $reply)
-            @include("discussion.partials.reply", $reply)
-          @endforeach
+          <div class="discussion-replies-wrapper">
+              @foreach($discussion->replies as $reply)
+                @include("discussion.partials.reply", $reply)
+              @endforeach
+          </div>
           <div id="newDiscussionReply"></div>
         </div><!-- /.discussion-view -->
 
@@ -90,5 +94,9 @@
 
     </div><!-- /.discussion-container-inner -->
   </div><!-- ./discussion-container -->
+
+  @push("scripts-after")
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML' async></script>
+  @endpush
 
 @endsection

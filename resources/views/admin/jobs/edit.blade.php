@@ -37,7 +37,7 @@
               <select name="location_id" class="form-control">
                 <option value="">Select location of job...</option>
                 @foreach($locations as $location)
-                  <option value="{{ $location->id }}" @if($location->id == $job->location_id) selected @endif>{{ $location->name }}</option>
+                  <option value="{{ $location->id }}" @if($location->id == $job->location_id) selected @endif>{{ $location->name }} - {{ $location->region->name }}</option>
                 @endforeach
               </select>
             </div>
