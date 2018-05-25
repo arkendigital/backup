@@ -52,6 +52,7 @@
         float: right;
         width: calc(100% - 125px);
       }
+
       @media(max-width: 500px) {
         float: none;
         display: block;
@@ -59,6 +60,11 @@
         width: 100%;
         text-align: center;
       }
+
+      img {
+          max-width: 100%;
+      }
+
       &-title {
         display: block;
         font-size: 18px;

@@ -3,7 +3,7 @@
 @section("content")
 <div class="website-container">
     <div class="website-container-content website-container-content-full view-section">
-        <h2>Search results</h2>
+        <h2 class="search-results__title">Search results</h2>
 
         @if (! $results->pages->isEmpty() || ! $results->jobs->isEmpty() || ! $results->exams->isEmpty() || $results->discussions->isEmpty())
 
