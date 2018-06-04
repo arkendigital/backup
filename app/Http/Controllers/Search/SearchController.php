@@ -26,6 +26,9 @@ class SearchController extends Controller
         $results->societies = $this->findSocieties($request->q);
         $results->discussions = $this->findDiscussions($request->q);
 
+        $this->seo()
+          ->setTitle("Search results for: " . request()->q);
+
         return view('search.index')->with(compact('results'));
     }
 

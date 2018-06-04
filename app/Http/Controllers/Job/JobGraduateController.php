@@ -2,43 +2,39 @@
 
 namespace App\Http\Controllers\Job;
 
-/**
-* Load modules.
-*/
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-/**
-* Load models.
-*/
 use App\Models\Section;
 use App\Models\Page;
 
 class JobGraduateController extends Controller
 {
 
-  /**
-  * Define the section.
-  */
+    /**
+    * Define the section.
+    */
     public function __construct()
     {
         $this->section = Section::where("slug", "jobs")
-            ->first();
+          ->first();
     }
 
     public function index()
     {
 
-    /**
-    * Get page Information
-    */
+        /**
+        * Get page Information
+        */
         $page = Page::getPage(request()->route()->uri);
 
         /**
         * Set seo.
         */
-        $this->seo()->setTitle($page->meta_title);
-        $this->seo()->setDescription($page->meta_description);
+        $this->seo()
+          ->setTitle($page->meta_title);
+
+        $this->seo()
+          ->setDescription($page->meta_description);
 
         /**
         * Get adverts for this page.

@@ -2,15 +2,8 @@
 
 namespace App\Http\Controllers\Job;
 
-/**
-* Load modules.
-*/
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-/**
-* Load models.
-*/
 use App\Models\Section;
 use App\Models\Page;
 use App\Models\Job;
@@ -18,13 +11,14 @@ use App\Models\JobLocation;
 use App\Models\JobSector;
 use App\Models\JobCompany;
 use App\Models\JobRegion;
+use App\Models\JobStatus;
 
 class JobVacanciesController extends Controller
 {
 
-  /**
-  * Define the section.
-  */
+    /**
+    * Define the section.
+    */
     public function __construct()
     {
         $this->section = Section::where("slug", "jobs")
@@ -37,9 +31,9 @@ class JobVacanciesController extends Controller
     public function index()
     {
 
-    /**
-    * Get page Information
-    */
+        /**
+        * Get page Information
+        */
         $page = Page::getPage(request()->route()->uri);
 
         /**
@@ -115,6 +109,11 @@ class JobVacanciesController extends Controller
             $jobs = $jobs->where('salary', "<=", session()->get('job-filter-salary-max'));
         }
 
+        if (session()->exists('job-filter-contract-salary-min') && !empty(session()->get('job-filter-contract-salary-min'))) {
+            $jobs = $jobs->orWhere('daily_salary', ">=", session()->get('job-filter-contract-salary-min'));
+            $jobs = $jobs->orWhere('daily_salary', "<=", session()->get('job-filter-contract-salary-max'));
+        }
+
         if (session()->exists('job-filter-region') && session()->get('job-filter-region') != '') {
             $jobs = $jobs->where("region_id", session()->get("job-filter-region"));
         }
@@ -143,6 +142,14 @@ class JobVacanciesController extends Controller
 
         $jobs = $jobs->paginate(6);
 
+
+        /**
+         * Get a list of job types
+         *
+         */
+        $job_types = JobStatus::all();
+
+
         /**
         * Display results.
         */
@@ -153,7 +160,8 @@ class JobVacanciesController extends Controller
             "section",
             "sectors",
             "locations",
-            "regions"
+            "regions",
+            "job_types"
         ));
     }
 
@@ -175,8 +183,6 @@ class JobVacanciesController extends Controller
             session()->put("job-filter-type", request()->type);
             session()->put("job-filter-sector", request()->sector);
 
-
-
             if (str_contains(request()->location, "all-region")) {
 
                 session()->forget("job-filter-location");
@@ -192,6 +198,10 @@ class JobVacanciesController extends Controller
 
             }
 
+            /**
+             * Permanent salary
+             *
+             */
             if (request()->salary != "all") {
 
                 $salary = explode("-",request()->salary);
@@ -205,6 +215,25 @@ class JobVacanciesController extends Controller
                 session()->forget("job-filter-salary-max");
 
             }
+
+            /**
+             * Contractor salary
+             *
+             */
+            if (request()->daily_salary != "all") {
+
+                $salary = explode("-",request()->daily_salary);
+
+                session()->put("job-filter-contract-salary-min", $salary[0]);
+                session()->put("job-filter-contract-salary-max", $salary[1]);
+
+            } else {
+
+                session()->forget("job-filter-contract-salary-min");
+                session()->forget("job-filter-contract-salary-max");
+
+            };
+
         }
 
 

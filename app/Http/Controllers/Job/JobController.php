@@ -2,15 +2,8 @@
 
 namespace App\Http\Controllers\Job;
 
-/**
-* Load modules.
-*/
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-/**
-* Load models.
-*/
 use App\Models\Section;
 use App\Models\Page;
 use App\Models\PageAdvert;
@@ -18,9 +11,9 @@ use App\Models\PageAdvert;
 class JobController extends Controller
 {
 
-  /**
-  * Define the section.
-  */
+    /**
+    * Define the section.
+    */
     public function __construct()
     {
         $this->section = Section::where("slug", "jobs")
@@ -30,17 +23,20 @@ class JobController extends Controller
     public function index()
     {
 
-    /**
-    * Get page Information
-    */
+        /**
+        * Get page Information
+        */
         $page = Page::where("slug", "jobs")
             ->first();
 
         /**
         * Set seo.
         */
-        $this->seo()->setTitle($page->meta_title);
-        $this->seo()->setDescription($page->meta_description);
+        $this->seo()
+          ->setTitle($page->meta_title);
+
+        $this->seo()
+          ->setDescription($page->meta_description);
 
         /**
         * Get adverts for this page.

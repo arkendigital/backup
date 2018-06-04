@@ -5,7 +5,8 @@
   display: block;
   width: 100%;
   text-align: center;
-  background: #EEE;
+  background: #fff;
+  position: relative;
   &-slide {
     background-repeat: no-repeat;
     background-size: cover;
@@ -38,7 +39,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba($yellow, 0.95);
+        background: rgba($yellow, 0.80);
         display: block;
         z-index: 2;
       }
@@ -371,6 +372,14 @@
       line-height: 24px;
       padding: 0 10px;
     }
+
+    &--no-image {
+      background: rgba(76,93,116,1);
+      .homepage-discussion-slider-box-hover {
+        display: flex;
+      }
+    }
+
   }
   a {
     text-decoration: none;

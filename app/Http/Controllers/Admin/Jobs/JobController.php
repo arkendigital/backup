@@ -13,15 +13,15 @@ use App\Models\JobCompany;
 class JobController extends Controller
 {
 
-  /**
-  * List jobs.
-  */
+    /**
+    * List jobs.
+    */
     public function index()
     {
 
-    /**
-    * Get jobs.
-    */
+        /**
+        * Get jobs.
+        */
         $jobs = Job::all();
 
         /**
@@ -41,9 +41,9 @@ class JobController extends Controller
     public function edit(Job $job)
     {
 
-    /**
-    * Get list of locations.
-    */
+        /**
+        * Get list of locations.
+        */
         $locations = JobLocation::all();
 
         /**
@@ -85,7 +85,9 @@ class JobController extends Controller
             "title" => request()->title,
             "excerpt" => request()->excerpt,
             "content" => request()->content,
+            "salary_type" => request()->salary_type,
             "salary" => request()->salary,
+            "daily_salary" => request()->daily_salary, 
             "location_id" => request()->location_id,
             "region_id" => $region->id,
             "company_id" => request()->company_id,

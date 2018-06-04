@@ -22,6 +22,8 @@
   <div class="job-list-container">
     <div class="job-list-container-inner">
 
+      <div class="job-list-filter-toggle">Show Filtering</div>
+
       <div class="job-list-banner">
 
         <div class="job-list-banner-location-label">
@@ -74,6 +76,15 @@
 
             <div>
               <p class="job-list-sidebar-item-title">JOB STATUS</p>
+
+              @foreach($job_types as $type)
+                <div class="job-list-sidebar-item checkbox-wrapper">
+                  <input type="checkbox" class="job-list-sidebar-item-checkbox" id="status-{{ strtolower($type->name) }}" name="status[]" value="{{ $type->id }}" @if(session()->exists("job-filter-status") && !empty(session()->get("job-filter-status")) && in_array($type->id, session()->get("job-filter-status"))) checked @endif>
+                  <label class="job-list-sidebar-item-label" for="status-{{ strtolower($type->name) }}">{{ $type->name }}</label>
+                </div>
+              @endforeach
+
+              {{--
               <div class="job-list-sidebar-item checkbox-wrapper">
                 <input type="checkbox" class="job-list-sidebar-item-checkbox" id="status-permanent" name="status[]" value="1" @if(session()->exists("job-filter-status") && !empty(session()->get("job-filter-status")) && in_array(1, session()->get("job-filter-status"))) checked @endif>
                 <label class="job-list-sidebar-item-label" for="status-permanent">Permanent</label>
@@ -86,6 +97,8 @@
                 <input type="checkbox" class="job-list-sidebar-item-checkbox" id="status-internship" name="status[]" value="3" @if(session()->exists("job-filter-status") && !empty(session()->get("job-filter-status")) && in_array(3, session()->get("job-filter-status"))) checked @endif>
                 <label class="job-list-sidebar-item-label" for="status-internship">Internship</label>
               </div>
+              --}}
+
             </div>
 
             <div>
@@ -96,23 +109,23 @@
               </div>
               <div class="job-list-sidebar-item checkbox-wrapper">
                 <input type="checkbox" class="job-list-sidebar-item-checkbox" id="status-almost" name="experience[]" value="almost" @if(session()->exists("job-filter-experience") && !empty(session()->get("job-filter-experience")) && in_array("almost", session()->get("job-filter-experience"))) checked @endif>
-                <label class="job-list-sidebar-item-label" for="status-almost">Almost qualified +11 Exams</label>
+                <label class="job-list-sidebar-item-label" for="status-almost">Almost Qualified (11+ exams)</label>
               </div>
               <div class="job-list-sidebar-item checkbox-wrapper">
                 <input type="checkbox" class="job-list-sidebar-item-checkbox" id="status-part" name="experience[]" value="part" @if(session()->exists("job-filter-experience") && !empty(session()->get("job-filter-experience")) && in_array("part", session()->get("job-filter-experience"))) checked @endif>
-                <label class="job-list-sidebar-item-label" for="status-part">Part qualified 0-10 Exams</label>
+                <label class="job-list-sidebar-item-label" for="status-part">Part Qualified (1-10 exams)</label>
               </div>
               <div class="job-list-sidebar-item checkbox-wrapper">
-                <input type="checkbox" class="job-list-sidebar-item-checkbox" id="status-gradute" name="experience[]" value="gradute" @if(session()->exists("job-filter-experience") && !empty(session()->get("job-filter-experience")) && in_array("gradute", session()->get("job-filter-experience"))) checked @endif>
-                <label class="job-list-sidebar-item-label" for="status-gradute">Graduate</label>
+                <input type="checkbox" class="job-list-sidebar-item-checkbox" id="status-none" name="experience[]" value="none" @if(session()->exists("job-filter-experience") && !empty(session()->get("job-filter-experience")) && in_array("none", session()->get("job-filter-experience"))) checked @endif>
+                <label class="job-list-sidebar-item-label" for="status-none">No exams</label>
               </div>
             </div>
 
             <div>
-              <p class="job-list-sidebar-item-title">RECRUITMENT TYPE</p>
+              <p class="job-list-sidebar-item-title">RECRUITER TYPE</p>
               <div class="job-list-sidebar-item checkbox-wrapper">
                 <input type="checkbox" class="job-list-sidebar-item-checkbox" id="type-agency" name="type[]" value="agency" @if(session()->exists("job-filter-type") && !empty(session()->get("job-filter-type")) && in_array("agency", session()->get("job-filter-type"))) checked @endif>
-                <label class="job-list-sidebar-item-label" for="type-agency">Recruitment Agency</label>
+                <label class="job-list-sidebar-item-label" for="type-agency">Agency</label>
               </div>
               <div class="job-list-sidebar-item checkbox-wrapper">
                 <input type="checkbox" class="job-list-sidebar-item-checkbox" id="type-employer" name="type[]" value="direct" @if(session()->exists("job-filter-type") && !empty(session()->get("job-filter-type")) && in_array("direct", session()->get("job-filter-type"))) checked @endif>
@@ -146,9 +159,13 @@
 
             <div>
               <p class="job-list-sidebar-item-title">SALARY</p>
+            </div>
+
+            <div>
+              <p class="job-list-sidebar-item-title">PERM (ANNUAL)</p>
               <div class="job-list-sidebar-item">
                 <select name="salary" class="job-list-sidebar-item-select">
-                  <option value="all" class="job-list-sidebar-item-select-default">All</option>
+                  {{-- <option value="all" class="job-list-sidebar-item-select-default">All</option> --}}
                   <option value="20000-40000" class="job-list-sidebar-item-select-default"
                       @if(session()->exists("job-filter-salary-min") && session()->get("job-filter-salary-min") == "20000") selected @endif
                   >20-40k</option>
@@ -164,6 +181,26 @@
                   <option value="100000-5000000000" class="job-list-sidebar-item-select-default"
                       @if(session()->exists("job-filter-salary-min") && session()->get("job-filter-salary-min") == "100000") selected @endif
                   >100k+</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <p class="job-list-sidebar-item-title">CONTRACT (DAILY)</p>
+              <div class="job-list-sidebar-item">
+                <select name="daily_salary" class="job-list-sidebar-item-select">
+                  <option value="0-500" class="job-list-sidebar-item-select-default"
+                      @if(session()->exists("job-filter-contract-salary-min") && session()->get("job-filter-contract-salary-min") == "0") selected @endif
+                  >0-500</option>
+                  <option value="500-750" class="job-list-sidebar-item-select-default"
+                      @if(session()->exists("job-filter-contract-salary-min") && session()->get("job-filter-contract-salary-min") == "500") selected @endif
+                  >500-750</option>
+                  <option value="750-1000" class="job-list-sidebar-item-select-default"
+                      @if(session()->exists("job-filter-contract-salary-min") && session()->get("job-filter-contract-salary-min") == "750") selected @endif
+                  >750-1000</option>
+                  <option value="1000-5000000000" class="job-list-sidebar-item-select-default"
+                      @if(session()->exists("job-filter-contract-salary-min") && session()->get("job-filter-contract-salary-min") == "1000") selected @endif
+                  >1000+</option>
                 </select>
               </div>
             </div>
@@ -191,44 +228,10 @@
         <p class="job-list-sidebar-title">Featured jobs</p>
 
         @foreach($featured_jobs as $job)
-          <div class="job-list-item job-list-item-featured">
-            <img src="{{ $job->company->logo }}" class="job-list-item-logo" alt="{{ $job->company->name }}" title="{{ $job->company->name }}">
-
-            <div class="job-list-item-content">
-
-              <a href="/jobs/vacancies/{{ $job->slug }}"><p class="job-list-item-title">
-                {{ $job->title }}
-              </p></a>
-
-              <p class="job-list-item-text">{{ $job->excerpt }}</p>
-
-              <div class="job-list-item-list">
-                <span class="job-list-item-list-key">Salary</span>
-                <span class="job-list-item-list-value">&pound;{{ number_format($job->salary) }}</span>
-              </div>
-
-              @isset($job->location)
-              <div class="job-list-item-list">
-                <span class="job-list-item-list-key">Location</span>
-                <span class="job-list-item-list-value">{{ $job->location->name }}</span>
-              </div>
-              @endisset
-
-              @isset($job->sector)
-                <div class="job-list-item-list">
-                  <span class="job-list-item-list-key">Sector</span>
-                  <span class="job-list-item-list-value">{{ $job->sector->name }}</span>
-                </div>
-              @endisset
-
-              <div class="job-list-item-list">
-                <span class="job-list-item-list-key">Date Posted</span>
-                <span class="job-list-item-list-value">{{ date("d-m-Y", strtotime($job->created_at)) }}</span>
-              </div>
-            </div><!-- /.job-list-item-content -->
-
-            <a class="job-list-item-button" href="/jobs/vacancies/{{ $job->slug }}">View</a>
-          </div><!-- /.job-list-item -->
+          @include("job.vacancies.job", [
+            "job" => $job,
+            "featured" => true
+          ])
         @endforeach
 
         <div style="display: block; padding: 25px 0; display: block; width: 100%; background: #1a304d; text-align: center; color: white; margin-top: 20px; margin-bottom: 30px;">SPONDERED LINK</div>
@@ -242,42 +245,10 @@
         @elseif($jobs->count() > 0)
 
           @foreach($jobs as $job)
-            <div class="job-list-item">
-              <img src="{{ $job->company->logo }}" class="job-list-item-logo" alt="{{ $job->company->name }}">
-
-              <div class="job-list-item-content">
-
-                <p class="job-list-item-title">{{ $job->title }}</p>
-
-                <p class="job-list-item-text">{{ $job->excerpt }}</p>
-
-                <div class="job-list-item-list">
-                  <span class="job-list-item-list-key">Salary</span>
-                  <span class="job-list-item-list-value">&pound;{{ number_format($job->salary) }}</span>
-                </div>
-
-                @isset($job->location)
-                <div class="job-list-item-list">
-                  <span class="job-list-item-list-key">Location</span>
-                  <span class="job-list-item-list-value">{{ $job->location->name }}</span>
-                </div>
-                @endisset
-
-                @isset($job->sector)
-                <div class="job-list-item-list">
-                  <span class="job-list-item-list-key">Sector</span>
-                  <span class="job-list-item-list-value">{{ $job->sector->name }}</span>
-                </div>
-                @endisset
-
-                <div class="job-list-item-list">
-                  <span class="job-list-item-list-key">Date Posted</span>
-                  <span class="job-list-item-list-value">{{ date("d-m-Y", strtotime($job->created_at)) }}</span>
-                </div>
-              </div><!-- /.job-list-item-content -->
-
-              <a class="job-list-item-button" href="/jobs/vacancies/{{ $job->slug }}">View</a>
-            </div><!-- /.job-list-item -->
+            @include("job.vacancies.job", [
+              "job" => $job,
+              "featured" => false
+            ])
           @endforeach
 
         @else

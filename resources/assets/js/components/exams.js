@@ -76,7 +76,11 @@ $(".survey-button-add").click(function(e) {
     success: function(response){
 
       if (response == "OK") {
-        location.href = '/exams/exam-survey/#survey-form';
+        // location.href = '/exams/survey/results';
+
+        $("#survey-before").hide();
+        $("#salary-survey-footer-after-submission").show();
+
       }
 
     },

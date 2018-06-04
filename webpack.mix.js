@@ -21,15 +21,15 @@ mix.js('resources/assets/js/app.js', 'public/js')
       'resources/assets/sass/plugins/trumbowyg.min.scss',
     ], 'public/css/vendor.css')
     .scripts([
-      'node_modules/jquery/dist/jquery.js',
-      'node_modules/sweetalert/dist/sweetalert.min.js',
+      'resources/assets/js/vendor/jquery.min.js',
       'resources/assets/js/vendor/jquery.matchHeight-min.js',
-      'resources/assets/js/vendor/scripts.js',
       'resources/assets/js/vendor/swiper.min.js',
       'resources/assets/js/vendor/slick.min.js',
       'resources/assets/js/vendor/trumbowyg.min.js',
       'resources/assets/js/vendor/trumbowyg.upload.js',
       'resources/assets/js/vendor/trumbowyg.cleanpaste.min.js',
+      // 'node_modules/sweetalert/dist/sweetalert.min.js',
+      // 'resources/assets/js/vendor/scripts.js',
     ], 'public/js/vendor.js')
     .scripts([
       'resources/assets/js/vendor/ckeditor/ckeditor.js',

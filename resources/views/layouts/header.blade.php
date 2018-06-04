@@ -38,16 +38,16 @@
       <ul>
         <li @if(request()->route()->getPrefix() == "/exams") class="exams-active" @endif>
           <a href="/exams">Exams</a>
-          <img src="/images/icons/arrow-down.png" alt="" title="">
+          <i class="fas fa-angle-down"></i>
           <ul>
             @foreach($navigation_items['exams'] as $item)
               <li><a href="{{ $item->url }}">{{ $item->text }}</a></li>
             @endforeach
           </ul>
         </li>
-        <li @if(request()->route()->getPrefix() == "/jobs") class="jobs-active" @endif>
-          <a href="/jobs">Jobs</a>
-          <img src="/images/icons/arrow-down.png" alt="" title="">
+        <li @if(request()->route()->getPrefix() == "/jobs/vacancies") class="jobs-active" @endif>
+          <a href="/jobs/vacancies">Jobs</a>
+          <i class="fas fa-angle-down"></i>
           <ul>
             @foreach($navigation_items['jobs'] as $item)
               <li><a href="{{ $item->url }}">{{ $item->text }}</a></li>
@@ -56,7 +56,7 @@
         </li>
         <li @if(request()->route()->getPrefix() == "/cpd") class="cpd-active" @endif>
           <a href="/cpd">CPD</a>
-          <img src="/images/icons/arrow-down.png" alt="" title="">
+          <i class="fas fa-angle-down"></i>
           <ul>
             @foreach($navigation_items['cpd'] as $item)
               <li><a href="{{ $item->url }}">{{ $item->text }}</a></li>
@@ -65,7 +65,7 @@
         </li>
         <li @if(request()->route()->getPrefix() == "/salary-survey") class="salary-survey-active" @endif>
           <a href="/salary-survey">Salary Survey</a>
-          <img src="/images/icons/arrow-down.png" alt="" title="">
+          <i class="fas fa-angle-down"></i>
 
           <ul>
             @foreach($navigation_items['salary-survey'] as $item)
@@ -75,7 +75,7 @@
         </li>
         <li @if(request()->route()->getPrefix() == "/uni-corner") class="uni-corner-active" @endif>
           <a href="/uni-corner">Uni Corner</a>
-          <img src="/images/icons/arrow-down.png" alt="" title="">
+          <i class="fas fa-angle-down"></i>
           <ul>
             @foreach($navigation_items['uni-corner'] as $item)
               <li><a href="{{ $item->url }}">{{ $item->text }}</a></li>
@@ -87,7 +87,7 @@
         </li>
         <li @if(request()->route()->getPrefix() == "/discussion") class="discussion-active" @endif>
           <a href="/discussion">Discussion</a>
-          <img src="/images/icons/arrow-down.png" alt="" title="">
+          <i class="fas fa-angle-down"></i>
           <ul>
             @foreach(App\Models\DiscussionCategory::all() as $navigation_discussion_category)
               <li><a href="{{ $navigation_discussion_category->getURL }}">{{ $navigation_discussion_category->name }}</a></li>
@@ -132,7 +132,7 @@
 <div class="navigation-overlay"></div>
 
 @if(request()->route()->getPrefix() != "/discussion")
-    <a class="discussion-floater" href="/discussion">
+    <a class="discussion-floater @if(request()->route()->getName() == "suggestfeature.index") feature-floater--full @endif" href="/discussion">
       <i class="far fa-3x fa-smile discussion-floater-icon"></i>
       <p class="discussion-floater-title">Join our discussion</p>
       <p class="discussion-floater-text">Here</p>
@@ -140,7 +140,7 @@
 @endif
 
 @if(request()->route()->getName() != "suggestfeature.index")
-    <a class="feature-floater" href="{{ route("suggestfeature.index") }}">
+    <a class="feature-floater @if(request()->route()->getPrefix() == "/discussion") feature-floater--full @endif" href="{{ route("suggestfeature.index") }}">
       <i class="fas fa-2x fa-bug discussion-floater-icon"></i>
       <p class="discussion-floater-title">Suggest a Feature</p>
       <p class="discussion-floater-text">Click Here</p>

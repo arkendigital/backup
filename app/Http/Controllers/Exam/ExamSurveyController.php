@@ -2,15 +2,8 @@
 
 namespace App\Http\Controllers\Exam;
 
-/**
-* Load modules.
-*/
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-/**
-* Load models.
-*/
 use App\Models\Section;
 use App\Models\Page;
 use App\Models\Survey;

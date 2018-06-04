@@ -64,10 +64,11 @@ header {
           font-weight: 600;
           font-size: 14.5px;
         }
-        img {
+        img,
+        i {
           float: right;
-          margin-top: 6px;
           margin-left: 5px;
+          color: #ccc;
 
           @media (max-width: 1100px) {
             display: none;
@@ -108,37 +109,50 @@ header {
   }
 
   li.exams-active {
-    a {
+    a,
+    i {
       color: $offblue;
     }
   }
-  li.jobs-active, li.discussion-active {
-    a {
+  li.jobs-active {
+    a,
+    i {
       color: $red;
     }
   }
+  li.discussion-active {
+    a,
+    i {
+      color: $purple;
+    }
+  }
   li.cvsupport-active {
-    a {
+    a,
+    i {
       color: $lightblue;
     }
   }
   li.cpd-active {
-    a {
+    a,
+    i {
       color: $yellow;
     }
   }
   li.uni-corner-active {
-    a {
+    a,
+    i {
       color: $orange;
     }
   }
   li.salary-survey-active {
-    a {
+    a,
+    i {
       color: $salary;
     }
   }
   li.regional-societies-active {
-    a {
+    a,
+    i {
       color: $regional;
     }
   }

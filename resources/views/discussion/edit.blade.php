@@ -7,7 +7,7 @@
   <div class="discussion-container">
     <div class="discussion-container-inner">
 
-      <h1 class="discussion-page-title">Discussion <span>{{ $category->name }}</span></h1>
+      <h1 class="discussion-page-title">Discussion <span>Edit</span></h1>
 
       <a class="discussion-edit-button" href="{{ route("discussion.view", compact("category", "discussion")) }}">Back</a>
 

@@ -28,11 +28,15 @@ class Register extends FormRequest
             "name" => "required|string|max:100",
             "email" => "required|string|email|max:255|unique:users",
             "username" => "required|string|max:50|unique:users",
+            /*
+             * These are being removed as mandatory, for now
+             *
             "arn" => "required",
             "current_role" => "required",
             "company_name" => "required",
             "location" => "required",
             "experience" => "required",
+            */
             "password" => "required|string|min:6",
             "terms" => "required",
             "privacy" => "required"

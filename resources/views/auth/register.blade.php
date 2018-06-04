@@ -48,7 +48,7 @@
       </div>
 
       <div class="login_page_form_item">
-        <label class="login_page_form_item_label" for="name">Your Name</label>
+        <label class="login_page_form_item_label" for="name">Your Name <sup>*</sup></label>
         @if($errors->has("name"))
           <p class="login_page_form_item_error">{{ $errors->first("name") }}</p>
         @endif
@@ -56,7 +56,7 @@
       </div>
 
       <div class="login_page_form_item">
-        <label class="login_page_form_item_label" for="email">Your Email</label>
+        <label class="login_page_form_item_label" for="email">Your Email <sup>*</sup></label>
         @if($errors->has("email"))
           <p class="login_page_form_item_error">{{ $errors->first("email") }}</p>
         @endif
@@ -64,7 +64,7 @@
       </div>
 
       <div class="login_page_form_item">
-        <label class="login_page_form_item_label" for="username">User Name</label>
+        <label class="login_page_form_item_label" for="username">User Name <sup>*</sup></label>
         @if($errors->has("username"))
           <p class="login_page_form_item_error">{{ $errors->first("username") }}</p>
         @endif
@@ -118,7 +118,7 @@
       </div>
 
       <div class="login_page_form_item">
-        <label class="login_page_form_item_label" for="password">Create Password</label>
+        <label class="login_page_form_item_label" for="password">Create Password <sup>*</sup></label>
         @if($errors->has("password"))
           <p class="login_page_form_item_error">{{ $errors->first("password") }}</p>
         @endif
@@ -126,7 +126,7 @@
       </div>
 
       <div class="login_page_form_item">
-          <label class="login_page_form_item_label" for="terms">Terms and Conditions</label>
+          <label class="login_page_form_item_label" for="terms">Terms and Conditions <sup>*</sup></label>
           @if($errors->has("terms"))
             <p class="login_page_form_item_error">{{ $errors->first("terms") }}</p>
           @endif
@@ -137,7 +137,7 @@
       </div>
 
       <div class="login_page_form_item">
-          <label class="login_page_form_item_label" for="privacy">Cookies and Privacy</label>
+          <label class="login_page_form_item_label" for="privacy">Cookies and Privacy <sup>*</sup></label>
           @if($errors->has("privacy"))
             <p class="login_page_form_item_error">{{ $errors->first("privacy") }}</p>
           @endif
@@ -155,7 +155,7 @@
                     @if(old("internal_marketing")) checked @endif
                 @endif
               >
-              <label for="internal_marketing">I would like to recieve marketing emails from actuaries.online</label>
+              <label for="internal_marketing">I would like to receive marketing emails from actuaries.online</label>
           </div>
       </div>
 
@@ -167,7 +167,7 @@
                     @if(old("external_marketing")) checked @endif
                 @endif
               >
-              <label for="external_marketing">I would like to recieve marketing emails from your associated companies</label>
+              <label for="external_marketing">I would like to receive marketing emails from your associated companies</label>
           </div>
       </div>
 

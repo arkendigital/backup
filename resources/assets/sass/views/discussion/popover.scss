@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: center;
   vertical-align: middle;
+  z-index: 50;
   &-active {
     display: flex;
   }
@@ -53,6 +54,13 @@
     display: block;
     width: 100%;
     margin-bottom: 25px;
+
+    @media (max-width: 950px) {
+      &:last-of-type {
+        margin-bottom: 75px;
+      }
+    }
+
     label {
       display: block;
       margin-bottom: 7.5px;
@@ -99,6 +107,7 @@
     outline: 0;
     border: none;
     margin-left: 25px;
+    margin-bottom: 25px;
     &-cancel {
       opacity: 0.75;
     }
@@ -116,6 +125,7 @@
       margin: 0;
       outline: 0;
       border: none;
+      z-index: 50;
       &-cancel {
         left: 0;
         right: auto;

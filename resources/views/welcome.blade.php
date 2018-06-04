@@ -48,7 +48,7 @@
         autoplay: true,
         arrows: true,
         dots: true,
-        adaptiveHeight: true,
+        adaptiveHeight: false,
         speed: 600,
         autoplaySpeed: 6000
       });
@@ -71,6 +71,9 @@
           }
         }
       });
+
+      var stHeight = ($('.slick-track').height() - 100);
+      $('.slick-slide').css('height',stHeight + 'px' );
     });
     </script>
   @endpush

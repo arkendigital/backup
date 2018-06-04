@@ -90,7 +90,7 @@ class Module extends Model
     public function getSurveyPercentage($result, $total)
     {
         if ($total != 0) {
-            return number_format($result/$total*100, 2)."%";
+            return number_format($result/$total*100)."%";
         } else {
             return "N/A";
         }

@@ -6,7 +6,7 @@
   background-size: cover;
   background-position: center;
   border-bottom: 25px solid #FFFFFF;
-  @media(max-width: 650px) {
+  @media(max-width: $tablet) {
       height: 200px;
   }
 }

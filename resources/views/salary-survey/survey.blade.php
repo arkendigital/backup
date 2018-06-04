@@ -74,6 +74,7 @@
             <div class="salary-survey-question-answer-clickable salary-survey-question-answer-clickable-sector" data-key="sector" data-value="health">Health</div>
             <div class="salary-survey-question-answer-clickable salary-survey-question-answer-clickable-sector" data-key="sector" data-value="investments">Investments</div>
             <div class="salary-survey-question-answer-clickable salary-survey-question-answer-clickable-sector" data-key="sector" data-value="other">Other</div>
+            <div class="salary-survey-question-answer-clickable salary-survey-question-answer-clickable-sector" data-key="sector" data-value="pensions">Pensions</div>
           </div>
 
           <p class="salary-survey-question-title">What field do you work in?</p>
@@ -96,7 +97,7 @@
 
         <div class="salary-survey-question-wrap">
 
-          <p class="salary-survey-question-title">Your experience</p>
+          <p class="salary-survey-question-title">Work Experience</p>
 
           <div class="salary-survey-question-answer-row">
             <div class="salary-survey-question-answer-clickable salary-survey-question-answer-clickable-experience" data-key="experience" data-value="1-4">1-4 years</div>
@@ -118,7 +119,7 @@
 
         <div class="salary-survey-question-wrap">
 
-          <p class="salary-survey-question-title">Your experience</p>
+          <p class="salary-survey-question-title">Exams Passed</p>
 
           <div class="salary-survey-question-answer-row">
             <div class="salary-survey-question-answer-clickable salary-survey-question-answer-clickable-qualifications" data-key="qualifications" data-value="1-4">1-4 exams</div>

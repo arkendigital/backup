@@ -13,12 +13,35 @@ use App\Models\DiscussionReply;
 
 class DiscussionController extends Controller
 {
+
+    /**
+     * Main list of discussions
+     *
+     * @param DiscussionCategory $category
+     *
+     */
     public function index(DiscussionCategory $category)
     {
-        $this->seo()->setTitle("Discussion");
 
+        /**
+         * Set page SEO
+         *
+         */
+        $this->seo()
+          ->setTitle("Discussion");
+
+        /**
+         * Get a list of categories for the sidebar
+         *
+         */
         $categories = $this->getCategories();
 
+        /**
+         * Get the discussions to display
+         * - If the user is searching add the search paramater to the query
+         * - If the user is filtering by category, filter the results to that category
+         *
+         */
         $discussions = Discussion::with('user', 'category')
             ->withCount('replies')
             ->when(request()->search, function ($q) {
@@ -31,6 +54,10 @@ class DiscussionController extends Controller
             ->paginate(6);
 
 
+        /**
+         * Set the sub title at the top of the page to the search term
+         *
+         */
         if (isset($_GET["search"])) {
             $category = new \stdClass();
             $category->name = $_GET["search"];
@@ -44,12 +71,12 @@ class DiscussionController extends Controller
     }
 
     /**
-    * View a specific discussion.
-    *
-    * @param DiscussionCategory $category
-    * @param Discussion $discussion
-    *
-    */
+     * View a specific discussion.
+     *
+     * @param DiscussionCategory $category
+     * @param Discussion $discussion
+     *
+     */
     public function view(DiscussionCategory $category, Discussion $discussion)
     {
         $this->seo()->setTitle($discussion->name);
@@ -66,11 +93,11 @@ class DiscussionController extends Controller
     }
 
     /**
-    * Store a new discussion in database storage.
-    *
-    * @param DiscussionRequest $request
-    *
-    */
+     * Store a new discussion in database storage.
+     *
+     * @param DiscussionRequest $request
+     *
+     */
     public function store(DiscussionRequest $request)
     {
 
@@ -112,12 +139,12 @@ class DiscussionController extends Controller
     }
 
     /**
-    * Show form for editing a discussion thread.
-    *
-    * @param DiscussionCategory $category
-    * @param Discussion $discussion
-    *
-    */
+     * Show form for editing a discussion thread.
+     *
+     * @param DiscussionCategory $category
+     * @param Discussion $discussion
+     *
+     */
     public function edit(DiscussionCategory $category, Discussion $discussion)
     {
 
@@ -136,13 +163,13 @@ class DiscussionController extends Controller
     }
 
     /**
-    * Update discussion thread in database storage.
-    *
-    * @param DiscussionRequest $request
-    * @param DiscussionCategory $category
-    * @param Discussion $discussion
-    *
-    */
+     * Update discussion thread in database storage.
+     *
+     * @param DiscussionRequest $request
+     * @param DiscussionCategory $category
+     * @param Discussion $discussion
+     *
+     */
     public function update(DiscussionRequest $request, DiscussionCategory $category, Discussion $discussion)
     {
 
@@ -171,20 +198,32 @@ class DiscussionController extends Controller
 
 
     /**
-    * Display a list of popular discussions.
-    */
+     * Display a list of popular discussions
+     *
+     */
     public function popular()
     {
+
+        /**
+         * Get list of categories to display in the sidebar
+         *
+         */
         $categories = $this->getCategories();
 
-        // Grab the discussions, with the user and category, count the replies and order by the replies.
+        /**
+         * Grab the discussions, with the user and category, count the replies and order by the replies.
+         *
+         */
         $discussions = Discussion::with('user', 'category')
             ->withCount('replies')
             ->whereHas('replies')
             ->orderBy('replies_count', 'desc')
             ->paginate(6);
 
-
+        /**
+         * Set the sub title of the page to following string
+         *
+         */
         $category = new \stdClass();
         $category->name = "Popular threads";
 

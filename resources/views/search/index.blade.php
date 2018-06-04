@@ -118,7 +118,7 @@
 
                         @foreach ($results->societies as $society)
                             <div class="search__item">
-                                <h4><a href="{{ route('front.societies.view', $society) }}">{{ $society->name }}</a></h4>
+                                <h4><a href="{{ $society->link }}" target="_blank">{{ $society->name }}</a></h4>
                                 @if($society->excerpt) <p class="search__excerpt">{{ $society->excerpt }}</p> @endif
                                 <p class="search__date">{{ $society->city }}</p>
                             </div>

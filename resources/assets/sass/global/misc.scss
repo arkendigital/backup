@@ -14,15 +14,23 @@ body.navigation-active {
   max-width: 96%;
   width: 1140px;
   &-content {
+
     @media (min-width: 768px) {
       float: left;
       width: calc(100% - 280px);
       max-width: 100%;
     }
+
+    @media (max-width: 650px) {
+      text-align: center;
+    }
+
     margin-bottom: 50px;
+
     &-full {
       width: 100%;
     }
+
   }
   &-sidebar {
 
@@ -34,6 +42,17 @@ body.navigation-active {
       width: 265px;
       text-align: right;
     }
+
+    @media (max-width: 768px) {
+      float: none;
+      display: block;
+      margin: 0 auto;
+      text-align: center;
+      border-top: 1px dotted $blue;
+      border-bottom: 1px dotted $blue;
+      padding: 30px 0;
+    }
+
     a {
       display: block;
       font-weight: 600;
@@ -42,10 +61,13 @@ body.navigation-active {
       font-size: 18px;
       line-height: 26px;
     }
+
     a.active, a:hover {
       color: $blue;
     }
+
   }
+
   img {
     max-width: 100%;
   }

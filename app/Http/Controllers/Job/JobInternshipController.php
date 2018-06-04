@@ -2,15 +2,8 @@
 
 namespace App\Http\Controllers\Job;
 
-/**
-* Load modules.
-*/
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-/**
-* Load models.
-*/
 use App\Models\Page;
 
 class JobInternshipController extends Controller
@@ -18,16 +11,19 @@ class JobInternshipController extends Controller
     public function index()
     {
 
-    /**
-    * Get page Information
-    */
+        /**
+        * Get page Information
+        */
         $page = Page::getPage(request()->route()->uri);
 
         /**
         * Set seo.
         */
-        $this->seo()->setTitle($page->meta_title);
-        $this->seo()->setDescription($page->meta_description);
+        $this->seo()
+          ->setTitle($page->meta_title);
+
+        $this->seo()
+          ->setDescription($page->meta_description);
 
         /**
         * Get adverts for this page.

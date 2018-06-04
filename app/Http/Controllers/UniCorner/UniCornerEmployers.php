@@ -2,15 +2,8 @@
 
 namespace App\Http\Controllers\UniCorner;
 
-/**
-* Load modules.
-*/
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-/**
-* Load models.
-*/
 use App\Models\Section;
 use App\Models\Page;
 use App\Models\Employer;
@@ -18,16 +11,16 @@ use App\Models\Employer;
 class UniCornerEmployers extends Controller
 {
 
-  /**
-  * Show page with a list of actuarial employers.
-  *
-  */
+    /**
+    * Show page with a list of actuarial employers.
+    *
+    */
     public function index()
     {
 
-    /**
-    * Get page Information
-    */
+        /**
+        * Get page Information
+        */
         $page = Page::getPage(request()->route()->uri);
 
         /**
@@ -45,7 +38,8 @@ class UniCornerEmployers extends Controller
         * Get a list of societies / employers.
         *
         */
-        $employers = Employer::all();
+        $employers = Employer::orderBy("name", "ASC")
+          ->get();
 
         return view("uni-corner.employers", compact(
             "page",

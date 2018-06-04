@@ -21,7 +21,7 @@ class JobCompany extends Model
     ];
 
     protected $table = 'job_companies';
-    
+
     public $timestamps = true;
 
     protected $dates = ['deleted_at'];
@@ -34,7 +34,8 @@ class JobCompany extends Model
     public function getLogoAttribute()
     {
         if (!$this->logo_path) {
-            return "https://statewideguttercompany.com/wp-content/uploads/2012/07/logo-placeholder.jpg";
+            // return "https://statewideguttercompany.com/wp-content/uploads/2012/07/logo-placeholder.jpg";
+            return "";
         }
         return env("S3_URL") . $this->logo_path;
     }

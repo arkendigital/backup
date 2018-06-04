@@ -144,7 +144,7 @@ class Discussion extends Model
         if ($this->image_path != "") {
             return env("S3_URL") . $this->image_path;
         } else {
-            return asset("/images/temp/homepage-discussion-1-bg.png");
+            return "";
         }
     }
 }

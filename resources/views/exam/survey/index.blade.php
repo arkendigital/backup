@@ -64,8 +64,18 @@
 
         <div class="clear"></div>
 
-        <a class="survey-button survey-button-add">Submit Answers</a>
-        <a class="survey-button" href="/exams/survey/results">Show Results</a>
+        <div id="survey-before">
+          <a class="survey-button survey-button-add">Submit Answers</a>
+          <a class="survey-button" href="/exams/survey/results">Show Results</a>
+        </div>
+
+        <div id="salary-survey-footer-after-submission" class="margin-top--small" style="display: none;">
+          <p>
+            Thank you for taking part.
+            <a href="/exams/survey/results" class="button button--dark-blue">See results</a>
+            <a href="{{ url('/discussion/exams') }}" class="button button--dark-blue">Discuss Exams</a>
+          </p>
+        </div>
 
       </form>
 

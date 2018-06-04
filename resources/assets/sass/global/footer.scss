@@ -3,14 +3,16 @@ footer {
   color: #959595;
   background: #eeede3;
   padding: 80px 0 35px 0;
+
+  @media (max-width: 650px) {
+    padding-bottom: 80px;
+  }
+
   .footer-social {
     i {
       margin: 0 5px;
-      font-size: 40px;
+      font-size: 50px;
       vertical-align: middle;
-    }
-    a {
-      color: #959595;
     }
     span {
         display: block;
@@ -51,19 +53,13 @@ footer {
 }
 
 .footer-social--facebook {
-  &:hover, &:focus {
-    color: #4867aa;
-  }
+  color: #4867aa;
 }
 
 .footer-social--twitter {
-  &:hover, &:focus {
-    color: #1da1f2;
-  }
+  color: #1da1f2;
 }
 
 .footer-social--linkedin {
-  &:hover, &:focus {
-    color: #0077b5;
-  }
+  color: #0077b5;
 }

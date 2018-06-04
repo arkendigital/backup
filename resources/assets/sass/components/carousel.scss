@@ -9,6 +9,15 @@
   line-height: 19px;
   overflow: hidden;
   padding: 15px;
+  color: #444;
+
+  &:hover {
+    cursor: pointer;
+    .ticker {
+      animation-play-state: paused;
+    }
+  }
+
 }
 
 
@@ -43,20 +52,16 @@ $duration: 25s;
 
 .ticker {
   display: inline-block;
-  // height: 4rem;
-  // line-height: 4rem;  
   white-space: nowrap; // display items in a line
   padding-right: 100%; // ensure items go before animations repeat (taken from parent due to inline-block)
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   animation-name: ticker;
   animation-duration: $duration;
-  
+
   &__item {
     display: inline-block;
     width: 100%;
-    // padding: 0 30%;   
-    
   }
-  
+
 }
