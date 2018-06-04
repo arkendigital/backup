@@ -24,8 +24,8 @@
       </a>
     @endif
 
-    <p class="homepage-information-title margin-top--large">Join our discussions</p>
-    <p class="homepage-information-text">Ut eos enisciaspe ma dolorpo rerunti oreseque di ulparum etur seque vellaut int facea am inciuscius.</p>
+    <p class="homepage-information-title margin-top--large margin-bottom--large">Join our discussions</p>
+    <p class="homepage-information-text"></p>
 
     <div class="homepage-discussion-slider swiper-container margin-bottom--medium">
       <div class="swiper-wrapper">
