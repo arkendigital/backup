@@ -25,6 +25,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
       'resources/assets/js/vendor/jquery.matchHeight-min.js',
       'resources/assets/js/vendor/swiper.min.js',
       'resources/assets/js/vendor/slick.min.js',
+      'resources/assets/js/vendor/swal.js',
       'resources/assets/js/vendor/trumbowyg.min.js',
       'resources/assets/js/vendor/trumbowyg.upload.js',
       'resources/assets/js/vendor/trumbowyg.cleanpaste.min.js',
