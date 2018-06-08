@@ -45,7 +45,7 @@
             @endforeach
           </ul>
         </li>
-        <li @if(request()->route()->getPrefix() == "/jobs/vacancies") class="jobs-active" @endif>
+        <li @if(request()->route()->getPrefix() == "/jobs") class="jobs-active" @endif>
           <a href="/jobs/vacancies">Jobs</a>
           <i class="fas fa-angle-down"></i>
           <ul>
