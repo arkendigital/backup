@@ -29,6 +29,11 @@
 
       <p class="login_page_form_text">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cras justo odio,dapibus ac facilisis in, ege ras justo dapibus ac facilisis</p>
 
+      {{--
+      /**
+       * Request by Sophie to remove social logins via social media
+       *
+       */
       <div class="login_page_form_social">
         <a href="{{ route('socialAuth', 'facebook') }}">
           <i class="fa fa-facebook-official fa-2x"></i>
@@ -42,6 +47,7 @@
             <i class="fa fa-linkedin-square fa-2x"></i>
         </a>
       </div>
+      --}}
 
       <div class="login_page_form_item">
         <label class="login_page_form_item_label" for="username">Email</label>

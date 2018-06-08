@@ -2,15 +2,8 @@
 
 namespace App\Http\Controllers\Exam;
 
-/**
-* Load modules.
-*/
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-/**
-* Load models.
-*/
 use App\Models\Section;
 use App\Models\Page;
 use App\Models\ExamCentre;
@@ -18,18 +11,18 @@ use App\Models\ExamCentre;
 class ExamCentreController extends Controller
 {
 
-  /**
-  * Display the main exam centres page.
-  *
-  */
+    /**
+    * Display the main exam centres page.
+    *
+    */
     public function index()
     {
 
-    /**
-    * Get page information.
-    *
-    */
-        $page = Page::getPage(request()->route()->uri);
+        /**
+        * Get page information.
+        *
+        */
+        $page = Page::getPage("exam-centres");
 
         /**
         * Set seo.

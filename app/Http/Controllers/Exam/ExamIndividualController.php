@@ -2,15 +2,8 @@
 
 namespace App\Http\Controllers\Exam;
 
-/**
-* Load modules.
-*/
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-/**
-* Load models.
-*/
 use App\Models\Section;
 use App\Models\Page;
 use App\Models\ExamUsefulLink;
@@ -20,16 +13,16 @@ use App\Models\Exam\Module as ExamModule;
 class ExamIndividualController extends Controller
 {
 
-  /**
-  * Display the page.
-  *
-  */
+    /**
+    * Display the page.
+    *
+    */
     public function index()
     {
 
-    /**
-    * Get page Information
-    */
+        /**
+        * Get page Information
+        */
         $page = Page::getPage(request()->route()->uri);
 
         /**
@@ -72,9 +65,9 @@ class ExamIndividualController extends Controller
     public function moduleList($slug)
     {
 
-    /**
-    * Get page Information
-    */
+        /**
+        * Get page Information
+        */
         $page = Page::getPage("exams/individual-exams");
 
         /**
@@ -95,6 +88,15 @@ class ExamIndividualController extends Controller
         $categories = collect();
         $category = ExamCategory::where("slug", $slug)
             ->first();
+
+        /**
+         * Check this exam category exists
+         *
+         */
+        if (null === $category) {
+          return view("errors.404");
+          die();
+        }
 
         /**
         * Sections.
