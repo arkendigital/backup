@@ -33,7 +33,7 @@
 
     <div class="homepage-sections">
       @foreach($sections as $section)
-        <a href="/{{ $section->slug }}" class="homepage-sections-box" style="background-image: url({{ $section->image }});">
+        <a href="/{{ $section->slug }}" class="homepage-sections-box" style="background-image: url({{ $section->thumbnail }});">
           <div class="homepage-sections-box-title" style="background-color:{{ $section->color }}">{{ $section->name }}</div>
         </a>
       @endforeach

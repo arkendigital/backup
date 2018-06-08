@@ -37,7 +37,8 @@ class HomeController extends Controller
         * Get a list of sections.
         *
         */
-        $sections = Section::all();
+        $sections = Section::orderBy("order", "ASC")
+          ->get();
 
         /**
         * Get a list of discussions.

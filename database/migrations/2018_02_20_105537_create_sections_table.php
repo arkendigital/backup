@@ -10,8 +10,12 @@ class CreateSectionsTable extends Migration {
 		Schema::create('sections', function(Blueprint $table) {
 			$table->increments('id');
 			$table->string('name');
-			$table->string('color', 6);
-			$table->integer('sidebar_id');
+			$table->string('slug')->index();
+			$table->string('color', 6)->nullable();
+			$table->string('image_path');
+			$table->string('thumbnail_path');
+			$table->integer('sidebar_id')->index()->nullable();
+			$table->integer('order')->index()->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});

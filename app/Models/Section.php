@@ -20,7 +20,9 @@ class Section extends Model
         "color",
         "slug",
         "image_path",
-        "sidebar_id"
+        "thumbnail_path",
+        "sidebar_id",
+        "order"
     ];
 
     /**
@@ -96,6 +98,21 @@ class Section extends Model
         }
 
         return env("S3_URL") . $image_path;
+    }
+
+    /**
+    * Get the fully qualified path of the thumbnail.
+    *
+    */
+    public function getThumbnailAttribute()
+    {
+        $thumbnail_path = $this->attributes["thumbnail_path"];
+
+        if ($thumbnail_path == "") {
+            return "";
+        }
+
+        return env("S3_URL") . $thumbnail_path;
     }
 
     public function getField($section, $key)

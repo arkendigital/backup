@@ -85,6 +85,21 @@ class SectionController extends Controller
         }
 
         /**
+        * Upload thumbnail.
+        */
+        if (request()->file("thumbnail")) {
+            $thumbnail_path = AWS::uploadImage(
+                request()->file("thumbnail"),
+                "section",
+                $section->thumbnail_path
+            );
+
+            $section->update([
+                "thumbnail_path" => $thumbnail_path
+            ]);
+        }
+
+        /**
         * Save custom fields.
         */
         if (!empty(request()->field)) {

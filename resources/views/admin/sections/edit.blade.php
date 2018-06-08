@@ -29,6 +29,12 @@
       </div>
 
       <div class="form-group">
+        <label for="thumbnail">Thumbnail Image <i>(thumbnail images should be 275 pixels by 275 pixels to display accurately)</i></label>
+        <p> <img src="{{ $section->thumbnail }}" height="75"> </p>
+        <input type="file" class="form-control" name="thumbnail" id="thumbnail">
+      </div>
+
+      <div class="form-group">
         <label for="color">Sidebar</label>
         <select class="form-control" name="sidebar_id">
           <option value="">Select a sidebar for pages in this section</option>
@@ -54,9 +60,9 @@
             @if ($field->key == 'exam_carousel')
               @foreach (json_decode($field->value) as $key => $value)
               <input type="text" class="form-control" name="field[{{ $field->key }}][]" id="{{ $field->key }}_{{ $key }}" value="{{ $value }}">
-              @endforeach         
+              @endforeach
             @else
-              <input type="text" class="form-control" name="field[{{ $field->key }}]" id="{{ $field->key }}" value="{{ $field->value }}">          
+              <input type="text" class="form-control" name="field[{{ $field->key }}]" id="{{ $field->key }}" value="{{ $field->value }}">
             @endif
           @elseif($field->type == "text")
             <textarea class="form-control editor" name="field[{{ $field->key }}]" id="{{ $field->key }}">{{ $field->value }}</textarea>
