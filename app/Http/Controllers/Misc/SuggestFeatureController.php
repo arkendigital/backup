@@ -25,11 +25,13 @@ class SuggestFeatureController extends Controller
          * Set SEO
          *
          */
-        $this->seo()
-            ->setTitle($page->meta_title);
+        if (isset($page->meta_title)) {
+            $this->seo()->setTitle($page->meta_title);
+        }
 
-        $this->seo()
-            ->setDescription($page->meta_description);
+        if (isset($page->meta_description)) {
+            $this->seo()->setDescription($page->meta_description);
+        }
 
         return view("misc.suggest-feature", compact(
             "page"

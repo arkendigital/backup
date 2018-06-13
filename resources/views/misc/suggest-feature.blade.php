@@ -5,9 +5,9 @@
   <div class="website-container view-section">
     <div class="website-container-content">
 
-      <h1>{{ $page->getField("page_title") }}</h1>
+      <h1>{{ optional($page)->getField("page_title") }}</h1>
 
-      <p>{!! $page->getField("page_content") !!}</p>
+      <p>{!! optional($page)->getField("page_content") !!}</p>
 
       <form action="{{ route("suggestfeature.submit") }}" method="POST" class="suggest-feature-form">
           {{ csrf_field() }}
