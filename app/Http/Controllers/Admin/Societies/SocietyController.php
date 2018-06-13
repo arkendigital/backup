@@ -66,7 +66,11 @@ class SocietyController extends Controller
     * Get location information.
     *
     */
-        $location = Location::fromPostcode(request()->postcode);
+        if (request()->postcode) {
+            $location = Location::fromPostcode(request()->postcode);
+        } else {
+            $location = '';
+        }
 
         /**
         * Insert new society.
@@ -78,9 +82,9 @@ class SocietyController extends Controller
             "link" => request()->link,
             "postcode" => request()->postcode,
             "description" => request()->description,
-            "longitude" => $location->longitude,
-            "latitude" => $location->latitude,
-            "city" => $location->admin_district
+            "longitude" => optional($location)->longitude,
+            "latitude" => optional($location)->latitude,
+            "city" => optional($location)->admin_district
         ]);
 
         /**
@@ -163,25 +167,28 @@ class SocietyController extends Controller
     public function update(SocietyRequest $request, Society $society)
     {
 
-    /**
-    * Get location information.
-    *
-    */
-        $location = Location::fromPostcode(request()->postcode);
+        /**
+        * Get location information.
+        */
+        if (request()->postcode) {
+            $location = Location::fromPostcode(request()->postcode);
+        } else {
+            $location = '';
+        }
 
         /**
         * Update society.
         *
         */
         $society->update([
-        "name" => request()->name,
-        "email" => request()->email,
-        "link" => request()->link,
-        "postcode" => request()->postcode,
-        "description" => request()->description,
-        "longitude" => $location->longitude,
-        "latitude" => $location->latitude,
-        "city" => $location->admin_district
+            "name" => request()->name,
+            "email" => request()->email,
+            "link" => request()->link,
+            "postcode" => request()->postcode,
+            "description" => request()->description,
+            "longitude" => optional($location)->longitude,
+            "latitude" => optional($location)->latitude,
+            "city" => optional($location)->admin_district
         ]);
 
         /**
@@ -189,11 +196,9 @@ class SocietyController extends Controller
         *
         */
         if (request()->file("logo")) {
-
-      /**
-      * Upload to S3.
-      *
-      */
+            /**
+             * Upload to S3.
+            */
             $logo_path = AWS::uploadImage(
                 request()->file("logo"),
                 "societies/logos",
@@ -202,7 +207,6 @@ class SocietyController extends Controller
 
             /**
             * Add path for logo.
-            *
             */
             $society->update([
                 "logo_path" => $logo_path

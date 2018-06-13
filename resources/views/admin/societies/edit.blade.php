@@ -37,7 +37,7 @@
             </div>
 
             <div class="form-group">
-              <label for="name">Postcode <sup class="text-danger">* (mandatory)</sup></label>
+              <label for="name">Postcode</label>
               @if($errors->has("postcode"))
                 <p class="text-danger">{{ $errors->first("postcode") }}</p>
               @endif
@@ -45,7 +45,7 @@
             </div>
 
             <div class="form-group">
-              <label for="description">Description <sup class="text-danger">* (mandatory)</sup></label>
+              <label for="description">Description</label>
               @if($errors->has("description"))
                 <p class="text-danger">{{ $errors->first("description") }}</p>
               @endif
@@ -53,7 +53,7 @@
             </div>
 
             <div class="form-group">
-              <label for="logo">Image <sup class="text-danger">* (mandatory)</sup></label>
+              <label for="logo">Image</label>
               @if($errors->has("image"))
                 <p class="text-danger">{{ $errors->first("image") }}</p>
               @endif
@@ -65,7 +65,7 @@
             </div>
 
             <div class="form-group">
-              <label for="logo">Society Logo <sup class="text-danger">* (mandatory)</sup></label>
+              <label for="logo">Society Logo</label>
               @if($errors->has("logo"))
                 <p class="text-danger">{{ $errors->first("logo") }}</p>
               @endif
