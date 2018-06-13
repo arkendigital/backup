@@ -36,9 +36,7 @@
 
           <div class="account_page_wrap_intro">
             <h1>My Account</h1>
-            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cras justo odio, dapibus ac facilisis in, ege ras justo dapibus ac facilisis</p>
           </div>
-
 
           <div class="clear"></div>
 

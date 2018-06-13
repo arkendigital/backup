@@ -27,8 +27,6 @@
         <a href="{{ route("login") }}" class="login_page_form_actions_item login_page_form_actions_item_active">Log in</a>
       </div>
 
-      <p class="login_page_form_text">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cras justo odio,dapibus ac facilisis in, ege ras justo dapibus ac facilisis</p>
-
       {{--
       /**
        * Request by Sophie to remove social logins via social media
