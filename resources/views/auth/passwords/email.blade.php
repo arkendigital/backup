@@ -22,7 +22,7 @@
         {{ csrf_field() }}
 
         <div class="login_page_form_item">
-            <label class="login_page_form_item_label" for="email">E-Mail Address</label>
+            <label class="login_page_form_item_label" for="email">Email Address</label>
             @if($errors->has("email"))
                 <p class="login_page_form_item_error">{{ $errors->first("email") }}</p>
             @endif
