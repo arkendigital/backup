@@ -40,7 +40,7 @@
       <br>
     </div>
 
-    <div class="society-map-container">
+    <div class="society-map-container" style="display: none;">
 
       <p class="society-map-title">Find your Society</p>
 

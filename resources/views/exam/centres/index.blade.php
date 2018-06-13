@@ -28,7 +28,7 @@
   </div>
 
   <div class="website-container">
-    <div class="society-map-container">
+    <div class="society-map-container" style="display: none;">
 
       <p class="society-map-title">Find your Centre</p>
 
