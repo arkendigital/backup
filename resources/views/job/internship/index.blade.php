@@ -14,6 +14,8 @@
 
       <h3>See internship jobs <a onclick="document.getElementById('searchInternshipJobsForm').submit()" class="cursor-pointer">here</a></h3>
 
+      <h3>See internship employers <a onclick="document.getElementById('searchInternshipJobsForm').submit()" class="cursor-pointer">here</a></h3>
+
       <form action="/jobs/vacancies" method="POST" id="searchInternshipJobsForm" style="display: none;">
         {{ csrf_field() }}
         {{ method_field("POST") }}

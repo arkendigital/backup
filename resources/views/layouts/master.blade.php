@@ -57,6 +57,22 @@
     <script src="{{ asset("js/editor.js") }}"></script>
     <script src="{{ asset("js/app.js") }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js"></script>
+    <script>
+        $(document).euCookieLawPopup().init({
+            cookiePolicyUrl : "<?php echo url('privacy-cookies'); ?>",
+            popupPosition : 'bottom',
+            colorStyle : 'default',
+            compactStyle : false,
+            popupTitle : 'We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.',
+            popupText : '',
+            buttonContinueTitle : 'Continue',
+            buttonLearnmoreTitle : 'More Info',
+            buttonLearnmoreOpenInNewWindow : false,
+            agreementExpiresInDays : 30,
+            autoAcceptCookiePolicy : false,
+            htmlMarkup : null
+        });
+    </script>
   @stack("scripts-after")
 
   @include("sweet::alert")
