@@ -40,9 +40,6 @@
       <div class="advertising-toggle-item-specification-spec advertising-toggle-item-specification-spec-medium">945 x 223px</div>
       <div class="advertising-toggle-item-specification-spec advertising-toggle-item-specification-spec-small">945 x 100px</div>
 
-      <p>Ut eos enisciaspe ma dolorpo rerunti oreseque di ulparum etur seque vellaut int facea am inci uscius. Con comnis alictatus veligni hillessequia core, sin peribea quatem nost liae modi tectoru ptaturio illant as am exerite mporepedis vel eoste est, qui is suntis expliqui am, tem alis dolor
-tent. quatem nost liae modi tectoru ptaturio illant.</p>
-
       <div class="advertising-toggle-item-specification-title">Get in touch to advertise with us</div>
       <div class="advertising-toggle-item-specification-number">01234 56789</div>
 

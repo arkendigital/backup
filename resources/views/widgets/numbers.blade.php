@@ -5,7 +5,11 @@
     <p class="box-select-text">Get all the latest information on exams, courses and exam centres.</p>
 
     @foreach($group->getItems() as $item)
-      <a class="box-select-item" href="{{ $item->link }}">{{ $item->title }}</a>
+      <a class="box-select-item"
+        @if ($item->title == 'Past Papers')
+          target="_blank"
+        @endif
+       href="{{ $item->link }}">{{ $item->title }}</a>
     @endforeach
 
     <div class="clear"></div>

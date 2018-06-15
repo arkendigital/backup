@@ -1,7 +1,7 @@
 <div class="box-select" style="background-image:url({{ $group->image }});">
   <div class="box-select-container">
 
-    <p class="box-select-title margin-top--x-large"></p>
+    <p class="box-select-title margin-top--x-large">Book Your Exam</p>
     <p class="box-select-text"></p>
 
     @foreach($group->getItems() as $item)
