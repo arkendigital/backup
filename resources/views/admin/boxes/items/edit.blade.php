@@ -29,6 +29,11 @@
         <input type="text" class="form-control" name="link" id="link" placeholder="Enter a link for this box..." value="{{ $item->link }}">
       </div>
 
+      <div class="form-group">
+        <label for="external">Open in a new tab?&nbsp;</label>
+        <input type="checkbox" name="external" id="external" @if(session()->exists("errors")) @if(old("external")) checked="checked" @endif @else @if($item->external) checked="checked" @endif @endif>
+      </div>
+
     </div>
   </div>
 

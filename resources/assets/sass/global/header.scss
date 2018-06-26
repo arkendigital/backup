@@ -8,7 +8,7 @@ header {
 
   > div {
     display: inline-block;
-    width: 100%;
+    width: 98%;
     max-width: 1140px;
   }
 
@@ -58,11 +58,16 @@ header {
         padding: 0 6px;
         margin-left: -4px;
         position: relative;
-        a {
+        color: #707070;
+        a,
+        i.fa-home {
           text-decoration: none;
           color: #707070;
           font-weight: 600;
-          font-size: 14.5px;
+          font-size: 13.5px;
+        }
+        i.fa-home {
+          font-size: 12px;
         }
         img,
         i {
@@ -108,6 +113,12 @@ header {
     }
   }
 
+  li.home-active {
+    a,
+    i {
+      color: $blue!important;
+    }
+  }
   li.exams-active {
     a,
     i {
@@ -231,6 +242,7 @@ header {
   header {
     > div {
       width: 96%;
+      text-align: right;
     }
   }
 
@@ -248,6 +260,14 @@ header {
     z-index: 49;
     background: rgba(0,0,0,0.35);
     cursor: pointer;
+  }
+
+  .header-home {
+    display: inline-block!important;
+    margin-right: 25px;
+    color: $blue;
+    font-size: 15px;
+    margin-top: 2px;
   }
 
   header nav {
@@ -345,6 +365,12 @@ header {
 
 
 @media(max-width: 650px) {
+
+  header {
+    > div {
+      text-align: center;
+    }
+  }
 
   header {
     text-align: center;

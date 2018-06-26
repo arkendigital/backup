@@ -27,7 +27,7 @@ class ExamResource extends FormRequest
         return [
             "name" => "required|string|max:30",
             "excerpt" => "required|string|max:50",
-            "content" => "required"
+            "link" => "required|url"
         ];
     }
 }

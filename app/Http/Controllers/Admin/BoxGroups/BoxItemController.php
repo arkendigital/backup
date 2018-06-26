@@ -4,19 +4,9 @@ namespace App\Http\Controllers\Admin\BoxGroups;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-/**
-* Load models.
-*
-*/
 use App\Models\BoxGroup;
 use App\Models\BoxItem;
 use App\Models\PageWidget;
-
-/**
-* Load requests.
-*
-*/
 use App\Http\Requests\BoxItem as BoxItemRequest;
 
 class BoxItemController extends Controller
@@ -93,13 +83,20 @@ class BoxItemController extends Controller
     public function update(BoxItem $item, BoxItemRequest $request)
     {
 
+      if (request()->exists("external")) {
+        $external = 1;
+      } else {
+        $external = 0;
+      }
+
     /**
     * Update the box.
     *
     */
         $item->update([
             "title" => request()->title,
-            "link" => request()->link
+            "link" => request()->link,
+            "external" => $external
         ]);
 
         /**

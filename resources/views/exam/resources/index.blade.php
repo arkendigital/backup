@@ -26,7 +26,7 @@
     <div class="resource-list">
       @foreach($resources as $resource)
         <div class="resource-list-item">
-          <a class="resource-list-item-title" href="/exams/resources/{{ $resource->slug }}">
+          <a class="resource-list-item-title" href="{{ $resource->link }}" target="_blank">
             <img class="resource-list-item-icon" src="{{ $resource->icon }}" alt="{{ $resource->name }}" title="{{ $resource->name }}"><br>
             {{ $resource->name }}
           </a>

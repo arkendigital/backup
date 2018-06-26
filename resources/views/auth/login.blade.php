@@ -27,11 +27,6 @@
         <a href="{{ route("login") }}" class="login_page_form_actions_item login_page_form_actions_item_active">Log in</a>
       </div>
 
-      {{--
-      /**
-       * Request by Sophie to remove social logins via social media
-       *
-       */
       <div class="login_page_form_social">
         <a href="{{ route('socialAuth', 'facebook') }}">
           <i class="fa fa-facebook-official fa-2x"></i>
@@ -45,7 +40,6 @@
             <i class="fa fa-linkedin-square fa-2x"></i>
         </a>
       </div>
-      --}}
 
       <div class="login_page_form_item">
         <label class="login_page_form_item_label" for="username">Email</label>

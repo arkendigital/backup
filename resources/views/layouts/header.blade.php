@@ -36,6 +36,11 @@
       @endif
 
       <ul>
+        <li @if(request()->route()->getName() == "index") class="home-active" @endif>
+          <a href="/">
+              <i class="fas fa-home"></i>
+          </a>
+        </li>
         <li @if(request()->route()->getPrefix() == "/exams") class="exams-active" @endif>
           <a href="/exams">Exams</a>
           <i class="fas fa-angle-down"></i>

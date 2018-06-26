@@ -57,7 +57,7 @@ class ExamResourceController extends Controller
         $resource = ExamResource::create([
             "name" => request()->name,
             "excerpt" => request()->excerpt,
-            "content" => request()->content
+            "link" => request()->link
         ]);
 
         /**
@@ -111,7 +111,7 @@ class ExamResourceController extends Controller
         $resource->update([
             "name" => request()->name,
             "excerpt" => request()->excerpt,
-            "content" => request()->content
+            "link" => request()->link
         ]);
 
         /**

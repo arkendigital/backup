@@ -24,7 +24,7 @@
       </a>
     @endif
 
-    <p class="homepage-information-title margin-top--large margin-bottom--large">Join our discussions</p>
+    <a class="homepage-information-title margin-top--large margin-bottom--large" href="{{ route("front.discussion.index") }}">Join our discussions</a>
     <p class="homepage-information-text"></p>
 
     <div class="homepage-discussion-slider swiper-container margin-bottom--medium">

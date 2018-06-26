@@ -19,6 +19,7 @@ class ExamResource extends Model
         "name",
         "slug",
         "excerpt",
+        "link",
         "content",
         "icon_path"
     ];

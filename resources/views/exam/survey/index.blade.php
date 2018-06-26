@@ -38,7 +38,7 @@
         <span class="survey-sub-title">Which exam did you take?</span>
         <div class="survey-answer-container">
           @foreach($categories as $category)
-            <div class="survey-answer survey-answer-cat survey-answer-has-dropdown" id="survey-answer-cat-{{ $category->id }}">
+            <div class="survey-answer survey-answer-cat survey-answer-has-dropdown" onclick="void(0)" id="survey-answer-cat-{{ $category->id }}">
               <span class="survey-answer-icon-wrap">
                 <span id="survey-answer-category-{{ $category->id }}">{{ $category->name }}</span>
                 <i class="fas fa-angle-down survey-answer-icon"></i>

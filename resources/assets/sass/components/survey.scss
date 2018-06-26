@@ -66,13 +66,16 @@
     &:hover, &-active {
       background: #0d72b9;
       color: #fff;
+      cursor: pointer;
     }
 
     &-has-dropdown {
       position: relative;
+      cursor: pointer;
       &:hover {
         background: #fff;
         color: #1a304d;
+        cursor: pointer;
         .survey-answer-dropdown {
           display: inline;
           z-index: 10;

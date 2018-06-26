@@ -37,11 +37,11 @@
             </div>
 
             <div class="form-group">
-              <label for="content">Resource Content</label>
-              @if($errors->has("content"))
-                <p class="text-danger">{{ $errors->first("content") }}</p>
+              <label for="link">Resource Link</label>
+              @if($errors->has("link"))
+                <p class="text-danger">{{ $errors->first("link") }}</p>
               @endif
-              <textarea class="form-control editor" name="content" id="content">{{ $resource->content }}</textarea>
+              <input type="text" class="form-control" name="link" id="link" value="{{ $resource->link }}" placeholder="Enter resource link...">
             </div>
 
         </div>

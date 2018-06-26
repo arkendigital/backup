@@ -12,7 +12,7 @@
 
       <p>{!! $page->getField("page_content") !!}</p>
 
-      <h3>See internship jobs <a onclick="document.getElementById('searchInternshipJobsForm').submit()" class="cursor-pointer">here</a></h3>
+      <h3>See internships <a onclick="document.getElementById('searchInternshipJobsForm').submit()" class="cursor-pointer">here</a></h3>
 
       <h3>See internship employers <a href="{{ url('/uni-corner/actuarial-employers') }}">here</a></h3>
 

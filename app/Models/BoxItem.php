@@ -17,7 +17,8 @@ class BoxItem extends Model
         "group_id",
         "title",
         "link",
-        "order"
+        "order",
+        "external"
     ];
 
     /**
