@@ -14,6 +14,10 @@ $(".advertising-toggle").click(function() {
   */
   $("#"+$(this).attr("data-id")).slideDown();
 
+  $('html, body').animate({
+    scrollTop: $("#"+$(this).attr("data-id")).offset().top - 50
+  }, 1000);
+
 });
 
 

@@ -64,7 +64,7 @@ class PageController extends Controller
         ]);
 
         alert()->success('Page Created');
-    
+
         return redirect("/ops/pages/".$page->id."/edit");
     }
 
@@ -176,7 +176,7 @@ class PageController extends Controller
 
 
         alert()->success('Page Updated');
-        
+
         /**
         * Redirect to page edit form.
         */
@@ -200,7 +200,7 @@ class PageController extends Controller
 
         $widgets = Widget::whereNotIn("id", $ids)
             ->get();
- 
+
         return view("admin.pages.widgets.add-to-page", compact(
             "page",
             "widgets"
@@ -220,5 +220,41 @@ class PageController extends Controller
         ]);
 
         return redirect(route("pages.edit", request()->page_id));
+    }
+
+    /**
+     * Delete page
+     *
+     * @param int $id
+     *
+     */
+    public function destroy($id)
+    {
+
+      /**
+       * Get the page
+       *
+       */
+      $page = Page::find($id);
+
+      /**
+       * Delete any pages widgets
+       *
+       */
+      PageWidget::where("page_id", $page->id)
+        ->delete();
+
+      /**
+       * Delete the page
+       *
+       */
+      $page->delete();
+
+      alert("Page deleted")
+        ->persistent();
+
+      return redirect()
+        ->back();
+
     }
 }

@@ -345,6 +345,11 @@
     background-position: center;
     width: 270px;
     height: 270px;
+    a {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
     &:hover {
       .homepage-discussion-slider-box-hover {
         display: flex;

@@ -37,6 +37,15 @@
                     <a class="btn btn-success btn-small" type="button" href="{{ route('pages.edit', $page->id) }}">
                       <i class="fa fa-pencil"></i>
                     </a>
+
+                    <a class="btn btn-danger btn-small" type="button" href="javascript:void(0);" onclick="document.getElementById('deletePage-{{ $page->id }}').submit();">
+                      <i class="fa fa-trash"></i>
+                    </a>
+
+                    <form action="{{ route('pages.destroy', $page->id) }}" method="POST" id="deletePage-{{ $page->id }}">
+                      {{ csrf_field() }}
+                      {{ method_field("DELETE") }}
+                    </form>
                   </div>
                 </td>
               </tr>

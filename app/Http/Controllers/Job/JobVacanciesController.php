@@ -69,6 +69,8 @@ class JobVacanciesController extends Controller
         $locations = JobLocation::whereIn("id", $locations)
             ->get();
 
+        $locations = JobLocation::all();
+
         /**
          * Get a list of regions that have active jobs
          *
@@ -80,6 +82,8 @@ class JobVacanciesController extends Controller
 
          $regions = JobRegion::whereIn("id", $regions)
              ->get();
+
+         $regions = JobRegion::all();
 
         /**
         * Apply filtering.

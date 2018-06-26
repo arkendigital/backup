@@ -26,7 +26,7 @@
     <div class="resource-list">
       @foreach($resources as $resource)
         <div class="resource-list-item">
-          <a class="resource-list-item-title" href="{{ $resource->link }}" target="_blank">
+          <a class="resource-list-item-title" @if($resource->link != "") href="{{ $resource->link }}" target="_blank" @else href="/exams/resources/{{ $resource->slug }}" @endif>
             <img class="resource-list-item-icon" src="{{ $resource->icon }}" alt="{{ $resource->name }}" title="{{ $resource->name }}"><br>
             {{ $resource->name }}
           </a>

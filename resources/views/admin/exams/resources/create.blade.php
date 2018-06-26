@@ -37,12 +37,20 @@
             </div>
 
             <div class="form-group">
-              <label for="link">Resource Link</label>
+              <label for="link">Resource Link <small class="text-danger">Adding a link will redirect the user straight to the link when clicking the resource, and not to an internal page.</small></label>
               @if($errors->has("link"))
                 <p class="text-danger">{{ $errors->first("link") }}</p>
               @endif
               <input type="text" class="form-control" name="link" id="link" value="{{ old("link") }}" placeholder="Enter resource link...">
             </div>
+
+            <div class="form-group">
+              <label for="content">Resource Content</label>
+              @if($errors->has("content"))
+                <p class="text-danger">{{ $errors->first("content") }}</p>
+              @endif
+              <textarea class="form-control editor" name="content" id="content">{{ old("content") }}</textarea>
+             </div>
 
         </div>
         <div class="box-footer">

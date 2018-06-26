@@ -446,6 +446,11 @@
       font-weight: bold;
       color: #1a304d;
       margin-top: 15px;
+      a {
+        color: #1a304d;
+        text-decoration: none;
+        word-break: break-all;
+      }
     }
   }
 

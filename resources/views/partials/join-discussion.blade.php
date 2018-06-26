@@ -27,22 +27,26 @@
     <a class="homepage-information-title margin-top--large margin-bottom--large" href="{{ route("front.discussion.index") }}">Join our discussions</a>
     <p class="homepage-information-text"></p>
 
-    <div class="homepage-discussion-slider swiper-container margin-bottom--medium">
-      <div class="swiper-wrapper">
+    @if(!$discussions->isEmpty())
 
-        @foreach($discussions as $discussion)
-          <div class="homepage-discussion-slider-box swiper-slide @if($discussion->image_path == "") homepage-discussion-slider-box--no-image @endif" style="background-image:url({{ $discussion->image }});">
-            <div class="homepage-discussion-slider-box-hover">
-              <a href="/discussion/{{ $discussion->category->slug }}/{{ $discussion->slug }}">
-                <p class="homepage-discussion-slider-box-title">{{ $discussion->name }}</p>
-                <p class="homepage-discussion-slider-box-text">Ut eos enisciaspe ma dolorpo rerunti oreseque di ulparum.</p>
-              </a>
+      <div class="homepage-discussion-slider swiper-container margin-bottom--medium">
+        <div class="swiper-wrapper">
+
+          @foreach($discussions as $discussion)
+            <div class="homepage-discussion-slider-box swiper-slide @if($discussion->image_path == "") homepage-discussion-slider-box--no-image @endif" style="background-image:url({{ $discussion->image }});">
+              <div class="homepage-discussion-slider-box-hover">
+                <a href="/discussion/{{ $discussion->category->slug }}/{{ $discussion->slug }}">
+                  <p class="homepage-discussion-slider-box-title">{{ $discussion->name }}</p>
+                  <p class="homepage-discussion-slider-box-text">{{ $discussion->excerpt }}</p>
+                </a>
+              </div>
             </div>
-          </div>
-        @endforeach
+          @endforeach
 
+        </div>
       </div>
-    </div>
+
+    @endif
 
   </div><!-- /.website-container -->
 </div><!-- /.homepage-information -->

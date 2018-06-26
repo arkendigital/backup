@@ -40,8 +40,8 @@
       <div class="advertising-toggle-item-specification-spec advertising-toggle-item-specification-spec-medium">945 x 223px</div>
       <div class="advertising-toggle-item-specification-spec advertising-toggle-item-specification-spec-small">945 x 100px</div>
 
-      <div class="advertising-toggle-item-specification-title">Get in touch to advertise with us</div>
-      <div class="advertising-toggle-item-specification-number">01234 56789</div>
+      <div class="advertising-toggle-item-specification-title margin-top--medium">Get in touch to advertise with us</div>
+      <div class="advertising-toggle-item-specification-number"><a href="mailto:advertise@ActuariesOnline.com">advertise@ActuariesOnline.com</a></div>
 
     </div><!-- /#advert-specification -->
 
@@ -113,7 +113,7 @@
 
     <div class="clear"></div>
 
-    <img src="/images/temp/jobs-advertise-banner.png" alt="" title="">
+    <img src="/images/temp/jobs-advertise-banner.png" class="margin-bottom--large" alt="" title="">
 
   </div><!-- /.website-container -->
 

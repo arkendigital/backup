@@ -48,6 +48,7 @@ Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function ()
     Route::patch("/pages/{id}/edit", "Pages\PageController@update")->name("pages.update");
     Route::get("/pages/{id}/widgets", "Pages\PageController@addWidget")->name("pages.add.widget");
     Route::post("/pages/{id}/widgets", "Pages\PageController@insertWidget");
+    Route::delete("/pages/{id}", "Pages\PageController@destroy")->name("pages.destroy");
 
     /**
     * Page Widgets.
@@ -157,7 +158,7 @@ Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function ()
     Route::get('/box-groups/wealth-of-information', 'WealthOfInformation@index');
     Route::get('/box-groups/wealth-of-information/{wealth}/edit', 'WealthOfInformation@edit')->name('wealth.edit');
     Route::patch('/box-groups/wealth-of-information/{wealth}', 'WealthOfInformation@update')->name('wealth.update');
-    
+
     /**
     * Box Groups.
     */

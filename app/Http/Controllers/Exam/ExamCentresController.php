@@ -22,7 +22,7 @@ class ExamCentreController extends Controller
         * Get page information.
         *
         */
-        $page = Page::getPage("exam-centres");
+        $page = Page::getPage("exams/exam-centres");
 
         /**
         * Set seo.
