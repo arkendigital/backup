@@ -49,6 +49,7 @@ class CoursesController extends Controller
 
         return view("uni-corner.courses.index", compact(
             "page",
+            "page_adverts",
             "courses"
         ));
     }

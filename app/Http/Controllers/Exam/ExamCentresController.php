@@ -41,7 +41,7 @@ class ExamCentreController extends Controller
         * Display page.
         *
         */
-        return view('exam.centres.index')->with(compact('page'));
+        return view('exam.centres.index')->with(compact('page', 'page_adverts'));
     }
 
     /**

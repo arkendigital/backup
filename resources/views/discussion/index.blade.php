@@ -64,6 +64,12 @@
     </div><!-- /.discussion-container-inner -->
   </div><!-- ./discussion-container -->
 
+  @if(isset($page_adverts[0]["main-content"]))
+    @include('partials.advert', [
+      'advert' => $page_adverts[0]["main-content"]
+    ])
+  @endif
+
   @include("discussion.partials.create")
 
   @push("scripts-after")

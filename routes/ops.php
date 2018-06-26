@@ -196,4 +196,11 @@ Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function ()
     Route::resource("/societies", "Societies\SocietyController", ["parameters" => [
       "societies" => "society"
     ]]);
+
+    /**
+    * Societies.
+    */
+    Route::resource("/uni-societies", "Societies\UniSocietyController", ["parameters" => [
+      "uni-societies" => "society"
+    ]]);
 });

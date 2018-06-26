@@ -37,11 +37,22 @@
             </div>
 
             <div class="form-group">
-              <label for="salary">Yearly Salary</label>
-              @if($errors->has("salary"))
-                <p class="text-danger">{{ $errors->first("salary") }}</p>
-              @endif
+              <label for="salary_type">Job Type</label>
+              <select name="salary_type" class="form-control">
+                <option value="">Select job type...</option>
+                  <option value="permanent" @if(old("salary_type") == "permanent") selected @endif>Permanent</option>
+                  <option value="contract" @if(old("salary_type") == "contract") selected @endif>Contract</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="salary">Yearly Salary <span class="text-danger">(only applicable if a permanent job)</span></label>
               <input type="text" class="form-control" name="salary" id="salary" value="{{ old("salary") }}" placeholder="Enter salary. E.G. 25000">
+            </div>
+
+            <div class="form-group">
+              <label for="daily_salary">Daily Salary <span class="text-danger">(only applicable if a contractor job)</span></label>
+              <input type="text" class="form-control" name="daily_salary" id="daily_salary" value="{{ old("daily_salary") }}" placeholder="Enter daily salary. E.G. 500">
             </div>
 
             <div class="form-group">

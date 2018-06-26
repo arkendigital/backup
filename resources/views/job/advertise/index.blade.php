@@ -113,12 +113,11 @@
 
     <div class="clear"></div>
 
-    <img src="/images/temp/jobs-advertise-banner.png" class="margin-bottom--large" alt="" title="">
-
   </div><!-- /.website-container -->
 
   @include("partials.latest-jobs")
   @include("partials.join-discussion", [
+    "advert" => isset($page_adverts[0]["discussion-widget"]) ? $page_adverts[0]["discussion-widget"] : [],
     "category_id" => $page->discussion_category_id
   ])
 

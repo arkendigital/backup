@@ -2,15 +2,8 @@
 
 namespace App\Http\Controllers\CPD;
 
-/**
-* Load modules.
-*/
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-/**
-* Load models.
-*/
 use App\Models\Section;
 use App\Models\Page;
 use App\Models\CPDPublication;
@@ -45,12 +38,19 @@ class CPDPublicationController extends Controller
         $publications = CPDPublication::all();
 
         /**
+        * Get adverts for this page.
+        *
+        */
+        $page_adverts = getArrayOfAdverts($page->id);
+
+        /**
         * Display results.
         *
         */
         return view("cpd.publications.index", compact(
             "publications",
-            "page"
+            "page",
+            "page_adverts"
         ));
     }
 }

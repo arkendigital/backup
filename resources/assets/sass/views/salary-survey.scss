@@ -74,6 +74,8 @@
 }
 
 .salary-survey-footer {
+  display: inline-block;
+  width: 100%;
   padding: 25px 0;
 
   @media(max-width: 600px) {

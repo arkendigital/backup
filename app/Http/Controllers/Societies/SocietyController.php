@@ -39,6 +39,7 @@ class SocietyController extends Controller
         */
         return view("societies.index", compact(
             "page",
+            "page_adverts",
             "societies"
         ));
     }

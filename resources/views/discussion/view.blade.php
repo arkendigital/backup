@@ -95,6 +95,12 @@
     </div><!-- /.discussion-container-inner -->
   </div><!-- ./discussion-container -->
 
+  @if(isset($page_adverts[0]["main-content"]))
+    @include('partials.advert', [
+      'advert' => $page_adverts[0]["main-content"]
+    ])
+  @endif
+
   @push("scripts-after")
       <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML' async></script>
   @endpush

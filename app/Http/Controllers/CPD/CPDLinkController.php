@@ -2,15 +2,8 @@
 
 namespace App\Http\Controllers\CPD;
 
-/**
-* Load modules.
-*/
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-/**
-* Load models.
-*/
 use App\Models\Section;
 use App\Models\Page;
 use App\Models\CPD\Link;
@@ -45,12 +38,19 @@ class CPDLinkController extends Controller
         $links = Link::all();
 
         /**
+        * Get adverts for this page.
+        *
+        */
+        $page_adverts = getArrayOfAdverts($page->id);
+
+        /**
         * Display page.
         *
         */
         return view("cpd.links.index", compact(
             "links",
-            "page"
+            "page",
+            "page_adverts"
         ));
     }
 }

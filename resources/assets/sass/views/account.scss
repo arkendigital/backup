@@ -151,6 +151,9 @@
       border-radius: 25px;
       cursor: pointer;
       outline: 0;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
       &:hover {
         background: $offblue;
       }

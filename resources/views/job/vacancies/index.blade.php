@@ -231,7 +231,12 @@
           ])
         @endforeach
 
-        <div style="display: block; padding: 25px 0; display: block; width: 100%; background: #1a304d; text-align: center; color: white; margin-top: 20px; margin-bottom: 30px;">SPONSORED LINK</div>
+        @if(isset($page_adverts[0]["sponsored-link"]))
+          <a href="{{ $page_adverts[0]["sponsored-link"]["url"] }}" target="_blank">
+            <img src="{{ $page_adverts[0]["sponsored-link"]["image"] }}" class="sponsored-link">
+          </a>
+          {{-- <div style="display: block; padding: 25px 0; display: block; width: 100%; background: #1a304d; text-align: center; color: white; margin-top: 20px; margin-bottom: 30px;">SPONSORED LINK</div> --}}
+        @endif
 
         @if($jobs->isEmpty() && $featured_jobs->isEmpty())
 
@@ -262,6 +267,7 @@
   </div><!-- /.job-list-container -->
 
   @include("partials.join-discussion", [
+    "advert" => isset($page_adverts[0]["discussion-widget"]) ? $page_adverts[0]["discussion-widget"] : [],
     "category_id" => $page->discussion_category_id
   ])
 

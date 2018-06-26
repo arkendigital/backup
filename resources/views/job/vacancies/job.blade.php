@@ -32,7 +32,7 @@
 		@isset($job->location)
 			<div class="job-list-item-list">
 				<span class="job-list-item-list-key">Location</span>
-				<span class="job-list-item-list-value">{{ $job->location->name }}</span>
+				<span class="job-list-item-list-value">{{ str_replace("--", "", $job->location->name) }}</span>
 			</div>
 		@endisset
 

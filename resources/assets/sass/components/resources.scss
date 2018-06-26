@@ -7,7 +7,9 @@
     text-align: center;
   }
   &-item {
-    display: inline-block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     vertical-align: top;
     padding: 0 25px;
     border-right: 1px dotted $orange;
@@ -18,7 +20,7 @@
     a {
         text-decoration: none;
     }
-    
+
     &:nth-child(4n + 4) {
       border-right: none;
     }

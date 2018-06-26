@@ -334,6 +334,11 @@ return [
           'url'  => 'ops/societies',
           'icon'  => 'users',
         ],
+        [
+          'text' => 'Manage Uni Societies',
+          'url'  => 'ops/uni-societies',
+          'icon'  => 'users',
+        ],
 
 
         /**

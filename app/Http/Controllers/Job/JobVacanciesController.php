@@ -153,6 +153,11 @@ class JobVacanciesController extends Controller
          */
         $job_types = JobStatus::all();
 
+        /**
+        * Get adverts for this page.
+        *
+        */
+        $page_adverts = getArrayOfAdverts($page->id);
 
         /**
         * Display results.
@@ -165,7 +170,8 @@ class JobVacanciesController extends Controller
             "sectors",
             "locations",
             "regions",
-            "job_types"
+            "job_types",
+            "page_adverts"
         ));
     }
 
@@ -206,7 +212,7 @@ class JobVacanciesController extends Controller
              * Permanent salary
              *
              */
-            if (request()->salary != "all") {
+            if (request()->salary != "all" && request()->salary !== null) {
 
                 $salary = explode("-",request()->salary);
 
@@ -224,7 +230,7 @@ class JobVacanciesController extends Controller
              * Contractor salary
              *
              */
-            if (request()->daily_salary != "all") {
+            if (request()->daily_salary != "all" && request()->daily_salary !== null) {
 
                 $salary = explode("-",request()->daily_salary);
 

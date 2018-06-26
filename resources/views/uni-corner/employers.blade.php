@@ -42,18 +42,13 @@
 
     <div class="clear margin-bottom--medium"></div>
 
-    @if(isset($page_adverts[0]["main-content"]))
-      @include('partials.advert', [
-        'advert' => $page_adverts[0]["main-content"]
-      ])
-    @endif
-
   </div><!-- /.website-container -->
 
 
   @include("widgets.loop")
 
   @include("partials.join-discussion", [
+    "advert" => isset($page_adverts[0]["discussion-widget"]) ? $page_adverts[0]["discussion-widget"] : [],
     "category_id" => $page->discussion_category_id
   ])
 

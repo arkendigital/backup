@@ -64,12 +64,12 @@
 
         <div class="clear"></div>
 
-        <div id="survey-before">
+        <div id="survey-before" class="salary-survey-footer">
           <a class="survey-button survey-button-add">Submit Answers</a>
           <a class="survey-button" href="/exams/survey/results">Show Results</a>
         </div>
 
-        <div id="salary-survey-footer-after-submission" class="margin-top--small" style="display: none;">
+        <div id="salary-survey-footer-after-submission" class="margin-top--small salary-survey-footer" style="display: none;">
           <p>
             Thank you for taking part.
             <a href="/exams/survey/results" class="button button--dark-blue">See results</a>

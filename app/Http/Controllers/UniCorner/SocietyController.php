@@ -2,18 +2,12 @@
 
 namespace App\Http\Controllers\UniCorner;
 
-/**
-* Load modules.
-*/
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-/**
-* Load models.
-*/
 use App\Models\Section;
 use App\Models\Page;
 use App\Models\Society;
+use App\Models\UniSociety;
 
 class SocietyController extends Controller
 {
@@ -45,10 +39,12 @@ class SocietyController extends Controller
         * Get a list of societies.
         *
         */
-        $societies = Society::all();
+        $societies = UniSociety::orderBy("name", "ASC")
+          ->get();
 
         return view("uni-corner.societies.index", compact(
             "page",
+            "page_adverts",
             "societies"
         ));
     }

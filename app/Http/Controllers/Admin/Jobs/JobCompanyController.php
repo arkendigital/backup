@@ -53,7 +53,8 @@ class JobCompanyController extends Controller
         * Insert company to storage.
         */
         $company = JobCompany::create([
-            "name" => request()->name
+            "name" => request()->name,
+            "description" => request()->description
         ]);
 
         /**

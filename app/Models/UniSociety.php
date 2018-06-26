@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models\Exam;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Info extends Model
+class UniSociety extends Model
 {
     use SoftDeletes;
 
@@ -16,23 +16,9 @@ class Info extends Model
     *
     */
     protected $fillable = [
-        "module_id",
         "name",
-        "section_one_title",
-        "section_one_text",
-        "section_one_link",
-        "section_two_title",
-        "section_two_text",
-        "section_two_link",
-        "section_three_title",
-        "section_three_text",
-        "section_three_link",
-        "section_four_title",
-        "section_four_text",
-        "section_four_link",
-        "section_five_title",
-        "section_five_text",
-        "section_five_link"
+        "link",
+        "logo_path"
     ];
 
     /**
@@ -41,7 +27,7 @@ class Info extends Model
     * @var string
     *
     */
-    protected $table = 'exam_modules_info';
+    protected $table = 'uni_societies';
 
     /**
     * Indicates if the model should be timestamped.
@@ -58,4 +44,17 @@ class Info extends Model
     *
     */
     protected $dates = ['deleted_at'];
+
+    /**
+    * Get full URL of logo.
+    *
+    */
+    public function getLogoAttribute()
+    {
+        if ($this->logo_path != "") {
+            return env("S3_URL") . $this->logo_path;
+        } else {
+            return asset("images/icons/ao-white.png");
+        }
+    }
 }

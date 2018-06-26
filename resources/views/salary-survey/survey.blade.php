@@ -139,11 +139,11 @@
 
       <div class="salary-survey-footer">
 
-        <div id="salary-survey-footer-before-submission">
+        <div id="salary-survey-footer-before-submission" class="salary-survey-footer">
           <button type="submit">Submit</button>
         </div>
 
-        <div id="salary-survey-footer-after-submission" style="display: none;">
+        <div id="salary-survey-footer-after-submission" class="salary-survey-footer" style="display: none;">
           <p>
             Thank you for taking part.
             <a href="/salary-survey/results" class="button button--dark-blue">See results</a>
@@ -168,18 +168,13 @@
 
     <div class="clear margin-bottom--medium"></div>
 
-    @if(isset($page_adverts[0]["main-content"]))
-      @include('partials.advert', [
-        'advert' => $page_adverts[0]["main-content"]
-      ])
-    @endif
-
   </div><!-- /.website-container -->
 
 
   @include("widgets.loop")
 
   @include("partials.join-discussion", [
+    "advert" => isset($page_adverts[0]["discussion-widget"]) ? $page_adverts[0]["discussion-widget"] : [],
     "category_id" => $page->discussion_category_id
   ])
 

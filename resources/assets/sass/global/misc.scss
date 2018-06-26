@@ -194,6 +194,7 @@ body.navigation-active {
   img {
     display: inline-block;
     margin: 0 auto;
+    max-width: 100%;
   }
 }
 
@@ -216,4 +217,10 @@ body.navigation-active {
         color: rgba(125, 125, 125, 1);
         transform: rotate(360deg);
     }
+}
+
+.sponsored-link {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
 }

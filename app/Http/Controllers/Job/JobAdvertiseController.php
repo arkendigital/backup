@@ -28,10 +28,17 @@ class JobAdvertiseController extends Controller
           ->setDescription($page->meta_description);
 
         /**
+        * Get adverts for this page.
+        *
+        */
+        $page_adverts = getArrayOfAdverts($page->id);
+
+        /**
         * Display page.
         */
         return view("job.advertise.index", compact(
-            "page"
+            "page",
+            "page_adverts"
         ));
     }
 

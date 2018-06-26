@@ -16,10 +16,10 @@
             <p class="job-view-header-right-item-right">&pound;{{ number_format($job->salary) }}</p>
           </div>
 
-          @isset($job->location)          
+          @isset($job->location)
           <div class="job-view-header-right-item">
             <p class="job-view-header-right-item-left">Location</p>
-            <p class="job-view-header-right-item-right">{{ $job->location->name }}</p>
+            <p class="job-view-header-right-item-right">{{ str_replace("--", "", $job->location->name) }}</p>
           </div>
           @endisset
 

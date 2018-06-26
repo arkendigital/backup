@@ -4,19 +4,9 @@ namespace App\Http\Controllers\Admin\Exams;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-/**
-* Load modules.
-*
-*/
 use App\Models\Exam\Category as ExamCategory;
 use App\Models\Exam\Module as ExamModule;
 use App\Models\Exam\Info as ExamModuleInfo;
-
-/**
-* Load requests.
-*
-*/
 use App\Http\Requests\ExamModule as ExamModuleRequest;
 
 class ExamModuleController extends Controller
@@ -177,7 +167,10 @@ class ExamModuleController extends Controller
             "section_three_link" => request()->section_three_link,
             "section_four_title" => request()->section_four_title,
             "section_four_text" => request()->section_four_text,
-            "section_four_link" => request()->section_four_link
+            "section_four_link" => request()->section_four_link,
+            "section_five_title" => request()->section_five_title,
+            "section_five_text" => request()->section_five_text,
+            "section_five_link" => request()->section_five_link
         ]);
 
         /**
@@ -205,7 +198,8 @@ class ExamModuleController extends Controller
             "one",
             "two",
             "three",
-            "four"
+            "four",
+            "five"
         ];
     }
 }

@@ -5,7 +5,7 @@
   <div class="section-hero" style="background-image: url({{ $page->section->image }}); border-color: {{ $page->section->color }};"></div>
 
   <div class="website-container" style="margin-bottom: 0;">
-    <div class="website-container-content view-section">
+    <div class="website-container-content view-section" style="margin-bottom: 0;">
 
       <h1>{{ $page->getField("page_title") }}</h1>
 
@@ -21,10 +21,6 @@
     <div class="clear"></div>
 
     </div>
-  </div>
-
-  <div class="website-container">
-      @include('partials.carousel-ticker')
   </div>
 
   <div class="website-container">
@@ -62,7 +58,12 @@
 
   @include("widgets.loop")
 
+  <div class="website-container">
+      @include('partials.carousel-ticker')
+  </div>
+
   @include("partials.join-discussion", [
+    "advert" => isset($page_adverts[0]["discussion-widget"]) ? $page_adverts[0]["discussion-widget"] : [],
     "category_id" => $page->discussion_category_id
   ])
 

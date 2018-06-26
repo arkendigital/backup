@@ -43,6 +43,7 @@ class UniCornerEmployers extends Controller
 
         return view("uni-corner.employers", compact(
             "page",
+            "page_adverts",
             "employers"
         ));
     }

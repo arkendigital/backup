@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Discussion as DiscussionRequest;
 use App\Http\Controllers\AWS\ImageController as AWS;
 use Cache;
+use App\Models\Page;
 use App\Models\Discussion;
 use App\Models\DiscussionCategory;
 use App\Models\DiscussionReply;
@@ -24,11 +25,25 @@ class DiscussionController extends Controller
     {
 
         /**
+         * Get page information
+         *
+         */
+        $page = Page::getPage("discussion");
+
+        /**
          * Set page SEO
          *
          */
         $this->seo()
-          ->setTitle("Discussion");
+          ->setTitle($page->meta_title);
+        $this->seo()
+          ->setDescription($page->meta_description);
+
+        /**
+         * Get adverts for this page.
+         *
+         */
+        $page_adverts = getArrayOfAdverts($page->id);
 
         /**
          * Get a list of categories for the sidebar
@@ -64,6 +79,8 @@ class DiscussionController extends Controller
         }
 
         return view("discussion.index", compact(
+            "page",
+            "page_adverts",
             "category",
             "categories",
             "discussions"
@@ -79,6 +96,19 @@ class DiscussionController extends Controller
      */
     public function view(DiscussionCategory $category, Discussion $discussion)
     {
+
+        /**
+         * Get page information
+         *
+         */
+        $page = Page::getPage("discussion");
+
+        /**
+         * Get adverts for this page.
+         *
+         */
+        $page_adverts = getArrayOfAdverts($page->id);
+
         $this->seo()->setTitle($discussion->name);
         $this->seo()->setDescription($discussion->excerpt);
 
@@ -86,6 +116,7 @@ class DiscussionController extends Controller
         $discussion->with('user', 'category', 'replies');
 
         return view("discussion.view", compact(
+            "page_adverts",
             "categories",
             "category",
             "discussion"

@@ -21,6 +21,14 @@
             </div>
 
             <div class="form-group">
+              <label for="name">Company Information / Description</label>
+              @if($errors->has("description"))
+                <p class="text-danger">{{ $errors->first("description") }}</p>
+              @endif
+              <textarea class="form-control editor" name="description" id="description">{{ old("description") }}</textarea>
+            </div>
+
+            <div class="form-group">
               <label for="logo_path">Company Logo</label>
               @if($errors->has("logo_path"))
                 <p class="text-danger">{{ $errors->first("logo_path") }}</p>
