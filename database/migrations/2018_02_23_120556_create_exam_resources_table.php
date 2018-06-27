@@ -14,6 +14,7 @@ class CreateExamResourcesTable extends Migration {
 			$table->string('excerpt')->nullable();
 			$table->text('content')->nullable();
 			$table->string('icon_path')->nullable();
+			$table->integer('advert_id');
 			$table->timestamps();
 			$table->softDeletes();
 		});

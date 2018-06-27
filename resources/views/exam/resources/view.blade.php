@@ -23,6 +23,10 @@
 
     <div class="clear"></div>
 
+    @include("partials.advert", [
+      "advert" => $resource->advert
+    ])
+
   </div><!-- /.website-container -->
 
 @endsection

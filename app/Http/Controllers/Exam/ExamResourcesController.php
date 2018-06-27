@@ -2,15 +2,8 @@
 
 namespace App\Http\Controllers\Exam;
 
-/**
-* Load modules.
-*/
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-/**
-* Load models.
-*/
 use App\Models\Section;
 use App\Models\Page;
 use App\Models\ExamResource;
@@ -72,9 +65,17 @@ class ExamResourcesController extends Controller
     public function view(ExamResource $exam_resource)
     {
 
-    /**
-    * Get section.
-    */
+      /**
+       * Set page SEO
+       *
+       */
+      $this->seo()
+        ->setTitle($exam_resource->name . "- Exam Resources");
+
+      /**
+       * Get section
+       *
+       */
         $section = Section::where("slug", "exams")
             ->first();
 

@@ -21,7 +21,8 @@ class ExamResource extends Model
         "excerpt",
         "link",
         "content",
-        "icon_path"
+        "icon_path",
+        "advert_id"
     ];
 
     /**
@@ -83,5 +84,15 @@ class ExamResource extends Model
         }
 
         return env("S3_URL") . $icon_path;
+    }
+
+    /**
+    * A resource can have an advert
+    *
+    * @return Illuminate\Database\Eloquent\Relations\HasOne
+    */
+    public function advert()
+    {
+      return $this->hasOne(Advert::class, 'id', 'advert_id');
     }
 }

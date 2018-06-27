@@ -9,6 +9,7 @@ use App\Http\Controllers\AWS\ImageController as AWS;
 use App\Http\Requests\ExamResource as ExamResourceRequest;
 
 use App\Models\ExamResource;
+use App\Models\Advert;
 
 class ExamResourceController extends Controller
 {
@@ -91,8 +92,17 @@ class ExamResourceController extends Controller
     */
     public function edit(ExamResource $resource)
     {
+
+      /**
+       * Get list of adverts to choose from
+       *
+       */
+      $adverts = Advert::orderBy("name", "DESC")
+        ->get();
+
         return view("admin.exams.resources.edit", compact(
-            "resource"
+            "resource",
+            "adverts"
         ));
     }
 
@@ -106,14 +116,16 @@ class ExamResourceController extends Controller
     public function update(ExamResource $resource, ExamResourceRequest $request)
     {
 
-    /**
-    * Create new resource in storage.
-    */
+        /**
+         * Create new resource in storage
+         *
+         */
         $resource->update([
             "name" => request()->name,
             "excerpt" => request()->excerpt,
             "link" => request()->link,
-            "content" => request()->content
+            "content" => request()->content,
+            "advert_id" => request()->advert_id
         ]);
 
         /**

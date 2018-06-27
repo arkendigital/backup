@@ -24,10 +24,15 @@ class ExamResource extends FormRequest
     */
     public function rules()
     {
-        return [
+        $rules = [
             "name" => "required|string|max:30",
-            "excerpt" => "required|string|max:50",
-            "link" => "required|url"
+            "excerpt" => "required|string|max:50"
         ];
+
+        if (request()->link != "") {
+          $rules["link"] = "url";
+        }
+
+        return $rules;
     }
 }
