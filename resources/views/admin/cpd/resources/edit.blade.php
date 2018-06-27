@@ -29,6 +29,19 @@
             </div>
 
             <div class="form-group">
+              <label for="advert">Advert</label>
+              @if($errors->has("advert"))
+                <p class="text-danger">{{ $errors->first("advert") }}</p>
+              @endif
+              <select name="advert_id" class="form-control">
+                <option value="">None</option>
+                @foreach($adverts as $advert)
+                  <option value="{{ $advert->id }}" @if($advert->id == $resource->advert_id) selected @endif>{{ $advert->name }}</option>
+                @endforeach
+              </select>
+            </div>
+
+            <div class="form-group">
               <label for="excerpt">Resource Excerpt</label>
               @if($errors->has("excerpt"))
                 <p class="text-danger">{{ $errors->first("excerpt") }}</p>

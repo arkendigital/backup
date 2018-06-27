@@ -21,7 +21,8 @@ class CPDResource extends Model
         "excerpt",
         "content",
         "icon_path",
-        "link"
+        "link",
+        "advert_id"
     ];
 
     /**

@@ -9,6 +9,7 @@ use App\Http\Controllers\AWS\ImageController as AWS;
 use App\Http\Requests\CPDResource as CPDResourceRequest;
 
 use App\Models\CPDResource;
+use App\Models\Advert;
 
 class CPDResourceController extends Controller
 {
@@ -91,8 +92,13 @@ class CPDResourceController extends Controller
     */
     public function edit(CPDResource $resource)
     {
+
+      $adverts = Advert::orderBy("name", "ASC")
+        ->get();
+
         return view("admin.cpd.resources.edit", compact(
-            "resource"
+            "resource",
+            "adverts"
         ));
     }
 
@@ -113,7 +119,8 @@ class CPDResourceController extends Controller
             "name" => request()->name,
             "excerpt" => request()->excerpt,
             "content" => request()->content,
-            "link" => request()->link
+            "link" => request()->link,
+            "advert_id" => request()->advert_id
         ]);
 
         /**
