@@ -47,6 +47,7 @@ class ExamSurveyController extends Controller
         */
         return view("exam.survey.index", compact(
             "page",
+            "page_adverts",
             "categories"
         ));
     }
@@ -107,6 +108,7 @@ class ExamSurveyController extends Controller
         */
         return view("exam.survey.results", compact(
             "page",
+            "page_adverts",
             "categories"
         ));
     }
