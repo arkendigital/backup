@@ -24,4 +24,16 @@
 
   </div><!-- /.website-container -->
 
+  @include("widgets.cpd", [
+    "group" => App\Models\BoxGroup::where("widget_slug", "cpd")->first()
+  ])
+
+  @include("partials.join-discussion", [
+    "advert" => $resource->advert,
+  ])
+
+  {{-- @include("partials.advert", [
+    "advert" => $resource->advert
+  ]) --}}
+
 @endsection

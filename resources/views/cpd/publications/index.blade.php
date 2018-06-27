@@ -22,11 +22,13 @@
 
     <div class="clear"></div>
 
-    <div class="resource-list">
+    <div class="resource-list margin-bottom--large">
       @foreach($publications as $publication)
         <div class="resource-list-item">
-          <img class="resource-list-item-icon" src="{{ asset("/images/cpd/publication.png") }}" alt="{{ $publication->name }}" title="{{ $publication->name }}">
-          <a class="resource-list-item-title" href="{{ $publication->link }}" target="_blank">{{ $publication->name }}</a>
+          <div>
+            <img class="resource-list-item-icon" src="{{ asset("/images/cpd/publication.png") }}" alt="{{ $publication->name }}" title="{{ $publication->name }}">
+            <a class="resource-list-item-title" href="{{ $publication->link }}" target="_blank">{{ $publication->name }}</a>
+          </div>
         </div><!-- /.resource-list-item -->
       @endforeach
     </div><!-- /.resource-list -->
@@ -34,6 +36,10 @@
     <div class="clear"></div>
 
   </div><!-- /.website-container -->
+
+  @include("widgets.cpd", [
+    "group" => App\Models\BoxGroup::where("widget_slug", "cpd")->first()
+  ])
 
   @include("widgets.loop")
   @include("partials.join-discussion", [
