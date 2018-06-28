@@ -9,8 +9,10 @@
 
       <h1 class="discussion-page-title">Discussion <span>{{ isset($category) ? $category->name : "" }}</span></h1>
 
-      @if (auth()->user())
+      @if(auth()->check())
         <a class="discussion-add-button">Create Discussion</a>
+      @else
+        <a class="discussion-add-button" href="{{ route("login") }}?from={{ url()->full() }}">Login to Chat</a>
       @endif
 
       <div class="clear"></div>

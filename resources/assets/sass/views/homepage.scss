@@ -381,10 +381,8 @@
     }
 
     &--no-image {
-      background: rgba(76,93,116,1);
-      .homepage-discussion-slider-box-hover {
-        display: flex;
-      }
+      background-image: url('/images/placeholder/discussion.png');
+      
     }
 
   }
