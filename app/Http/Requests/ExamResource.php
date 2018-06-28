@@ -25,8 +25,8 @@ class ExamResource extends FormRequest
     public function rules()
     {
         $rules = [
-            "name" => "required|string|max:30",
-            "excerpt" => "required|string|max:50"
+            "name" => "required|string|max:60",
+            "excerpt" => "required|string|max:80"
         ];
 
         if (request()->link != "") {

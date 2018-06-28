@@ -21,6 +21,14 @@
             </div>
 
             <div class="form-group">
+              <label for="slug">Resource Slug</label>
+              @if($errors->has("slug"))
+                <p class="text-danger">{{ $errors->first("slug") }}</p>
+              @endif
+              <input type="text" class="form-control" name="slug" id="slug" value="{{ $resource->slug }}" placeholder="Enter resource slug...">
+            </div>
+
+            <div class="form-group">
               <label for="excerpt">Resource Link <small class="text-danger">(If you would like this resource to link to a different internal or external page, enter the URL here. Otherwise leave this blank)</small></label>
               @if($errors->has("link"))
                 <p class="text-danger">{{ $errors->first("link") }}</p>

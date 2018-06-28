@@ -25,7 +25,7 @@ class ExamCategory extends FormRequest
     public function rules()
     {
         return [
-            "name" => "required|string|max:25"
+            "name" => "required|string|max:40"
         ];
     }
 }

@@ -10,7 +10,7 @@ class Navigation
 {
     public function mainMenu()
     {
-        return Cache::remember('navigation_menu', 120, function () {
+        // return Cache::remember('navigation_menu', 120, function () {
             $menu = collect();
 
             foreach ($this->menus() as $item) {
@@ -18,7 +18,7 @@ class Navigation
             }
 
             return $menu;
-        });
+        // });
     }
 
     public function menus()
@@ -34,7 +34,7 @@ class Navigation
     public function buildSubNav($slug)
     {
         $items = collect();
-        
+
         $sidebar = $this->subItemBySlug($slug);
 
         foreach ($sidebar->items as $item) {

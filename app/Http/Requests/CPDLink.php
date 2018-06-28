@@ -25,7 +25,7 @@ class CPDLink extends FormRequest
     public function rules()
     {
         return [
-            "name" => "required|string|max:30",
+            "name" => "required|string|max:60",
             "link" => "required|url"
         ];
     }

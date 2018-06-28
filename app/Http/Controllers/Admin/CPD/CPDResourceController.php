@@ -117,6 +117,7 @@ class CPDResourceController extends Controller
     */
         $resource->update([
             "name" => request()->name,
+            "slug" => request()->slug,
             "excerpt" => request()->excerpt,
             "content" => request()->content,
             "link" => request()->link,
@@ -137,6 +138,9 @@ class CPDResourceController extends Controller
                 "icon_path" => $icon_path
             ]);
         }
+
+        alert()
+          ->persistent("Resource updated");
 
         /**
         * Redirect to edit page.
