@@ -51,6 +51,6 @@ class UniCornerWhyBecomeController extends Controller
         return view("uni-corner.why", compact(
             "page",
             "page_adverts"
-        ));
+        ))->compileShortcodes();
     }
 }

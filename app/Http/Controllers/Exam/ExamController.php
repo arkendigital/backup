@@ -64,6 +64,6 @@ class ExamController extends Controller
             "section" => $this->section,
             "page" => $page,
             "page_adverts" => $page_adverts
-        ]);
+        ])->compileShortcodes();
     }
 }

@@ -47,6 +47,6 @@ class JobGraduateController extends Controller
         return view("job.graduate.index", compact(
             "page",
             "page_adverts"
-        ));
+        ))->compileShortcodes();
     }
 }

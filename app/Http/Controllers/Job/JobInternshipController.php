@@ -36,6 +36,6 @@ class JobInternshipController extends Controller
         return view("job.internship.index", compact(
             "page",
             "page_adverts"
-        ));
+        ))->compileShortcodes();
     }
 }

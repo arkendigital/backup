@@ -39,7 +39,7 @@ class JobAdvertiseController extends Controller
         return view("job.advertise.index", compact(
             "page",
             "page_adverts"
-        ));
+        ))->compileShortcodes();
     }
 
     /**

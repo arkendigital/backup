@@ -49,7 +49,7 @@ class ExamSurveyController extends Controller
             "page",
             "page_adverts",
             "categories"
-        ));
+        ))->compileShortcodes();
     }
 
     /**
@@ -110,6 +110,6 @@ class ExamSurveyController extends Controller
             "page",
             "page_adverts",
             "categories"
-        ));
+        ))->compileShortcodes();
     }
 }

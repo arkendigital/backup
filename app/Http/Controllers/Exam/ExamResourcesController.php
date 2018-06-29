@@ -53,7 +53,7 @@ class ExamResourcesController extends Controller
             "page",
             "resources",
             "page_adverts"
-        ));
+        ))->compileShortcodes();
     }
 
     /**
@@ -82,6 +82,6 @@ class ExamResourcesController extends Controller
         return view("exam.resources.view", [
             "resource" => $exam_resource,
             "section" => $section
-        ]);
+        ])->compileShortcodes();
     }
 }

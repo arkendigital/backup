@@ -41,7 +41,7 @@ class SocietyController extends Controller
             "page",
             "page_adverts",
             "societies"
-        ));
+        ))->compileShortcodes();
     }
 
     /**
@@ -86,7 +86,7 @@ class SocietyController extends Controller
             "societies",
             "page",
             "section"
-        ));
+        ))->compileShortcodes();
     }
 
     /**

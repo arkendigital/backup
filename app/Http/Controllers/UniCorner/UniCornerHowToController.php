@@ -51,6 +51,6 @@ class UniCornerHowToController extends Controller
         return view("uni-corner.how", compact(
             "page",
             "page_adverts"
-        ));
+        ))->compileShortcodes();
     }
 }

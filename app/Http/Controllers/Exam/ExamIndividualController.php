@@ -55,7 +55,7 @@ class ExamIndividualController extends Controller
             "page_adverts",
             "category",
             "categories"
-        ));
+        ))->compileShortcodes();
     }
 
     /**
@@ -120,6 +120,6 @@ class ExamIndividualController extends Controller
             "category",
             "categories",
             "module_sections"
-        ));
+        ))->compileShortcodes();
     }
 }

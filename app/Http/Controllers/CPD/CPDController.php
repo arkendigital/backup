@@ -35,6 +35,6 @@ class CPDController extends Controller
         */
         return view("cpd.index", compact(
             "page"
-        ));
+        ))->compileShortcodes();
     }
 }

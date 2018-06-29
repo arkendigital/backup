@@ -61,7 +61,7 @@ class HomeController extends Controller
             "page",
             'exams',
             'wealth_of_information'
-        ));
+        ))->compileShortcodes();
     }
 
     /**

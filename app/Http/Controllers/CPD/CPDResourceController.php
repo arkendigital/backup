@@ -60,7 +60,7 @@ class CPDResourceController extends Controller
             "page",
             "resources",
             "page_adverts"
-        ));
+        ))->compileShortcodes();
     }
 
     /**
@@ -87,6 +87,6 @@ class CPDResourceController extends Controller
         return view("cpd.resources.view", [
             "resource" => $cpd_resource,
             "section" => $section
-        ]);
+        ])->compileShortcodes();
     }
 }

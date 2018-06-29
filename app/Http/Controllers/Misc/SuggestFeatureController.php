@@ -35,7 +35,7 @@ class SuggestFeatureController extends Controller
 
         return view("misc.suggest-feature", compact(
             "page"
-        ));
+        ))->compileShortcodes();
     }
 
     /**

@@ -51,6 +51,6 @@ class CPDLinkController extends Controller
             "links",
             "page",
             "page_adverts"
-        ));
+        ))->compileShortcodes();
     }
 }

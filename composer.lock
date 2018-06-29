@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "059d2edc01bd51fd51eb93f489a85cde",
+    "content-hash": "966c5789d55ee640a409a5f5390749dc",
     "packages": [
         {
             "name": "albertcht/invisible-recaptcha",
@@ -1311,6 +1311,46 @@
                 "trusted proxy"
             ],
             "time": "2017-06-15T17:19:42+00:00"
+        },
+        {
+            "name": "gornymedia/laravel-shortcodes",
+            "version": "v1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/gornymedia/laravel-shortcodes.git",
+                "reference": "d5ad8c8c07beb92f459906efdd4ccfe133ff43a1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gornymedia/laravel-shortcodes/zipball/d5ad8c8c07beb92f459906efdd4ccfe133ff43a1",
+                "reference": "d5ad8c8c07beb92f459906efdd4ccfe133ff43a1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Gornymedia\\Shortcodes\\": "src/Shortcodes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Gorny",
+                    "email": "tom@gornymedia.com"
+                }
+            ],
+            "description": "Laravel shortcodes package",
+            "keywords": [
+                "laravel",
+                "shortcodes"
+            ],
+            "time": "2017-10-07T13:13:52+00:00"
         },
         {
             "name": "graham-campbell/markdown",

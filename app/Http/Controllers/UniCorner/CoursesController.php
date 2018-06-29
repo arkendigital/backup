@@ -51,7 +51,7 @@ class CoursesController extends Controller
             "page",
             "page_adverts",
             "courses"
-        ));
+        ))->compileShortcodes();
     }
 
     /**
@@ -64,6 +64,6 @@ class CoursesController extends Controller
     {
         return view("uni-corner.courses.view", compact(
             "course"
-        ));
+        ))->compileShortcodes();
     }
 }

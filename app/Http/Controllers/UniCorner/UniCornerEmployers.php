@@ -45,7 +45,7 @@ class UniCornerEmployers extends Controller
             "page",
             "page_adverts",
             "employers"
-        ));
+        ))->compileShortcodes();
     }
 
     /**
@@ -90,6 +90,6 @@ class UniCornerEmployers extends Controller
             "employers",
             "section",
             "page"
-        ));
+        ))->compileShortcodes();
     }
 }

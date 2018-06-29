@@ -51,6 +51,6 @@ class CPDPublicationController extends Controller
             "publications",
             "page",
             "page_adverts"
-        ));
+        ))->compileShortcodes();
     }
 }

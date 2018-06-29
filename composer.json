@@ -14,6 +14,7 @@
         "davejamesmiller/laravel-breadcrumbs": "^4.2",
         "doctrine/dbal": "^2.7",
         "fideloper/proxy": "~3.3",
+        "gornymedia/laravel-shortcodes": "^1.2",
         "graham-campbell/markdown": "^8.0",
         "intervention/image": "^2.4",
         "jamesmills/watchable": "^1.0",

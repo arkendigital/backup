@@ -56,6 +56,6 @@ class ExamLinksController extends Controller
             "official_links",
             "unofficial_links",
             "page_adverts"
-        ));
+        ))->compileShortcodes();
     }
 }

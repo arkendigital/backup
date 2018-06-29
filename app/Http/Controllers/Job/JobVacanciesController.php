@@ -172,7 +172,7 @@ class JobVacanciesController extends Controller
             "regions",
             "job_types",
             "page_adverts"
-        ));
+        ))->compileShortcodes();
     }
 
     /**
@@ -281,6 +281,6 @@ class JobVacanciesController extends Controller
         return view("job.vacancies.view", compact(
             "job",
             "page"
-        ));
+        ))->compileShortcodes();
     }
 }

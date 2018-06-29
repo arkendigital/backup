@@ -44,6 +44,6 @@ class SalarySurveyController extends Controller
         return view("salary-survey.index", compact(
           "page",
           "page_adverts"
-        ));
+        ))->compileShortcodes();
     }
 }

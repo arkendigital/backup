@@ -43,6 +43,6 @@ class AboutController extends Controller
         */
         return view("misc.about", compact(
             "page"
-        ));
+        ))->compileShortcodes();
     }
 }
