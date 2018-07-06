@@ -27,7 +27,7 @@ class CPDResourceLink extends FormRequest
         return [
             "title" => "required|string|max:60",
             "subtitle" => "max:80",
-            "text" => "max:100",
+            "text" => "max:500",
 						"link" => "url"
         ];
     }

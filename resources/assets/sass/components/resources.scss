@@ -23,20 +23,28 @@
       position: absolute;
       top: 0;
       left: 0;
+      width: calc(100% - 50px);
+      height: calc(100% - 50px);
       width: 100%;
       height: 100%;
       background: $blue;
       color: #fff;
-      align-items: center;
-      justify-content: center;
       display: none;
-      font-size: 16px;
+      font-size: 14px;
       line-height: 22px;
+      overflow-y: auto;
+
+      > div {
+        padding: 25px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+      }
     }
 
     &:hover {
       .resource-list-item__overlay {
-        display: flex;
+        display: inline;
       }
     }
 
