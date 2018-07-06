@@ -104,3 +104,10 @@ Route::post('api/reports/{post}', 'Api\\ReportController@store');
 Route::get('api/posts/content/{post}', 'Api\\ForumPostController@show');
 Route::get('api/users', 'Api\\UsersController@index');
 Route::post('api/trumbowyg-upload-image', 'Api\\TrumbowygUploadImage@store');
+
+/**
+ * Advert tracking
+ *
+ */
+Route::get("track", "Adverts\\AdvertTrackingController@track")
+  ->name("advert.track");

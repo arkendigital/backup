@@ -31,6 +31,9 @@
                         <td>{{ $advert->name }}</td>
                         <td>
                           <div class="btn-group">
+                            <a class="btn btn-primary btn-small" type="button" href="{{ route('adverts.show', $advert) }}">
+                              <i class="fa fa-eye"></i>
+                            </a>
                             <a class="btn btn-success btn-small" type="button" href="{{ route('adverts.edit', $advert) }}">
                               <i class="fa fa-pencil"></i>
                             </a>

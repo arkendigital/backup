@@ -78,6 +78,32 @@
   <script>
     $('.editor').trumbowyg({
       svgPath: '/images/icons.svg',
+      btnsDef: {
+        buttonShortcode: {
+          fn: 'insertText',
+          ico: 'horizontal-rule',
+          title: 'Insert Button Shortcode',
+          text: 'Button Shortcode',
+          param: '[button text="Insert Button Text" link="Insert Button Link" new_tab="Yes"]',
+          forceCss: true,
+          hasIcon: false
+        }
+      },
+      btns: [
+        ['viewHTML'],
+        ['undo', 'redo'], // Only supported in Blink browsers
+        ['formatting'],
+        ['strong', 'em', 'del'],
+        ['superscript', 'subscript'],
+        ['link'],
+        ['insertImage'],
+        ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+        ['unorderedList', 'orderedList'],
+        ['horizontalRule'],
+        ['removeformat'],
+        ['fullscreen'],
+        ['buttonShortcode']
+      ]
     });
   </script>
 @endpush

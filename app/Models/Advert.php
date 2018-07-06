@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\AdvertImpression;
+use App\Models\AdvertUniqueImpression;
+use App\Models\AdvertClick;
 
 class Advert extends Model
 {
@@ -17,7 +20,13 @@ class Advert extends Model
     protected $fillable = [
         "name",
         "url",
-        "image_path"
+        "image_path",
+        "type",
+        "tenancy_price",
+        "cpc",
+        "start_date",
+        "end_date",
+        "active"
     ];
 
     /**
@@ -44,6 +53,88 @@ class Advert extends Model
     protected $dates = ['deleted_at'];
 
     /**
+     * An advert has a metric attached
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function metric()
+    {
+      return $this->hasOne(AdvertMetric::class, "advert_id", "id");
+    }
+
+    /**
+     * Add impression to advert
+     *
+     */
+    public function trackImpression()
+    {
+
+      AdvertImpression::create([
+        "advert_id" => $this->attributes["id"]
+      ]);
+
+    }
+
+    /**
+     * Add unique impression to advert
+     *
+     */
+    public function trackUniqueImpression()
+    {
+
+      $cookie_name = "ad_" . $this->attributes["id"];
+
+      /**
+       * Check if unique cookie exists
+       *
+       */
+      if (null === request()->cookie($cookie_name)) {
+
+        /**
+         * Create cookie
+         *
+         */
+        \Cookie::queue($cookie_name, now(), 43200);
+
+        /**
+         * Track unique impression
+         *
+         */
+        AdvertUniqueImpression::create([
+          "advert_id" => $this->attributes["id"]
+        ]);
+
+      }
+
+    }
+
+    /**
+     * Add click to advert
+     *
+     */
+    public function trackClick()
+    {
+
+      AdvertClick::create([
+        "advert_id" => $this->attributes["id"]
+      ]);
+
+    }
+
+    /**
+     * Get tracking url attribute
+     *
+     */
+    public function getTrackingUrlAttribute()
+    {
+      $advert_id = $this->attributes["id"];
+      $url = $this->attributes["url"];
+      $tracking_url = env("APP_URL") . "/track?id=$advert_id&url=$url";
+
+      return $tracking_url;
+    }
+
+    /**
     * Get the avatar attribute
     *
     * @return string
@@ -53,5 +144,19 @@ class Advert extends Model
         if ($this->image_path != "") {
             return env("S3_URL") . $this->image_path;
         }
+    }
+
+    public function getStartDateAttribute()
+    {
+      if ($this->attributes["start_date"] !== null) {
+        return date("d-m-Y", strtotime($this->attributes["start_date"]));
+      }
+    }
+
+    public function getEndDateAttribute()
+    {
+      if ($this->attributes["end_date"] !== null) {
+        return date("d-m-Y", strtotime($this->attributes["end_date"]));
+      }
     }
 }

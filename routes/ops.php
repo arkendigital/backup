@@ -135,7 +135,20 @@ Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function ()
     ]]);
 
     /**
-    * CPD Resources.
+     * CPD Resource LInks
+     *
+     */
+    Route::get("/cpd-resources/{resource}/links/create", "CPD\CPDResourceLinkController@create")
+      ->name("ops.cpd.resources.links.create");
+    Route::post("/cpd-resources/{resource}/links/create", "CPD\CPDResourceLinkController@store")
+      ->name("ops.cpd.resources.links.store");
+    Route::get("/cpd-resources/{resource}/links/{link}/edit", "CPD\CPDResourceLinkController@edit")
+      ->name("ops.cpd.resources.links.edit");
+    Route::patch("/cpd-resources/{resource}/links/{link}/edit", "CPD\CPDResourceLinkController@update")
+      ->name("ops.cpd.resources.links.update");
+
+    /**
+    * CPD Publications.
     */
     Route::resource("/cpd-publications", "CPD\CPDPublicationController", ["parameters" => [
       "cpd-publications" => "publication"

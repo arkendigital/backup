@@ -11,7 +11,7 @@
 
       <h2>{{ $resource->name }}</h2>
 
-      <p>{!! $resource->content !!}</p>
+      {{-- <p>{!! $resource->content !!}</p> --}}
 
     </div>
     <div class="website-container-sidebar">
@@ -21,6 +21,22 @@
     </div>
 
     <div class="clear"></div>
+
+    <div class="resource-list margin-bottom--medium">
+      @foreach($resource->links as $link)
+        <a class="resource-list-item resource-list-item-with-padding" href="{{ $link->link }}" target="_blank">
+          @if($link->text != "")
+            <div class="resource-list-item__overlay">
+              <div>{{ $link->text }}</div>
+            </div>
+          @endif
+          <div>
+            <img class="resource-list-item-icon resource-list-item-icon-small" src="/images/icons/ao.png" alt="Actuaries Online" title="Actuaries Online">
+            <span class="resource-list-item-title">{{ $link->title }}</span>
+          </div>
+        </a><!-- /.resource-list-item -->
+      @endforeach
+    </div><!-- /.resource-list -->
 
   </div><!-- /.website-container -->
 
@@ -35,5 +51,13 @@
   {{-- @include("partials.advert", [
     "advert" => $resource->advert
   ]) --}}
+
+  @push("scripts-after")
+    <script>
+    $(function() {
+      $(".resource-list-item").matchHeight();
+    });
+    </script>
+  @endpush
 
 @endsection

@@ -80,12 +80,77 @@
     </form>
 </div>
 
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <h3 class="box-title">Resource Links <small>(links are only applicable to resources that do not have an external link)</small></h3>
+    <a class="btn btn-primary btn-small pull-right" type="button" href="{{ route("ops.cpd.resources.links.create", $resource) }}">Create Link</a>
+  </div>
+  <div class="box-body">
+    @if($resource->links->isEmpty())
+      This resource has no links yet.
+    @else
+
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($resource->links as $link)
+              <tr>
+                <td>{{ $link->title }}</td>
+                <td>
+                  <div class="btn-group">
+                    <a class="btn btn-success btn-small" type="button" href="{{ route("ops.cpd.resources.links.edit", [$resource, $link]) }}">
+                      <i class="fa fa-pencil"></i>
+                    </a>
+                  </div>
+                </td>
+              </tr>
+            @endforeach
+          </tbody>
+        </table>
+      </div>
+
+    @endif
+  </div>
+</div>
+
 @push("scripts-after")
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.9.4/trumbowyg.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.9.4/ui/trumbowyg.min.css">
   <script>
     $('.editor').trumbowyg({
       svgPath: '/images/icons.svg',
+      btnsDef: {
+        buttonShortcode: {
+          fn: 'insertText',
+          ico: 'horizontal-rule',
+          title: 'Insert Button Shortcode',
+          text: 'Button Shortcode',
+          param: '[button text="Insert Button Text" link="Insert Button Link" new_tab="Yes"]',
+          forceCss: true,
+          hasIcon: false
+        }
+      },
+      btns: [
+        ['viewHTML'],
+        ['undo', 'redo'], // Only supported in Blink browsers
+        ['formatting'],
+        ['strong', 'em', 'del'],
+        ['superscript', 'subscript'],
+        ['link'],
+        ['insertImage'],
+        ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+        ['unorderedList', 'orderedList'],
+        ['horizontalRule'],
+        ['removeformat'],
+        ['fullscreen'],
+        ['buttonShortcode']
+      ]
     });
   </script>
 @endpush

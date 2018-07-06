@@ -95,4 +95,13 @@ class CPDResource extends Model
     {
       return $this->hasOne(Advert::class, 'id', 'advert_id');
     }
+
+    /**
+     * A resource can have many links
+     *
+     */
+    public function links()
+    {
+      return $this->hasMany(CPDResourceLink::class, 'resource_id', 'id');
+    }
 }

@@ -6,17 +6,28 @@
 function getArrayOfAdverts($page_id)
 {
     $adverts = \App\Models\PageAdvert::where("page_id", $page_id)
-    ->get();
+      ->whereHas("advert", function ($query) {
+        $query->where("start_date", "<=", now())
+          ->where("end_date", ">=", now())
+          ->where("active", 1);
+      })
+      // ->where("start_date", "<=", now())
+      // ->where("end_date", ">=", now())
+      ->get();
 
     $page_adverts = [];
 
     foreach ($adverts as $advert) {
-        if (isset($advert->advert)) {
-            $new[$advert->slug] = [
-        "image" => $advert->advert->image,
-        "url" => $advert->advert->url
-      ];
-        }
+
+      $advert->advert->trackImpression();
+      $advert->advert->trackUniqueImpression();
+
+      if (isset($advert->advert)) {
+        $new[$advert->slug] = [
+          "image" => $advert->advert->image,
+          "url" => $advert->advert->tracking_url
+        ];
+      }
     }
 
     if (!empty($new)) {

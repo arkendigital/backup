@@ -16,6 +16,29 @@
     text-align: center;
     width: calc(24% - 45px);
     margin: 25px 0;
+    position: relative;
+    text-decoration: none;
+
+    &__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: $blue;
+      color: #fff;
+      align-items: center;
+      justify-content: center;
+      display: none;
+      font-size: 16px;
+      line-height: 22px;
+    }
+
+    &:hover {
+      .resource-list-item__overlay {
+        display: flex;
+      }
+    }
 
     a {
         text-decoration: none;
