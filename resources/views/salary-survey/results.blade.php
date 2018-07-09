@@ -135,7 +135,7 @@
           responsive: true,
           title: {
 					  display: true,
-					  text: 'Permanent Employees'
+					  text: 'Permanent Employees',
 				  },
           legend: {
             display: false
@@ -147,7 +147,8 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Average Salary Per Year (£k)'
+                    labelString: 'Average Salary Per Year (£k)',
+                    fontSize: 10
                   },
                   ticks: {
                       beginAtZero:true
@@ -200,7 +201,8 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Average Salary Per Day (£)'
+                    labelString: 'Average Salary Per Day (£)',
+                    fontSize: 10
                   },
                   ticks: {
                       beginAtZero:true
@@ -253,7 +255,8 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Average Salary Per Year (£k)'
+                    labelString: 'Average Salary Per Year (£k)',
+                    fontSize: 10
                   },
                   ticks: {
                       beginAtZero:true
@@ -306,7 +309,8 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Average Salary Per Day (£)'
+                    labelString: 'Average Salary Per Day (£)',
+                    fontSize: 10
                   },
                   ticks: {
                       beginAtZero:true
@@ -359,7 +363,8 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Average Salary Per Year (£k)'
+                    labelString: 'Average Salary Per Year (£k)',
+                    fontSize: 10
                   },
                   ticks: {
                       beginAtZero:true
@@ -412,7 +417,8 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Average Salary Per Day (£)'
+                    labelString: 'Average Salary Per Day (£)',
+                    fontSize: 10
                   },
                   ticks: {
                       beginAtZero:true
@@ -465,7 +471,8 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Average Salary Per Year (£k)'
+                    labelString: 'Average Salary Per Year (£k)',
+                    fontSize: 10
                   },
                   ticks: {
                       beginAtZero:true
@@ -518,7 +525,8 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Average Salary Per Day (£)'
+                    labelString: 'Average Salary Per Day (£)',
+                    fontSize: 10
                   },
                   ticks: {
                       beginAtZero:true
@@ -571,7 +579,8 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Average Salary Per Year (£k)'
+                    labelString: 'Average Salary Per Year (£k)',
+                    fontSize: 10
                   },
                   ticks: {
                       beginAtZero:true
@@ -624,7 +633,8 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Average Salary Per Day (£)'
+                    labelString: 'Average Salary Per Day (£)',
+                    fontSize: 10
                   },
                   ticks: {
                       beginAtZero:true
@@ -677,7 +687,8 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Average Salary Per Year (£k)'
+                    labelString: 'Average Salary Per Year (£k)',
+                    fontSize: 10
                   },
                   ticks: {
                       beginAtZero:true
@@ -730,7 +741,8 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Average Salary Per Day (£)'
+                    labelString: 'Average Salary Per Day (£)',
+                    fontSize: 10
                   },
                   ticks: {
                       beginAtZero:true
@@ -789,7 +801,8 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Average Salary Per Year (£k)'
+                    labelString: 'Average Salary Per Year (£k)',
+                    fontSize: 10
                   },
                   ticks: {
                       beginAtZero:true
@@ -848,7 +861,8 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Average Salary (£k)'
+                    labelString: 'Average Salary Per Day (£)',
+                    fontSize: 10
                   },
                   ticks: {
                       beginAtZero:true
@@ -905,7 +919,8 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Average Salary Per Year (£k)'
+                    labelString: 'Average Salary Per Year (£k)',
+                    fontSize: 10
                   },
                   ticks: {
                       beginAtZero:true
@@ -962,7 +977,8 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Average Salary (£k)'
+                    labelString: 'Average Salary Per Day (£)',
+                    fontSize: 10
                   },
                   ticks: {
                       beginAtZero:true
