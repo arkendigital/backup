@@ -382,11 +382,22 @@
 
     &--no-image {
       background-image: url('/images/placeholder/discussion.png');
-      
+
     }
 
   }
   a {
     text-decoration: none;
   }
+}
+
+
+
+
+.homepage-hero {
+  visibility: hidden;
+}
+
+.slick-initialized {
+  visibility: visible;
 }
