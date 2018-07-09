@@ -13,7 +13,7 @@
       <p>{!! $page->getField("page_content") !!}</p>
 
       <h3>See graduate jobs <a onclick="document.getElementById('searchGraduateJobsForm').submit()" class="cursor-pointer">here</a></h3>
-      <h3>Find graduate employers <a href="{{ url('/jobs/vacancies') }}">here</a></h3>
+      <h3>Find graduate employers <a href="{{ url("/uni-corner/actuarial-employers") }}">here</a></h3>
 
       <form action="/jobs/vacancies" method="POST" id="searchGraduateJobsForm" style="display: none;">
         {{ csrf_field() }}

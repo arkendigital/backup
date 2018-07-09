@@ -3,6 +3,8 @@
 
   @media(max-width: $tablet) {
     text-align: center;
+    display: inline-block;
+    width: 100%;
   }
 
   h1 {
@@ -80,6 +82,10 @@
   color: $blue;
   margin: 25px 0;
 
+  @media(max-width: $tablet) {
+    text-align: center;
+  }
+
   @media(max-width: 900px) {
       width: 100%;
   }
@@ -87,6 +93,15 @@
   span {
     float: left;
     width: calc(100% - 100px);
+
+    @media(max-width: $tablet) {
+      float: none;
+      width: auto;
+    }
+
+    @media(max-width: 500px) {
+      display: block;
+    }
   }
   a {
     float: right;
@@ -99,6 +114,14 @@
     border-radius: 12.5px;
     margin-left: 10px;
     font-size: 18px;
+
+    @media(max-width: $tablet) {
+      float: none;
+    }
+
+    @media(max-width: 500px) {
+      margin-top: 7.5px;
+    }
   }
 
   &:last-of-type {
@@ -107,8 +130,13 @@
 
 
     @media(max-width: 900px) {
-        float: left;
-        text-align: left;
+      float: left;
+      text-align: left;
+    }
+
+    @media(max-width: $tablet) {
+      float: none;
+      text-align: center;
     }
 
   }

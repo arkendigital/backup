@@ -410,11 +410,21 @@
     width: calc(100% - 100px);
     background: #fff;
     padding: 50px;
+
+    @media(max-width: $tablet) {
+      padding: 20px;
+      width: calc(100% - 40px);
+    }
+
     &-title {
       display: block;
       font-size: 29px;
       font-weight: 600;
       color: #0d72b9;
+
+      @media(max-width: $tablet) {
+        font-size: 20px;
+      }
     }
     &-spec {
       display: block;
@@ -450,6 +460,10 @@
         color: #1a304d;
         text-decoration: none;
         word-break: break-all;
+      }
+
+      @media(max-width: $tablet) {
+        font-size: 15px;
       }
     }
   }
