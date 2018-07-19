@@ -34,9 +34,11 @@ $(".survey-answer-dropdown-item").click(function() {
   var module_name = $(this).attr("data-module-name");
   var category_id = $(this).attr("data-category-id");
 
-  $(".survey-answer-cat").hide();
-  $(".survey-answer-dropdown").hide();
-  $("#survey-answer-cat-"+category_id).show();
+  $(".survey-answer-cat").removeClass("survey-answer-active");
+
+  // $(".survey-answer-cat").hide();
+  // $(".survey-answer-dropdown").hide();
+  // $("#survey-answer-cat-"+category_id).show();
   $("#survey-answer-category-"+category_id).html(module_name);
   $("#survey-answer-category-"+category_id).parent().parent().addClass("survey-answer-active");
 

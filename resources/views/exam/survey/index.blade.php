@@ -72,6 +72,7 @@
         <div id="salary-survey-footer-after-submission" class="margin-top--small salary-survey-footer" style="display: none;">
           <p>
             Thank you for taking part.
+            <a href="/exams/exam-survey/#survey-form" class="button button--dark-blue">Add another exam</a>
             <a href="/exams/survey/results" class="button button--dark-blue">See results</a>
             <a href="{{ url('/discussion/exams') }}" class="button button--dark-blue">Discuss Exams</a>
           </p>
