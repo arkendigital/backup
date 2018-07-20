@@ -204,10 +204,20 @@ class DiscussionController extends Controller
     public function update(DiscussionRequest $request, DiscussionCategory $category, Discussion $discussion)
     {
 
+        /**
+        * Get excerpt for discussion.
+        */
+        if (isset(request()->excerpt) && request()->excerpt != "") {
+            $excerpt = request()->excerpt;
+        } else {
+            $excerpt = substr(strip_tags(request()->content), 0, 150) . "...";
+        }
+
         $discussion->update([
             "name" => request()->name,
-            "subject" => request()->subject,
-            "content" => request()->content
+            "excerpt" => $excerpt,
+            "content" => request()->content,
+            "category_id" => request()->category_id,
         ]);
 
 
@@ -225,6 +235,38 @@ class DiscussionController extends Controller
             "alert_message" => "Discussion has been updated!",
             "alert_button" => "OK"
         ]);
+    }
+
+    /**
+     * Remove discussion thread from database storage
+     *
+     * @param DiscussionCategory $category
+     * @param Discussion $discussion
+     *
+     */
+    public function destroy(DiscussionCategory $category, Discussion $discussion)
+    {
+
+        /**
+         * Remove any comments
+         *
+         */
+        DiscussionReply::where("discussion_id", $discussion->id)
+            ->delete();
+
+        /**
+         * Remove the discussion itself
+         *
+         */
+        $discussion->delete();
+
+        return redirect(route("front.discussion.index"))->with([
+            "alert" => true,
+            "alert_title" => "Success",
+            "alert_message" => $discussion->name . " has been deleted!",
+            "alert_button" => "OK"
+        ]);
+
     }
 
 

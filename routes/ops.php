@@ -3,6 +3,13 @@
 Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function () {
 
     Route::get('/', 'AdminController@index')->name('ops');
+
+    Route::get("/export/exam-survey", "ExportController@exam")
+        ->name("export.exam-survey");
+
+    Route::get("/export/salary-survey", "ExportController@salary")
+        ->name("export.salary-survey");
+
     Route::redirect('/index', '/ops', 301);
 
     Route::get('settings', 'SettingController@index')->name('adminSettings');

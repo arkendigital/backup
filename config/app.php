@@ -186,6 +186,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Gornymedia\Shortcodes\ShortcodesServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class
 
     ],
 
@@ -244,6 +245,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Shortcode' => 'Gornymedia\Shortcodes\Facades\Shortcode',
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

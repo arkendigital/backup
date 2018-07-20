@@ -70,4 +70,12 @@ Route::namespace('Discussion')->prefix('discussion')->group(function() {
   */
   Route::patch('/{category}/{discussion}/edit', 'DiscussionController@update')->name("discussion.update");
 
+  /**
+  * Delete a discussion thread.
+  *
+  */
+  Route::delete('/{category}/{discussion}', 'DiscussionController@destroy')
+    ->name("discussion.destroy")
+    ->middleware("discussion");
+
 });

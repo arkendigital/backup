@@ -48,6 +48,25 @@
               </div>
 
               <div class="discussion-edit-form-item">
+                <label>Category</label>
+                @if($errors->has("category_id"))
+                    <p class="discussion-edit-form-item-error">{{ $errors->first("category_id") }}</p>
+                @endif
+                <select name="category_id">
+                  <option value="">Select a category to add this discussion to</option>
+                  @foreach($categories as $cat)
+                    <option value="{{ $cat->id }}"
+                        @if(session()->exists("errors"))
+                            @if(old("category_id") == $cat->id) selected @endif
+                        @else
+                            @if($discussion->category_id == $cat->id) selected @endif
+                        @endif
+                    >{{ $cat->name }}</option>
+                  @endforeach
+                </select>
+              </div>
+
+              <div class="discussion-edit-form-item">
                 <label for="excerpt">Short description about your thread <small>(optional)</small></label>
                 @if($errors->has("excerpt"))
                   <p class="discussion-edit-form-item-error">{{ $errors->first("excerpt") }}</p>

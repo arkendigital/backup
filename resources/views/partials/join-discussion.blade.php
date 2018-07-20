@@ -2,11 +2,13 @@
   @php
     $discussions = App\Models\Discussion::where("category_id", $category_id)
       ->take(8)
+      ->orderBy("created_at", "DESC")
       ->get();
   @endphp
 @else
   @php
     $discussions = App\Models\Discussion::take(8)
+      ->orderBy("created_at", "DESC")
       ->get();
   @endphp
 @endif

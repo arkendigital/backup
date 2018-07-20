@@ -51,7 +51,8 @@
 
 .discussion-add-button,
 .discussion-edit-button,
-.discussion-button--reply {
+.discussion-button--reply,
+.discussion-button--delete {
   float: right;
   margin: 50px 0;
   background: #1a304d;
@@ -60,6 +61,12 @@
   border-radius: 25px;
   text-decoration: none;
   cursor: pointer;
+  border: none;
+  outline: 0;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  font-size: 16px;
 
   @media(max-width: 950px) {
       margin: 25px 0;
@@ -69,15 +76,21 @@
     float: none;
     display: block;
     margin: 0 auto;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
     border-radius: 4px;
   }
 
 }
 
+.discussion-button--delete {
+    background: $red;
+    padding: 11.5px 25px;
+}
+
 .discussion-button {
 
-    &--reply {
+    &--reply,
+    &--delete {
         margin-left: 15px;
 
         @media(max-width: 768px) {

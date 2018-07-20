@@ -14,6 +14,11 @@
       @endif
 
       @if($discussion->canEdit())
+        <form action="{{ route("discussion.destroy", compact("category", "discussion")) }}" method="POST">
+          {{ csrf_field() }}
+          {{ method_field("DELETE") }}
+          <button type="submit" class="discussion-button--delete">Delete</button>
+        </form>
         <a class="discussion-edit-button" href="{{ route("discussion.edit", compact("category", "discussion")) }}">Edit</a>
       @endif
 
