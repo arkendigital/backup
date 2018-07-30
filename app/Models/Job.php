@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Cviebrock\EloquentSluggable\Sluggable;
+use App\Models\JobClick;
 
 class Job extends Model
 {
@@ -27,7 +28,11 @@ class Job extends Model
         "region_id",
         "company_id",
         "featured",
-        "apply_link"
+        "apply_link",
+        "status_id",
+        "type",
+        "experience",
+        "sector_id"
     ];
 
 
@@ -82,5 +87,77 @@ class Job extends Model
     public function sector()
     {
         return $this->hasOne(JobSector::class, 'id', 'sector_id');
+    }
+
+
+    /**
+     * Add impression for a job
+     *
+     */
+    public function trackImpression()
+    {
+
+      JobImpression::create([
+        "job_id" => $this->attributes["id"]
+      ]);
+
+    }
+
+    /**
+     * Add unique impression to job
+     *
+     */
+    public function trackUniqueImpression()
+    {
+
+      $cookie_name = "job_" . $this->attributes["id"];
+
+      /**
+       * Check if unique cookie exists
+       *
+       */
+      if (null === request()->cookie($cookie_name)) {
+
+        /**
+         * Create cookie
+         *
+         */
+        \Cookie::queue($cookie_name, now(), 43200);
+
+        /**
+         * Track unique impression
+         *
+         */
+        JobUniqueImpression::create([
+          "job_id" => $this->attributes["id"]
+        ]);
+
+      }
+
+    }
+
+    /**
+     * Add click to advert
+     *
+     */
+    public function trackClick()
+    {
+
+      JobClick::create([
+        "job_id" => $this->attributes["id"]
+      ]);
+
+    }
+
+    /**
+     * Get tracking url attribute
+     *
+     */
+    public function getTrackingUrlAttribute()
+    {
+      $job_id = $this->attributes["id"];
+      $tracking_url = env("APP_URL") . "/track/job?id=$job_id";
+
+      return $tracking_url;
     }
 }

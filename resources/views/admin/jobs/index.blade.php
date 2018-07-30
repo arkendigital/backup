@@ -31,6 +31,9 @@
                         <td>{{ $job->title }}</td>
                         <td>
                           <div class="btn-group">
+                              <a class="btn btn-primary btn-small" type="button" href="{{ route('jobs.show', $job) }}">
+                                <i class="fa fa-eye"></i>
+                              </a>
                             <a class="btn btn-success btn-small" type="button" href="{{ route('jobs.edit', $job) }}">
                               <i class="fa fa-pencil"></i>
                             </a>

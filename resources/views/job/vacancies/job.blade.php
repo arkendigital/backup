@@ -6,7 +6,7 @@
 
 	<div class="job-list-item-content">
 
-		<a href="/jobs/vacancies/{{ $job->slug }}"><p class="job-list-item-title">
+		<a href="{{ $job->tracking_url }}"><p class="job-list-item-title">
 			{{ $job->title }}
 		</p></a>
 
@@ -49,5 +49,5 @@
 		</div>
 	</div><!-- /.job-list-item-content -->
 
-	<a class="job-list-item-button" href="/jobs/vacancies/{{ $job->slug }}">View</a>
+	<a class="job-list-item-button" href="{{ $job->tracking_url }}">View</a>
 </div><!-- /.job-list-item -->

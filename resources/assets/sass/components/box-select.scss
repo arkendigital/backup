@@ -61,7 +61,8 @@
     font-weight: 600;
     width: calc(180px - 20px);
     padding: 10px;
-    height: calc(100px - 20px);
+    min-height: calc(100px - 20px);
+    height: auto;
     margin: 0 50px;
     margin-bottom: 40px;
     transition: .3s all ease-in-out;

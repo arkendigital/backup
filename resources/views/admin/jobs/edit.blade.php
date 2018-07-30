@@ -28,11 +28,33 @@
             </div>
 
             <div class="form-group">
-              <label for="salary_type">Job Type</label>
-              <select name="salary_type" class="form-control">
+              <label for="status_id">Job Type</label>
+              <select name="status_id" class="form-control">
                 <option value="">Select job type...</option>
-                  <option value="permanent" @if($job->salary_type == "permanent") selected @endif>Permanent</option>
-                  <option value="contract" @if($job->salary_type == "contract") selected @endif>Contract</option>
+                @foreach($types as $type)
+                  <option value="{{ $type->id }}" @if($job->status_id == $type->id) selected @endif>{{ $type->name }}</option>
+                @endforeach
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="sector_id">Job Sector</label>
+              <select name="sector_id" class="form-control">
+                <option value="">Select job sector...</option>
+                @foreach($sectors as $sector)
+                  <option value="{{ $sector->id }}" @if($job->sector_id == $sector->id) selected @endif>{{ $sector->name }}</option>
+                @endforeach
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="experience">Experience</label>
+              <select name="experience" class="form-control">
+                  <option value="">Select experience...</option>
+                  <option value="qualified" @if($job->experience == "qualified") selected @endif>Qualified</option>
+                  <option value="almost" @if($job->experience == "almost") selected @endif>Almost Qualified</option>
+                  <option value="part" @if($job->experience == "part") selected @endif>Part Qualified</option>
+                  <option value="none" @if($job->experience == "none") selected @endif>No exams</option>
               </select>
             </div>
 

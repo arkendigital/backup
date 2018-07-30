@@ -30,7 +30,7 @@ class JobVacanciesController extends Controller
     */
     public function index()
     {
-
+// dd(session()->get("job-filter-type"));
         /**
         * Get page Information
         */
@@ -183,10 +183,10 @@ class JobVacanciesController extends Controller
     */
     public function set_filtering(Request $request)
     {
-        if (isset(request()->type)) {
-            session()->put("job-filter-location", request()->location);
-            session()->put("job-filter-order", request()->order);
-        } else {
+        // if (isset(request()->type) && !isset(request()->sector)) {
+            // session()->put("job-filter-location", request()->location);
+            // session()->put("job-filter-order", request()->order);
+        // } else {
             session()->put("job-filter-keyword", request()->keyword);
             session()->put("job-filter-status", request()->status);
             session()->put("job-filter-experience", request()->experience);
@@ -244,7 +244,7 @@ class JobVacanciesController extends Controller
 
             };
 
-        }
+        // }
 
 
         /**

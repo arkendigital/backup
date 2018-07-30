@@ -16,7 +16,7 @@ function getArrayOfAdverts($page_id)
       ->get();
 
     $page_adverts = [];
-
+    
     foreach ($adverts as $advert) {
 
       $advert->advert->trackImpression();

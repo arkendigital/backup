@@ -84,7 +84,7 @@
                   @if($module->info->{'section_'.$module_section_key.'_link'} == "")
                     <p class="exam-modules-info-section-text">{{ $module->info->{'section_'.$module_section_key.'_text'} }}</p>
                   @else
-                    <a class="exam-modules-info-section-button" href="{{ $module->info->{'section_'.$module_section_key.'_link'} }}" target="_blank">
+                    <a class="exam-modules-info-section-button" href="{{ $module->info->{'section_'.$module_section_key.'_link'} }}" @if($module_section_key != "five") target="_blank" @endif>
                       {{ $module->info->{'section_'.$module_section_key.'_text'} }}
                     </a>
                   @endif

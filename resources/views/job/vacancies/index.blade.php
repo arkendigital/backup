@@ -84,21 +84,6 @@
                 </div>
               @endforeach
 
-              {{--
-              <div class="job-list-sidebar-item checkbox-wrapper">
-                <input type="checkbox" class="job-list-sidebar-item-checkbox" id="status-permanent" name="status[]" value="1" @if(session()->exists("job-filter-status") && !empty(session()->get("job-filter-status")) && in_array(1, session()->get("job-filter-status"))) checked @endif>
-                <label class="job-list-sidebar-item-label" for="status-permanent">Permanent</label>
-              </div>
-              <div class="job-list-sidebar-item checkbox-wrapper">
-                <input type="checkbox" class="job-list-sidebar-item-checkbox" id="status-contract" name="status[]" value="2" @if(session()->exists("job-filter-status") && !empty(session()->get("job-filter-status")) && in_array(2, session()->get("job-filter-status"))) checked @endif>
-                <label class="job-list-sidebar-item-label" for="status-contract">Contract</label>
-              </div>
-              <div class="job-list-sidebar-item checkbox-wrapper">
-                <input type="checkbox" class="job-list-sidebar-item-checkbox" id="status-internship" name="status[]" value="3" @if(session()->exists("job-filter-status") && !empty(session()->get("job-filter-status")) && in_array(3, session()->get("job-filter-status"))) checked @endif>
-                <label class="job-list-sidebar-item-label" for="status-internship">Internship</label>
-              </div>
-              --}}
-
             </div>
 
             <div>
@@ -162,7 +147,7 @@
               <p class="job-list-sidebar-item-title">PERM (ANNUAL)</p>
               <div class="job-list-sidebar-item">
                 <select name="salary" class="job-list-sidebar-item-select">
-                  {{-- <option value="all" class="job-list-sidebar-item-select-default">All</option> --}}
+                  <option value="all" class="job-list-sidebar-item-select-default">All</option>
                   <option value="20000-40000" class="job-list-sidebar-item-select-default"
                       @if(session()->exists("job-filter-salary-min") && session()->get("job-filter-salary-min") == "20000") selected @endif
                   >20-40k</option>
@@ -225,6 +210,8 @@
         <p class="job-list-sidebar-title">Featured jobs</p>
 
         @foreach($featured_jobs as $job)
+          {{ $job->trackImpression() }}
+          {{ $job->trackUniqueImpression() }}
           @include("job.vacancies.job", [
             "job" => $job,
             "featured" => true
@@ -247,6 +234,8 @@
         @elseif($jobs->count() > 0)
 
           @foreach($jobs as $job)
+            {{ $job->trackImpression() }}
+            {{ $job->trackUniqueImpression() }}
             @include("job.vacancies.job", [
               "job" => $job,
               "featured" => false

@@ -31,42 +31,6 @@
       @endforeach
     @endif
 
-    {{--
-    <div class="latest-jobs-slider swiper-container">
-      <div class="swiper-wrapper">
-
-        @php
-          if (isset($experience)) {
-            $jobs = App\Models\Job::where("experience", $experience)
-              ->orderBy("created_at", "DESC")
-              ->get();
-          }
-
-          elseif(isset($status_id)) {
-            $jobs = App\Models\Job::where("status_id", $status_id)
-              ->orderBy("created_at", "DESC")
-              ->get();
-          }
-
-         else {
-           $jobs = App\Models\Job::take(9)
-            ->orderBy("created_at", "DESC")
-            ->get();
-         }
-        @endphp
-
-        @if(isset($jobs))
-          @foreach($jobs as $job)
-          <div class="swiper-slide">
-            <a class="box-select-item" href="/jobs/vacancies/{{ $job->slug }}">{{ $job->title }}</a>
-          </div>
-          @endforeach
-        @endif
-
-      </div>
-    </div>
-    --}}
-
     <div class="clear"></div>
 
     <a class="box-select-button box-select-button--white margin-top--medium margin-bottom--medium" href="/discussion/jobs">Join our discussion</a>
