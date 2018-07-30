@@ -111,3 +111,11 @@ Route::post('api/trumbowyg-upload-image', 'Api\\TrumbowygUploadImage@store');
  */
 Route::get("track", "Adverts\\AdvertTrackingController@track")
   ->name("advert.track");
+
+
+/**
+* Advert tracking
+*
+*/
+Route::get("track/job", "Job\\JobTrackingController@track")
+    ->name("job.track");

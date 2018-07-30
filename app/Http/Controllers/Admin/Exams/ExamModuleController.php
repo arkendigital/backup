@@ -202,4 +202,16 @@ class ExamModuleController extends Controller
             "five"
         ];
     }
+
+    public function destroy(ExamModule $module)
+    {
+
+        $module->delete();
+
+        alert($module->name . " has been removed")
+            ->persistent();
+
+        return redirect()->back();
+
+    }
 }

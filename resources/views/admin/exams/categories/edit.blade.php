@@ -53,6 +53,15 @@
                     <a class="btn btn-success btn-small" type="button" href="{{ route('exam-modules.edit', $module) }}">
                       <i class="fa fa-pencil"></i>
                     </a>
+
+                    <a class="btn btn-danger btn-small" type="button" onclick="document.getElementById('remove-module-{{ $module->id }}').submit()">
+                      <i class="fa fa-trash"></i>
+                    </a>
+
+                    <form action="{{ route('exam-modules.destroy', $module) }}" method="POST" id="remove-module-{{ $module->id }}" style="display: none;">
+                        {{ csrf_field() }}
+                        {{ method_field("DELETE") }}
+                    </form>
                   </div>
                 </td>
               </tr>

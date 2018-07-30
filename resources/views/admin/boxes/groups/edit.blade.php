@@ -69,9 +69,20 @@
                 <td>{{ $item->title }}</td>
                 <td>
                   <div class="btn-group">
+
                     <a class="btn btn-success btn-small" type="button" href="{{ route('box-items.edit', $item) }}">
                       <i class="fa fa-pencil"></i>
                     </a>
+
+                    <a class="btn btn-danger btn-small" type="button" onclick="document.getElementById('remove-{{ $item->id }}').submit()">
+                      <i class="fa fa-trash"></i>
+                    </a>
+
+                    <form action="{{ route("box-items.destroy", $item) }}" method="POST" id="remove-{{ $item->id }}">
+                        {{ csrf_field() }}
+                        {{ method_field("DELETE") }}
+                    </form>
+
                   </div>
                 </td>
               </tr>

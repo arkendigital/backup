@@ -105,4 +105,22 @@ class BoxItemController extends Controller
         */
         return redirect(route("box-groups.edit", $item->group));
     }
+
+    /**
+     * Delete a box group item
+     *
+     * @param BoxItem $item
+     *
+     */
+    public function destroy(BoxItem $item)
+    {
+
+        $item->delete();
+
+        alert($item->title . " has been deleted")
+            ->persistent();
+
+        return redirect()->back();
+
+    }
 }

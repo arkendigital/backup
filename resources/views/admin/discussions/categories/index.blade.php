@@ -36,6 +36,15 @@
                             <a class="btn btn-success btn-small" type="button" href="{{ route('discussion-categories.edit', $category) }}">
                               <i class="fa fa-pencil"></i>
                             </a>
+
+                            <a class="btn btn-danger btn-small" type="button" onclick="document.getElementById('remove-category-{{ $category->id }}').submit()">
+                              <i class="fa fa-trash"></i>
+                            </a>
+
+                            <form action="{{ route("discussion-categories.destroy", $category) }}" method="POST" id="remove-category-{{ $category->id }}">
+                                {{ csrf_field() }}
+                                {{ method_field("DELETE") }}
+                            </form>
                           </div>
                         </td>
                     </tr>

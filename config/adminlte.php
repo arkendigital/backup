@@ -169,7 +169,7 @@ return [
           'header' => 'Box Groups',
         ],
         [
-            'text' => 'Manage Box Groups',
+            'text' => 'Manage Widget Boxes',
             'url'  => 'ops/box-groups',
             'icon'  => 'users',
         ],

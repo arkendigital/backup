@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin\Discussions;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\Discussion;
+use App\Models\DiscussionReply;
 use App\Models\DiscussionCategory;
 use App\Models\DiscussionIcon;
 
@@ -124,5 +126,39 @@ class DiscussionCategoryController extends Controller
         * Redirect user back to edit view.
         */
         return redirect()->back();
+    }
+
+    /**
+     * Remove discussion category from database storage
+     *
+     * @param DiscussionCategory $category
+     *
+     */
+    public function destroy(DiscussionCategory $category)
+    {
+
+        /**
+         * Remove any posts in this category
+         *
+         */
+        $discussions = Discussion::where("category_id", $category->id)
+            ->get();
+
+        foreach ($discussions as $discussion) {
+
+            DiscussionReply::where("discussion_id", $discussion->id)
+                ->delete();
+
+            $discussion->delete();
+
+        }
+
+        $category->delete();
+
+        alert($category->name . " has been removed")
+            ->persistent();
+
+        return redirect()->back();
+
     }
 }

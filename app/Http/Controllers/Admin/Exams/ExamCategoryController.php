@@ -97,4 +97,31 @@ class ExamCategoryController extends Controller
             "category"
         ));
     }
+
+    /**
+     * Remove exam module from database storage
+     *
+     * @param ExamCategory $category
+     *
+     */
+    public function destroy(ExamCategory $category)
+    {
+
+        $modules = ExamModule::where("category_id", $category->id)
+            ->get();
+
+        foreach ($modules as $module) {
+
+            $module->delete();
+
+        }
+
+        $category->delete();
+
+        alert($category->name . " has been removed")
+            ->persistent();
+
+        return redirect()->back();
+
+    }
 }
