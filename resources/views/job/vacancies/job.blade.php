@@ -14,15 +14,15 @@
 
 		<div class="job-list-item-list">
 			<span class="job-list-item-list-key">Job Type</span>
-			<span class="job-list-item-list-value">{{ ucwords($job->salary_type) }}</span>
+			<span class="job-list-item-list-value">{{ ucwords($job->status->name) }}</span>
 		</div>
 
-		@if($job->salary_type == "permanent")
+		@if($job->status_id == 1)
 			<div class="job-list-item-list">
 				<span class="job-list-item-list-key">Annual Salary</span>
 				<span class="job-list-item-list-value">&pound;{{ number_format($job->salary) }}</span>
 			</div>
-		@else
+		@elseif($job->status_id == 2)
 			<div class="job-list-item-list">
 				<span class="job-list-item-list-key">Daily Salary</span>
 				<span class="job-list-item-list-value">&pound;{{ number_format($job->daily_salary) }}</span>

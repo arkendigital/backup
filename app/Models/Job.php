@@ -89,6 +89,11 @@ class Job extends Model
         return $this->hasOne(JobSector::class, 'id', 'sector_id');
     }
 
+    public function status()
+    {
+        return $this->hasOne(JobStatus::class, 'id', 'status_id');
+    }
+
 
     /**
      * Add impression for a job
