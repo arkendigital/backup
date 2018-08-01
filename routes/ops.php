@@ -24,6 +24,12 @@ Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function ()
     Route::get("/export/salary-survey", "ExportController@salary")
         ->name("export.salary-survey");
 
+    Route::get("/upload/salary-survey", "ImportController@salary")
+        ->name("upload.salary-survey");
+
+    Route::post("/upload/salary-survey", "ImportController@salaryImport")
+        ->name("import.salary-survey");
+
     Route::redirect('/index', '/ops', 301);
 
     Route::get('settings', 'SettingController@index')->name('adminSettings');

@@ -148,6 +148,9 @@
               <div class="job-list-sidebar-item">
                 <select name="salary" class="job-list-sidebar-item-select">
                   <option value="all" class="job-list-sidebar-item-select-default">All</option>
+                  <option value="0-20000" class="job-list-sidebar-item-select-default"
+                      @if(session()->exists("job-filter-salary-min") && session()->get("job-filter-salary-min") == "0") selected @endif
+                  >0-20k</option>
                   <option value="20000-40000" class="job-list-sidebar-item-select-default"
                       @if(session()->exists("job-filter-salary-min") && session()->get("job-filter-salary-min") == "20000") selected @endif
                   >20-40k</option>

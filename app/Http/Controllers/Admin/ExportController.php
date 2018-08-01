@@ -13,7 +13,7 @@ class ExportController extends Controller
 	public function exam()
 	{
 
-		return (new Survey)->download('exam_survey_raw_data.xlsx');
+		return (new Survey)->download('exam_survey_raw_data');
 
 		return redirect()->back();
 
@@ -22,7 +22,7 @@ class ExportController extends Controller
 	public function salary()
 	{
 
-		return (new SalarySurvey)->download('salary_survey_raw_data.xlsx');
+		return (new SalarySurvey)->download('salary_survey_raw_data');
 
 		return redirect()->back();
 

@@ -32,6 +32,7 @@
                 <div class="box-body">
 
                     <a class="btn btn-primary" href="{{ route("export.salary-survey") }}">Download Data</a>
+                    <a class="btn btn-info" href="{{ route("upload.salary-survey") }}">Upload Data</a>
 
                 </div>
             </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Exam\Module as ExamModule;
 use App\Models\Survey;
 use App\Models\SalarySurvey;
 // use Excel;
@@ -24,75 +25,75 @@ class ImportController extends Controller
 	{
 
 		$path = $request->file('file')->getRealPath();
-		$data = Excel::load($path, function($reader) {
-					})->get();
-					if(!empty($data) && $data->count()){
-						foreach ($data as $key => $value) {
-							print_r($value);
-							echo "<br><br>";
-							// $insert[] = ['title' => $value->title, 'description' => $value->description];
-						}
-						if(!empty($insert)){
-							// print_r($insert);
-							// echo "<br><br>";
-							// DB::table('items')->insert($insert);
-							// dd('Insert Record successfully.');
-						}
-					}
-					die();
+		$data = Excel::load($path, function($reader) {})->get();
 
-			$path = $request->file('file')->getRealPath();
+		if(!empty($data) && $data->count()){
 
-			$data = Excel::load($path, function($reader) {})->get();
+			foreach ($data as $key => $value) {
 
+				if (isset($value["module"]) && $value["module"] != "" && isset($value["difficulty"]) && $value["difficulty"] != "") {
 
-			if(!empty($data) && $data->count()){
+					$module = ExamModule::where("slug", strtolower($value["module"]))
+						->first();
 
-				dd($data->all());
-
-				foreach ($data->toArray() as $key => $value) {
-
-					print_r($key);
-					print_r($value);
-					echo "<br><br>";
-
-					if(!empty($value)){
-
-						foreach ($value as $v) {
-
-							// print_r($v);
-
-							// $insert[] = ['title' => $v['title'], 'description' => $v['description']];
-
-						}
-
-					}
+					$insert = Survey::create([
+						"module_id" => $module->id,
+						"difficulty" => strtolower($value["difficulty"]),
+						"created_at" => $value["created_at"]
+					]);
 
 				}
 
 			}
 
-			// $data = Excel::load($path, function($reader) {
-			// })->get();
-			// if(!empty($data) && $data->count()){
-			// 	dd($data);
-			// 	foreach ($data as $key => $value) {
-			// 		dd($key . " - " . $value . "");
-			// 		$insert[] = ['title' => $value->title, 'description' => $value->description];
-			// 	}
-			// 	// if(!empty($insert)){
-			// 		// DB::table('items')->insert($insert);
-			// 		// dd('Insert Record successfully.');
-			// 	// }
-			// }
+		}
+
+		alert("Import complete")
+			->persistent();
+
+		return redirect()->back();
+
+	}
+
+
+
+	public function salaryImport(Request $request)
+	{
+
+		$path = $request->file('file')->getRealPath();
+		$data = Excel::load($path, function($reader) {})->get();
+
+		if(!empty($data) && $data->count()){
+
+			foreach ($data as $key => $value) {
+
+				$insert = SalarySurvey::create([
+					"type" => $value["type"],
+					"sector" => $value["sector"],
+					"field" => $value["field"],
+					"experience" => $value["experience"],
+					"qualifications" => $value["qualifications"],
+					"annual_salary" => $value["annual_salary"],
+					"daily_salary" => $value["daily_salary"],
+					"user_id" => $value["user_id"],
+					"created_at" => $value["created_at"]
+				]);
+
+			}
+
+		}
+
+		alert("Import complete")
+			->persistent();
+
+		return redirect()->back();
+
 	}
 
 	public function salary()
 	{
 
-		return (new SalarySurvey)->download('salary_survey_raw_data.xlsx');
-
-		return redirect()->back();
+		return view("admin.import.salary");
 
 	}
 
