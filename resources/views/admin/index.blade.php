@@ -7,7 +7,36 @@
 
 @section("content")
 
-    <p><a class="btn btn-primary" href="{{ route("export.exam-survey") }}">Download Exam Survery Data</a></p>
-    <p><a class="btn btn-success" href="{{ route("export.salary-survey") }}">Download Salary Survery Data</a></p>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Exam Survey</h3>
+                </div>
+                <div class="box-body">
+
+                    <a class="btn btn-primary" href="{{ route("export.exam-survey") }}">Download Data</a>
+                    <a class="btn btn-info" href="{{ route("upload.exam-survey") }}">Upload Data</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Salary Survey</h3>
+                </div>
+                <div class="box-body">
+
+                    <a class="btn btn-primary" href="{{ route("export.salary-survey") }}">Download Data</a>
+                    <a class="btn btn-info" href="{{ route("upload.salary-survey") }}">Upload Data</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
 
 @stop

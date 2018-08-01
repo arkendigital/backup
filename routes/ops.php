@@ -4,11 +4,31 @@ Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function ()
 
     Route::get('/', 'AdminController@index')->name('ops');
 
+    /**
+     * Exam survey data
+     *
+     */
     Route::get("/export/exam-survey", "ExportController@exam")
         ->name("export.exam-survey");
 
+    Route::get("/upload/exam-survey", "ImportController@exam")
+        ->name("upload.exam-survey");
+
+    Route::post("/upload/exam-survey", "ImportController@examImport")
+        ->name("import.exam-survey");
+
+    /**
+     * Salary survey data
+     *
+     */
     Route::get("/export/salary-survey", "ExportController@salary")
         ->name("export.salary-survey");
+
+    Route::get("/upload/salary-survey", "ImportController@salary")
+        ->name("upload.salary-survey");
+
+    Route::post("/upload/salary-survey", "ImportController@salaryImport")
+        ->name("import.salary-survey");
 
     Route::redirect('/index', '/ops', 301);
 

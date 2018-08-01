@@ -92,7 +92,7 @@ class Module extends Model
         if ($total != 0) {
             // return number_format($result/$total*100)."%";
             // return ($result/$total*100)."%";
-            return round($result/$total*100, 2)."%";
+            return round($result/$total*100)."%";
         } else {
             return "N/A";
         }
