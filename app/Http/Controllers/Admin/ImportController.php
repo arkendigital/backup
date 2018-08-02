@@ -67,17 +67,27 @@ class ImportController extends Controller
 
 			foreach ($data as $key => $value) {
 
-				$insert = SalarySurvey::create([
-					"type" => $value["type"],
-					"sector" => $value["sector"],
-					"field" => $value["field"],
-					"experience" => $value["experience"],
-					"qualifications" => $value["qualifications"],
-					"annual_salary" => $value["annual_salary"],
-					"daily_salary" => $value["daily_salary"],
-					"user_id" => $value["user_id"],
-					"created_at" => $value["created_at"]
-				]);
+				if (
+					isset($value["type"]) && $value["type"] != "" &&
+					isset($value["sector"]) && $value["sector"] != "" &&
+					isset($value["field"]) && $value["field"] != "" &&
+					isset($value["experience"]) && $value["experience"] != "" &&
+					isset($value["qualifications"]) && $value["qualifications"] != ""
+				) {
+
+					$insert = SalarySurvey::create([
+						"type" => $value["type"],
+						"sector" => $value["sector"],
+						"field" => $value["field"],
+						"experience" => $value["experience"],
+						"qualifications" => $value["qualifications"],
+						"annual_salary" => $value["annual_salary"],
+						"daily_salary" => $value["daily_salary"],
+						"user_id" => $value["user_id"],
+						"created_at" => $value["created_at"]
+					]);
+
+				}
 
 			}
 
