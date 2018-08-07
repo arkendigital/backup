@@ -606,9 +606,9 @@
             datasets: [{
                 label: '',
                 data: [
-                  {{ $salary_sector_investments_contractor->twenty_plus }},
                   {{ $salary_sector_investments_contractor->one_four }},
                   {{ $salary_sector_investments_contractor->five_nine }},
+                  {{ $salary_sector_investments_contractor->ten_fourteen }},
                   {{ $salary_sector_investments_contractor->fifteen_ninteen }},
                   {{ $salary_sector_investments_contractor->twenty_plus }}
                 ],
