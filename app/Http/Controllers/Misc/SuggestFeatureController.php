@@ -8,22 +8,22 @@ use App\Http\Requests\SuggestFeature as SuggestFeatureRequest;
 use App\Models\Page;
 use App\Jobs\SendSuggestFeatureEmail;
 
+/**
+ * Class SuggestFeatureController
+ * @package App\Http\Controllers\Misc
+ */
 class SuggestFeatureController extends Controller
 {
 
     /**
      * Display the feature form
-     *
+     * @return \Illuminate\View\View
      */
     public function index()
     {
-        $page = Page::where("slug", "suggest-a-feature")
-            ->first();
+        $page = Page::where("slug", "suggest-a-feature")->first();
 
-        /**
-         * Set SEO
-         *
-         */
+        // Set SEO
         if (isset($page->meta_title)) {
             $this->seo()->setTitle($page->meta_title);
         }
@@ -39,31 +39,21 @@ class SuggestFeatureController extends Controller
 
     /**
      * Handle the submission of the form
-     *
      * @param SuggestFeatureRequest $request
-     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function submit(SuggestFeatureRequest $request)
     {
-
-        /**
-         * Build submission object.
-         *
-         */
+         // Build submission object.
         $submission = collect();
         $submission->name = request()->name;
         $submission->message = request()->message;
         $submission->url = request()->url;
 
-        /**
-        * Initiate the send contact email job.
-        *
-        */
+        // Initiate the send contact email job.
         dispatch(new SendSuggestFeatureEmail($submission));
 
-        /**
-         * Redirect user and show a lovely front end popup notifying them
-         */
+         // Redirect user and show a lovely front end popup notifying them
         return redirect(url("/"))->with([
             "alert" => true,
             "alert_title" => "Feature Suggested",
