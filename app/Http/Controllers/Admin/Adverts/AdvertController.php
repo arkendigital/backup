@@ -45,16 +45,40 @@ class AdvertController extends Controller
      */
     public function store(AdvertRequest $request)
     {
+        if (null !== $request->start_date) {
+            $start_date = now()->parse(date("Y-m-d", strtotime($request->start_date)))->toDateTimeString();
+        } else {
+            $start_date = null;
+        }
+
+        if (null !== $request->end_date) {
+            $end_date = now()->parse(date("Y-m-d", strtotime($request->end_date)))->toDateTimeString();
+        } else {
+            $end_date = null;
+        }
+
+        if ($request->exists("active")) {
+            $active = true;
+        } else {
+            $active = false;
+        }
+
         // Insert into database.
         $advert = Advert::create([
-            "name" => request()->name,
-            "url" => request()->url
+            "name" => $request->name,
+            "url" => $request->url,
+            "type" => $request->type,
+            "tenancy_price" => $request->tenancy_price,
+            "cpc" => $request->cpc,
+            "start_date" => $start_date,
+            "end_date" => $end_date,
+            "active" => $active
         ]);
 
         // Upload advert image.
-        if (request()->file("image")) {
+        if ($request->file("image")) {
             $image_path = AWS::uploadImage(
-                request()->file("image"),
+                $request->file("image"),
                 "adverts"
             );
 
@@ -64,9 +88,7 @@ class AdvertController extends Controller
         }
 
         // Redirect user to edit page.
-        return redirect(route("adverts.edit", compact(
-            "advert"
-        )));
+        return redirect()->route("adverts.edit", $advert)->with(compact("advert"));
     }
 
     /**
@@ -76,9 +98,7 @@ class AdvertController extends Controller
      */
     public function edit(Advert $advert)
     {
-        return view("admin.adverts.edit", compact(
-            "advert"
-        ));
+        return view("admin.adverts.edit", compact("advert"));
     }
 
     /**
@@ -110,20 +130,20 @@ class AdvertController extends Controller
 
         // Update advert
         $advert->update([
-            "name" => request()->name,
-            "url" => request()->url,
-            "type" => request()->type,
-            "tenancy_price" => request()->tenancy_price,
-            "cpc" => request()->cpc,
+            "name" => $request->name,
+            "url" => $request->url,
+            "type" => $request->type,
+            "tenancy_price" => $request->tenancy_price,
+            "cpc" => $request->cpc,
             "start_date" => $start_date,
             "end_date" => $end_date,
             "active" => $active
         ]);
 
         // Upload advert image.
-        if (request()->file("image")) {
+        if ($request->file("image")) {
             $image_path = AWS::uploadImage(
-                request()->file("image"),
+                $request->file("image"),
                 "adverts",
                 $advert->image_path
             );
