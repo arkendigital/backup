@@ -30,7 +30,6 @@ class JobVacanciesController extends Controller
     */
     public function index()
     {
-        // dd(session()->get("job-filter-type"));
         /**
         * Get page Information
         */
@@ -55,7 +54,9 @@ class JobVacanciesController extends Controller
         * Get jobs.
         */
         $jobs = Job::with('company', 'location', 'sector')
-                    ->where("featured", 0);
+            ->where("featured", 0)
+            ->where("start_date", "<=", now())
+            ->where("end_date", ">=", now());
 
         /**
          * Get a list of job locations that have active jobs
@@ -103,17 +104,17 @@ class JobVacanciesController extends Controller
         }
 
         if (session()->exists('job-filter-sector') && !empty(session()->get('job-filter-sector'))) {
-            $jobs = $jobs->where('sector_id', session()->get('job-filter-sector'));
+            $jobs = $jobs->where('sectors', 'LIKE', '%'.session()->get('job-filter-sector').',%');
         }
 
         if (session()->exists('job-filter-salary-min') && !empty(session()->get('job-filter-salary-min'))) {
-            $jobs = $jobs->where('salary', ">=", session()->get('job-filter-salary-min'));
-            $jobs = $jobs->where('salary', "<=", session()->get('job-filter-salary-max'));
+            $jobs = $jobs->where('max_salary', ">=", session()->get('job-filter-salary-min'));
+            $jobs = $jobs->where('max_salary', "<=", session()->get('job-filter-salary-max'));
         }
 
         if (session()->exists('job-filter-contract-salary-min') && !empty(session()->get('job-filter-contract-salary-min'))) {
-            $jobs = $jobs->orWhere('daily_salary', ">=", session()->get('job-filter-contract-salary-min'));
-            $jobs = $jobs->orWhere('daily_salary', "<=", session()->get('job-filter-contract-salary-max'));
+            $jobs = $jobs->orWhere('max_daily_salary', ">=", session()->get('job-filter-contract-salary-min'));
+            $jobs = $jobs->orWhere('max_daily_salary', "<=", session()->get('job-filter-contract-salary-max'));
         }
 
         if (session()->exists('job-filter-region') && session()->get('job-filter-region') != '') {

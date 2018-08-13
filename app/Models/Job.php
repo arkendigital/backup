@@ -22,8 +22,10 @@ class Job extends Model
         "excerpt",
         "content",
         "salary_type",
-        "salary",
-        "daily_salary",
+        "min_salary",
+        "max_salary",
+        "min_daily_salary",
+        "max_daily_salary",
         "location_id",
         "region_id",
         "company_id",
@@ -32,14 +34,18 @@ class Job extends Model
         "status_id",
         "type",
         "experience",
-        "sector_id"
+        "sector_id",
+        "sectors",
+        "price",
+        "start_date",
+        "end_date"
     ];
 
 
     protected $table = 'job_vacancies';
     public $timestamps = true;
 
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'start_date', 'end_date'];
 
     /**
     * Return the sluggable configuration array for this model.
@@ -157,5 +163,45 @@ class Job extends Model
         $tracking_url = env("APP_URL") . "/track/job?id=$job_id";
 
         return $tracking_url;
+    }
+
+    public function getSectorsAttribute()
+    {
+        return explode(",", $this->attributes["sectors"]);
+    }
+
+    public function getReadableSectorsAttribute()
+    {
+
+        $sector_ids = explode(",", $this->attributes["sectors"]);
+        $sectors = "";
+
+        foreach ($sector_ids as $id) {
+            $id = str_replace(",", "", $id);
+
+            $sector =JobSector::find($id);
+
+            if (null !== $sector) {
+             $sectors.= $sector->name . ", ";
+            }
+        }
+
+        return $sectors;
+
+    }
+
+
+    public function getStartDateAttribute()
+    {
+      if ($this->attributes["start_date"] !== null) {
+        return date("d-m-Y", strtotime($this->attributes["start_date"]));
+      }
+    }
+
+    public function getEndDateAttribute()
+    {
+      if ($this->attributes["end_date"] !== null) {
+        return date("d-m-Y", strtotime($this->attributes["end_date"]));
+      }
     }
 }

@@ -20,12 +20,24 @@
 		@if($job->status_id == 1)
 			<div class="job-list-item-list">
 				<span class="job-list-item-list-key">Annual Salary</span>
-				<span class="job-list-item-list-value">&pound;{{ number_format($job->salary) }}</span>
+				<span class="job-list-item-list-value">
+					@if($job->min_salary == $job->max_salary)
+						&pound;{{ number_format($job->max_salary) }}
+					@else
+						&pound;{{ number_format($job->min_salary) }} - &pound;{{ number_format($job->max_salary) }}
+					@endif
+				</span>
 			</div>
 		@elseif($job->status_id == 2)
 			<div class="job-list-item-list">
 				<span class="job-list-item-list-key">Daily Salary</span>
-				<span class="job-list-item-list-value">&pound;{{ number_format($job->daily_salary) }}</span>
+				<span class="job-list-item-list-value">
+					@if($job->min_daily_salary == $job->max_daily_salary)
+						&pound;{{ number_format($job->max_daily_salary) }}
+					@else
+						&pound;{{ number_format($job->min_daily_salary) }} - &pound;{{ number_format($job->max_daily_salary) }}
+					@endif
+				</span>
 			</div>
 		@endif
 
@@ -36,16 +48,16 @@
 			</div>
 		@endisset
 
-		@isset($job->sector)
+		@if($job->readable_sectors != "")
 			<div class="job-list-item-list">
 				<span class="job-list-item-list-key">Sector</span>
-				<span class="job-list-item-list-value">{{ $job->sector->name }}</span>
+				<span class="job-list-item-list-value">{{ $job->readable_sectors }}</span>
 			</div>
-		@endisset
+		@endif
 
 		<div class="job-list-item-list">
-			<span class="job-list-item-list-key">Date Posted</span>
-			<span class="job-list-item-list-value">{{ date("d-m-Y", strtotime($job->created_at)) }}</span>
+			<span class="job-list-item-list-key">Posted</span>
+			<span class="job-list-item-list-value">{{ $job->created_at->diffForHumans() }}</span>
 		</div>
 	</div><!-- /.job-list-item-content -->
 
