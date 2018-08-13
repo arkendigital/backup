@@ -46,6 +46,27 @@
             </div>
 
             <div class="form-group">
+              <label for="sector_id">Job Sector</label>
+              <select name="sector_id" class="form-control">
+                <option value="">Select job sector...</option>
+                @foreach($sectors as $sector)
+                  <option value="{{ $sector->id }}">{{ $sector->name }}</option>
+                @endforeach
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="experience">Experience</label>
+              <select name="experience" class="form-control">
+                  <option value="">Select experience...</option>
+                  <option value="qualified">Qualified</option>
+                  <option value="almost">Almost Qualified</option>
+                  <option value="part">Part Qualified</option>
+                  <option value="none">No exams</option>
+              </select>
+            </div>
+
+            <div class="form-group">
               <label for="salary">Yearly Salary <span class="text-danger">(only applicable if a permanent job)</span></label>
               <input type="text" class="form-control" name="salary" id="salary" value="{{ old("salary") }}" placeholder="Enter salary. E.G. 25000">
             </div>

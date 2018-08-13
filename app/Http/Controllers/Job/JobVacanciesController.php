@@ -48,40 +48,38 @@ class JobVacanciesController extends Controller
         * Get featured jobs.
         */
         $featured_jobs = Job::with('company', 'location', 'sector')
-            ->where("featured", 1)
-            ->get();
+                            ->where("featured", 1)
+                            ->get();
 
         /**
         * Get jobs.
         */
         $jobs = Job::with('company', 'location', 'sector')
-            ->where("featured", 0);
+                    ->where("featured", 0);
 
         /**
          * Get a list of job locations that have active jobs
-         *
          */
         $locations = Job::select("location_id")
-            ->groupBy("location_id")
-            ->get()
-            ->pluck("location_id");
+                        ->groupBy("location_id")
+                        ->get()
+                        ->pluck("location_id");
 
         $locations = JobLocation::whereIn("id", $locations)
-            ->get();
+                                ->get();
 
         $locations = JobLocation::all();
 
         /**
          * Get a list of regions that have active jobs
-         *
          */
         $regions = Job::select("region_id")
-             ->groupBy("region_id")
-             ->get()
-             ->pluck("region_id");
+                     ->groupBy("region_id")
+                     ->get()
+                     ->pluck("region_id");
 
         $regions = JobRegion::whereIn("id", $regions)
-             ->get();
+                            ->get();
 
         $regions = JobRegion::all();
 
@@ -135,7 +133,7 @@ class JobVacanciesController extends Controller
         }
         */
 
-        if (! session()->exists('job-filter-order')) {
+        if (!session()->exists('job-filter-order')) {
             session()->put("job-filter-order", 'created_at-desc');
         }
 
@@ -146,16 +144,13 @@ class JobVacanciesController extends Controller
 
         $jobs = $jobs->paginate(6);
 
-
         /**
          * Get a list of job types
-         *
          */
         $job_types = JobStatus::all();
 
         /**
         * Get adverts for this page.
-        *
         */
         $page_adverts = getArrayOfAdverts($page->id);
 

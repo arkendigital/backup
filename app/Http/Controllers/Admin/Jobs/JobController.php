@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Admin\Jobs;
 
 use App\Http\Controllers\Controller;
@@ -9,7 +10,6 @@ use App\Models\Job;
 use App\Models\JobLocation;
 use App\Models\JobRegion;
 use App\Models\JobCompany;
-use App\Models\JobStatus;
 use App\Models\JobStatus as JobType;
 use App\Models\JobSector;
 use App\Models\JobImpression;
@@ -20,41 +20,42 @@ class JobController extends Controller
 {
 
     /**
-    * List jobs.
-    */
+     * List jobs.
+     */
     public function index()
     {
 
         /**
-        * Get jobs.
-        */
+         * Get jobs.
+         */
         $jobs = Job::all();
 
         /**
-        * Display results.
-        */
+         * Display results.
+         */
         return view("admin.jobs.index", compact(
             "jobs"
         ));
     }
 
     /**
-    * Show form for editing specified job.
-    *
-    * @param Job $job
-    *
-    */
+     * Show form for editing specified job.
+     *
+     * @param Job $job
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function edit(Job $job)
     {
 
         /**
-        * Get list of locations.
-        */
+         * Get list of locations.
+         */
         $locations = JobLocation::all();
 
         /**
-        * Get list of companies.
-        */
+         * Get list of companies.
+         */
         $companies = JobCompany::all();
 
         /**
@@ -65,13 +66,12 @@ class JobController extends Controller
 
         /**
          * Get list of job sectors
-         *
          */
         $sectors = JobSector::all();
 
         /**
-        * Display form / page.
-        */
+         * Display form / page.
+         */
         return view("admin.jobs.edit", compact(
             "job",
             "locations",
@@ -82,25 +82,24 @@ class JobController extends Controller
     }
 
     /**
-    * Update specified job in database storage.
-    *
-    * @param Job $job
-    * @param Request $request
-    *
-    */
+     * Update specified job in database storage.
+     *
+     * @param Job $job
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(Job $job, Request $request)
     {
 
         /**
          * Get the region of a location
-         *
          */
         $location = JobLocation::find(request()->location_id);
         $region = JobRegion::find($location->region_id);
 
         /**
-        * Update job.
-        */
+         * Update job.
+         */
         $job->update([
             "title" => request()->title,
             "excerpt" => request()->excerpt,
@@ -120,7 +119,6 @@ class JobController extends Controller
 
         /**
          * Get recruiter info
-         *
          */
         $company = JobCompany::find(request()->company_id);
 
@@ -129,39 +127,46 @@ class JobController extends Controller
         ]);
 
         /**
-        * Redirect back to edit page.
-        */
+         * Redirect back to edit page.
+         */
         return redirect()->back();
     }
 
     /**
-    * Show form for creating a new job.
-    */
+     * Show form for creating a new job.
+     */
     public function create()
     {
 
-    /**
-    * Get list of locations.
-    */
+        /**
+         * Get list of locations.
+         */
         $locations = JobLocation::all();
 
         /**
-        * Get list of companies.
-        */
+         * Get list of companies.
+         */
         $companies = JobCompany::all();
+
+        /**
+         * Get list of job sectors
+         */
+        $sectors = JobSector::all();
+
 
         return view("admin.jobs.create", compact(
             "locations",
-            "companies"
+            "companies",
+            "sectors"
         ));
     }
 
     /**
-    * Store new job in database storage.
-    *
-    * @param JobRequest $request
-    *
-    */
+     * Store new job in database storage.
+     *
+     * @param JobRequest $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function store(JobRequest $request)
     {
 
@@ -173,8 +178,8 @@ class JobController extends Controller
         $region = JobRegion::find($location->region_id);
 
         /**
-        * Create job.
-        */
+         * Create job.
+         */
         $job = Job::create([
             "title" => request()->title,
             "excerpt" => request()->excerpt,
@@ -188,8 +193,8 @@ class JobController extends Controller
         ]);
 
         /**
-        * Redirect to edit page.
-        */
+         * Redirect to edit page.
+         */
         return redirect(route("jobs.edit", compact(
             "job"
         )));
@@ -199,15 +204,14 @@ class JobController extends Controller
      * View a job
      *
      * @param Job $job
-     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show(Job $job, Request $request)
     {
 
-      /**
-       * Get search dates
-       *
-       */
+        /**
+         * Get search dates
+         */
         if ($request->exists("dates")) {
             $dates = explode(" - ", $request->dates);
             $start_date = $dates[0];
@@ -219,34 +223,30 @@ class JobController extends Controller
 
         /**
          * Get impressions for this advert
-         *
          */
         $impressions = JobImpression::where("job_id", $job->id)
-        ->where("created_at", ">=", date("Y-m-d", strtotime($start_date)) . " 00:00:00")
-        ->where("created_at", "<=", date("Y-m-d", strtotime($end_date)) . " 23:59:59")
-        ->count();
+            ->where("created_at", ">=", date("Y-m-d", strtotime($start_date)) . " 00:00:00")
+            ->where("created_at", "<=", date("Y-m-d", strtotime($end_date)) . " 23:59:59")
+            ->count();
 
         /**
          * Get unique impressions for this advert
-         *
          */
         $unique_impressions = JobUniqueImpression::where("job_id", $job->id)
-        ->where("created_at", ">=", date("Y-m-d", strtotime($start_date)) . " 00:00:00")
-        ->where("created_at", "<=", date("Y-m-d", strtotime($end_date)) . " 23:59:59")
-        ->count();
+            ->where("created_at", ">=", date("Y-m-d", strtotime($start_date)) . " 00:00:00")
+            ->where("created_at", "<=", date("Y-m-d", strtotime($end_date)) . " 23:59:59")
+            ->count();
 
         /**
          * Get clicks for this advert
-         *
          */
         $clicks = JobClick::where("job_id", $job->id)
-        ->where("created_at", ">=", date("Y-m-d", strtotime($start_date)) . " 00:00:00")
-        ->where("created_at", "<=", date("Y-m-d", strtotime($end_date)) . " 23:59:59")
-        ->count();
+            ->where("created_at", ">=", date("Y-m-d", strtotime($start_date)) . " 00:00:00")
+            ->where("created_at", "<=", date("Y-m-d", strtotime($end_date)) . " 23:59:59")
+            ->count();
 
         /**
          * Click through rate
-         *
          */
         if ($clicks !== 0 && $impressions !== 0) {
             $click_rate = number_format($clicks / $impressions * 100);
@@ -255,13 +255,13 @@ class JobController extends Controller
         }
 
         return view("admin.jobs.view", compact(
-        "job",
-        "impressions",
-        "unique_impressions",
-        "clicks",
-        "click_rate",
-        "start_date",
-        "end_date"
-      ));
+            "job",
+            "impressions",
+            "unique_impressions",
+            "clicks",
+            "click_rate",
+            "start_date",
+            "end_date"
+        ));
     }
 }
