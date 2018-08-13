@@ -11,7 +11,7 @@ use Illuminate\Queue\SerializesModels;
 use Mail;
 use App\Setting;
 
-class SendSuggestFeatureEmail implements ShouldQueue
+class SendSuggestFeatureEmail //implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
