@@ -3,24 +3,26 @@
 namespace App\Http\Controllers\Admin\Jobs;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Http\Requests\Job as JobRequest;
-use Carbon\Carbon;
 use App\Models\Job;
+use App\Models\JobClick;
+use App\Models\JobCompany;
+use App\Models\JobImpression;
 use App\Models\JobLocation;
 use App\Models\JobRegion;
-use App\Models\JobCompany;
-use App\Models\JobStatus as JobType;
 use App\Models\JobSector;
-use App\Models\JobImpression;
+use App\Models\JobStatus as JobType;
 use App\Models\JobUniqueImpression;
-use App\Models\JobClick;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class JobController extends Controller
 {
 
     /**
      * List jobs.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -42,7 +44,6 @@ class JobController extends Controller
      * Show form for editing specified job.
      *
      * @param Job $job
-     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Job $job)
@@ -94,33 +95,33 @@ class JobController extends Controller
         /**
          * Get the region of a location
          */
-        $location = JobLocation::find(request()->location_id);
+        $location = JobLocation::find($request->location_id);
         $region = JobRegion::find($location->region_id);
 
         /**
          * Update job.
          */
         $job->update([
-            "title" => request()->title,
-            "excerpt" => request()->excerpt,
-            "content" => request()->content,
-            "salary_type" => request()->salary_type,
-            "salary" => request()->salary,
-            "daily_salary" => request()->daily_salary,
-            "location_id" => request()->location_id,
+            "title" => $request->title,
+            "excerpt" => $request->excerpt,
+            "content" => $request->content,
+            "salary_type" => $request->salary_type,
+            "salary" => $request->salary,
+            "daily_salary" => $request->daily_salary,
+            "location_id" => $request->location_id,
             "region_id" => $region->id,
-            "company_id" => request()->company_id,
-            "apply_link" => request()->apply_link,
-            "featured" => request()->featured,
-            "experience" => request()->experience,
-            "status_id" => request()->status_id,
-            "sector_id" => request()->sector_id
+            "company_id" => $request->company_id,
+            "apply_link" => $request->apply_link,
+            "featured" => $request->featured,
+            "experience" => $request->experience,
+            "status_id" => $request->status_id,
+            "sector_id" => $request->sector_id
         ]);
 
         /**
          * Get recruiter info
          */
-        $company = JobCompany::find(request()->company_id);
+        $company = JobCompany::find($request->company_id);
 
         $job->update([
             "type" => $company->type
@@ -134,6 +135,8 @@ class JobController extends Controller
 
     /**
      * Show form for creating a new job.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
