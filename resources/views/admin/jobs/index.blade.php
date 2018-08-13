@@ -31,12 +31,21 @@
                         <td>{{ $job->title }}</td>
                         <td>
                           <div class="btn-group">
-                              <a class="btn btn-primary btn-small" type="button" href="{{ route('jobs.show', $job) }}">
+                            <a class="btn btn-primary btn-small" type="button" href="{{ route('jobs.show', $job) }}">
                                 <i class="fa fa-eye"></i>
-                              </a>
-                            <a class="btn btn-success btn-small" type="button" href="{{ route('jobs.edit', $job) }}">
-                              <i class="fa fa-pencil"></i>
                             </a>
+                            <a class="btn btn-success btn-small" type="button" href="{{ route('jobs.edit', $job) }}">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                            <a class="btn btn-danger btn-small" type="button"  onclick="document.getElementById('delete-job-{{ $job->id }}').submit();">
+                                <i class="fa fa-trash"></i>
+                            </a>
+
+                            <form action="{{ route('jobs.destroy', $job) }}" method="POST" id="delete-job-{{ $job->id }}">
+                                {{ csrf_field() }}
+                                {{ method_field("DELETE") }}
+                            </form>
+
                           </div>
                         </td>
                     </tr>

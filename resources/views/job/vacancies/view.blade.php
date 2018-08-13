@@ -11,10 +11,30 @@
         </div>
 
         <div class="job-view-header-right">
-          <div class="job-view-header-right-item">
-            <p class="job-view-header-right-item-left">Salary</p>
-            <p class="job-view-header-right-item-right">&pound;{{ number_format($job->salary) }}</p>
-          </div>
+
+          @if($job->status_id == 1)
+              <div class="job-view-header-right-item">
+                <p class="job-view-header-right-item-left">Salary</p>
+                <p class="job-view-header-right-item-right">
+                    @if($job->min_salary == $job->max_salary)
+                        &pound;{{ number_format($job->max_salary) }}
+                    @else
+                        &pound;{{ number_format($job->min_salary) }} - &pound;{{ number_format($job->max_salary) }}
+                    @endif
+                </p>
+              </div>
+          @elseif($job->status_id == 2)
+              <div class="job-view-header-right-item">
+                <p class="job-view-header-right-item-left">Daily Salary</p>
+                <p class="job-view-header-right-item-right">
+                    @if($job->min_daily_salary == $job->max_daily_salary)
+						&pound;{{ number_format($job->max_daily_salary) }}
+					@else
+						&pound;{{ number_format($job->min_daily_salary) }} - &pound;{{ number_format($job->max_daily_salary) }}
+					@endif
+                </p>
+              </div>
+          @endif
 
           @isset($job->location)
           <div class="job-view-header-right-item">

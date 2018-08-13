@@ -98,6 +98,24 @@ class JobController extends Controller
         $location = JobLocation::find(request()->location_id);
         $region = JobRegion::find($location->region_id);
 
+        $sectors = implode(request()->sectors, ",") . ",";
+
+        /**
+         * Format start and end dates
+         *
+         */
+        if (null !== $request->start_date) {
+            $start_date = Carbon::parse(date("Y-m-d", strtotime($request->start_date)))->toDateTimeString();
+        } else {
+            $start_date = null;
+        }
+
+        if (null !== $request->end_date) {
+            $end_date = Carbon::parse(date("Y-m-d", strtotime($request->end_date)))->toDateTimeString();
+        } else {
+            $end_date = null;
+        }
+
         /**
         * Update job.
         */
@@ -106,8 +124,10 @@ class JobController extends Controller
             "excerpt" => request()->excerpt,
             "content" => request()->content,
             "salary_type" => request()->salary_type,
-            "salary" => request()->salary,
-            "daily_salary" => request()->daily_salary,
+            "min_salary" => request()->min_salary,
+            "max_salary" => request()->max_salary,
+            "min_daily_salary" => request()->min_daily_salary,
+            "max_daily_salary" => request()->max_daily_salary,
             "location_id" => request()->location_id,
             "region_id" => $region->id,
             "company_id" => request()->company_id,
@@ -115,7 +135,10 @@ class JobController extends Controller
             "featured" => request()->featured,
             "experience" => request()->experience,
             "status_id" => request()->status_id,
-            "sector_id" => request()->sector_id
+            "sectors" => $sectors,
+            "price" => request()->price,
+  			"start_date" => $start_date,
+  			"end_date" => $end_date
         ]);
 
         /**
@@ -140,9 +163,9 @@ class JobController extends Controller
     public function create()
     {
 
-    /**
-    * Get list of locations.
-    */
+        /**
+        * Get list of locations.
+        */
         $locations = JobLocation::all();
 
         /**
@@ -150,9 +173,26 @@ class JobController extends Controller
         */
         $companies = JobCompany::all();
 
+        /**
+         * Get list of job types
+         *
+         */
+        $types = JobType::all();
+
+        /**
+         * Get list of job sectors
+         *
+         */
+        $sectors = JobSector::all();
+
+        /**
+        * Display form / page.
+        */
         return view("admin.jobs.create", compact(
             "locations",
-            "companies"
+            "companies",
+            "types",
+            "sectors"
         ));
     }
 
@@ -172,19 +212,57 @@ class JobController extends Controller
         $location = JobLocation::find(request()->location_id);
         $region = JobRegion::find($location->region_id);
 
-    /**
-    * Create job.
-    */
+        $sectors = implode(request()->sectors, ",") . ",";
+
+        /**
+         * Format start and end dates
+         *
+         */
+        if (null !== $request->start_date) {
+            $start_date = Carbon::parse(date("Y-m-d", strtotime($request->start_date)))->toDateTimeString();
+        } else {
+            $start_date = null;
+        }
+
+        if (null !== $request->end_date) {
+            $end_date = Carbon::parse(date("Y-m-d", strtotime($request->end_date)))->toDateTimeString();
+        } else {
+            $end_date = null;
+        }
+
+        /**
+         * Create the job
+         */
         $job = Job::create([
             "title" => request()->title,
             "excerpt" => request()->excerpt,
             "content" => request()->content,
-            "salary" => request()->salary,
+            "salary_type" => request()->salary_type,
+            "min_salary" => request()->min_salary,
+            "max_salary" => request()->max_salary,
+            "min_daily_salary" => request()->min_daily_salary,
+            "max_daily_salary" => request()->max_daily_salary,
             "location_id" => request()->location_id,
             "region_id" => $region->id,
             "company_id" => request()->company_id,
             "apply_link" => request()->apply_link,
-            "featured" => request()->featured
+            "featured" => request()->featured,
+            "experience" => request()->experience,
+            "status_id" => request()->status_id,
+            "sectors" => $sectors,
+            "price" => request()->price,
+  			"start_date" => $start_date,
+  			"end_date" => $end_date
+        ]);
+
+        /**
+         * Get and set recruiter info
+         *
+         */
+        $company = JobCompany::find(request()->company_id);
+
+        $job->update([
+            "type" => $company->type
         ]);
 
         /**
@@ -193,6 +271,7 @@ class JobController extends Controller
         return redirect(route("jobs.edit", compact(
             "job"
         )));
+
     }
 
     /**
@@ -265,4 +344,21 @@ class JobController extends Controller
       ));
 
     }
+
+    /**
+     * Delete a job
+     *
+     */
+    function destroy(Job $job)
+    {
+
+        $job->delete();
+
+        alert($job->title . " has been removed")
+            ->persistent();
+
+        return redirect()->back();
+
+    }
+
 }
