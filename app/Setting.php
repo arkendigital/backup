@@ -8,7 +8,10 @@ use Watson\Rememberable\Rememberable;
 class Setting extends Model
 {
     use Rememberable;
+    
+    // Note: This could also be redis.
     public $rememberCacheDriver = 'array';
+
     public $timestamps = false;
     public $fillable = ['key', 'value'];
 
