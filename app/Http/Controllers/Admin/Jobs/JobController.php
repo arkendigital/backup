@@ -172,9 +172,9 @@ class JobController extends Controller
         $location = JobLocation::find(request()->location_id);
         $region = JobRegion::find($location->region_id);
 
-    /**
-    * Create job.
-    */
+        /**
+        * Create job.
+        */
         $job = Job::create([
             "title" => request()->title,
             "excerpt" => request()->excerpt,
@@ -208,53 +208,53 @@ class JobController extends Controller
        * Get search dates
        *
        */
-      if ($request->exists("dates")) {
-        $dates = explode(" - ", $request->dates);
-        $start_date = $dates[0];
-        $end_date = $dates[1];
-      } else {
-        $start_date = date("d-m-Y", strtotime(Carbon::now()->subDays(30)));
-        $end_date = date("d-m-Y", strtotime(Carbon::now()));
-      }
+        if ($request->exists("dates")) {
+            $dates = explode(" - ", $request->dates);
+            $start_date = $dates[0];
+            $end_date = $dates[1];
+        } else {
+            $start_date = date("d-m-Y", strtotime(Carbon::now()->subDays(30)));
+            $end_date = date("d-m-Y", strtotime(Carbon::now()));
+        }
 
-      /**
-       * Get impressions for this advert
-       *
-       */
-      $impressions = JobImpression::where("job_id", $job->id)
+        /**
+         * Get impressions for this advert
+         *
+         */
+        $impressions = JobImpression::where("job_id", $job->id)
         ->where("created_at", ">=", date("Y-m-d", strtotime($start_date)) . " 00:00:00")
         ->where("created_at", "<=", date("Y-m-d", strtotime($end_date)) . " 23:59:59")
         ->count();
 
-      /**
-       * Get unique impressions for this advert
-       *
-       */
-      $unique_impressions = JobUniqueImpression::where("job_id", $job->id)
+        /**
+         * Get unique impressions for this advert
+         *
+         */
+        $unique_impressions = JobUniqueImpression::where("job_id", $job->id)
         ->where("created_at", ">=", date("Y-m-d", strtotime($start_date)) . " 00:00:00")
         ->where("created_at", "<=", date("Y-m-d", strtotime($end_date)) . " 23:59:59")
         ->count();
 
-      /**
-       * Get clicks for this advert
-       *
-       */
-      $clicks = JobClick::where("job_id", $job->id)
+        /**
+         * Get clicks for this advert
+         *
+         */
+        $clicks = JobClick::where("job_id", $job->id)
         ->where("created_at", ">=", date("Y-m-d", strtotime($start_date)) . " 00:00:00")
         ->where("created_at", "<=", date("Y-m-d", strtotime($end_date)) . " 23:59:59")
         ->count();
 
-      /**
-       * Click through rate
-       *
-       */
-      if ($clicks !== 0 && $impressions !== 0) {
-        $click_rate = number_format($clicks / $impressions * 100);
-      } else {
-        $click_rate = 0;
-      }
+        /**
+         * Click through rate
+         *
+         */
+        if ($clicks !== 0 && $impressions !== 0) {
+            $click_rate = number_format($clicks / $impressions * 100);
+        } else {
+            $click_rate = 0;
+        }
 
-      return view("admin.jobs.view", compact(
+        return view("admin.jobs.view", compact(
         "job",
         "impressions",
         "unique_impressions",
@@ -263,6 +263,5 @@ class JobController extends Controller
         "start_date",
         "end_date"
       ));
-
     }
 }

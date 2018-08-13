@@ -69,13 +69,13 @@ class ExamResourcesController extends Controller
        * Set page SEO
        *
        */
-      $this->seo()
+        $this->seo()
         ->setTitle($exam_resource->name . "- Exam Resources");
 
-      /**
-       * Get section
-       *
-       */
+        /**
+         * Get section
+         *
+         */
         $section = Section::where("slug", "exams")
             ->first();
 

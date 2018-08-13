@@ -87,7 +87,6 @@ class RegisterController extends Controller
             "alert_message" => "Your account has been created!",
             "alert_button" => "OK"
         ]);
-
     }
 
     public function showRegistrationForm()

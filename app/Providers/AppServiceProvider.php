@@ -42,17 +42,17 @@ class AppServiceProvider extends ServiceProvider
             return "<?php echo 'rgba({$rgb['r']},{$rgb['g']},{$rgb['b']},1);'; ?>";
         });
 
-        \Shortcode::add('button', function($atts, $content, $name) {
-         $content = \Shortcode::compile($content);
+        \Shortcode::add('button', function ($atts, $content, $name) {
+            $content = \Shortcode::compile($content);
 
-         if (isset($atts["link"]) && isset($atts["text"])) {
-           if (isset($atts["new_tab"]) && strtolower($atts["new_tab"]) == "yes") {
-             $target = "target='_blank'";
-           } else {
-             $target = "";
-           }
-           return "<a class='button button--dark-blue' href='".$atts["link"]."' ".$target.">".$atts["text"]."</a>";
-         }
+            if (isset($atts["link"]) && isset($atts["text"])) {
+                if (isset($atts["new_tab"]) && strtolower($atts["new_tab"]) == "yes") {
+                    $target = "target='_blank'";
+                } else {
+                    $target = "";
+                }
+                return "<a class='button button--dark-blue' href='".$atts["link"]."' ".$target.">".$atts["text"]."</a>";
+            }
         });
     }
 

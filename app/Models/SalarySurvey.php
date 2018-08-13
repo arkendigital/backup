@@ -6,14 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class SalarySurvey extends Model
 {
-
     public function download($file_name)
     {
-
-        \Excel::create($file_name, function($excel) {
-
-            $excel->sheet('Sheetname', function($sheet) {
-
+        \Excel::create($file_name, function ($excel) {
+            $excel->sheet('Sheetname', function ($sheet) {
                 $sheet->appendRow([
                     "Type",
                     "Sector",
@@ -42,11 +38,8 @@ class SalarySurvey extends Model
                         $data->created_at
                     ]);
                 }
-
             });
-
         })->export('xls');
-
     }
 
     /**
@@ -74,7 +67,6 @@ class SalarySurvey extends Model
      */
     public function collection()
     {
-
         $export_data = collect();
 
         $survey_data = SalarySurvey::select("type", "sector", "field", "experience", "qualifications", "annual_salary", "daily_salary", "user_id", "created_at")
@@ -95,7 +87,6 @@ class SalarySurvey extends Model
         }
 
         return $export_data;
-
     }
 
     /**

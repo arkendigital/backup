@@ -17,7 +17,6 @@ class SuggestFeatureController extends Controller
      */
     public function index()
     {
-
         $page = Page::where("slug", "suggest-a-feature")
             ->first();
 
@@ -71,7 +70,5 @@ class SuggestFeatureController extends Controller
             "alert_message" => "Thanks! Your new feature idea has been sent to us",
             "alert_button" => "Great!"
         ]);
-
     }
-
 }

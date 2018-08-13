@@ -82,17 +82,16 @@ class BoxItemController extends Controller
     */
     public function update(BoxItem $item, BoxItemRequest $request)
     {
+        if (request()->exists("external")) {
+            $external = 1;
+        } else {
+            $external = 0;
+        }
 
-      if (request()->exists("external")) {
-        $external = 1;
-      } else {
-        $external = 0;
-      }
-
-    /**
-    * Update the box.
-    *
-    */
+        /**
+        * Update the box.
+        *
+        */
         $item->update([
             "title" => request()->title,
             "link" => request()->link,
@@ -114,13 +113,11 @@ class BoxItemController extends Controller
      */
     public function destroy(BoxItem $item)
     {
-
         $item->delete();
 
         alert($item->title . " has been deleted")
             ->persistent();
 
         return redirect()->back();
-
     }
 }

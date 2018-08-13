@@ -10,101 +10,80 @@ use App\Models\SalarySurvey;
 // use Excel;
 use Maatwebsite\Excel\Facades\Excel;
 
-
 class ImportController extends Controller
 {
+    public function exam()
+    {
+        return view("admin.import.exam");
+    }
 
-	public function exam()
-	{
+    public function examImport(Request $request)
+    {
+        $path = $request->file('file')->getRealPath();
+        $data = Excel::load($path, function ($reader) {
+        })->get();
 
-		return view("admin.import.exam");
+        if (!empty($data) && $data->count()) {
+            foreach ($data as $key => $value) {
+                if (isset($value["module"]) && $value["module"] != "" && isset($value["difficulty"]) && $value["difficulty"] != "") {
+                    $module = ExamModule::where("slug", strtolower($value["module"]))
+                        ->first();
 
-	}
+                    $insert = Survey::create([
+                        "module_id" => $module->id,
+                        "difficulty" => strtolower($value["difficulty"]),
+                        "created_at" => $value["created_at"]
+                    ]);
+                }
+            }
+        }
 
-	public function examImport(Request $request)
-	{
+        alert("Import complete")
+            ->persistent();
 
-		$path = $request->file('file')->getRealPath();
-		$data = Excel::load($path, function($reader) {})->get();
-
-		if(!empty($data) && $data->count()){
-
-			foreach ($data as $key => $value) {
-
-				if (isset($value["module"]) && $value["module"] != "" && isset($value["difficulty"]) && $value["difficulty"] != "") {
-
-					$module = ExamModule::where("slug", strtolower($value["module"]))
-						->first();
-
-					$insert = Survey::create([
-						"module_id" => $module->id,
-						"difficulty" => strtolower($value["difficulty"]),
-						"created_at" => $value["created_at"]
-					]);
-
-				}
-
-			}
-
-		}
-
-		alert("Import complete")
-			->persistent();
-
-		return redirect()->back();
-
-	}
+        return redirect()->back();
+    }
 
 
 
-	public function salaryImport(Request $request)
-	{
+    public function salaryImport(Request $request)
+    {
+        $path = $request->file('file')->getRealPath();
+        $data = Excel::load($path, function ($reader) {
+        })->get();
 
-		$path = $request->file('file')->getRealPath();
-		$data = Excel::load($path, function($reader) {})->get();
+        if (!empty($data) && $data->count()) {
+            foreach ($data as $key => $value) {
+                if (
+                    isset($value["type"]) && $value["type"] != "" &&
+                    isset($value["sector"]) && $value["sector"] != "" &&
+                    isset($value["field"]) && $value["field"] != "" &&
+                    isset($value["experience"]) && $value["experience"] != "" &&
+                    isset($value["qualifications"]) && $value["qualifications"] != ""
+                ) {
+                    $insert = SalarySurvey::create([
+                        "type" => $value["type"],
+                        "sector" => $value["sector"],
+                        "field" => $value["field"],
+                        "experience" => $value["experience"],
+                        "qualifications" => $value["qualifications"],
+                        "annual_salary" => $value["annual_salary"],
+                        "daily_salary" => $value["daily_salary"],
+                        "user_id" => $value["user_id"],
+                        "created_at" => $value["created_at"]
+                    ]);
+                }
+            }
+        }
 
-		if(!empty($data) && $data->count()){
+        alert("Import complete")
+            ->persistent();
 
-			foreach ($data as $key => $value) {
+        return redirect()->back();
+    }
 
-				if (
-					isset($value["type"]) && $value["type"] != "" &&
-					isset($value["sector"]) && $value["sector"] != "" &&
-					isset($value["field"]) && $value["field"] != "" &&
-					isset($value["experience"]) && $value["experience"] != "" &&
-					isset($value["qualifications"]) && $value["qualifications"] != ""
-				) {
-
-					$insert = SalarySurvey::create([
-						"type" => $value["type"],
-						"sector" => $value["sector"],
-						"field" => $value["field"],
-						"experience" => $value["experience"],
-						"qualifications" => $value["qualifications"],
-						"annual_salary" => $value["annual_salary"],
-						"daily_salary" => $value["daily_salary"],
-						"user_id" => $value["user_id"],
-						"created_at" => $value["created_at"]
-					]);
-
-				}
-
-			}
-
-		}
-
-		alert("Import complete")
-			->persistent();
-
-		return redirect()->back();
-
-	}
-
-	public function salary()
-	{
-
-		return view("admin.import.salary");
-
-	}
-
+    public function salary()
+    {
+        return view("admin.import.salary");
+    }
 }

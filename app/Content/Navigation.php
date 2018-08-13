@@ -11,13 +11,13 @@ class Navigation
     public function mainMenu()
     {
         // return Cache::remember('navigation_menu', 120, function () {
-            $menu = collect();
+        $menu = collect();
 
-            foreach ($this->menus() as $item) {
-                $menu->put($item->slug, $this->buildSubNav($item->slug));
-            }
+        foreach ($this->menus() as $item) {
+            $menu->put($item->slug, $this->buildSubNav($item->slug));
+        }
 
-            return $menu;
+        return $menu;
         // });
     }
 

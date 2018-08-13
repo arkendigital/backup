@@ -26,7 +26,7 @@ class UniSociety extends FormRequest
     {
         return [
             "name" => "required|string|max:50",
-						"link" => "required|url"
+                        "link" => "required|url"
         ];
     }
 }

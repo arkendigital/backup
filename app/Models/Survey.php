@@ -8,14 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Survey extends Model
 {
-
     public function download($file_name)
     {
-
-        \Excel::create($file_name, function($excel) {
-
-            $excel->sheet('Sheetname', function($sheet) {
-
+        \Excel::create($file_name, function ($excel) {
+            $excel->sheet('Sheetname', function ($sheet) {
                 $sheet->appendRow([
                     'Module',
                     'Difficulty',
@@ -34,11 +30,8 @@ class Survey extends Model
                         ]);
                     }
                 }
-
             });
-
         })->export('xls');
-
     }
 
     /**
@@ -60,7 +53,6 @@ class Survey extends Model
      */
     public function collection()
     {
-
         $export_data = collect();
 
         $survey_data = Survey::select("module_id", "difficulty", "created_at")
@@ -77,7 +69,6 @@ class Survey extends Model
         }
 
         return $export_data;
-
     }
 
     protected $fillable = [

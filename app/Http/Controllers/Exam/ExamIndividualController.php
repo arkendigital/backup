@@ -94,8 +94,8 @@ class ExamIndividualController extends Controller
          *
          */
         if (null === $category) {
-          return view("errors.404");
-          die();
+            return view("errors.404");
+            die();
         }
 
         /**

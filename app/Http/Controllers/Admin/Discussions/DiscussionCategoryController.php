@@ -145,12 +145,10 @@ class DiscussionCategoryController extends Controller
             ->get();
 
         foreach ($discussions as $discussion) {
-
             DiscussionReply::where("discussion_id", $discussion->id)
                 ->delete();
 
             $discussion->delete();
-
         }
 
         $category->delete();
@@ -159,6 +157,5 @@ class DiscussionCategoryController extends Controller
             ->persistent();
 
         return redirect()->back();
-
     }
 }

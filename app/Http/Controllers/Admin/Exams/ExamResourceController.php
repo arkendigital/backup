@@ -97,7 +97,7 @@ class ExamResourceController extends Controller
        * Get list of adverts to choose from
        *
        */
-      $adverts = Advert::orderBy("name", "DESC")
+        $adverts = Advert::orderBy("name", "DESC")
         ->get();
 
         return view("admin.exams.resources.edit", compact(

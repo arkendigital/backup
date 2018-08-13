@@ -178,7 +178,6 @@ class DiscussionController extends Controller
      */
     public function edit(DiscussionCategory $category, Discussion $discussion)
     {
-
         $this->seo()->setTitle("Editing '" . $discussion->name . "'");
         $this->seo()->setDescription($discussion->excerpt);
 
@@ -266,7 +265,6 @@ class DiscussionController extends Controller
             "alert_message" => $discussion->name . " has been deleted!",
             "alert_button" => "OK"
         ]);
-
     }
 
 
@@ -341,7 +339,7 @@ class DiscussionController extends Controller
             ->withCount('replies')
             ->paginate(6);
 
-            /**
+        /**
         * Define the category.
         */
         $category = new \stdClass();

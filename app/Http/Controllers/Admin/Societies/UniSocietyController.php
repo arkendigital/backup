@@ -66,10 +66,10 @@ class UniSocietyController extends Controller
         */
         if (request()->file("logo")) {
 
-			      /**
-			      * Upload to S3.
-			      *
-			      */
+                  /**
+                  * Upload to S3.
+                  *
+                  */
             $logo_path = AWS::uploadImage(
                 request()->file("logo"),
                 "uni-societies/logos"

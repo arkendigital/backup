@@ -10,7 +10,6 @@ use App\Models\Discussion;
 use App\Models\Society;
 use App\Models\Exam\Category as ExamCategory;
 
-
 class SearchController extends Controller
 {
     public function index(Request $request)

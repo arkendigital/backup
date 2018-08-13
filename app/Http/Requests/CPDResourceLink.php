@@ -28,7 +28,7 @@ class CPDResourceLink extends FormRequest
             "title" => "required|string|max:60",
             "subtitle" => "max:80",
             "text" => "max:500",
-						"link" => "url"
+                        "link" => "url"
         ];
     }
 }

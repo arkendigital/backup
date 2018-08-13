@@ -93,6 +93,6 @@ class ExamResource extends Model
     */
     public function advert()
     {
-      return $this->hasOne(Advert::class, 'id', 'advert_id');
+        return $this->hasOne(Advert::class, 'id', 'advert_id');
     }
 }

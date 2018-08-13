@@ -141,7 +141,6 @@ class AccountController extends Controller
      */
     public function destroy()
     {
-
         $user = auth()->user();
 
         /**
@@ -158,13 +157,11 @@ class AccountController extends Controller
         $discussions = Discussion::where("user_id", $user->id)
             ->get();
 
-        foreach($discussions as $discussion) {
-
+        foreach ($discussions as $discussion) {
             DiscussionReply::where("discussion_id", $discussion->id)
                 ->delete();
 
             $discussion->delete();
-
         }
 
         /**
@@ -189,6 +186,5 @@ class AccountController extends Controller
             "alert_message" => "Your account has been deleted",
             "alert_button" => "Thanks"
         ]);
-
     }
 }

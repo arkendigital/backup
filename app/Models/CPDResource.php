@@ -93,7 +93,7 @@ class CPDResource extends Model
     */
     public function advert()
     {
-      return $this->hasOne(Advert::class, 'id', 'advert_id');
+        return $this->hasOne(Advert::class, 'id', 'advert_id');
     }
 
     /**
@@ -102,6 +102,6 @@ class CPDResource extends Model
      */
     public function links()
     {
-      return $this->hasMany(CPDResourceLink::class, 'resource_id', 'id');
+        return $this->hasMany(CPDResourceLink::class, 'resource_id', 'id');
     }
 }

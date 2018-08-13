@@ -7,7 +7,7 @@ function getArrayOfAdverts($page_id)
 {
     $adverts = \App\Models\PageAdvert::where("page_id", $page_id)
       ->whereHas("advert", function ($query) {
-        $query->where("start_date", "<=", now())
+          $query->where("start_date", "<=", now())
           ->where("end_date", ">=", now())
           ->where("active", 1);
       })
@@ -18,16 +18,15 @@ function getArrayOfAdverts($page_id)
     $page_adverts = [];
     
     foreach ($adverts as $advert) {
+        $advert->advert->trackImpression();
+        $advert->advert->trackUniqueImpression();
 
-      $advert->advert->trackImpression();
-      $advert->advert->trackUniqueImpression();
-
-      if (isset($advert->advert)) {
-        $new[$advert->slug] = [
+        if (isset($advert->advert)) {
+            $new[$advert->slug] = [
           "image" => $advert->advert->image,
           "url" => $advert->advert->tracking_url
         ];
-      }
+        }
     }
 
     if (!empty($new)) {

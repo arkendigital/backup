@@ -105,24 +105,23 @@ class AdvertController extends Controller
     */
     public function update(Advert $advert, AdvertRequest $request)
     {
+        if (null !== $request->start_date) {
+            $start_date = Carbon::parse(date("Y-m-d", strtotime($request->start_date)))->toDateTimeString();
+        } else {
+            $start_date = null;
+        }
 
-    		if (null !== $request->start_date) {
-    			$start_date = Carbon::parse(date("Y-m-d", strtotime($request->start_date)))->toDateTimeString();
-    		} else {
-    			$start_date = null;
-    		}
+        if (null !== $request->end_date) {
+            $end_date = Carbon::parse(date("Y-m-d", strtotime($request->end_date)))->toDateTimeString();
+        } else {
+            $end_date = null;
+        }
 
-    		if (null !== $request->end_date) {
-    			$end_date = Carbon::parse(date("Y-m-d", strtotime($request->end_date)))->toDateTimeString();
-    		} else {
-    			$end_date = null;
-    		}
-
-    		if ($request->exists("active")) {
-    			$active = true;
-    		} else {
-    			$active = false;
-    		}
+        if ($request->exists("active")) {
+            $active = true;
+        } else {
+            $active = false;
+        }
 
         /**
          * Update advert
@@ -134,9 +133,9 @@ class AdvertController extends Controller
             "type" => request()->type,
             "tenancy_price" => request()->tenancy_price,
             "cpc" => request()->cpc,
-      			"start_date" => $start_date,
-      			"end_date" => $end_date,
-      			"active" => $active
+                  "start_date" => $start_date,
+                  "end_date" => $end_date,
+                  "active" => $active
         ]);
 
         /**
@@ -173,53 +172,53 @@ class AdvertController extends Controller
        * Get search dates
        *
        */
-      if ($request->exists("dates")) {
-        $dates = explode(" - ", $request->dates);
-        $start_date = $dates[0];
-        $end_date = $dates[1];
-      } else {
-        $start_date = date("d-m-Y", strtotime(Carbon::now()->subDays(30)));
-        $end_date = date("d-m-Y", strtotime(Carbon::now()));
-      }
+        if ($request->exists("dates")) {
+            $dates = explode(" - ", $request->dates);
+            $start_date = $dates[0];
+            $end_date = $dates[1];
+        } else {
+            $start_date = date("d-m-Y", strtotime(Carbon::now()->subDays(30)));
+            $end_date = date("d-m-Y", strtotime(Carbon::now()));
+        }
 
-      /**
-       * Get impressions for this advert
-       *
-       */
-      $impressions = AdvertImpression::where("advert_id", $advert->id)
+        /**
+         * Get impressions for this advert
+         *
+         */
+        $impressions = AdvertImpression::where("advert_id", $advert->id)
         ->where("created_at", ">=", date("Y-m-d", strtotime($start_date)) . " 00:00:00")
         ->where("created_at", "<=", date("Y-m-d", strtotime($end_date)) . " 23:59:59")
         ->count();
 
-      /**
-       * Get unique impressions for this advert
-       *
-       */
-      $unique_impressions = AdvertUniqueImpression::where("advert_id", $advert->id)
+        /**
+         * Get unique impressions for this advert
+         *
+         */
+        $unique_impressions = AdvertUniqueImpression::where("advert_id", $advert->id)
         ->where("created_at", ">=", date("Y-m-d", strtotime($start_date)) . " 00:00:00")
         ->where("created_at", "<=", date("Y-m-d", strtotime($end_date)) . " 23:59:59")
         ->count();
 
-      /**
-       * Get clicks for this advert
-       *
-       */
-      $clicks = AdvertClick::where("advert_id", $advert->id)
+        /**
+         * Get clicks for this advert
+         *
+         */
+        $clicks = AdvertClick::where("advert_id", $advert->id)
         ->where("created_at", ">=", date("Y-m-d", strtotime($start_date)) . " 00:00:00")
         ->where("created_at", "<=", date("Y-m-d", strtotime($end_date)) . " 23:59:59")
         ->count();
 
-      /**
-       * Click through rate
-       *
-       */
-      if ($clicks !== 0 && $impressions !== 0) {
-        $click_rate = number_format($clicks / $impressions * 100);
-      } else {
-        $click_rate = 0;
-      }
+        /**
+         * Click through rate
+         *
+         */
+        if ($clicks !== 0 && $impressions !== 0) {
+            $click_rate = number_format($clicks / $impressions * 100);
+        } else {
+            $click_rate = 0;
+        }
 
-      return view("admin.adverts.view", compact(
+        return view("admin.adverts.view", compact(
         "advert",
         "impressions",
         "unique_impressions",
@@ -228,6 +227,5 @@ class AdvertController extends Controller
         "start_date",
         "end_date"
       ));
-
     }
 }

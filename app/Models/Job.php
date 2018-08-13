@@ -101,11 +101,9 @@ class Job extends Model
      */
     public function trackImpression()
     {
-
-      JobImpression::create([
+        JobImpression::create([
         "job_id" => $this->attributes["id"]
       ]);
-
     }
 
     /**
@@ -114,31 +112,28 @@ class Job extends Model
      */
     public function trackUniqueImpression()
     {
+        $cookie_name = "job_" . $this->attributes["id"];
 
-      $cookie_name = "job_" . $this->attributes["id"];
-
-      /**
-       * Check if unique cookie exists
-       *
-       */
-      if (null === request()->cookie($cookie_name)) {
+        /**
+         * Check if unique cookie exists
+         *
+         */
+        if (null === request()->cookie($cookie_name)) {
 
         /**
          * Create cookie
          *
          */
-        \Cookie::queue($cookie_name, now(), 43200);
+            \Cookie::queue($cookie_name, now(), 43200);
 
-        /**
-         * Track unique impression
-         *
-         */
-        JobUniqueImpression::create([
+            /**
+             * Track unique impression
+             *
+             */
+            JobUniqueImpression::create([
           "job_id" => $this->attributes["id"]
         ]);
-
-      }
-
+        }
     }
 
     /**
@@ -147,11 +142,9 @@ class Job extends Model
      */
     public function trackClick()
     {
-
-      JobClick::create([
+        JobClick::create([
         "job_id" => $this->attributes["id"]
       ]);
-
     }
 
     /**
@@ -160,9 +153,9 @@ class Job extends Model
      */
     public function getTrackingUrlAttribute()
     {
-      $job_id = $this->attributes["id"];
-      $tracking_url = env("APP_URL") . "/track/job?id=$job_id";
+        $job_id = $this->attributes["id"];
+        $tracking_url = env("APP_URL") . "/track/job?id=$job_id";
 
-      return $tracking_url;
+        return $tracking_url;
     }
 }

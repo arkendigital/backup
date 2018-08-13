@@ -30,7 +30,7 @@ class ExamResource extends FormRequest
         ];
 
         if (request()->link != "") {
-          $rules["link"] = "url";
+            $rules["link"] = "url";
         }
 
         return $rules;

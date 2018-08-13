@@ -9,23 +9,17 @@ use App\Models\SalarySurvey;
 
 class ExportController extends Controller
 {
+    public function exam()
+    {
+        return (new Survey)->download('exam_survey_raw_data');
 
-	public function exam()
-	{
+        return redirect()->back();
+    }
 
-		return (new Survey)->download('exam_survey_raw_data');
+    public function salary()
+    {
+        return (new SalarySurvey)->download('salary_survey_raw_data');
 
-		return redirect()->back();
-
-	}
-
-	public function salary()
-	{
-
-		return (new SalarySurvey)->download('salary_survey_raw_data');
-
-		return redirect()->back();
-
-	}
-
+        return redirect()->back();
+    }
 }

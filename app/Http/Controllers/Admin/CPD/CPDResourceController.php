@@ -92,8 +92,7 @@ class CPDResourceController extends Controller
     */
     public function edit(CPDResource $resource)
     {
-
-      $adverts = Advert::orderBy("name", "ASC")
+        $adverts = Advert::orderBy("name", "ASC")
         ->get();
 
         return view("admin.cpd.resources.edit", compact(

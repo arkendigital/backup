@@ -55,7 +55,6 @@ class PageController extends Controller
     */
     public function store(Request $request)
     {
-
         $page = Page::create([
             "name" => request()->name,
             "section_id" => request()->section_id,
@@ -75,7 +74,6 @@ class PageController extends Controller
     */
     public function edit($page_id)
     {
-
         $page = Page::find($page_id);
 
         $sections = Section::all();
@@ -235,26 +233,25 @@ class PageController extends Controller
        * Get the page
        *
        */
-      $page = Page::find($id);
+        $page = Page::find($id);
 
-      /**
-       * Delete any pages widgets
-       *
-       */
-      PageWidget::where("page_id", $page->id)
+        /**
+         * Delete any pages widgets
+         *
+         */
+        PageWidget::where("page_id", $page->id)
         ->delete();
 
-      /**
-       * Delete the page
-       *
-       */
-      $page->delete();
+        /**
+         * Delete the page
+         *
+         */
+        $page->delete();
 
-      alert("Page deleted")
+        alert("Page deleted")
         ->persistent();
 
-      return redirect()
+        return redirect()
         ->back();
-
     }
 }

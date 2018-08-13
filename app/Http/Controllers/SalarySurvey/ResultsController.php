@@ -77,49 +77,49 @@ class ResultsController extends Controller
     private function averageSalaryVsExperience($type)
     {
         // return Cache::remember('average_salary_vs_experience_' . $type, '60', function () use ($type) {
-            $results = new \stdClass();
+        $results = new \stdClass();
 
-            if($type == "contractor") {
-                $avg_column = "daily_salary";
-            } else {
-                $avg_column = "annual_salary";
-            }
+        if ($type == "contractor") {
+            $avg_column = "daily_salary";
+        } else {
+            $avg_column = "annual_salary";
+        }
 
-            $one_four = SalarySurvey::where('experience', '1-4')
+        $one_four = SalarySurvey::where('experience', '1-4')
                 ->where('type', $type)
                 ->avg($avg_column);
 
-            $five_nine = SalarySurvey::where('experience', '5-9')
+        $five_nine = SalarySurvey::where('experience', '5-9')
                 ->where('type', $type)
                 ->avg($avg_column);
 
-            $ten_fourteen = SalarySurvey::where('experience', '10-14')
+        $ten_fourteen = SalarySurvey::where('experience', '10-14')
                 ->where('type', $type)
                 ->avg($avg_column);
 
-            $fifteen_ninteen = SalarySurvey::where('experience', '15-19')
+        $fifteen_ninteen = SalarySurvey::where('experience', '15-19')
                 ->where('type', $type)
                 ->avg($avg_column);
 
-            $twenty_plus = SalarySurvey::where('experience', '20+')
+        $twenty_plus = SalarySurvey::where('experience', '20+')
                 ->where('type', $type)
                 ->avg($avg_column);
 
-            if ($type != "contractor") {
-                $results->one_four = round($one_four / 1000);
-                $results->five_nine = round($five_nine / 1000);
-                $results->ten_fourteen = round($ten_fourteen / 1000);
-                $results->fifteen_ninteen = round($fifteen_ninteen / 1000);
-                $results->twenty_plus = round($twenty_plus / 1000);
-            } else {
-                $results->one_four = $one_four;
-                $results->five_nine = $five_nine;
-                $results->ten_fourteen = $ten_fourteen;
-                $results->fifteen_ninteen = $fifteen_ninteen;
-                $results->twenty_plus = $twenty_plus;
-            }
+        if ($type != "contractor") {
+            $results->one_four = round($one_four / 1000);
+            $results->five_nine = round($five_nine / 1000);
+            $results->ten_fourteen = round($ten_fourteen / 1000);
+            $results->fifteen_ninteen = round($fifteen_ninteen / 1000);
+            $results->twenty_plus = round($twenty_plus / 1000);
+        } else {
+            $results->one_four = $one_four;
+            $results->five_nine = $five_nine;
+            $results->ten_fourteen = $ten_fourteen;
+            $results->fifteen_ninteen = $fifteen_ninteen;
+            $results->twenty_plus = $twenty_plus;
+        }
 
-            return $results;
+        return $results;
         // });
     }
 
@@ -128,7 +128,7 @@ class ResultsController extends Controller
         return Cache::remember('average_salary_per_sector_' . $type, '60', function () use ($type) {
             $results = new \stdClass();
 
-            if($type == "contractor") {
+            if ($type == "contractor") {
                 $avg_column = "daily_salary";
             } else {
                 $avg_column = "annual_salary";
@@ -178,7 +178,7 @@ class ResultsController extends Controller
         return Cache::remember('average_salary_per_field_' . $type, '60', function () use ($type) {
             $results = new \stdClass();
 
-            if($type == "contractor") {
+            if ($type == "contractor") {
                 $avg_column = "daily_salary";
             } else {
                 $avg_column = "annual_salary";
@@ -276,7 +276,6 @@ class ResultsController extends Controller
      */
     public function download()
     {
-
         $this->seo()
             ->setTitle("Download Salary Survey Results");
 
@@ -320,7 +319,5 @@ class ResultsController extends Controller
             'salary_sector_other_permanent',
             'salary_sector_other_contractor'
         ));
-
-
     }
 }

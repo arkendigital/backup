@@ -59,7 +59,7 @@ class Advert extends Model
      */
     public function metric()
     {
-      return $this->hasOne(AdvertMetric::class, "advert_id", "id");
+        return $this->hasOne(AdvertMetric::class, "advert_id", "id");
     }
 
     /**
@@ -68,11 +68,9 @@ class Advert extends Model
      */
     public function trackImpression()
     {
-
-      AdvertImpression::create([
+        AdvertImpression::create([
         "advert_id" => $this->attributes["id"]
       ]);
-
     }
 
     /**
@@ -81,31 +79,28 @@ class Advert extends Model
      */
     public function trackUniqueImpression()
     {
+        $cookie_name = "ad_" . $this->attributes["id"];
 
-      $cookie_name = "ad_" . $this->attributes["id"];
-
-      /**
-       * Check if unique cookie exists
-       *
-       */
-      if (null === request()->cookie($cookie_name)) {
+        /**
+         * Check if unique cookie exists
+         *
+         */
+        if (null === request()->cookie($cookie_name)) {
 
         /**
          * Create cookie
          *
          */
-        \Cookie::queue($cookie_name, now(), 43200);
+            \Cookie::queue($cookie_name, now(), 43200);
 
-        /**
-         * Track unique impression
-         *
-         */
-        AdvertUniqueImpression::create([
+            /**
+             * Track unique impression
+             *
+             */
+            AdvertUniqueImpression::create([
           "advert_id" => $this->attributes["id"]
         ]);
-
-      }
-
+        }
     }
 
     /**
@@ -114,11 +109,9 @@ class Advert extends Model
      */
     public function trackClick()
     {
-
-      AdvertClick::create([
+        AdvertClick::create([
         "advert_id" => $this->attributes["id"]
       ]);
-
     }
 
     /**
@@ -127,11 +120,11 @@ class Advert extends Model
      */
     public function getTrackingUrlAttribute()
     {
-      $advert_id = $this->attributes["id"];
-      $url = $this->attributes["url"];
-      $tracking_url = env("APP_URL") . "/track?id=$advert_id&url=$url";
+        $advert_id = $this->attributes["id"];
+        $url = $this->attributes["url"];
+        $tracking_url = env("APP_URL") . "/track?id=$advert_id&url=$url";
 
-      return $tracking_url;
+        return $tracking_url;
     }
 
     /**
@@ -148,15 +141,15 @@ class Advert extends Model
 
     public function getStartDateAttribute()
     {
-      if ($this->attributes["start_date"] !== null) {
-        return date("d-m-Y", strtotime($this->attributes["start_date"]));
-      }
+        if ($this->attributes["start_date"] !== null) {
+            return date("d-m-Y", strtotime($this->attributes["start_date"]));
+        }
     }
 
     public function getEndDateAttribute()
     {
-      if ($this->attributes["end_date"] !== null) {
-        return date("d-m-Y", strtotime($this->attributes["end_date"]));
-      }
+        if ($this->attributes["end_date"] !== null) {
+            return date("d-m-Y", strtotime($this->attributes["end_date"]));
+        }
     }
 }

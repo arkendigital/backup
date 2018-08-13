@@ -30,7 +30,7 @@ class JobVacanciesController extends Controller
     */
     public function index()
     {
-// dd(session()->get("job-filter-type"));
+        // dd(session()->get("job-filter-type"));
         /**
         * Get page Information
         */
@@ -75,15 +75,15 @@ class JobVacanciesController extends Controller
          * Get a list of regions that have active jobs
          *
          */
-         $regions = Job::select("region_id")
+        $regions = Job::select("region_id")
              ->groupBy("region_id")
              ->get()
              ->pluck("region_id");
 
-         $regions = JobRegion::whereIn("id", $regions)
+        $regions = JobRegion::whereIn("id", $regions)
              ->get();
 
-         $regions = JobRegion::all();
+        $regions = JobRegion::all();
 
         /**
         * Apply filtering.
@@ -184,65 +184,53 @@ class JobVacanciesController extends Controller
     public function set_filtering(Request $request)
     {
         // if (isset(request()->type) && !isset(request()->sector)) {
-            // session()->put("job-filter-location", request()->location);
-            // session()->put("job-filter-order", request()->order);
+        // session()->put("job-filter-location", request()->location);
+        // session()->put("job-filter-order", request()->order);
         // } else {
-            session()->put("job-filter-keyword", request()->keyword);
-            session()->put("job-filter-status", request()->status);
-            session()->put("job-filter-experience", request()->experience);
-            session()->put("job-filter-type", request()->type);
-            session()->put("job-filter-sector", request()->sector);
+        session()->put("job-filter-keyword", request()->keyword);
+        session()->put("job-filter-status", request()->status);
+        session()->put("job-filter-experience", request()->experience);
+        session()->put("job-filter-type", request()->type);
+        session()->put("job-filter-sector", request()->sector);
 
-            if (str_contains(request()->location, "all-region")) {
+        if (str_contains(request()->location, "all-region")) {
+            session()->forget("job-filter-location");
 
-                session()->forget("job-filter-location");
+            $region_string = request()->location;
+            $region_id = explode("-", $region_string)[2];
+            session()->put("job-filter-region", $region_id);
+        } else {
+            session()->put("job-filter-location", request()->location);
+            session()->forget("job-filter-region");
+        }
 
-                $region_string = request()->location;
-                $region_id = explode("-", $region_string)[2];
-                session()->put("job-filter-region", $region_id);
+        /**
+         * Permanent salary
+         *
+         */
+        if (request()->salary != "all" && request()->salary !== null) {
+            $salary = explode("-", request()->salary);
 
-            } else {
+            session()->put("job-filter-salary-min", $salary[0]);
+            session()->put("job-filter-salary-max", $salary[1]);
+        } else {
+            session()->forget("job-filter-salary-min");
+            session()->forget("job-filter-salary-max");
+        }
 
-                session()->put("job-filter-location", request()->location);
-                session()->forget("job-filter-region");
+        /**
+         * Contractor salary
+         *
+         */
+        if (request()->daily_salary != "all" && request()->daily_salary !== null) {
+            $salary = explode("-", request()->daily_salary);
 
-            }
-
-            /**
-             * Permanent salary
-             *
-             */
-            if (request()->salary != "all" && request()->salary !== null) {
-
-                $salary = explode("-",request()->salary);
-
-                session()->put("job-filter-salary-min", $salary[0]);
-                session()->put("job-filter-salary-max", $salary[1]);
-
-            } else {
-
-                session()->forget("job-filter-salary-min");
-                session()->forget("job-filter-salary-max");
-
-            }
-
-            /**
-             * Contractor salary
-             *
-             */
-            if (request()->daily_salary != "all" && request()->daily_salary !== null) {
-
-                $salary = explode("-",request()->daily_salary);
-
-                session()->put("job-filter-contract-salary-min", $salary[0]);
-                session()->put("job-filter-contract-salary-max", $salary[1]);
-
-            } else {
-
-                session()->forget("job-filter-contract-salary-min");
-                session()->forget("job-filter-contract-salary-max");
-
-            };
+            session()->put("job-filter-contract-salary-min", $salary[0]);
+            session()->put("job-filter-contract-salary-max", $salary[1]);
+        } else {
+            session()->forget("job-filter-contract-salary-min");
+            session()->forget("job-filter-contract-salary-max");
+        };
 
         // }
 

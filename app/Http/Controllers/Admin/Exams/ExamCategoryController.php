@@ -106,14 +106,11 @@ class ExamCategoryController extends Controller
      */
     public function destroy(ExamCategory $category)
     {
-
         $modules = ExamModule::where("category_id", $category->id)
             ->get();
 
         foreach ($modules as $module) {
-
             $module->delete();
-
         }
 
         $category->delete();
@@ -122,6 +119,5 @@ class ExamCategoryController extends Controller
             ->persistent();
 
         return redirect()->back();
-
     }
 }
