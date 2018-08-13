@@ -33,14 +33,7 @@ class AddColumnsToJobVacanciesTable extends Migration
     public function down()
     {
         Schema::table('job_vacancies', function (Blueprint $table) {
-            $table->dropColumn('min_salary');
-			$table->dropColumn('max_salary');
-			$table->dropColumn('min_daily_salary');
-			$table->dropColumn('max_daily_salary');
-			$table->dropColumn('sectors');
-			$table->dropColumn('price');
-			$table->dropColumn('start_date');
-			$table->dropColumn('end_date');
+            $table->dropColumn(['min_salary','max_salary','min_daily_salary','max_daily_salary','sectors','price','start_date','end_date']);
         });
     }
 }
