@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers\SalarySurvey;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Section;
 use App\Models\Page;
+use Illuminate\Http\Request;
 use App\Models\SalarySurvey;
+use App\Http\Controllers\Controller;
 
 class TakePartController extends Controller
 {
-
+    
     /**
      * Display the page with the questionnaire.
-     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -31,32 +30,25 @@ class TakePartController extends Controller
     }
 
     /**
-    * Submission of questionnaire form.
-    *
-    * @param Request $request
-    *
-    */
+     * Submission of questionnaire form.
+     * @param Request $request
+     * @return string
+     */
     public function submit(Request $request)
     {
-        // @todo: No validation
-        if (auth()->check()) {
-            $user_id = auth()->user()->id;
-        } else {
-            $user_id = 0;
-        }
-
+        // @todo: Add validation
         // Add answers to database.
-        $answers = SalarySurvey::create([
-            "type" => request()->type,
-            "sector" => request()->sector,
-            "field" => request()->field,
-            "experience" => request()->experience,
-            "qualifications" => request()->qualifications,
-            "annual_salary" => request()->annual_salary,
-            "daily_salary" => request()->daily_salary,
-            "user_id" => $user_id
+        SalarySurvey::create([
+            "type" => $request->type,
+            "sector" => $request->sector,
+            "field" => $request->field,
+            "experience" => $request->experience,
+            "qualifications" => $request->qualifications,
+            "annual_salary" => $request->annual_salary,
+            "daily_salary" => $request->daily_salary,
+            "user_id" => auth()->check() ? auth()->id() : 0,
         ]);
-
-        return "OK";
+        // @todo: Actually return JSON object for use in front end
+        return response()->json('OK', 200);
     }
 }
