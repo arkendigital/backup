@@ -840,7 +840,7 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Average Salary (£k)'
+                    labelString: 'Average Salary Per Day (£)'
                   },
                   ticks: {
                       beginAtZero:true
@@ -956,7 +956,7 @@
               yAxes: [{
                   scaleLabel: {
                     display: true,
-                    labelString: 'Average Salary (£k)'
+                    labelString: 'Average Salary Per Day (£)'
                   },
                   ticks: {
                       beginAtZero:true

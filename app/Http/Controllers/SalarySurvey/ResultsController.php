@@ -13,14 +13,12 @@ class ResultsController extends Controller
 {
     /**
      * Display results page.
-     *
+     * @return \Illuminate\View\View
      */
     public function index()
     {
         // Get page information.
         $page = Page::getPage(request()->route()->uri);
-
-        // dd($page);
 
         // Set SEO.
         $this->seo()->setTitle($page->meta_title);
