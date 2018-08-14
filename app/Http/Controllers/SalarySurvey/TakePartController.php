@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 class TakePartController extends Controller
 {
-    
+
     /**
      * Display the page with the questionnaire.
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
