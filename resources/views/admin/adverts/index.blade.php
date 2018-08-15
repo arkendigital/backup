@@ -37,9 +37,17 @@
                             <a class="btn btn-success btn-small" type="button" href="{{ route('adverts.edit', $advert) }}">
                               <i class="fa fa-pencil"></i>
                             </a>
+                            <a class="btn btn-danger btn-small" type="button" onclick="document.getElementById('remove-{{ $advert->id }}').submit()">
+                              <i class="fa fa-trash"></i>
+                            </a>
+                            
                           </div>
                         </td>
                     </tr>
+                    <form action="{{ route("adverts.destroy", $advert) }}" method="POST" id="remove-{{ $advert->id }}">
+                        {{ csrf_field() }}
+                        {{ method_field("DELETE") }}
+                    </form>
                     @endforeach
                 </tbody>
             </table>

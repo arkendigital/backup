@@ -158,6 +158,19 @@ class AdvertController extends Controller
     }
 
     /**
+     * Delete specific adverts
+     *
+     * @param Advert $advert
+     * @param AdvertRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy(Advert $advert)
+    {
+        $advert->delete();
+        return back();
+    }
+
+    /**
      * View an advert
      *
      * @param Advert $advert
@@ -177,21 +190,21 @@ class AdvertController extends Controller
 
          // Get impressions for this advert
         $impressions = AdvertImpression::where("advert_id", $advert->id)
-        ->where("created_at", ">=", date("Y-m-d", strtotime($start_date)) . " 00:00:00")
-        ->where("created_at", "<=", date("Y-m-d", strtotime($end_date)) . " 23:59:59")
-        ->count();
+                                        ->where("created_at", ">=", date("Y-m-d", strtotime($start_date)) . " 00:00:00")
+                                        ->where("created_at", "<=", date("Y-m-d", strtotime($end_date)) . " 23:59:59")
+                                        ->count();
 
          // Get unique impressions for this advert
         $unique_impressions = AdvertUniqueImpression::where("advert_id", $advert->id)
-        ->where("created_at", ">=", date("Y-m-d", strtotime($start_date)) . " 00:00:00")
-        ->where("created_at", "<=", date("Y-m-d", strtotime($end_date)) . " 23:59:59")
-        ->count();
+                                                    ->where("created_at", ">=", date("Y-m-d", strtotime($start_date)) . " 00:00:00")
+                                                    ->where("created_at", "<=", date("Y-m-d", strtotime($end_date)) . " 23:59:59")
+                                                    ->count();
 
          // Get clicks for this advert
         $clicks = AdvertClick::where("advert_id", $advert->id)
-        ->where("created_at", ">=", date("Y-m-d", strtotime($start_date)) . " 00:00:00")
-        ->where("created_at", "<=", date("Y-m-d", strtotime($end_date)) . " 23:59:59")
-        ->count();
+                            ->where("created_at", ">=", date("Y-m-d", strtotime($start_date)) . " 00:00:00")
+                            ->where("created_at", "<=", date("Y-m-d", strtotime($end_date)) . " 23:59:59")
+                            ->count();
 
          // Click through rate
         if ($clicks !== 0 && $impressions !== 0) {
@@ -201,13 +214,13 @@ class AdvertController extends Controller
         }
 
         return view("admin.adverts.view", compact(
-        "advert",
-        "impressions",
-        "unique_impressions",
-        "clicks",
-        "click_rate",
-        "start_date",
-        "end_date"
-      ));
+            "advert",
+            "impressions",
+            "unique_impressions",
+            "clicks",
+            "click_rate",
+            "start_date",
+            "end_date"
+        ));
     }
 }
