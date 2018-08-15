@@ -25,6 +25,7 @@
             <p class="discussion-list-thread-content-title" style="padding: 25px 0 10px 0;">Sorry, we couldn't find any discussions here.</p>
           @else
           @foreach($discussions as $discussion)
+            @if ($discussion->user)
             <div class="discussion-list-thread">
 
               <div class="discussion-list-thread-avatar">
@@ -54,6 +55,7 @@
               </div><!-- /.discussion-list-reply-count -->
 
             </div><!-- /.discussion-list-thread -->
+            @endif
           @endforeach
           @endif
         </div><!-- /.discussion-list -->
