@@ -274,6 +274,7 @@ class DiscussionController extends Controller
      */
     public function popular()
     {
+        $this->seo()->setTitle('Popular Discussions');
 
         /**
          * Get list of categories to display in the sidebar
@@ -310,6 +311,8 @@ class DiscussionController extends Controller
     */
     public function answered()
     {
+        $this->seo()->setTitle('Answered Discussions');
+
         $categories = $this->getCategories();
 
         $discussions = Discussion::with('user', 'category')
@@ -332,6 +335,10 @@ class DiscussionController extends Controller
     */
     public function unanswered()
     {
+
+        $this->seo()->setTitle('Unanswered Discussions');
+        // $this->seo()->setDescription($page->meta_description);
+
         $categories = $this->getCategories();
 
         $discussions = Discussion::with('user', 'category')
@@ -371,6 +378,8 @@ class DiscussionController extends Controller
     */
     public function latest()
     {
+        $this->seo()->setTitle('Latest Discussions');
+
         $categories = $this->getCategories();
 
         $discussions = Discussion::with('user', 'category')
