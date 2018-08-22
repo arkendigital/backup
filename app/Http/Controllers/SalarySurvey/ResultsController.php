@@ -30,24 +30,32 @@ class ResultsController extends Controller
         // Experience.
         $salary_vs_exerience_permanent = $this->averageSalaryVsExperience('permanent');
         $salary_vs_exerience_contractor = $this->averageSalaryVsExperience('contractor');
+
         // Sector/permanent
         $salary_sector_life_permanent = $this->salaryBySectorExeperience('life', 'permanent');
         $salary_sector_gi_permanent = $this->salaryBySectorExeperience('gi', 'permanent');
         $salary_sector_pensions_permanent = $this->salaryBySectorExeperience('pensions', 'permanent');
         $salary_sector_investments_permanent = $this->salaryBySectorExeperience('investments', 'permanent');
         $salary_sector_other_permanent = $this->salaryBySectorExeperience('other', 'permanent');
+
         // Sector/Contractor
         $salary_sector_life_contractor = $this->salaryBySectorExeperience('life', 'contractor');
         $salary_sector_gi_contractor = $this->salaryBySectorExeperience('gi', 'contractor');
         $salary_sector_pensions_contractor = $this->salaryBySectorExeperience('pensions', 'contractor');
         $salary_sector_investments_contractor = $this->salaryBySectorExeperience('investments', 'contractor');
         $salary_sector_other_contractor = $this->salaryBySectorExeperience('other', 'contractor');
+
         // Per Sector
         $salary_per_sector_permanent = $this->averageSalaryPerSector('permanent');
         $salary_per_sector_contractor = $this->averageSalaryPerSector('contractor');
+
         // Per Field
         $salary_per_field_permanent = $this->averageSalaryPerField('permanent');
         $salary_per_field_contractor = $this->averageSalaryPerField('contractor');
+
+        // Vs Exams Passed
+        $salary_vs_exams_permanent = $this->averageSalaryVsExams('permanent');
+        $salary_vs_exams_contractor = $this->averageSalaryVsExams('contractor');
 
         return view('salary-survey.results', compact(
             'page',
@@ -67,7 +75,9 @@ class ResultsController extends Controller
             'salary_sector_investments_permanent',
             'salary_sector_investments_contractor',
             'salary_sector_other_permanent',
-            'salary_sector_other_contractor'
+            'salary_sector_other_contractor',
+            'salary_vs_exams_contractor',
+            'salary_vs_exams_permanent'
         ));
     }
 
@@ -268,6 +278,55 @@ class ResultsController extends Controller
         });
     }
 
+    private function averageSalaryVsExams($type)
+    {
+        return Cache::remember('average_salary_vs_exams_' . $type, '60', function () use ($type) {
+            $results = new \stdClass();
+
+            if ($type == "contractor") {
+                $avg_column = "daily_salary";
+            } else {
+                $avg_column = "annual_salary";
+            }
+
+            $one_four = SalarySurvey::where('qualifications', '1-4')
+                ->where('type', $type)
+                ->avg($avg_column);
+
+            $five_nine = SalarySurvey::where('qualifications', '5-9')
+                ->where('type', $type)
+                ->avg($avg_column);
+
+            $ten_twelve = SalarySurvey::where('qualifications', '10-12')
+                ->where('type', $type)
+                ->avg($avg_column);
+
+            $thirteen_plus = SalarySurvey::where('qualifications', '13+')
+                ->where('type', $type)
+                ->avg($avg_column);
+
+            $qualified = SalarySurvey::where('qualifications', 'Qualified')
+                ->where('type', $type)
+                ->avg($avg_column);
+
+            if ($type != "contractor") {
+                $results->one_four = round($one_four / 1000);
+                $results->five_nine = round($five_nine / 1000);
+                $results->ten_twelve = round($ten_twelve / 1000);
+                $results->thirteen_plus = round($thirteen_plus / 1000);
+                $results->qualified = round($qualified / 1000);
+            } else {
+                $results->one_four = $one_four;
+                $results->five_nine = $five_nine;
+                $results->ten_twelve = $ten_twelve;
+                $results->thirteen_plus = $thirteen_plus;
+                $results->qualified = $qualified;
+            }
+
+            return $results;
+        });
+    }
+
     /**
      * Download the survey results
      *
@@ -298,6 +357,9 @@ class ResultsController extends Controller
         // Per Field
         $salary_per_field_permanent = $this->averageSalaryPerField('permanent');
         $salary_per_field_contractor = $this->averageSalaryPerField('contractor');
+        // Vs Exams Passed
+        $salary_vs_exams_permanent = $this->averageSalaryVsExams('permanent');
+        $salary_vs_exams_contractor = $this->averageSalaryVsExams('contractor');
 
         return view('salary-survey.results-download', compact(
             'salary_vs_exerience_permanent',
@@ -315,7 +377,9 @@ class ResultsController extends Controller
             'salary_sector_investments_permanent',
             'salary_sector_investments_contractor',
             'salary_sector_other_permanent',
-            'salary_sector_other_contractor'
+            'salary_sector_other_contractor',
+            'salary_vs_exams_contractor',
+            'salary_vs_exams_permanent'
         ));
     }
 }

@@ -53,6 +53,13 @@ Route::get('/about', 'Misc\AboutController@index')->name("about");
 Route::get('/suggest-a-feature', 'Misc\SuggestFeatureController@index')->name("suggestfeature.index");
 Route::post('/suggest-a-feature', 'Misc\SuggestFeatureController@submit')->name("suggestfeature.submit");
 
+/**
+ * Salary Survey Detailed Download
+ *
+ */
+Route::get("/export/salary-survey", "Admin\ExportController@salary")
+    ->name("export.public.salary-survey");
+
 
 
 
