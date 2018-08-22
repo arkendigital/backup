@@ -56,7 +56,11 @@
     <div class="alert">
       <div class="alert_inner">
         <p class="alert_title">{{ session("alert_title") }}</p>
-        <p class="alert_message">{{ session("alert_message") }}</p>
+        @if(session("new_user"))
+            <p class="alert_message"><span class="form_success">{{ session("alert_message") }}</span></p>
+        @else
+            <p class="alert_message">{{ session("alert_message") }}</p>
+        @endif
         <a class="alert_button">{{ session("alert_button") }}</a>
       </div>
     </div>

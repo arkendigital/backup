@@ -85,7 +85,8 @@ class RegisterController extends Controller
             "alert" => true,
             "alert_title" => "Success",
             "alert_message" => "Your account has been created!",
-            "alert_button" => "OK"
+            "alert_button" => "OK",
+            "new_user" => true
         ]);
     }
 

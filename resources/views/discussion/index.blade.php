@@ -78,6 +78,11 @@
 
   @push("scripts-after")
       <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML' async></script>
+
+      @if(session("new_user"))
+          <script>dataLayer.push({'event' : 'gtm.formSubmit', 'formName' : 'signup'});</script>
+      @endif
+
   @endpush
 
 @endsection
