@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\SalarySurvey;
 
+use Cache;
 use App\Models\Page;
 use Illuminate\Http\Request;
 use App\Models\SalarySurvey;
@@ -48,6 +49,16 @@ class TakePartController extends Controller
             "daily_salary" => $request->daily_salary,
             "user_id" => auth()->check() ? auth()->id() : 0,
         ]);
+
+        /**
+         * Bust cache for particular form that will be updated
+         *
+         */
+        Cache::forget('average_salary_sector_' . $request->sector . '_' . $request->type);
+        Cache::forget('average_salary_per_sector_' . $request->type);
+        Cache::forget('average_salary_per_field_' . $request->type);
+        Cache::forget('average_salary_vs_exams_' . $request->type);
+
         // @todo: Actually return JSON object for use in front end
         return response()->json('OK', 200);
     }
