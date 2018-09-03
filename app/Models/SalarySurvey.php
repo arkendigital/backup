@@ -17,12 +17,10 @@ class SalarySurvey extends Model
                     "Experience",
                     "Qualifications",
                     "Annual Salary",
-                    "Daily Salary",
-                    "User ID",
-                    "Created At"
+                    "Daily Salary"
                 ]);
 
-                $survey_data = SalarySurvey::select("type", "sector", "field", "experience", "qualifications", "annual_salary", "daily_salary", "user_id", "created_at")
+                $survey_data = SalarySurvey::select("type", "sector", "field", "experience", "qualifications", "annual_salary", "daily_salary")
                     ->get();
 
                 foreach ($survey_data as $data) {
@@ -33,9 +31,7 @@ class SalarySurvey extends Model
                         $data->experience,
                         $data->qualifications,
                         $data->annual_salary,
-                        $data->daily_salary,
-                        $data->user_id,
-                        $data->created_at
+                        $data->daily_salary
                     ]);
                 }
             });
