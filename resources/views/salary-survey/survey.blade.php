@@ -154,7 +154,7 @@
 
           <p>
             Looking for more detailed results?
-            <a href="{{ url("/salary-survey/download") }}" target="_blank" class="button button--dark-blue">Download here</a>
+            <a href="{{ route("export.public.salary-survey") }}" target="_blank" class="button button--dark-blue">Download here</a>
         </p>
         </div>
 
