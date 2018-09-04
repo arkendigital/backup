@@ -43,10 +43,18 @@ class SidebarController extends Controller
     */
     public function addLink(Request $request)
     {
+
+        if ($request->has("new_tab")) {
+            $new_tab = 1;
+        } else {
+            $new_tab = 0;
+        }
+
         $item = SectionSidebarItem::create([
             "sidebar_id" => $request->sidebar_id,
             "link_text" => $request->link_text,
-            "url" => $request->link_url
+            "url" => $request->link_url,
+            "new_tab" => $request->new_tab
         ]);
     }
 }

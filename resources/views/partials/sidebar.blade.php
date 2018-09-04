@@ -6,7 +6,7 @@
                 @if($item->url == "/".request()->path())
                 class="active"
                 @endif
-                @if (str_contains($item->url, 'http'))
+                @if ($item->new_tab)
                 target="_blank"
                 @endif
         >{{ $item->text }}</a>

@@ -48,6 +48,7 @@
         <label for="name">Or add a custom link</label>
         <input type="text" id="custom-link-text" placeholder="Enter visual text for link..." class="form-control">
         <input type="text" id="custom-link-url" placeholder="Enter link URL..." class="form-control">
+        <p><label for="custom-link-tab">Open in a new tab?</label> <input type="checkbox" id="custom-link-tab" name="new_tab" value="1"></p>
         <button type="button" class="btn btn-info" style="margin-top: 5px;" id="add-custom-link">Add link</button>
       </div>
 
@@ -180,6 +181,11 @@
       */
       var text = $("#custom-link-text").val();
       var url = $("#custom-link-url").val();
+      var new_tab = 0;
+
+      if ($("#custom-link-tab").is(":checked")) {
+          new_tab = 1;
+      }
 
       /**
       * Add the link to the database.
@@ -192,6 +198,7 @@
           method_field:"POST",
           link_text:text,
           link_url:url,
+          new_tab:new_tab,
           sidebar_id:{{ $sidebar->id }}
         },
         headers: {

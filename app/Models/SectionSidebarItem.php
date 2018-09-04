@@ -18,7 +18,8 @@ class SectionSidebarItem extends Model
         "page_id",
         "link_text",
         "url",
-        "order"
+        "order",
+        "new_tab"
     ];
 
     /**

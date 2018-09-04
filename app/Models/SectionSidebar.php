@@ -81,6 +81,7 @@ class SectionSidebar extends Model
             $new = collect();
             $new->sidebar_item_id = $item->id;
             $new->order = $item->order;
+            $new->new_tab = $item->new_tab;
 
             if ($item->page_id == 0) {
                 $new->text = $item->link_text;

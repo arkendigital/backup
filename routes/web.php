@@ -126,3 +126,9 @@ Route::get("track", "Adverts\\AdvertTrackingController@track")
 */
 Route::get("track/job", "Job\\JobTrackingController@track")
     ->name("job.track");
+
+/**
+ * Sitemap
+ *
+ */
+Route::get('/sitemap.xml', 'Sitemap\SitemapController@index');
