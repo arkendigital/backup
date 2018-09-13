@@ -54,7 +54,8 @@ class JobCompanyController extends Controller
         */
         $company = JobCompany::create([
             "name" => request()->name,
-            "description" => request()->description
+            "description" => request()->description,
+            "type" => request()->type
         ]);
 
         /**
@@ -104,7 +105,8 @@ class JobCompanyController extends Controller
     */
         $company->update([
             "name" => request()->name,
-            "description" => request()->description
+            "description" => request()->description,
+            "type" => request()->type
         ]);
 
         /**

@@ -8,9 +8,24 @@
   text-align: center;
   position: relative;
   z-index: 2;
+
   * {
     color: #FFFFFF;
   }
+
+  @media (max-width: 768px) {
+      padding: 15px 0;
+
+      .box-select-title {
+          margin-top: 50px;
+      }
+
+      .clear {
+          margin-bottom: 50px;
+      }
+
+  }
+
   &-container {
     display: inline-block;
     width: 96%;

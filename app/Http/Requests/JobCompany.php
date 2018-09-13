@@ -26,7 +26,8 @@ class JobCompany extends FormRequest
     {
         return [
             "name" => "required|string",
-            "description" => "required"
+            "description" => "required",
+            "type" => "required"
         ];
     }
 }

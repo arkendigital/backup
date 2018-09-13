@@ -24,7 +24,7 @@
   </div>
 
   <div class="website-container">
-    <div class="society-map-container" style="display: none;">
+    <div class="society-map-container">
 
       <p class="society-map-title">Find your Centre</p>
 
@@ -35,7 +35,7 @@
 
           <input class="society-map-search-input" type="text" name="search" placeholder="Enter your search...">
         </form>
-        <p class="society-map-search-text">Ut eos enisciaspe ma dolorpo rerunti oreseque di ulparum etur seque vellaut int facea am inci uscius. Con comnis alictatus</p>
+        <p class="society-map-search-text">Enter your city and hit enter to search</p>
       </div>
 
       <div class="society-map" id="map"></div>

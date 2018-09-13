@@ -21,6 +21,18 @@
             </div>
 
             <div class="form-group">
+              <label for="name">Company Type</label>
+              @if($errors->has("type"))
+                <p class="text-danger">{{ $errors->first("type") }}</p>
+              @endif
+              <select name="type" class="form-control">
+                  <option value="">Please select...</option>
+                  <option value="agency">Agency</option>
+                  <option value="direct">Direct Employer</option>
+              </select>
+            </div>
+
+            <div class="form-group">
               <label for="name">Company Information / Description</label>
               @if($errors->has("description"))
                 <p class="text-danger">{{ $errors->first("description") }}</p>

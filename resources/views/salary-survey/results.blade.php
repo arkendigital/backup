@@ -12,8 +12,8 @@
       <p>{!! $page->getField("page_content") !!}</p>
 
       <p>
-          <a href="{{ url("/salary-survey/download") }}" target="_blank" class="button button--dark-blue">Download or Print</a>
-          <a href="{{ route("export.public.salary-survey") }}" class="button button--dark-blue">Detailed Data</a>
+          <a href="{{ url("/salary-survey/download") }}" target="_blank" class="button button--dark-blue">Save or Print</a>
+          <a href="{{ route("export.public.salary-survey") }}" class="button button--dark-blue">Download Detailed Data</a>
       </p>
 
     </div>

@@ -17,7 +17,8 @@ class JobCompany extends Model
     protected $fillable = [
         "name",
         "logo_path",
-        "description"
+        "description",
+        "type"
     ];
 
     protected $table = 'job_companies';
