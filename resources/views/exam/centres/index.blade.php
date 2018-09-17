@@ -68,7 +68,7 @@
   ])
 
   @push("scripts-after")
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHVFTM_LS8YLRx8fog61RzDT054G4C8jY" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSg7eOuU7UlOQ7thKK4AiBJ2djZFJdFj8" async defer></script>
     <script>
     $("#societies_search").submit(function(e) {
 
@@ -125,7 +125,7 @@
           *
           */
           var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 14
+            zoom: 8
           });
 
           /**
