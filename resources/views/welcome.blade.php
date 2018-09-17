@@ -4,7 +4,7 @@
 
   <div class="homepage-hero">
     @foreach($slides as $slide)
-    <div class="homepage-hero-slide" style="background-image: url({{ $slide->image }});">
+    <div class="homepage-hero-slide lazy" data-src="{{ $slide->image }}">
 
       <div>
         @if ($slide->link)
@@ -33,7 +33,7 @@
 
     <div class="homepage-sections">
       @foreach($sections as $section)
-        <a href="/{{ $section->slug }}" class="homepage-sections-box" style="background-image: url({{ $section->thumbnail }});">
+        <a href="/{{ $section->slug }}" class="homepage-sections-box lazy" data-src="{{ $section->thumbnail }}">
           <div class="homepage-sections-box-title" style="background-color:{{ $section->color }}">{{ $section->name }}</div>
         </a>
       @endforeach

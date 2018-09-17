@@ -1,4 +1,4 @@
-<div class="box-select box-select--dark-blue" style="background-image:url({{ $group->image }});">
+<div class="box-select box-select--dark-blue lazy" data-src="{{ $group->image }}">
   <div class="box-select-container">
 
     <p class="box-select-title margin-top--large">{{ $group->name }}</p>

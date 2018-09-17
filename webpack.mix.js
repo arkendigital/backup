@@ -24,6 +24,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
       'resources/assets/js/vendor/jquery.min.js',
       'resources/assets/js/vendor/jquery.cookielaw.js',
       'resources/assets/js/vendor/jquery.matchHeight-min.js',
+      'resources/assets/js/vendor/lazyload.min.js',
       'resources/assets/js/vendor/swiper.min.js',
       'resources/assets/js/vendor/slick.min.js',
       'resources/assets/js/vendor/swal.js',

@@ -14,9 +14,6 @@
 
   <!-- Styles -->
   @stack("styles-before")
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
-    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
-    <link href="{{ asset("css/vendor.css") }}" rel="stylesheet">
     <link href="{{ asset("css/app.css") }}" rel="stylesheet">
   @stack("styles-after")
 
@@ -66,8 +63,14 @@
     </div>
   @endif
 
+
+  <!-- Below the Fold Styles -->
+  <link href="{{ asset("css/vendor.css") }}" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+
   <!-- Scripts -->
   @stack("scripts-before")
+
     <script src="{{ asset("js/vendor.js") }}"></script>
     <script src="{{ asset("js/editor.js") }}"></script>
     <script src="{{ asset("js/app.js") }}"></script>

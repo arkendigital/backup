@@ -10,3 +10,9 @@ require("./components/fileupload")
 require("./components/salary-survey")
 require("./components/scroll-to-top")
 require("./components/account")
+
+$(function() {
+	var myLazyLoad = new LazyLoad({
+		elements_selector: ".lazy"
+	});
+});

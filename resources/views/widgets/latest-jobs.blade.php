@@ -1,4 +1,4 @@
-<div class="box-select {{-- box-select-slider --}}" style="background-image:url(/images/temp/homepage-latest-jobs-bg.png);">
+<div class="box-select lazy {{-- box-select-slider --}}" data-src="/images/temp/homepage-latest-jobs-bg.png">
   <div class="box-select-container">
 
     <p class="box-select-title">Featured Jobs</p>
