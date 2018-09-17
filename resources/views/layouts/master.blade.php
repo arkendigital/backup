@@ -74,7 +74,6 @@
     <script src="{{ asset("js/vendor.js") }}"></script>
     <script src="{{ asset("js/editor.js") }}"></script>
     <script src="{{ asset("js/app.js") }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js"></script>
     <script>
         $(document).euCookieLawPopup().init({
             cookiePolicyUrl : "<?php echo url('privacy-cookies'); ?>",
