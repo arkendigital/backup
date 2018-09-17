@@ -15,6 +15,7 @@
   <!-- Styles -->
   @stack("styles-before")
     <link href="{{ asset("css/app.css") }}" rel="stylesheet">
+    <link href="{{ asset("css/vendor.css") }}" rel="stylesheet">
   @stack("styles-after")
 
   <!-- Scripts -->
@@ -63,14 +64,9 @@
     </div>
   @endif
 
-
-  <!-- Below the Fold Styles -->
-  <link href="{{ asset("css/vendor.css") }}" rel="stylesheet">
-  <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
-
   <!-- Scripts -->
   @stack("scripts-before")
-
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
     <script src="{{ asset("js/vendor.js") }}"></script>
     <script src="{{ asset("js/editor.js") }}"></script>
     <script src="{{ asset("js/app.js") }}"></script>
