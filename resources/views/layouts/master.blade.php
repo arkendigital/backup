@@ -67,7 +67,6 @@
   @stack("scripts-before")
     <link href="{{ asset("css/vendor.css") }}" rel="stylesheet">
     <script src="{{ asset("js/vendor.js") }}"></script>
-    <script src="{{ asset("js/editor.js") }}" async></script>
     <script src="{{ asset("js/app.js") }}" async></script>
   @stack("scripts-after")
 
