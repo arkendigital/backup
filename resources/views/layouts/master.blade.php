@@ -66,26 +66,9 @@
 
   <!-- Scripts -->
   @stack("scripts-before")
-    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
     <script src="{{ asset("js/vendor.js") }}"></script>
-    <script src="{{ asset("js/editor.js") }}"></script>
-    <script src="{{ asset("js/app.js") }}"></script>
-    <script>
-        $(document).euCookieLawPopup().init({
-            cookiePolicyUrl : "<?php echo url('privacy-cookies'); ?>",
-            popupPosition : 'bottom',
-            colorStyle : 'default',
-            compactStyle : false,
-            popupTitle : 'We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.',
-            popupText : '',
-            buttonContinueTitle : 'Continue',
-            buttonLearnmoreTitle : 'More Info',
-            buttonLearnmoreOpenInNewWindow : false,
-            agreementExpiresInDays : 30,
-            autoAcceptCookiePolicy : false,
-            htmlMarkup : null
-        });
-    </script>
+    <script src="{{ asset("js/editor.js") }}" async></script>
+    <script src="{{ asset("js/app.js") }}" async></script>
   @stack("scripts-after")
 
   @include("sweet::alert")

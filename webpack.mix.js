@@ -15,6 +15,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css')
     .styles([
       'node_modules/sweetalert/dist/sweetalert.css',
+      'resources/assets/sass/plugins/fontawesome.scss',
       'resources/assets/sass/plugins/slick-theme.min.scss',
       'resources/assets/sass/plugins/slick.min.scss',
       'resources/assets/sass/plugins/swiper.min.scss',
