@@ -39,19 +39,4 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-3">
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Sitemap</h3>
-                </div>
-                <div class="box-body">
-
-                    <a class="btn btn-primary" href="{{ url("/generate-xml-sitemap") }}">Regenerate Sitemap</a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
 @stop
