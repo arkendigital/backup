@@ -28,7 +28,7 @@
               @if($errors->has("message"))
                   <p class="suggest-feature-form__error">{{ $errors->first("message") }}</p>
               @endif
-              <textarea name="message" id="message" placeholder="Enter your improvement idea here..."></textarea>
+              <textarea name="message" id="message" placeholder="Enter your idea here..."></textarea>
           </div>
 
           <button>Submit</button>
