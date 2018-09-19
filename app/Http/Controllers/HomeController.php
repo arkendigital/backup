@@ -25,7 +25,6 @@ class HomeController extends Controller
         *
         */
         $this->seo()->setTitle($page->meta_title);
-        $this->seo()->opengraph()->addImage(env("APP_URL")."/images/logo.png");
 
         /**
         * Get slides for the homepage.
@@ -33,6 +32,10 @@ class HomeController extends Controller
         */
         $slides = Slide::where("slug", "home")
             ->get();
+
+        if (isset($slides[0]) && isset($slides[0]->image_path) && $slides[0]->image_path != "") {
+            $this->seo()->opengraph()->addImage(env("S3_URL").$slides[0]->image_path);
+        }
 
         /**
         * Get a list of sections.
