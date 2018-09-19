@@ -19,6 +19,7 @@ class SalarySurveyController extends Controller
         // Set SEO.
         $this->seo()->setTitle($page->meta_title);
         $this->seo()->setDescription($page->meta_description);
+        $this->seo()->opengraph()->addImage($page->section->image);
 
         // Get adverts for this page.
         $page_adverts = getArrayOfAdverts($page->id);

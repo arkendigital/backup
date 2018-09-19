@@ -112,6 +112,10 @@ class DiscussionController extends Controller
         $this->seo()->setTitle($discussion->name);
         $this->seo()->setDescription($discussion->excerpt);
 
+        if ($discussion->image_path != "") {
+            $this->seo()->opengraph()->addImage($discussion->image);
+        }
+
         $categories = $this->getCategories();
         $discussion->with('user', 'category', 'replies');
 

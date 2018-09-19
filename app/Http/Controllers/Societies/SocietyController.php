@@ -20,6 +20,7 @@ class SocietyController extends Controller
         */
         $this->seo()->setTitle($page->meta_title);
         $this->seo()->setDescription($page->meta_description);
+        $this->seo()->opengraph()->addImage($page->section->image);
 
         /**
         * Get adverts for this page.

@@ -25,6 +25,7 @@ class HomeController extends Controller
         *
         */
         $this->seo()->setTitle($page->meta_title);
+        $this->seo()->opengraph()->addImage(env("APP_URL")."/images/logo.png");
 
         /**
         * Get slides for the homepage.
