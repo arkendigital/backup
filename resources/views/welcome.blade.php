@@ -4,7 +4,7 @@
 
   <div class="homepage-hero">
     @foreach($slides as $slide)
-    <div class="homepage-hero-slide lazy" data-src="{{ $slide->image }}">
+    <div class="homepage-hero-slide" style="background-image: url({{ $slide->image }})">
 
       <div>
         @if ($slide->link)
