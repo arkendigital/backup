@@ -175,7 +175,7 @@ class EmployerController extends Controller
         * Notify.
         *
         */
-        alert("Employer has been deleted")->persistent();
+        alert()->success("Employer has been deleted");
 
         /**
         * Redirect to the list.

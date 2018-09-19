@@ -38,8 +38,7 @@ class ImportController extends Controller
             }
         }
 
-        alert("Import complete")
-            ->persistent();
+        alert()->success("Import Complete");
 
         return redirect()->back();
     }
@@ -76,8 +75,7 @@ class ImportController extends Controller
             }
         }
 
-        alert("Import complete")
-            ->persistent();
+        alert()->success("Import Complete");
 
         return redirect()->back();
     }

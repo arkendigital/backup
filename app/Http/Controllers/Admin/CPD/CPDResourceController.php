@@ -138,8 +138,7 @@ class CPDResourceController extends Controller
             ]);
         }
 
-        alert()
-          ->persistent("Resource updated");
+        alert()->success("Resource Updated");
 
         /**
         * Redirect to edit page.

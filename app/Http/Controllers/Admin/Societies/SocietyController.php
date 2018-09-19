@@ -267,7 +267,7 @@ class SocietyController extends Controller
         * Notify.
         *
         */
-        alert("Society has been deleted")->persistent();
+        alert()->success("Society has been deleted");
 
         /**
         * Redirect to the list.

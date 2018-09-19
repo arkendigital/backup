@@ -49,7 +49,7 @@ class JobLocationController extends Controller
         $location->region_id = $request->region_id;
         $location->save();
 
-        alert('Job location has been created')->persistent();
+        alert()->success("Job Location has been created");
 
         return redirect(route('jobs.locations.edit', $location));
     }
@@ -92,7 +92,7 @@ class JobLocationController extends Controller
         $location->name = $request->name;
         $location->save();
 
-        alert('Job location has been edited')->persistent();
+        alert()->success("Job Location has been updated");
 
         return redirect(route('jobs.locations.edit', $location));
     }
@@ -107,7 +107,7 @@ class JobLocationController extends Controller
     {
         $location->delete();
 
-        alert('Job location has been deleted')->persistent();
+        alert()->success("Job Location has been deleted");
 
         return redirect(route('jobs.locations'));
     }

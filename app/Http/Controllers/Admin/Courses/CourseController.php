@@ -58,7 +58,7 @@ class CourseController extends Controller
 
 
         alert()->success('Course Created');
-        
+
 
         /**
         * Redirect to edit page.
@@ -114,7 +114,7 @@ class CourseController extends Controller
     {
         $course->delete();
 
-        alert("Course has been deleted")->persistent();
+        alert()->success("Course has been deleted");
 
         return redirect(route("courses.index"));
     }

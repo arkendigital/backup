@@ -115,8 +115,7 @@ class BoxItemController extends Controller
     {
         $item->delete();
 
-        alert($item->title . " has been deleted")
-            ->persistent();
+        alert()->success($item->title . " has been deleted");
 
         return redirect()->back();
     }

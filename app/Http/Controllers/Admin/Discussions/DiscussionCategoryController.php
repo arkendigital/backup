@@ -153,8 +153,7 @@ class DiscussionCategoryController extends Controller
 
         $category->delete();
 
-        alert($category->name . " has been removed")
-            ->persistent();
+        alert()->success($category->name . " has been removed");
 
         return redirect()->back();
     }

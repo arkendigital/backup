@@ -9,11 +9,15 @@
   text-align: center;
   padding: 10px 7.5px;
   width: 95px;
+  height: 100px;
   cursor: pointer;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   text-decoration: none;
   z-index: 41;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 
   &-icon {
     color: #fff;
@@ -55,15 +59,17 @@
     bottom: 0;
     border-radius: 0;
     width: 50%;
-    padding: 5px 0;
+    padding: 0;
     border-bottom: none;
+    height: 60px;
 
     &-icon {
-      font-size: 22px;
+      font-size: 22px!important;
     }
 
     &-title {
       margin-top: 3px;
+      margin-bottom: 0;
     }
 
     &--full {

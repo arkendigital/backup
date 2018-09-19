@@ -349,8 +349,7 @@ class JobController extends Controller
 
         $job->delete();
 
-        alert($job->title . " has been removed")
-            ->persistent();
+        alert()->success($job->title . " has been removed");
 
         return redirect()->back();
 

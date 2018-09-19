@@ -132,3 +132,10 @@ Route::get("track/job", "Job\\JobTrackingController@track")
  *
  */
 Route::get('/sitemap.xml', 'Sitemap\SitemapController@index');
+
+
+/**
+ * Reset password confirmation page
+ *
+ */
+Route::get('/password-reset-email-sent', 'Auth\ForgotPasswordController@confirmation');

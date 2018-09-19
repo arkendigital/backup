@@ -207,8 +207,7 @@ class ExamModuleController extends Controller
     {
         $module->delete();
 
-        alert($module->name . " has been removed")
-            ->persistent();
+        alert()->success($module->name . " has been removed");
 
         return redirect()->back();
     }

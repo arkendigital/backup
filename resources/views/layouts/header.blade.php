@@ -138,16 +138,20 @@
 
 @if(request()->route()->getPrefix() != "/discussion")
     <a class="discussion-floater @if(request()->route()->getName() == "suggestfeature.index") feature-floater--full @endif" href="/discussion">
-      <i class="far fa-3x fa-smile discussion-floater-icon"></i>
-      <p class="discussion-floater-title">Join our discussion</p>
-      <p class="discussion-floater-text">Here</p>
+        <div>
+          <i class="far fa-3x fa-smile discussion-floater-icon"></i>
+          <p class="discussion-floater-title">Join our discussion</p>
+          <p class="discussion-floater-text">Here</p>
+        </div>
     </a>
 @endif
 
 @if(request()->route()->getName() != "suggestfeature.index")
     <a class="feature-floater @if(request()->route()->getPrefix() == "/discussion") feature-floater--full @endif" href="{{ route("suggestfeature.index") }}">
-      <i class="fas fa-2x fa-bug discussion-floater-icon"></i>
-      <p class="discussion-floater-title">Suggest a Feature</p>
-      <p class="discussion-floater-text">Click Here</p>
+        <div>
+          <i class="fas fa-2x fa-bug discussion-floater-icon"></i>
+          <p class="discussion-floater-title">Suggest a Feature</p>
+          <p class="discussion-floater-text">Click Here</p>
+        </div>
     </a>
 @endif

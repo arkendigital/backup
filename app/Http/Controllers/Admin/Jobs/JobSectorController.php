@@ -45,7 +45,7 @@ class JobSectorController extends Controller
         $sector->name = $request->name;
         $sector->save();
 
-        alert('Job sector has been created')->persistent();
+        alert()->success("Job Sector has been created");
 
         return redirect(route('jobs.sectors.edit', $sector));
     }
@@ -87,8 +87,8 @@ class JobSectorController extends Controller
 
         $sector->name = $request->name;
         $sector->save();
-                
-        alert('Job sector has been edited')->persistent();
+
+        alert()->success("Job Sector has been updated");
 
         return redirect(route('jobs.sectors.edit', $sector));
     }
@@ -102,8 +102,8 @@ class JobSectorController extends Controller
     public function destroy(JobSector $sector)
     {
         $sector->delete();
-        
-        alert('Job sector has been deleted')->persistent();
+
+        alert()->success("Job Sector has been deleted");
 
         return redirect(route('jobs.sectors'));
     }

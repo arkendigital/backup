@@ -248,8 +248,7 @@ class PageController extends Controller
          */
         $page->delete();
 
-        alert("Page deleted")
-        ->persistent();
+        alert()->success("Page Deleted");
 
         return redirect()
         ->back();

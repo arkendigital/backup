@@ -176,8 +176,7 @@ class UniSocietyController extends Controller
         * Notify.
         *
         */
-        alert("Uni Society has been deleted")
-          ->persistent();
+        alert()->success("Uni Society has been deleted");
 
         /**
         * Redirect to the list.

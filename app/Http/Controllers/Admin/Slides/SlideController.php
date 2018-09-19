@@ -91,7 +91,7 @@ class SlideController extends Controller
         * Notify user.
         *
         */
-        alert("Your slide has been uploaded!")->persistent();
+        alert()->success("Your Slide has been uploaded");
 
         /**
         * Redirect to list view.
@@ -152,7 +152,7 @@ class SlideController extends Controller
         * Notify user.
         *
         */
-        alert("Your slide has been updated!")->persistent();
+        alert()->success("Your Slide has been updated");
 
         /**
         * Redirect to list view.
