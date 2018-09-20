@@ -32,7 +32,8 @@ class Job extends FormRequest
             "experience" => "required",
             "location_id" => "required",
             "company_id" => "required",
-            "apply_link" => "required|url"
+            "apply_link" => "required|url",
+            "sectors" => "required"
         ];
 
         if (request()->status_id == 1 || request()->status_id == 3) {

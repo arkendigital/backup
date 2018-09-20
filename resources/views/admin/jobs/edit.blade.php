@@ -1,7 +1,15 @@
 @extends('adminlte::page')
 
 @section('content_header')
+
     <h1>Edit Job - {{ $job->title }}</h1>
+
+    @if($errors->any())
+        <p class="has-error">
+            <br><label class="control-label" for="title"><i class="fa fa-times-circle-o"></i> There are some issues with this Job listing, please see fields marked in red</label>
+        </p>
+    @endif
+
 @endsection
 
 @section('content')
@@ -88,9 +96,9 @@
                       </select>
                     </div>
 
-                    <div class="form-group @if($errors->has("sector_id")) has-error @endif">
-                        @if($errors->has("sector_id"))
-                            <label class="control-label" for="sector_id"><i class="fa fa-times-circle-o"></i> {{ $errors->first("sector_id") }}</label>
+                    <div class="form-group @if($errors->has("sectors")) has-error @endif">
+                        @if($errors->has("sectors"))
+                            <label class="control-label" for="sector_id"><i class="fa fa-times-circle-o"></i> {{ $errors->first("sectors") }}</label>
                         @else
                             <label for="sector_id">Job Sector</label>
                         @endif
