@@ -24,12 +24,11 @@ class SitemapController extends Controller
 		$discussions = Discussion::all();
 		$exam_categories = ExamCategory::all();
 
-		return view("sitemap", compact(
-			"pages",
-			"jobs",
-			"discussions",
-			"exam_categories"
-		));
+		$contents = \View::make("sitemap")->with("pages", $pages)->with("jobs", $jobs)->with("discussions", $discussions)->with("exam_categories", $exam_categories);
+		$response = \Response::make($contents, 200);
+		$response->header('Content-Type', 'application/xml');
+		
+		return $response;
 
 	}
 
