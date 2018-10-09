@@ -24,6 +24,8 @@
   </div>
 
   <div class="website-container">
+
+    {{--
     <div class="society-map-container">
 
       <p class="society-map-title">Find your Centre</p>
@@ -43,6 +45,7 @@
       <div class="society-map-list"></div>
 
     </div><!-- /.society-map-container -->
+    --}}
 
 
     <div class="clear margin-bottom--medium"></div>
@@ -67,6 +70,7 @@
     "category_id" => $page->discussion_category_id
   ])
 
+  {{--
   @push("scripts-after")
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSg7eOuU7UlOQ7thKK4AiBJ2djZFJdFj8" async defer></script>
     <script>
@@ -213,5 +217,6 @@
     });
     </script>
   @endpush
+  --}}
 
 @endsection
