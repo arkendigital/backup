@@ -105,8 +105,17 @@ class PageController extends Controller
             "section_id" => request()->section_id,
             "discussion_category_id" => request()->discussion_category_id,
             "meta_title" => request()->meta_title,
-            "meta_description" => request()->meta_description
+            "meta_description" => request()->meta_description,
+            "show_on_sitemap" => (bool) request()->show_on_sitemap
         ]);
+
+        /**
+         * We must clear the cache for the sitemap pages.
+         */
+        $totalSitemapPages = ceil(Page::count() / 10000);
+        for ($i = 0; $i < $totalSitemapPages; $i++) {
+            \Cache::forget('sitemap-pages-page-'.$i);
+        }
 
         /**
         * If the slug has been set, update it.

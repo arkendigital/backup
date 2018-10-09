@@ -131,7 +131,12 @@ Route::get("track/job", "Job\\JobTrackingController@track")
  * Sitemap
  *
  */
-Route::get('/sitemap.xml', 'Sitemap\SitemapController@index');
+Route::redirect('/sitemap.xml', '/sitemap_index.xml');
+Route::get('/sitemap_index.xml', 'Sitemap\\SitemapController@index');
+Route::get('/sitemap-pages-{page?}.xml', 'Sitemap\\SitemapController@pages')->name('sitemap.pages');
+Route::get('/sitemap-jobs-{page?}.xml', 'Sitemap\\SitemapController@jobs')->name('sitemap.jobs');
+Route::get('/sitemap-discussions-{page?}.xml', 'Sitemap\\SitemapController@discussions')->name('sitemap.discussions');
+Route::get('/sitemap-exam-categories-{page?}.xml', 'Sitemap\\SitemapController@examCategories')->name('sitemap.exam.categories');
 
 
 /**

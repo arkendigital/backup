@@ -26,7 +26,8 @@ class Page extends Model
         "section_id",
         "discussion_category_id",
         "meta_title",
-        "meta_description"
+        "meta_description",
+        "show_on_sitemap"
     ];
 
     /**

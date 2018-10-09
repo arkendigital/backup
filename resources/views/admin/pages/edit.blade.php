@@ -52,6 +52,18 @@
         </select>
       </div>
 
+      <div class="form-group">
+        <label for="show_on_sitemap">Show on Sitemaps?</label>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" name="show_on_sitemap" id="show_on_sitemap" 
+                @if ($page->show_on_sitemap)
+                checked
+                @endif> Show on Sitemaps?
+            </label>
+        </div>
+      </div>
+
     </div>
   </div>
 
