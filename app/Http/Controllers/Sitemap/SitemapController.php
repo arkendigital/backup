@@ -14,13 +14,13 @@ class SitemapController extends Controller
 
     /**
      * Sitemap index
-     * 
+     *
      * @return Illuminate\Http\Response
      */
-	public function index()
-	{
+    public function index()
+    {
         $this->seo()->setTitle('XML Sitemap');
-        \Debugbar::disable(); 
+        \Debugbar::disable();
 
         $pagePages = ceil(Page::count() / 10000);
         $jobPages = ceil(Job::count() / 10000);
@@ -35,14 +35,14 @@ class SitemapController extends Controller
         return response()->view('sitemap.index', compact([
             'pagePages', 'jobPages', 'discussionPages', 'examPages', 'page', 'job', 'discussion', 'examCategory'
         ]))->header('Content-Type', 'text/xml');
-	}
+    }
 
     /**
      * Sitemap for Pages
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
-    public function pages($page = null) 
+    public function pages($page = null)
     {
         $pages = cache()->remember('sitemap-pages-page-'.$page, now()->addDays(1), function () use ($page) {
             $offset = $page * 10000;
@@ -57,15 +57,15 @@ class SitemapController extends Controller
 
         return response()->view('sitemap.pages', [
             'pages' => $pages,
-        ])->header('Content-Type', 'text/xml');   
+        ])->header('Content-Type', 'text/xml');
     }
 
     /**
      * Sitemap for Jobs
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
-    public function jobs($page = null) 
+    public function jobs($page = null)
     {
         $jobs = cache()->remember('sitemap-jobs-page-'.$page, now()->addDays(1), function () use ($page) {
             $offset = $page * 10000;
@@ -79,15 +79,15 @@ class SitemapController extends Controller
 
         return response()->view('sitemap.jobs', [
             'jobs' => $jobs,
-        ])->header('Content-Type', 'text/xml');   
+        ])->header('Content-Type', 'text/xml');
     }
 
     /**
      * Sitemap for Discussions
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
-    public function discussions($page = null) 
+    public function discussions($page = null)
     {
         $discussions = cache()->remember('sitemap-discussions-page-'.$page, now()->addDays(1), function () use ($page) {
             $offset = $page * 10000;
@@ -100,15 +100,15 @@ class SitemapController extends Controller
 
         return response()->view('sitemap.discussions', [
             'discussions' => $discussions,
-        ])->header('Content-Type', 'text/xml');   
+        ])->header('Content-Type', 'text/xml');
     }
 
     /**
      * Sitemap for Exam Categories
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
-    public function examCategories($page = null) 
+    public function examCategories($page = null)
     {
         $examCategories = cache()->remember('sitemap-exam-categories-page-'.$page, now()->addDays(1), function () use ($page) {
             $offset = $page * 10000;
@@ -121,7 +121,6 @@ class SitemapController extends Controller
 
         return response()->view('sitemap.exam-categories', [
             'examCategories' => $examCategories,
-        ])->header('Content-Type', 'text/xml');   
+        ])->header('Content-Type', 'text/xml');
     }
-
 }
