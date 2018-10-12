@@ -14,7 +14,7 @@
         @if($key == 0)
             <h1 class="homepage-hero-slide-title">{{ $slide->title }}</h1>
         @else
-            <h2 class="homepage-hero-slide-title">{{ $slide->title }}</h2>
+            <p class="homepage-hero-slide-title">{{ $slide->title }}</p>
         @endif
 
         <div class="clear"></div>
