@@ -3,7 +3,7 @@
 @section("content")
 
   <div class="homepage-hero">
-    @foreach($slides as $slide)
+    @foreach($slides as $key => $slide)
     <div class="homepage-hero-slide" style="background-image: url({{ $slide->image }})">
 
       <div>
@@ -11,8 +11,14 @@
           <a href="{{ $slide->link }}">
         @endif
 
-        <p class="homepage-hero-slide-title">{{ $slide->title }}</p>
+        @if($key == 0)
+            <h1 class="homepage-hero-slide-title">{{ $slide->title }}</h1>
+        @else
+            <h2 class="homepage-hero-slide-title">{{ $slide->title }}</h2>
+        @endif
+
         <div class="clear"></div>
+
         <p class="homepage-hero-slide-text">{{ $slide->text }}</p>
 
         @if ($slide->link)
