@@ -1,7 +1,13 @@
 <div class="box-select lazy {{-- box-select-slider --}}" data-src="/images/temp/homepage-latest-jobs-bg.png">
   <div class="box-select-container">
 
-    <p class="box-select-title">Featured Jobs</p>
+    <p class="box-select-title">
+        @if($page->getField("featured_jobs_title") != "")
+            {{ $page->getField("featured_jobs_title") }}
+        @else
+            Featured Actuary Jobs
+        @endif
+    </p>
     <p class="box-select-text"></p>
 
     @php
@@ -37,27 +43,5 @@
 
     <div class="clear"></div>
 
-    {{-- <img src="/images/icons/arrow-down--white.png" alt="Scroll Down" title="Scroll Down"> --}}
-
   </div>
 </div><!-- /.box-select -->
-
-
-{{--
-@push("scripts-after")
-  <script>
-  var swiper = new Swiper('.latest-jobs-slider', {
-    slidesPerView: 3,
-    spaceBetween: 100,
-    breakpoints: {
-      550: {
-        slidesPerView: 1,
-      },
-      830: {
-        slidesPerView: 2,
-      }
-    }
-  });
-  </script>
-@endpush
---}}
