@@ -4,7 +4,7 @@
       <img src="/images/logo.png" alt="Actuaries Online" title="Actuaries Online" class="header-logo">
     </a>
 
-    <a href="mailto:ask@actuaries.online" class="header-email">ask@actuaries.online</a>
+    <a href="mailto:ask@actuariesonline.com" class="header-email">ask@actuariesonline.com</a>
 
     <div class="header-account @if(auth()->check()) header-account--is-loggedin @endif">
       @if(auth()->check())

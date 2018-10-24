@@ -155,7 +155,7 @@
                     @if(old("internal_marketing")) checked @endif
                 @endif
               >
-              <label for="internal_marketing">I would like to receive marketing emails from actuaries.online</label>
+              <label for="internal_marketing">I would like to receive marketing emails from actuariesonline.com</label>
           </div>
       </div>
 

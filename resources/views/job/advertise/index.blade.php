@@ -41,7 +41,7 @@
       <div class="advertising-toggle-item-specification-spec advertising-toggle-item-specification-spec-small">945 x 100px</div>
 
       <div class="advertising-toggle-item-specification-title margin-top--medium">Get in touch to advertise with us</div>
-      <div class="advertising-toggle-item-specification-number"><a href="mailto:advertise@actuaries.online">advertise@actuaries.online</a></div>
+      <div class="advertising-toggle-item-specification-number"><a href="mailto:advertise@actuariesonline.com">advertise@actuariesonline.com</a></div>
 
     </div><!-- /#advert-specification -->
 

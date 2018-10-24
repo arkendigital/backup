@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'GameFront.com'),
+    'name' => env('APP_NAME', 'ActuariesOnline.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://gamefront.dev'),
+    'url' => env('APP_URL', 'https://actuariesonline.com'),
 
     /*
     |--------------------------------------------------------------------------

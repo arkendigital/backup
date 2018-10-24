@@ -144,7 +144,7 @@
                           @if(auth()->user()->internal_marketing) checked @endif
                       @endif
                   >
-                  <label for="internal_marketing">I would like to recieve marketing emails from actuaries.online</label>
+                  <label for="internal_marketing">I would like to recieve marketing emails from actuariesonline.com</label>
               </div>
           </div>
 
