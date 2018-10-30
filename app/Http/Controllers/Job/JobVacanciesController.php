@@ -99,7 +99,7 @@ class JobVacanciesController extends Controller
             $jobs = $jobs->whereIn("experience", session()->get("job-filter-experience"));
         }
 
-        if (session()->exists("job-filter-type") && !empty(session()->get("job-filter-type"))) {
+        if (session()->exists("job-filter-type") && !empty(session()->get("job-filter-type")) && session()->get("job-filter-type") != "topsearch") {
             $jobs = $jobs->whereIn("type", session()->get("job-filter-type"));
         }
 

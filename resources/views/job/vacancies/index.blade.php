@@ -34,7 +34,7 @@
         <form action="/jobs/vacancies" method="POST" id="jobFiltering">
           {{ csrf_field() }}
 
-          <input type="hidden" name="type" value="topsearch">
+          {{-- <input type="hidden" name="type" value="topsearch"> --}}
           {{-- <input type="text" name="location" class="job-list-banner-location-search" placeholder="e.g. London"
             @if (session()->exists('job-filter-location') && !empty(session()->get('job-filter-location')))
               value="{{ session()->get('job-filter-location') }}"
@@ -109,11 +109,11 @@
             <div>
               <p class="job-list-sidebar-item-title">RECRUITER TYPE</p>
               <div class="job-list-sidebar-item checkbox-wrapper">
-                <input type="checkbox" class="job-list-sidebar-item-checkbox" id="type-agency" name="type[]" value="agency" @if(session()->exists("job-filter-type") && !empty(session()->get("job-filter-type")) && in_array("agency", session()->get("job-filter-type"))) checked @endif>
+                <input type="checkbox" class="job-list-sidebar-item-checkbox" id="type-agency" name="type[]" value="agency" @if(session()->exists("job-filter-type") && !empty(session()->get("job-filter-type")) && session()->get("job-filter-type") != "topsearch" && in_array("agency", session()->get("job-filter-type"))) checked @endif>
                 <label class="job-list-sidebar-item-label" for="type-agency">Agency</label>
               </div>
               <div class="job-list-sidebar-item checkbox-wrapper">
-                <input type="checkbox" class="job-list-sidebar-item-checkbox" id="type-employer" name="type[]" value="direct" @if(session()->exists("job-filter-type") && !empty(session()->get("job-filter-type")) && in_array("direct", session()->get("job-filter-type"))) checked @endif>
+                <input type="checkbox" class="job-list-sidebar-item-checkbox" id="type-employer" name="type[]" value="direct" @if(session()->exists("job-filter-type") && !empty(session()->get("job-filter-type")) && session()->get("job-filter-type") != "topsearch" && in_array("direct", session()->get("job-filter-type"))) checked @endif>
                 <label class="job-list-sidebar-item-label" for="type-employer">Direct Employer</label>
               </div>
             </div>

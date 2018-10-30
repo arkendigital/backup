@@ -31,6 +31,6 @@ class Advertising extends Mailable
         return $this->view('mail.advertising')
       ->with(['contact_submission' => $this->contact_submission])
       ->subject('New advertising contact form submission on '. Setting::get('site_name') ?? env('APP_NAME'))
-      ->from('no-reply@fifteen.co.uk', Setting::get('site_name') ?? env('APP_NAME'));
+      ->from('no-reply@actuariesonline.com', Setting::get('site_name') ?? env('APP_NAME'));
     }
 }

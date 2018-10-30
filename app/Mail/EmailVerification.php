@@ -31,6 +31,6 @@ class EmailVerification extends Mailable
         return $this->view('mail.user-verification')
                     ->with(['email_token' => $this->user->email_token, 'user' => $this->user])
                     ->subject('Please Verify Your Email Address on '. Setting::get('site_name') ?? env('APP_NAME'))
-                    ->from('no-reply@fifteen.co.uk', Setting::get('site_name') ?? env('APP_NAME'));
+                    ->from('no-reply@actuariesonline.com', Setting::get('site_name') ?? env('APP_NAME'));
     }
 }
