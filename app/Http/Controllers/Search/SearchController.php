@@ -8,6 +8,7 @@ use App\Models\Job;
 use App\Models\Page;
 use App\Models\Discussion;
 use App\Models\Society;
+use App\Models\UniSociety;
 use App\Models\Exam\Category as ExamCategory;
 
 class SearchController extends Controller
@@ -81,10 +82,8 @@ class SearchController extends Controller
 
     private function findSocieties($query)
     {
-        return Society::where('name', 'LIKE', '%' . $query . '%')
-            ->orWhere('city', 'LIKE', '%' . $query . '%')
+        return UniSociety::where('name', 'LIKE', '%' . $query . '%')
             ->latest()
-            ->take(6)
             ->get();
     }
 }
