@@ -15,7 +15,7 @@
           @if($job->status_id == 1)
               <div class="job-view-header-right-item">
                 <p class="job-view-header-right-item-left">Salary</p>
-                <p class="job-view-header-right-item-right">
+                <p class="job-view-header-right-item-right job-view-header-right-item-right-salary">
                     @if($job->min_salary == $job->max_salary)
                         &pound;{{ number_format($job->max_salary) }}
                     @else
@@ -26,7 +26,7 @@
           @elseif($job->status_id == 2)
               <div class="job-view-header-right-item">
                 <p class="job-view-header-right-item-left">Daily Salary</p>
-                <p class="job-view-header-right-item-right">
+                <p class="job-view-header-right-item-right job-view-header-right-item-right-daily-salary">
                     @if($job->min_daily_salary == $job->max_daily_salary)
 						&pound;{{ number_format($job->max_daily_salary) }}
 					@else
@@ -39,13 +39,13 @@
           @isset($job->location)
           <div class="job-view-header-right-item">
             <p class="job-view-header-right-item-left">Location</p>
-            <p class="job-view-header-right-item-right">{{ str_replace("--", "", $job->location->name) }}</p>
+            <p class="job-view-header-right-item-right job-view-header-right-item-right-location">{{ str_replace("--", "", $job->location->name) }}</p>
           </div>
           @endisset
 
           <div class="job-view-header-right-item">
             <p class="job-view-header-right-item-left">Date Posted</p>
-            <p class="job-view-header-right-item-right">{{ $job->created_at->diffForHumans() }}</p>
+            <p class="job-view-header-right-item-right job-view-header-right-item-right-date-posted">{{ $job->created_at->diffForHumans() }}</p>
           </div>
         </div>
       </div>
@@ -65,6 +65,9 @@
         <p><a class="job-view-content-button job-view-content-button-apply" target="_blank" href="{{ $job->apply_link }}">Apply</a></p>
         <p><a class="job-view-content-button job-view-content-button-back" onclick="window.history.back()">Back</a></p>
       </div>
+
+      <div class="job-view-salary-date-posted display-none">{{ date("Y-m-d", strtotime($job->created_at)) }}</div>
+      <div class="job-view-salary-closing-date display-none">@if($job->end_date != "") {{ date("Y-m-d", strtotime($job->end_date)) }} @else n/a @endif</div>
 
   </div><!-- /.website-container -->
 
