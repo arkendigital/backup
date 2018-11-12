@@ -7,4 +7,5 @@ return [
     'facebook' => 'Facebook URL',
     'linkedin' => 'LinkedIn URL',
     'admin_email' => 'Administrator Email',
+    'header_email' => 'Header Email'
 ];
