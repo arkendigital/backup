@@ -38,7 +38,7 @@
                     <tr>
                         <td>{{ $article->id }}</td>
                         <td>{{ $article->title }}</td>
-                        <td>{!! str_limit($article->body, 100) !!}</td>
+                        <td>{!! str_limit(strip_tags($article->body), 100) !!}</td>
                         @if ($article->image)
                             <td><a href="{{ asset($article->image) }}" class="btn btn-primary">View Image</a></td>
                         @else
@@ -46,7 +46,7 @@
                         @endif
                         <td>
                             <div class="btn-group">
-                                <a class="btn btn-primary btn-small" type="button" href="{{ route('articles.show', $article) }}">
+                                <a class="btn btn-primary btn-small" type="button" target="_blank" href="{{route('showArticle', $article)}}">
                                     <i class="fa fa-eye"></i>
                                 </a>
                                 @if (auth()->user()->can('edit article'))

@@ -4,12 +4,11 @@ namespace App;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Parser\BBCodeParser as BBCode;
 
 class Article extends Model
 {
-    use SoftDeletes, Sluggable;
+    use Sluggable;
 
     /**
      * The attributes that are mass assignable.
@@ -113,13 +112,14 @@ class Article extends Model
         $this->attributes['body'] = clean($body);
     }
 
-    /**
-     * Set the Image Attribute
-     *
-     * @return string
-     */
-    // public function getImageAttribute($image)
-    // {
-    //     return $this->image;
-    // }
+    public function getImageAttribute($value)
+    {
+        $image_path = $value;
+
+        if ($image_path == "") {
+            return "/images/placeholder/article.png";
+        }
+
+        return $image_path;
+    }
 }

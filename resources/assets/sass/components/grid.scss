@@ -1,0 +1,19 @@
+.row:before,
+.row:after {
+    display: table;
+    content: " ";
+}
+
+.row:after  {
+    clear: both;
+}
+
+[class*='col-'] {
+    float: left;
+}
+
+@for $i from 1 through $gridcolumns {
+    .col-#{$i} {
+        width: 100% / $gridcolumns * $i;
+    }
+}

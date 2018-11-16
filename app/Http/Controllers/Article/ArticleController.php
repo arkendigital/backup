@@ -17,4 +17,15 @@ class ArticleController extends Controller
 
         return view('articles.index', compact('articles', 'categories'));
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Article $article)
+    {
+        return view('articles.show', compact('article'));
+    }
 }
