@@ -6,4 +6,4 @@ Route::namespace('CPD')->prefix('cpd')->group(function() {
   Route::get('/publications', 'CPDPublicationController@index');
 });
 
-Route::get('/continuous-personal-development/get-verified', 'CPD\CPDLinkController@index');
+Route::get('/continuous-professional-development/get-verified', 'CPD\CPDLinkController@index');
