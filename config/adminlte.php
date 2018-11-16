@@ -120,6 +120,7 @@ return [
             'icon'  => 'home',
             'active' => ['ops'],
         ],
+        
         [
             'text' => 'Site Settings',
             'url'  => 'ops/settings',
@@ -160,6 +161,21 @@ return [
             'url'  => 'ops/pages',
             'icon'  => 'users',
             'can'   => 'pages'
+        ],
+
+
+        /**
+        * Articles / Blogs.
+        */
+        [
+          'header' => 'Articles',
+          'can' => 'create article',
+        ],
+        [
+            'text' => 'Manage Articles',
+            'url'  => 'ops/articles',
+            'icon'  => 'users',
+            'can'   => 'create article'
         ],
 
         /**

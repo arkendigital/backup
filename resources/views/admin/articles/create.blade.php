@@ -20,7 +20,7 @@
 
             <div class="form-group">
                 <label for="body">Body</label>
-                <textarea class="form-control" name="body" id="body" placeholder="Article Body" rows="5"></textarea>
+                <textarea class="form-control editor" name="body" id="body" placeholder="Article Body" rows="5"></textarea>
             </div>
 
             <div class="form-group">
@@ -41,4 +41,40 @@
         </div>
     </form>
 </div>
+
+@push("scripts-after")
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.9.4/trumbowyg.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.9.4/ui/trumbowyg.min.css">
+  <script>
+    $('.editor').trumbowyg({
+      svgPath: '/images/icons.svg',
+      btnsDef: {
+        buttonShortcode: {
+          fn: 'insertText',
+          ico: 'horizontal-rule',
+          title: 'Insert Button Shortcode',
+          text: 'Button Shortcode',
+          param: '[button text="Insert Button Text" link="Insert Button Link" new_tab="Yes"]',
+          forceCss: true,
+          hasIcon: false
+        }
+      },
+      btns: [
+        ['viewHTML'],
+        ['undo', 'redo'], // Only supported in Blink browsers
+        ['formatting'],
+        ['strong', 'em', 'del'],
+        ['superscript', 'subscript'],
+        ['link'],
+        ['insertImage'],
+        ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+        ['unorderedList', 'orderedList'],
+        ['horizontalRule'],
+        ['removeformat'],
+        ['fullscreen'],
+        ['buttonShortcode']
+      ]
+    });
+  </script>
+@endpush
 @endsection

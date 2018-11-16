@@ -30,7 +30,7 @@ class Article extends Model
         'status'
     ];
 
-    protected $with = ['profile'];
+    // protected $with = ['profile'];
 
     /**
      * The attributes that should be cast to carbon instances.
@@ -94,14 +94,14 @@ class Article extends Model
      *
      * @return string
      */
-    public function getBodyAttribute($body)
-    {
-        $parser = new BBCode;
-        $body = $parser->parseCaseInsensitive($body);
-        $body = clean($body, 'youtube');
+    // public function getBodyAttribute($body)
+    // {
+    //     $parser = new BBCode;
+    //     $body = $parser->parseCaseInsensitive($body);
+    //     $body = clean($body, 'youtube');
 
-        return $body;
-    }
+    //     return $body;
+    // }
 
     /**
      * Set the Body Attribute
@@ -118,8 +118,8 @@ class Article extends Model
      *
      * @return string
      */
-    public function getImageAttribute($image)
-    {
-        return $this->image;
-    }
+    // public function getImageAttribute($image)
+    // {
+    //     return $this->image;
+    // }
 }

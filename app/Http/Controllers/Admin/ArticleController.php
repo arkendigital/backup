@@ -44,13 +44,14 @@ class ArticleController extends Controller
      */
     public function store(Request $request, Article $article)
     {
+
         $request->validate([
             'title' => 'required',
             'body' => 'required',
         ]);
 
         if ($request->image) {
-            $path = 'storage/'.$request->image->store('images/articles');
+            $path = $request->image->store('images/articles', 'public');
         }
 
         $article->fill([
@@ -101,10 +102,22 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
+
+        $request->validate([
+            'title' => 'required',
+            'body' => 'required',
+        ]);
+
+        if ($request->image) {
+            $path = $request->image->store('images/articles', 'public');
+        }
+
         $article->update([
-                    'title' => $request->title,
-                    'body' => $request->body,
-                ]);
+            'image' => $path ?? $article->image,
+            'title' => $request->title,
+            'body' => $request->body,
+        ]);
+                
         alert()->success('Article Updated');
 
         return redirect()->route('articles.index');
