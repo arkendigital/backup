@@ -12,7 +12,7 @@ class ArticleController extends Controller
     public function index(Article $article, ArticleCategory $category)
     {
         $this->seo()->setTitle('Latest News');
-        $articles = $article->orderBy('created_at', 'DESC')->paginate(5);
+        $articles = $article->orderBy('created_at', 'DESC')->paginate(9);
         $categories = $category->paginate(25, ['*'], 'cat_page');
 
         return view('articles.index', compact('articles', 'categories'));

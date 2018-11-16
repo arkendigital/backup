@@ -48,4 +48,27 @@
         padding-top: .5px;
         padding-bottom: 1.5em;
     }
+
+    &__social {
+        margin: 10px 0;
+        display: inline-block !important;
+        
+        &--facebook {
+            i {
+                color: $facebook;
+            }
+        }
+
+        &--twitter {
+            i {
+                color: $twitter;
+            }
+        }
+
+        i {
+            font-size: 30px;
+            margin: 0 5px;
+            display: inline-block;
+        }
+    }
 }
