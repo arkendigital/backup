@@ -51,7 +51,7 @@ class ArticleController extends Controller
         ]);
 
         if ($request->image) {
-            $path = $request->image->store('images/articles', 'public');
+            $path = 'storage/'. $request->image->store('images/articles', 'public');
         }
 
         $article->fill([
@@ -109,7 +109,7 @@ class ArticleController extends Controller
         ]);
 
         if ($request->image) {
-            $path = $request->image->store('images/articles', 'public');
+            $path = 'storage/'. $request->image->store('images/articles', 'public');
         }
 
         $article->update([
