@@ -12,6 +12,9 @@
   <nav class="footer-nav">
     <ul>
       <li>
+        <a href="/news">Blog</a>
+      </li>
+      <li>
         <a href="/exams">Exams</a>
       </li>
       <li>
