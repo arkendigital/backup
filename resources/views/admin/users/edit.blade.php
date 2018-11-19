@@ -25,6 +25,50 @@
             </div>
 
             <div class="form-group">
+                <label for="phone_number">Phone Number</label>
+                <input type="text" class="form-control" name="phone_number" id="phone_number" placeholder="Phone Number" value="{{ $user->phone_number }}">
+            </div>
+
+            <div class="form-group">
+                <label for="arn">Actuarial Reference Number</label>
+                <input type="text" class="form-control" name="arn" id="arn" placeholder="Actuarial Reference Number" value="{{ $user->arn }}">
+            </div>
+
+            <div class="form-group">
+                <label for="current_role">Current Role</label>
+                <input type="text" class="form-control" name="current_role" id="current_role" placeholder="Current Role" value="{{ $user->current_role }}">
+            </div>
+
+            <div class="form-group">
+                <label for="company_name">Company</label>
+                <input type="text" class="form-control" name="company_name" id="company_name" placeholder="Company Name" value="{{ $user->company_name }}">
+            </div>
+
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" class="form-control" name="location" id="location" placeholder="Location" value="{{ $user->location }}">
+            </div>
+
+            <div class="form-group">
+                <label for="experience">Years of Experience</label>
+                <input type="text" class="form-control" name="experience" id="experience" placeholder="experience" value="{{ $user->experience }}">
+            </div>
+
+            <div class="checkbox">
+                <label>
+                    <input type="hidden" name="internal_marketing" id="internal_marketing" value="0">
+                    <input type="checkbox" name="internal_marketing" id="internal_marketing" @if ($user->internal_marketing == 1) checked="checked" value="1"@endif> Internal Marketing
+                </label>
+            </div>
+
+            <div class="checkbox">
+                <label>
+                    <input type="hidden" name="external_marketing" id="external_marketing" value="0">
+                    <input type="checkbox" name="external_marketing" id="external_marketing" @if ($user->external_marketing == 1) checked="checked" value="1"@endif> External Marketing
+                </label>
+            </div>
+
+            <div class="form-group">
                 <label for="role">User Role</label>
                 <select name="role" id="role" class="form-control" required="required">
                     @foreach ($roles as $role)
