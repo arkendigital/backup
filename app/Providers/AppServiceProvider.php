@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Setting;
+use App\UrlMenu;
 use App\Content\Navigation;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
                 'facebook' => Setting::get('facebook'),
                 'twitter' => Setting::get('twitter'),
                 'linkedin' => Setting::get('linkedin'),
+                'footer_menu' => UrlMenu::getMenu('Footer'),
+                'footer_sub_menu' => UrlMenu::getMenu('Footer Submenu'),
                 'navigation_items' => (new Navigation)->mainMenu()
             ]);
         }
