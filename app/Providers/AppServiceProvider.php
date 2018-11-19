@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         if (! $this->app->runningInConsole()) {
-            View::share([
+            View::share([ 
                 'facebook' => Setting::get('facebook'),
                 'twitter' => Setting::get('twitter'),
                 'linkedin' => Setting::get('linkedin'),
