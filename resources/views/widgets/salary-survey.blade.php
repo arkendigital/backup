@@ -4,6 +4,7 @@
     <p class="box-select-title">A wealth of information</p>
     <p class="box-select-text">Surveys, salary expectations and more</p>
 
+
     <a class="box-select-item" href="/jobs/vacancies">Jobs</a>
     <a class="box-select-item" href="/salary-survey/take-part">Surveys</a>
     <a class="box-select-item" href="/salary-survey/results">Salary</a>
