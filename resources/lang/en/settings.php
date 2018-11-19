@@ -7,5 +7,8 @@ return [
     'facebook' => 'Facebook URL',
     'linkedin' => 'LinkedIn URL',
     'admin_email' => 'Administrator Email',
-    'header_email' => 'Header Email'
+    'header_email' => 'Header Email',
+    'user_redirect' => 'User Redirection',
+    'r_sticky_button' => 'Right Sticky Button',
+    'l_sticky_button' => 'Left Sticky Button'
 ];
