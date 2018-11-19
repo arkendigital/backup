@@ -11,35 +11,23 @@
 
   <nav class="footer-nav">
     <ul>
-      <li>
-        <a href="/exams">Exams</a>
-      </li>
-      <li>
-        <a href="/jobs">Jobs</a>
-      </li>
-      <li>
-        <a href="/cpd">CPD</a>
-      </li>
-      <li>
-        <a href="/salary-survey">Salary Survey</a>
-      </li>
-      <li>
-        <a href="/uni-corner">Uni Corner</a>
-      </li>
-      <li>
-        <a href="/regional-societies">Regional Societies</a>
-      </li>
-      <li>
-        <a href="/discussion">Discussion</a>
-      </li>
-      <li>
-        <a href="/cv-support">CV Support</a>
-      </li>
+      @foreach ($footer_menu->links as $url)
+          <li>
+            <a href="{{ $url->link }}">{{ $url->text }}</a>
+          </li>
+      @endforeach
     </ul>
   </nav>
 
   <nav class="footer-nav footer-nav-secondary">
-    <ul>
+      <ul>
+          @foreach ($footer_sub_menu->links as $url)
+              <li>
+                <a href="{{ $url->link }}">{{ $url->text }}</a>
+              </li>
+          @endforeach
+        </ul>
+    {{-- <ul>
       <li>
         <a href="/about">About Actuaries Online</a>
       </li>
@@ -55,7 +43,7 @@
       <li>
         <a href="/contact">Contact</a>
       </li>
-    </ul>
+    </ul> --}}
   </nav>
 
 </footer>
