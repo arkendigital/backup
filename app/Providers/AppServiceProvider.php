@@ -26,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
                 'facebook' => Setting::get('facebook'),
                 'twitter' => Setting::get('twitter'),
                 'linkedin' => Setting::get('linkedin'),
+                'pintrest' => Setting::get('pintrest'),
+                'instagram' => Setting::get('instagram'),
                 'footer_menu' => UrlMenu::getMenu('Footer'),
                 'footer_sub_menu' => UrlMenu::getMenu('Footer Submenu'),
                 'r_sticky_button' => Setting::get('r_sticky_button'),
