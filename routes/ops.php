@@ -243,4 +243,16 @@ Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function ()
     Route::resource("/uni-societies", "Societies\UniSocietyController", ["parameters" => [
       "uni-societies" => "society"
     ]]);
+
+
+    /**
+     * Menus
+     */
+    Route::resource('/menus', 'MenuController');
+    Route::get('/menulink/{menu}/create', 'MenuLinkController@create')->name('menulink.create');
+    Route::post('/menulink/{menu}', 'MenuLinkController@store')->name('menulink.store');
+    Route::get('/menulink/{link}/edit', 'MenuLinkController@edit')->name('menulink.edit');
+    Route::patch('/menulink/{link}', 'MenuLinkController@update')->name('menulink.update');
+    Route::resource('/menulink', 'MenuLinkController')->except(['create', 'store', 'update', 'edit']);
+    
 });

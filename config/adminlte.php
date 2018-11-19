@@ -128,6 +128,12 @@ return [
             'can'   => 'view settings'
         ],
 
+        [
+            'text' => 'Section Links',
+            'url'  => 'ops/menus',
+            'icon'  => 'link',
+        ],
+
 
         /**
         * Sections.
