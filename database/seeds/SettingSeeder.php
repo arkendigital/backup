@@ -8,6 +8,7 @@ class SettingSeeder extends Seeder
     protected $defaultItems = [
         'site_name' => 'Example.com',
         'site_version' => '2.0.0a',
+        'user_redirect' => '/discussion',
     ];
 
     /**

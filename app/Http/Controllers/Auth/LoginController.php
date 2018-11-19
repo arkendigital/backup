@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Hash;
 use Webpatser\Uuid\Uuid;
 use Socialite;
+use App\Setting;
 use Auth;
 
 class LoginController extends Controller
@@ -31,7 +32,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/discussion';
+    protected $redirectTo = '';
 
     /**
      * Create a new controller instance.
@@ -40,6 +41,8 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
 
+        $redirect = Setting::where('key', 'user_redirect')->first();
+        $this->redirectTo = $redirect->value;
         /*
          * This has been removed for now as they want ALL LOGINS to redirect to the discussion page
          *
