@@ -28,11 +28,8 @@ class AppServiceProvider extends ServiceProvider
                 'linkedin' => Setting::get('linkedin'),
                 'footer_menu' => UrlMenu::getMenu('Footer'),
                 'footer_sub_menu' => UrlMenu::getMenu('Footer Submenu'),
-<<<<<<< HEAD
-=======
                 'r_sticky_button' => Setting::get('r_sticky_button'),
                 'l_sticky_button' => Setting::get('l_sticky_button'),
->>>>>>> 8d0f0b797123858d572b34aed748be3db1593e18
                 'navigation_items' => (new Navigation)->mainMenu()
             ]);
         }
