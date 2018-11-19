@@ -141,6 +141,14 @@ class UserController extends Controller
         $user->update([
                     'name' => $request->name,
                     'email' => $request->email,
+                    'phone_number' => $request->phone_number,
+                    'arn' => $request->arn,
+                    'current_role' => $request->current_role,
+                    'company_name' => $request->company_name,
+                    'location' => $request->location,
+                    'experience' => $request->experience,
+                    'internal_marketing' => (bool) $request->internal_marketing ? 1 : 0,
+                    'external_marketing' => (bool) $request->external_marketing ? 1 : 0,
                     'verified' => (bool) $request->verified ? 1 : 0,
                 ]);
         alert()->success('Account Updated');
