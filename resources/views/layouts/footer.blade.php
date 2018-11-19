@@ -2,12 +2,27 @@
 
 <footer>
 
+  @if($facebook || $twitter || $linkedin || $pintrest || $instagram )
   <div class="footer-social">
     <span>FIND US ON SOCIAL MEDIA</span>
-    <a href="{{ $facebook }}" target="_blank" class="footer-social--facebook"><i class="fab fa-facebook"></i></a>
-    <a href="{{ $twitter }}" target="_blank" class="footer-social--twitter"><i class="fab fa-twitter-square"></i></a>
-    <a href="{{ $linkedin }}" target="_blank" class="footer-social--linkedin"><i class="fab fa-linkedin"></i></a>
+    @if($facebook)
+      <a href="{{ $facebook }}" target="_blank" class="footer-social--facebook"><i class="fab fa-facebook"></i></a>
+    @endif
+    @if($twitter)
+      <a href="{{ $twitter }}" target="_blank" class="footer-social--twitter"><i class="fab fa-twitter-square"></i></a>
+    @endif
+    @if($linkedin)
+      <a href="{{ $linkedin }}" target="_blank" class="footer-social--linkedin"><i class="fab fa-linkedin"></i></a>
+    @endif
+    @if($pintrest)
+      <a href="{{ $pintrest }}" target="_blank" class="footer-social--pintrest"><i class="fab fa-pinterest-square"></i></a>
+    @endif
+    @if($instagram)
+      <a href="{{ $instagram }}" target="_blank" class="footer-social--instagram"><i class="fab fa-instagram"></i></a>
+    @endif
+
   </div>
+  @endif
 
   <nav class="footer-nav">
     <ul>
