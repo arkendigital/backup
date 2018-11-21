@@ -38,7 +38,7 @@
 
   <nav class="footer-nav footer-nav-secondary">
     <ul>
-        @if ($footer->sub_menu)
+        @if ($footer_sub_menu)
         @foreach ($footer_sub_menu->links as $url)
             <li>
               <a href="{{ $url->link }}">{{ $url->text }}</a>
