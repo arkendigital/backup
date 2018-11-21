@@ -6,6 +6,8 @@ return [
     'twitter' => 'Twitter URL',
     'facebook' => 'Facebook URL',
     'linkedin' => 'LinkedIn URL',
+    'instagram' => 'Instagram URL',
+    'pintrest' => 'Pintrest URL',
     'admin_email' => 'Administrator Email',
     'header_email' => 'Header Email',
     'user_redirect' => 'User Redirection',
