@@ -180,7 +180,13 @@ return [
         [
             'text' => 'Manage Articles',
             'url'  => 'ops/articles',
-            'icon'  => 'users',
+            'icon'  => 'newspaper-o',
+            'can'   => 'create article'
+        ],
+        [
+            'text' => 'Manage Article Categories',
+            'url'  => 'ops/articles/categories',
+            'icon'  => 'folder-open',
             'can'   => 'create article'
         ],
 
@@ -193,12 +199,12 @@ return [
         [
             'text' => 'Manage Widget Boxes',
             'url'  => 'ops/box-groups',
-            'icon'  => 'users',
+            'icon'  => 'th',
         ],
         [
           'text' => 'Wealth of Information',
           'url'  => 'ops/box-groups/wealth-of-information',
-          'icon'  => 'users',
+          'icon'  => 'question-circle',
         ],
 
 
@@ -212,7 +218,7 @@ return [
         [
             'text' => 'Manage Discussion Categories',
             'url'  => 'ops/discussion-categories',
-            'icon'  => 'users',
+            'icon'  => 'comments',
             'can'   => 'discussions'
         ],
 
@@ -227,25 +233,25 @@ return [
         [
             'text' => 'Manage Jobs',
             'url'  => 'ops/jobs',
-            'icon'  => 'users',
+            'icon'  => 'briefcase',
             'can'   => 'jobs'
         ],
         [
             'text' => 'Manage Companies / Recruiters',
             'url'  => 'ops/job-companies',
-            'icon'  => 'users',
+            'icon'  => 'briefcase',
             'can'   => 'jobs'
         ],
         [
           'text' => 'Manage Locations',
           'url'  => 'ops/job-locations',
-          'icon'  => 'users',
+          'icon'  => 'briefcase',
           'can'   => 'jobs'
         ],
         [
           'text' => 'Manage Sectors',
           'url'  => 'ops/job-sectors',
-          'icon'  => 'users',
+          'icon'  => 'briefcase',
           'can'   => 'jobs'
         ],
 
@@ -260,19 +266,19 @@ return [
         [
           'text' => 'Manage Exams',
           'url'  => 'ops/exam-categories',
-          'icon'  => 'users',
+          'icon'  => 'paperclip',
           'can'   => 'exams'
         ],
         [
           'text' => 'Manage Resources',
           'url'  => 'ops/exam-resources',
-          'icon'  => 'users',
+          'icon'  => 'paperclip',
           'can'   => 'exams'
         ],
         [
           'text' => 'Manage Useful Links',
           'url'  => 'ops/exam-links',
-          'icon'  => 'users',
+          'icon'  => 'paperclip',
           'can'   => 'exams'
         ],
 
@@ -287,19 +293,19 @@ return [
         [
           'text' => 'Manage Resources',
           'url'  => 'ops/cpd-resources',
-          'icon'  => 'users',
+          'icon'  => 'rocket',
           'can'   => 'cpd'
         ],
         [
           'text' => 'Manage Publications',
           'url'  => 'ops/cpd-publications',
-          'icon'  => 'users',
+          'icon'  => 'rocket',
           'can'   => 'cpd'
         ],
         [
           'text' => 'Manage Verifiable Links',
           'url'  => 'ops/cpd-links',
-          'icon'  => 'users',
+          'icon'  => 'rocket',
           'can'   => 'cpd'
         ],
 
@@ -314,7 +320,7 @@ return [
         [
           'text' => 'Manage Adverts',
           'url'  => 'ops/adverts',
-          'icon'  => 'users',
+          'icon'  => 'file',
           'can'   => 'adverts'
         ],
 
@@ -328,7 +334,7 @@ return [
         [
           'text' => 'Manage Slides',
           'url'  => 'ops/slides',
-          'icon'  => 'users',
+          'icon'  => 'file-text',
         ],
 
 
@@ -354,12 +360,12 @@ return [
         [
           'text' => 'Manage Societies',
           'url'  => 'ops/societies',
-          'icon'  => 'users',
+          'icon'  => 'venus-mars',
         ],
         [
           'text' => 'Manage Uni Societies',
           'url'  => 'ops/uni-societies',
-          'icon'  => 'users',
+          'icon'  => 'venus-mars',
         ],
 
 
@@ -372,11 +378,8 @@ return [
         [
           'text' => 'Manage Courses',
           'url'  => 'ops/courses',
-          'icon'  => 'users',
+          'icon'  => 'folder-o',
         ],
-
-
-
 
 
         [
