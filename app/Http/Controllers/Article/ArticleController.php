@@ -15,7 +15,7 @@ class ArticleController extends Controller
         $articles = $article->orderBy('created_at', 'DESC')->paginate(9);
         $categories = $category->paginate(25, ['*'], 'cat_page');
 
-        return view('articles.index', compact('articles', 'categories'));
+        return view('articles.index', compact('articles', 'categories'))->compileShortcodes();
     }
 
     /**
@@ -26,6 +26,6 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        return view('articles.show', compact('article'));
+        return view('articles.show', compact('article'))->compileShortcodes();
     }
 }
