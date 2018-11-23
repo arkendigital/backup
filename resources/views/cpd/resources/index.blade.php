@@ -27,7 +27,7 @@
         <div class="resource-list-item">
           <div>
             @if($resource->link == "")
-                <a href="/cpd/resources/{{ $resource->slug }}">
+                <a href="/continued-professional-development/resources/{{ $resource->slug }}">
             @else
                 <a href="{{ $resource->link }}" target="_blank">
             @endif

@@ -59,8 +59,8 @@
             @endforeach
           </ul>
         </li>
-        <li @if(request()->route()->getPrefix() == "/cpd") class="cpd-active" @endif>
-          <a href="/cpd">CPD</a>
+        <li @if(request()->route()->getPrefix() == "/continued-professional-development") class="cpd-active" @endif>
+          <a href="/continued-professional-development">CPD</a>
           <i class="fas fa-angle-down"></i>
           <ul>
             @foreach($navigation_items['cpd'] as $item)
