@@ -64,7 +64,7 @@
       </div>
 
       <div class="login_page_form_item">
-        <label class="login_page_form_item_label" for="username">User Name <sup>*</sup></label>
+        <label class="login_page_form_item_label" for="username">Choose a Username (Your email and name will not be published)</label>
         @if($errors->has("username"))
           <p class="login_page_form_item_error">{{ $errors->first("username") }}</p>
         @endif

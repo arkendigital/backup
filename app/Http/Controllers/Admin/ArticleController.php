@@ -6,6 +6,7 @@ use App\Article;
 use App\ArticleCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\AWS\ImageController as AWS;
 
 class ArticleController extends Controller
 {
@@ -54,7 +55,10 @@ class ArticleController extends Controller
         ]);
 
         if ($request->image) {
-            $path = 'storage/'. $request->image->store('images/articles', 'public');
+            $path = AWS::uploadImage(
+                request()->file('image'),
+                'articles'
+            );
         }
 
         $article->fill([
