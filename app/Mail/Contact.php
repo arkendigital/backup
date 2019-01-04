@@ -31,6 +31,6 @@ class Contact extends Mailable
         return $this->view('mail.contact')
       ->with(['contact_submission' => $this->contact_submission])
       ->subject('New contact form submission on '. Setting::get('site_name') ?? env('APP_NAME'))
-      ->from('no-reply@actuariesonline.com', Setting::get('site_name') ?? env('APP_NAME'));
+      ->from('no-reply@actuaries.online', Setting::get('site_name') ?? env('APP_NAME'));
     }
 }

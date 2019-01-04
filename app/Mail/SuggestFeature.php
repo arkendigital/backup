@@ -31,6 +31,6 @@ class SuggestFeature extends Mailable
         return $this->view('mail.feature')
             ->with(['submission' => $this->submission])
             ->subject('New feature requested on '. Setting::get('site_name') ?? env('APP_NAME'))
-            ->from('ask@actuaries.online', Setting::get('site_name') ?? env('APP_NAME'));
+            ->from('no-reply@actuaries.online', Setting::get('site_name') ?? env('APP_NAME'));
     }
 }
