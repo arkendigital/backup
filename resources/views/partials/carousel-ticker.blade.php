@@ -1,10 +1,12 @@
-<div class='marquee'>
-    <div class='marquee-text'>
-        @foreach (json_decode($page->section->getField("exams", "exam_carousel")) as $item)
-            <span>{{ $item }}</span>
-        @endforeach
+<a href="{{ $page->section->getField("exams", "exam_carousel_link") }}" class="marquee-link">
+    <div class='marquee'>
+        <div class='marquee-text'>
+            @foreach (json_decode($page->section->getField("exams", "exam_carousel")) as $item)
+                <span>{{ $item }}</span>
+            @endforeach
+        </div>
     </div>
-</div>
+</a>
 
 @push("scripts-after")
     <script>
@@ -18,7 +20,7 @@
                 indent = mar.width();
             }
         };
-        mar.data('interval',setInterval(mar.marquee,400/60));
+        mar.data('interval',setInterval(mar.marquee,650/60));
     });
     </script>
 @endpush
