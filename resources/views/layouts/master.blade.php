@@ -14,7 +14,7 @@
 
   <!-- Styles -->
   @stack("styles-before")
-    <link href="{{ asset("css/app.css") }}" rel="stylesheet">
+    <link href="{{ asset("css/app.css") }}?cb={{env('CACHEBUST_KEY', date('Ymd'))}}" rel="stylesheet">
   @stack("styles-after")
 
   <!-- Scripts -->
@@ -65,9 +65,9 @@
 
   <!-- Scripts -->
   @stack("scripts-before")
-    <link href="{{ asset("css/vendor.css") }}" rel="stylesheet">
-    <script src="{{ asset("js/vendor.js") }}"></script>
-    <script src="{{ asset("js/app.js") }}" async></script>
+    <link href="{{ asset("css/vendor.css") }}?cb={{env('CACHEBUST_KEY', date('Ymd'))}}" rel="stylesheet">
+    <script src="{{ asset("js/vendor.js") }}?cb={{env('CACHEBUST_KEY', date('Ymd'))}}"></script>
+    <script src="{{ asset("js/app.js") }}?cb={{env('CACHEBUST_KEY', date('Ymd'))}}" async></script>
   @stack("scripts-after")
 
   @include("sweet::alert")
