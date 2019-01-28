@@ -64,58 +64,63 @@
       </div>
 
       <div class="login_page_form_item">
-        <label class="login_page_form_item_label" for="username">User Name <sup>*</sup></label>
+        <label class="login_page_form_item_label" for="username">Choose a Username (Your email and name will not be published)</label>
         @if($errors->has("username"))
           <p class="login_page_form_item_error">{{ $errors->first("username") }}</p>
         @endif
         <input class="login_page_form_item_input" type="text" name="username" id="username" value="{{ old("username") }}">
       </div>
 
-      <div class="login_page_form_item">
-        <label class="login_page_form_item_label" for="arn">Actuarial Reference Number (ARN)</label>
-        @if($errors->has("arn"))
-          <p class="login_page_form_item_error">{{ $errors->first("arn") }}</p>
-        @endif
-        <input class="login_page_form_item_input" type="text" name="arn" id="arn" value="{{ old("arn") }}">
-      </div>
+      {{--
+          *
+          * Temporary removal of these fields requested by Actuaries on 21/11/2018
+          *
+          <div class="login_page_form_item">
+            <label class="login_page_form_item_label" for="arn">Actuarial Reference Number (ARN)</label>
+            @if($errors->has("arn"))
+              <p class="login_page_form_item_error">{{ $errors->first("arn") }}</p>
+            @endif
+            <input class="login_page_form_item_input" type="text" name="arn" id="arn" value="{{ old("arn") }}">
+          </div>
 
-      <div class="login_page_form_item">
-        <label class="login_page_form_item_label" for="current_role">Current Role</label>
-        @if($errors->has("current_role"))
-          <p class="login_page_form_item_error">{{ $errors->first("current_role") }}</p>
-        @endif
-        <input class="login_page_form_item_input" type="text" name="current_role" id="current_role" value="{{ old("current_role") }}">
-      </div>
+          <div class="login_page_form_item">
+            <label class="login_page_form_item_label" for="current_role">Current Role</label>
+            @if($errors->has("current_role"))
+              <p class="login_page_form_item_error">{{ $errors->first("current_role") }}</p>
+            @endif
+            <input class="login_page_form_item_input" type="text" name="current_role" id="current_role" value="{{ old("current_role") }}">
+          </div>
 
-      <div class="login_page_form_item">
-        <label class="login_page_form_item_label" for="company_name">Company</label>
-        @if($errors->has("company_name"))
-          <p class="login_page_form_item_error">{{ $errors->first("company_name") }}</p>
-        @endif
-        <input class="login_page_form_item_input" type="text" name="company_name" id="company_name" value="{{ old("company_name") }}">
-      </div>
+          <div class="login_page_form_item">
+            <label class="login_page_form_item_label" for="company_name">Company</label>
+            @if($errors->has("company_name"))
+              <p class="login_page_form_item_error">{{ $errors->first("company_name") }}</p>
+            @endif
+            <input class="login_page_form_item_input" type="text" name="company_name" id="company_name" value="{{ old("company_name") }}">
+          </div>
 
-      <div class="login_page_form_item">
-        <label class="login_page_form_item_label" for="location">Location</label>
-        @if($errors->has("location"))
-          <p class="login_page_form_item_error">{{ $errors->first("location") }}</p>
-        @endif
-        <input class="login_page_form_item_input" type="text" name="location" id="location" value="{{ old("location") }}">
-      </div>
+          <div class="login_page_form_item">
+            <label class="login_page_form_item_label" for="location">Location</label>
+            @if($errors->has("location"))
+              <p class="login_page_form_item_error">{{ $errors->first("location") }}</p>
+            @endif
+            <input class="login_page_form_item_input" type="text" name="location" id="location" value="{{ old("location") }}">
+          </div>
 
-      <div class="login_page_form_item">
-        <label class="login_page_form_item_label" for="experience">Years of Experience</label>
-        @if($errors->has("experience"))
-          <p class="login_page_form_item_error">{{ $errors->first("experience") }}</p>
-        @endif
-        <select name="experience" class="login_page_form_item_select">
-            <option value="">Select...</option>
-            @for($x = 1; $x < 25; $x++)
-                <option value="{{ $x }}" @if(old("experience") == $x) selected @endif>{{ $x }}</option>
-            @endfor
-            <option value="25+" @if(old("experience") == "25+") selected @endif>25+</option>
-        </select>
-      </div>
+          <div class="login_page_form_item">
+            <label class="login_page_form_item_label" for="experience">Years of Experience</label>
+            @if($errors->has("experience"))
+              <p class="login_page_form_item_error">{{ $errors->first("experience") }}</p>
+            @endif
+            <select name="experience" class="login_page_form_item_select">
+                <option value="">Select...</option>
+                @for($x = 1; $x < 25; $x++)
+                    <option value="{{ $x }}" @if(old("experience") == $x) selected @endif>{{ $x }}</option>
+                @endfor
+                <option value="25+" @if(old("experience") == "25+") selected @endif>25+</option>
+            </select>
+          </div>
+      --}}
 
       <div class="login_page_form_item">
         <label class="login_page_form_item_label" for="password">Create Password <sup>*</sup></label>

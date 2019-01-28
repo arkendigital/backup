@@ -19,9 +19,6 @@ class ArticleCategory extends Model
         'name',
         'slug',
         'parent',
-        'game_id',
-        'fn_id',
-        'legacy_cat',
         'active'
     ];
 

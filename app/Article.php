@@ -22,9 +22,6 @@ class Article extends Model
         'user_id',
         'category_id',
         'image',
-        'game_id',
-        'fn_id',
-        'legacy_news',
         'created_at',
         'status'
     ];

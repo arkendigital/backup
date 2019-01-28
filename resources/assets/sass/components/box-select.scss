@@ -80,6 +80,7 @@
     height: auto;
     margin: 0 50px;
     margin-bottom: 40px;
+    word-break: break-word;
     transition: .3s all ease-in-out;
 
     @media(max-width: 900px) {

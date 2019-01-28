@@ -68,3 +68,39 @@ $duration: 25s;
 .swiper-wrapper {
   height: 300px !important;
 }
+
+.marquee-link {
+    text-decoration: none;
+}
+
+div.marquee {
+    white-space:no-wrap;
+    overflow:hidden;
+    margin: 30px auto;
+    border: 2px solid #d7d7d7;
+    box-shadow: inset 0px 0px 3px #d7d7d7;
+    padding: 15px 0;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 19px;
+    color: #444;
+}
+div.marquee > div.marquee-text {
+    white-space:nowrap;
+    display:inline;
+    width:auto;
+
+    span {
+        padding: 0 25%;
+
+        &:first-of-type {
+            padding-left: 0;
+        }
+
+        &:last-of-type {
+            padding-right: 0;
+        }
+
+    }
+
+}

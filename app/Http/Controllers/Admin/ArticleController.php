@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Article;
-use App\Http\Controllers\Controller;
+use App\ArticleCategory;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\AWS\ImageController as AWS;
 
 class ArticleController extends Controller
 {
@@ -32,7 +34,9 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('admin.articles.create');
+        $categories = ArticleCategory::latest('created_at')->get();
+
+        return view('admin.articles.create', compact('categories'));
     }
 
     /**
@@ -51,7 +55,10 @@ class ArticleController extends Controller
         ]);
 
         if ($request->image) {
-            $path = 'storage/'. $request->image->store('images/articles', 'public');
+            $path = AWS::uploadImage(
+                request()->file('image'),
+                'articles'
+            );
         }
 
         $article->fill([

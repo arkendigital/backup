@@ -39,6 +39,7 @@ Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function ()
     Route::get('/cache/clear', 'AdminController@clearCache')->name('cache.clear');
 
 
+    Route::resource('/articles/categories', 'ArticleCategoryController', ['as' => 'articles']);
     Route::resource('/articles', 'ArticleController');
 
     Route::resource('/forums', 'ForumController');

@@ -21,7 +21,7 @@ class CPDController extends Controller
     /**
     * Get page Information
     */
-        $page = Page::where("slug", "cpd")
+        $page = Page::where("slug", "continued-professional-development")
             ->first();
 
         /**

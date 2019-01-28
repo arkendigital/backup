@@ -123,37 +123,14 @@
                         @else
                             <label for="experience">Experience needed</label>
                         @endif
-                      <select name="experience" class="form-control">
-                          <option value="">Select experience...</option>
-                          <option value="qualified"
-                            @if(session()->exists("errors"))
-                                @if(old("experience") == "qualified") selected @endif
-                            @else
-                                @if($job->experience == "qualified") selected @endif
-                            @endif
-                          >Qualified</option>
-                          <option value="almost"
-                            @if(session()->exists("errors"))
-                                @if(old("experience") == "almost") selected @endif
-                            @else
-                                @if($job->experience == "almost") selected @endif
-                            @endif
-                          >Almost Qualified</option>
-                          <option value="part"
-                            @if(session()->exists("errors"))
-                                @if(old("experience") == "part") selected @endif
-                            @else
-                                @if($job->experience == "part") selected @endif
-                            @endif
-                          >Part Qualified</option>
-                          <option value="none"
-                            @if(session()->exists("errors"))
-                                @if(old("experience") == "none") selected @endif
-                            @else
-                                @if($job->experience == "none") selected @endif
-                            @endif
-                          >No exams</option>
-                      </select>
+                        <br>
+                        @foreach ($experienceNeeded as $experience)
+                            <div class="checkbox">
+                                <label>
+                                <input type="checkbox" value="{{ $experience }}" name="experience[]" <?php if(in_array($experience, json_decode($job->experience, true))):?> checked <?php endif;?>> {{ $experience }}
+                                </label>
+                            </div>
+                        @endforeach
                     </div>
 
                     <div class="form-group @if($errors->has("location_id")) has-error @endif">

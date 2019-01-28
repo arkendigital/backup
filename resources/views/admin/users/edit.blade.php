@@ -70,11 +70,19 @@
 
             <div class="form-group">
                 <label for="role">User Role</label>
-                <select name="role" id="role" class="form-control" required="required">
-                    @foreach ($roles as $role)
-                        <option value="{{ $role->name }}" @if (optional($user->getRoleNames())[0] == $role->name) selected @endif>{{ $role->name }}</option>
-                    @endforeach
-                </select>
+                @if($user->getRoleNames()->isEmpty())
+                    <select name="role" id="role" class="form-control" required="required">
+                        @foreach ($roles as $role)
+                            <option value="{{ $role->name }}" @if($role->name == "Member") selected @endif>{{ $role->name }}</option>
+                        @endforeach
+                    </select>
+                @else
+                    <select name="role" id="role" class="form-control" required="required">
+                        @foreach ($roles as $role)
+                            <option value="{{ $role->name }}" @if (optional($user->getRoleNames())[0] == $role->name) selected @endif>{{ $role->name }}</option>
+                        @endforeach
+                    </select>
+                @endif
             </div>
 
             <div class="checkbox">

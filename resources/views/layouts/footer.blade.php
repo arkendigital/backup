@@ -26,21 +26,25 @@
 
   <nav class="footer-nav">
     <ul>
+      @if($footer_menu)
       @foreach ($footer_menu->links as $url)
           <li>
             <a href="{{ $url->link }}">{{ $url->text }}</a>
           </li>
       @endforeach
+      @endif
     </ul>
   </nav>
 
   <nav class="footer-nav footer-nav-secondary">
     <ul>
+        @if ($footer_sub_menu)
         @foreach ($footer_sub_menu->links as $url)
             <li>
               <a href="{{ $url->link }}">{{ $url->text }}</a>
             </li>
         @endforeach
+        @endif
       </ul>
   </nav>
 
