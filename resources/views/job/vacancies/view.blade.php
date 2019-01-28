@@ -2,6 +2,10 @@
 
 @section("content")
 
+here 
+{{ $job->experience }}
+here
+
   <div class="website-container">
 
       <div class="job-view-header">
@@ -59,6 +63,15 @@
 
       <div class="job-view-content">
         <p class="job-view-content-title">Job description</p>
+
+        <strong>Experience needed</strong>
+        <br/><br/>
+        <ul>
+          @foreach (json_decode($job->experience, true) as $experience)
+            <li>- {{ $experience }} <br><br></li>
+          @endforeach
+        </ul>
+        <br/><br/>
 
         <div class="job-view-content-description">{!! $job->content !!}</div>
 
