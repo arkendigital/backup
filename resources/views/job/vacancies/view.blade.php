@@ -2,10 +2,6 @@
 
 @section("content")
 
-here 
-{{ $job->experience }}
-here
-
   <div class="website-container">
 
       <div class="job-view-header">
