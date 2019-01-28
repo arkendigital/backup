@@ -117,13 +117,14 @@
                         @else
                             <label for="experience">Experience needed</label>
                         @endif
-                      <select name="experience" class="form-control">
-                          <option value="">Select experience...</option>
-                          <option value="qualified" @if(old("experience") == "qualified") selected @endif>Qualified</option>
-                          <option value="almost" @if(old("experience") == "almost") selected @endif>Almost Qualified</option>
-                          <option value="part" @if(old("experience") == "part") selected @endif>Part Qualified</option>
-                          <option value="none" @if(old("experience") == "none") selected @endif>No exams</option>
-                      </select>
+                        <br>
+                        @foreach ($experienceNeeded as $experienceNeeded)
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="{{ $experienceNeeded }}" name="experience[]"> {{ $experienceNeeded }}
+                                </label>
+                            </div>
+                        @endforeach
                     </div>
 
                     <div class="form-group @if($errors->has("location_id")) has-error @endif">
