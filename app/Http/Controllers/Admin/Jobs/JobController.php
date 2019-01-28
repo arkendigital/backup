@@ -49,6 +49,13 @@ class JobController extends Controller
     public function edit(Job $job)
     {
 
+        $experienceNeeded = [
+            'Qualified',
+            'Almost Qualified',
+            'Part Qualified',
+            'No Exams'
+        ];
+
         /**
          * Get list of locations.
          */
@@ -78,7 +85,8 @@ class JobController extends Controller
             "locations",
             "companies",
             "types",
-            "sectors"
+            "sectors",
+            "experienceNeeded"
         ));
     }
 
@@ -91,6 +99,8 @@ class JobController extends Controller
      */
     public function update(Job $job, Request $request)
     {
+
+        $exp = collect($request->experience)->toJson();
 
         /**
          * Get the region of a location
@@ -133,7 +143,7 @@ class JobController extends Controller
             "company_id" => request()->company_id,
             "apply_link" => request()->apply_link,
             "featured" => request()->featured,
-            "experience" => request()->experience,
+            "experience" => $exp,
             "status_id" => request()->status_id,
             "sectors" => $sectors,
             "price" => request()->price,
@@ -164,6 +174,13 @@ class JobController extends Controller
     public function create()
     {
 
+        $experienceNeeded = [
+            'Qualified',
+            'Almost Qualified',
+            'Part Qualified',
+            'No Exams'
+        ];
+
         /**
         * Get list of locations.
         */
@@ -193,7 +210,8 @@ class JobController extends Controller
             "locations",
             "companies",
             "types",
-            "sectors"
+            "sectors",
+            "experienceNeeded"
         ));
     }
 
@@ -205,7 +223,6 @@ class JobController extends Controller
      */
     public function store(JobRequest $request)
     {
-
         /**
          * Get the region of a location
          *
@@ -231,6 +248,8 @@ class JobController extends Controller
             $end_date = null;
         }
 
+        $exp = collect($request->experience)->toJson();
+
         /**
          * Create the job
          */
@@ -248,7 +267,7 @@ class JobController extends Controller
             "company_id" => request()->company_id,
             "apply_link" => request()->apply_link,
             "featured" => request()->featured,
-            "experience" => request()->experience,
+            "experience" => $exp,
             "status_id" => request()->status_id,
             "sectors" => $sectors,
             "price" => request()->price,
