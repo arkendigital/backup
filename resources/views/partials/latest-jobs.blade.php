@@ -8,8 +8,9 @@
       <div class="swiper-wrapper">
 
         @php
-          if (isset($experience)) {
-            $jobs = App\Models\Job::where("experience", $experience)
+          $jobsArr = json_decode($experience, true);
+          if (isset($jobsArr)) {
+            $jobs = App\Models\Job::whereIn("experience", $jobsArr)
               ->orderBy("created_at", "DESC")
               ->get();
           }
