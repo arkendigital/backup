@@ -22,7 +22,6 @@ class JobController extends Controller
 
     public function index()
     {
-
         /**
         * Get page Information
         */
