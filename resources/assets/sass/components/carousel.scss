@@ -67,6 +67,10 @@ $duration: 25s;
 
 .swiper-wrapper {
   height: 300px !important;
+
+  &--no-height {
+    height: auto !important;
+  }
 }
 
 .marquee-link {

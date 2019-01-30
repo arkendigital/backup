@@ -5,7 +5,7 @@
     <p class="box-select-text">Click below to get the latest information on available jobs</p>
 
     <div class="latest-jobs-slider swiper-container">
-      <div class="swiper-wrapper">
+      <div class="swiper-wrapper swiper-wrapper--no-height">
 
         @php
           $jobsArr = json_decode($experience, true);
