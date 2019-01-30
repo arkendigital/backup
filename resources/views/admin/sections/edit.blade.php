@@ -35,6 +35,11 @@
       </div>
 
       <div class="form-group">
+        <label for="slug">Slug</label>
+        <input type="text" class="form-control" name="slug" id="slug" value="{{ $section->slug }}">
+      </div>
+
+      <div class="form-group">
         <label for="color">Sidebar</label>
         <select class="form-control" name="sidebar_id">
           <option value="">Select a sidebar for pages in this section</option>
