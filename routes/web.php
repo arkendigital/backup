@@ -13,6 +13,10 @@ Auth::routes();
 */
 Route::get('/', 'HomeController@index')->name("index");
 
+Route::get('/cpd', function () {
+    return redirect('https://actuariesonline.com/continued-professional-development');
+});
+
 /**
 * Sections
 *
