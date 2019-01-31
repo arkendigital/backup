@@ -11,7 +11,7 @@
     <p class="box-select-text"></p>
 
     @php
-$jobs = [];
+        $jobs = [];
           
           if (isset($experienceNeeded)) {
             $jobs = App\Models\Job::latest()->get();
