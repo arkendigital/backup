@@ -8,14 +8,17 @@
       <div class="swiper-wrapper swiper-wrapper--no-height">
 
         @php
-          $jobsArr = json_decode($experience, true);
-          if (isset($jobsArr)) {
-            $jobs = App\Models\Job::whereIn("experience", $jobsArr)
-              ->orderBy("created_at", "DESC")
-              ->get();
-          }
+          $jobs = [];
+          
+          if (isset($experienceNeeded)) {
+            $jobs = App\Models\Job::latest()->get();
 
-          elseif(isset($status_id)) {
+            foreach ($jobs as $key => $job) {
+              if(array_intersect(json_decode($job->experience, true), $experienceNeeded)){
+                $jobs[] = $job;
+              }
+            }
+          }elseif(isset($status_id)) {
             $jobs = App\Models\Job::where("status_id", $status_id)
               ->orderBy("created_at", "DESC")
               ->get();

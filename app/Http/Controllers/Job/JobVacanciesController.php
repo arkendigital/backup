@@ -154,7 +154,6 @@ class JobVacanciesController extends Controller
         * Get adverts for this page.
         */
         $page_adverts = getArrayOfAdverts($page->id);
-
         /**
         * Display results.
         */
