@@ -11,11 +11,17 @@
     <p class="box-select-text"></p>
 
     @php
-      if (isset($experience)) {
-        $jobs = App\Models\Job::where("experience", $experience)
-          ->orderBy("created_at", "DESC")
-          ->get();
-      }
+$jobs = [];
+          
+          if (isset($experienceNeeded)) {
+            $jobs = App\Models\Job::latest()->get();
+
+            foreach ($jobs as $key => $job) {
+              if(array_intersect(json_decode($job->experience, true), $experienceNeeded)){
+                $jobs[] = $job;
+              }
+            }
+          }
 
       elseif(isset($status_id)) {
         $jobs = App\Models\Job::where("status_id", $status_id)
