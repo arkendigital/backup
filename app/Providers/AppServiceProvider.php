@@ -32,7 +32,13 @@ class AppServiceProvider extends ServiceProvider
                 'footer_sub_menu' => UrlMenu::getMenu('Footer Submenu'),
                 'r_sticky_button' => Setting::get('r_sticky_button'),
                 'l_sticky_button' => Setting::get('l_sticky_button'),
-                'navigation_items' => (new Navigation)->mainMenu()
+                'navigation_items' => (new Navigation)->mainMenu(),
+                'experienceNeeded' =>  [
+                    'Qualified',
+                    'Almost Qualified',
+                    'Part Qualified',
+                    'No Exams'
+                ],
             ]);
         }
 
