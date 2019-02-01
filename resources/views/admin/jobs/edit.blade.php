@@ -366,7 +366,7 @@
     </div>
 
     <div class="box-footer">
-        <a href="/ops/jobs" class="btn btn-primary pull-left">< All Jobs</a>
+        <a href="/ops/jobs" class="btn btn-primary pull-left">All Jobs</a>
         <button type="submit" class="btn btn-success pull-right">Update</button>
     </div>
 
