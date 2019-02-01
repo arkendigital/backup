@@ -58,7 +58,7 @@
   <script>
   var swiper = new Swiper('.latest-jobs-slider', {
     slidesPerView: 2,
-    spaceBetween: 50,
+    spaceBetween: 50, 
     breakpoints: {
       550: {
         slidesPerView: 1,
