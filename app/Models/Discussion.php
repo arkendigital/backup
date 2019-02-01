@@ -90,7 +90,7 @@ class Discussion extends Model
     public function replies()
     {
         return $this->hasMany('App\Models\DiscussionReply', 'discussion_id', 'id')
-            ->orderBy("created_at", "DESC");
+            ->orderBy("created_at", "ASC");
     }
 
     /**
