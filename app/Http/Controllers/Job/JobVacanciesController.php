@@ -100,7 +100,17 @@ class JobVacanciesController extends Controller
 
         if (session()->exists("job-filter-experience") && !empty(session()->get("job-filter-experience"))) {
             $isSearching = true;
-            $jobs = $jobs->whereIn("experience", session()->get("job-filter-experience"));
+
+            $jobsArray = [];
+            $allJobs = Job::get();
+
+            foreach ($allJobs as $key => $jobItem) {
+              if(array_intersect(json_decode($jobItem->experience, true), session()->get("job-filter-experience"))){
+                $jobsArray[] = $jobItem;
+              }
+            }
+            
+            $jobs = $jobs->whereIn("id", collect($jobsArray)->pluck('id'));
         }
 
         if (session()->exists("job-filter-type") && !empty(session()->get("job-filter-type")) && session()->get("job-filter-type") != "topsearch") {
