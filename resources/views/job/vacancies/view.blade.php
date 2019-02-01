@@ -57,14 +57,14 @@
 
       <div class="clear"></div>
 
-      <div class="job-view-content">
+      <div class="job-view-content support-lists">
         <p class="job-view-content-title">Job description</p>
 
         <strong>Experience needed</strong>
         <br/><br/>
         <ul>
           @foreach (json_decode($job->experience, true) as $experience)
-            <li>- {{ $experience }} <br><br></li>
+            <li>{{ $experience }}</li>
           @endforeach
         </ul>
         <br/><br/>
