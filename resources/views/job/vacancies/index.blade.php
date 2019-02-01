@@ -89,19 +89,19 @@
             <div>
               <p class="job-list-sidebar-item-title">EXPERIENCE</p>
               <div class="job-list-sidebar-item checkbox-wrapper">
-                <input type="checkbox" class="job-list-sidebar-item-checkbox" id="status-qualified" name="experience[]" value="qualified" @if(session()->exists("job-filter-experience") && !empty(session()->get("job-filter-experience")) && in_array("qualified", session()->get("job-filter-experience"))) checked @endif>
+                <input type="checkbox" class="job-list-sidebar-item-checkbox" id="status-qualified" name="experience[]" value="Qualified" @if(session()->exists("job-filter-experience") && !empty(session()->get("job-filter-experience")) && in_array("Qualified", session()->get("job-filter-experience"))) checked @endif>
                 <label class="job-list-sidebar-item-label" for="status-qualified">Qualified</label>
               </div>
               <div class="job-list-sidebar-item checkbox-wrapper">
-                <input type="checkbox" class="job-list-sidebar-item-checkbox" id="status-almost" name="experience[]" value="almost" @if(session()->exists("job-filter-experience") && !empty(session()->get("job-filter-experience")) && in_array("almost", session()->get("job-filter-experience"))) checked @endif>
+                <input type="checkbox" class="job-list-sidebar-item-checkbox" id="status-almost" name="experience[]" value="Almost Qualified" @if(session()->exists("job-filter-experience") && !empty(session()->get("job-filter-experience")) && in_array("Almost Qualified", session()->get("job-filter-experience"))) checked @endif>
                 <label class="job-list-sidebar-item-label" for="status-almost">Almost Qualified (11+ exams)</label>
               </div>
               <div class="job-list-sidebar-item checkbox-wrapper">
-                <input type="checkbox" class="job-list-sidebar-item-checkbox" id="status-part" name="experience[]" value="part" @if(session()->exists("job-filter-experience") && !empty(session()->get("job-filter-experience")) && in_array("part", session()->get("job-filter-experience"))) checked @endif>
+                <input type="checkbox" class="job-list-sidebar-item-checkbox" id="status-part" name="experience[]" value="Part Qualified" @if(session()->exists("job-filter-experience") && !empty(session()->get("job-filter-experience")) && in_array("Part Qualified", session()->get("job-filter-experience"))) checked @endif>
                 <label class="job-list-sidebar-item-label" for="status-part">Part Qualified (1-10 exams)</label>
               </div>
               <div class="job-list-sidebar-item checkbox-wrapper">
-                <input type="checkbox" class="job-list-sidebar-item-checkbox" id="status-none" name="experience[]" value="none" @if(session()->exists("job-filter-experience") && !empty(session()->get("job-filter-experience")) && in_array("none", session()->get("job-filter-experience"))) checked @endif>
+                <input type="checkbox" class="job-list-sidebar-item-checkbox" id="status-none" name="experience[]" value="No Exams" @if(session()->exists("job-filter-experience") && !empty(session()->get("job-filter-experience")) && in_array("No Exams", session()->get("job-filter-experience"))) checked @endif>
                 <label class="job-list-sidebar-item-label" for="status-none">No exams</label>
               </div>
             </div>
@@ -209,17 +209,27 @@
         </form>
       </div><!-- /.job-list-sidebar -->
 
-      <div class="job-list-vacancies" id="jobs">
-        <p class="job-list-sidebar-title">Featured jobs</p>
 
-        @foreach($featured_jobs as $job)
-          {{ $job->trackImpression() }}
-          {{ $job->trackUniqueImpression() }}
-          @include("job.vacancies.job", [
-            "job" => $job,
-            "featured" => true
-          ])
-        @endforeach
+      <div class="job-list-vacancies" id="jobs">
+        @if(!$isSearching)
+          <p class="job-list-sidebar-title">Featured jobs</p>
+          @foreach($featured_jobs as $job)
+            {{ $job->trackImpression() }}
+            {{ $job->trackUniqueImpression() }}
+            @include("job.vacancies.job", [
+              "job" => $job,
+              "featured" => true
+            ])
+          @endforeach
+        @else
+          <p class="job-list-sidebar-title">
+            @if(session()->get("job-filter-keyword"))
+              Your Search for "{{ session()->get("job-filter-keyword") }}"
+            @else
+              Your Search via filters
+            @endif
+          </p>
+        @endif
 
         @if(isset($page_adverts[0]["sponsored-link"]))
           <a href="{{ $page_adverts[0]["sponsored-link"]["url"] }}" target="_blank">
@@ -254,6 +264,7 @@
         @endif
 
       </div><!-- /.job-list-vacancies -->
+
 
     </div><!-- /.job-list-container-inner -->
   </div><!-- /.job-list-container -->
