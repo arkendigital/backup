@@ -209,17 +209,21 @@
         </form>
       </div><!-- /.job-list-sidebar -->
 
-      <div class="job-list-vacancies" id="jobs">
-        <p class="job-list-sidebar-title">Featured jobs</p>
 
-        @foreach($featured_jobs as $job)
-          {{ $job->trackImpression() }}
-          {{ $job->trackUniqueImpression() }}
-          @include("job.vacancies.job", [
-            "job" => $job,
-            "featured" => true
-          ])
-        @endforeach
+      <div class="job-list-vacancies" id="jobs">
+        @if(!$isSearching)
+          <p class="job-list-sidebar-title">Featured jobs</p>
+          @foreach($featured_jobs as $job)
+            {{ $job->trackImpression() }}
+            {{ $job->trackUniqueImpression() }}
+            @include("job.vacancies.job", [
+              "job" => $job,
+              "featured" => true
+            ])
+          @endforeach
+        @else
+          <p class="job-list-sidebar-title">Your Search for "{{ session()->get("job-filter-keyword") }}"</p>
+        @endif
 
         @if(isset($page_adverts[0]["sponsored-link"]))
           <a href="{{ $page_adverts[0]["sponsored-link"]["url"] }}" target="_blank">
@@ -254,6 +258,7 @@
         @endif
 
       </div><!-- /.job-list-vacancies -->
+
 
     </div><!-- /.job-list-container-inner -->
   </div><!-- /.job-list-container -->
