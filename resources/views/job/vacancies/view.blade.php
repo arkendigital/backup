@@ -71,7 +71,10 @@
 
         <div class="job-view-content-description">{!! $job->content !!}</div>
 
-        <p><a class="job-view-content-button job-view-content-button-apply" target="_blank" href="{{ $job->apply_link }}">Apply</a></p>
+        @if($job->contact_email)
+        <p><a class="job-view-content-button job-view-content-button-apply" href="mailto:{{ $job->contact_email }}">Contact</a></p>
+        @endif
+        <p><a class="job-view-content-button job-view-content-button-apply" target="_blank" href="{{ $job->apply_link }}" style="margin-top: 10px;">Apply</a></p>
         <p><a class="job-view-content-button job-view-content-button-back" onclick="window.history.back()">Back</a></p>
       </div>
 

@@ -35,6 +35,7 @@ class Job extends Model
         "type",
         "experience",
         "sector_id",
+        "contact_email",
         "sectors",
         "price",
         "start_date",

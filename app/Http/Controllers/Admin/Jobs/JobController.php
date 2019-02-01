@@ -99,7 +99,6 @@ class JobController extends Controller
      */
     public function update(Job $job, Request $request)
     {
-
         $exp = collect($request->experience)->toJson();
 
         /**
@@ -148,7 +147,8 @@ class JobController extends Controller
             "sectors" => $sectors,
             "price" => request()->price,
   			"start_date" => $start_date,
-  			"end_date" => $end_date
+            "end_date" => $end_date,
+            "contact_email" => request()->contact_email,
         ]);
 
         /**
@@ -272,7 +272,8 @@ class JobController extends Controller
             "sectors" => $sectors,
             "price" => request()->price,
   			"start_date" => $start_date,
-  			"end_date" => $end_date
+            "end_date" => $end_date,
+            "contact_email" => request()->contact_email,
         ]);
 
         /**

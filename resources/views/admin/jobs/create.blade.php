@@ -49,6 +49,15 @@
                       <input type="text" class="form-control" name="excerpt" id="excerpt" value="{{ old("excerpt") }}" placeholder="Enter a short description...">
                     </div>
 
+                    <div class="form-group @if($errors->has("contact_email")) has-error @endif">
+                        @if($errors->has("contact_email"))
+                            <label class="control-label" for="contact_email"><i class="fa fa-times-circle-o"></i> {{ $errors->first("contact_email") }}</label>
+                        @else
+                            <label for="contact_email">Contact Email</label>
+                        @endif
+                        <input type="text" class="form-control" name="contact_email" id="contact_email" value="{{ old("contact_email") }}" placeholder="Enter a contact email">
+                    </div>
+
                     <div class="form-group @if($errors->has("content")) has-error @endif">
                         @if($errors->has("content"))
                             <label class="control-label" for="content"><i class="fa fa-times-circle-o"></i> {{ $errors->first("content") }}</label>
@@ -347,7 +356,7 @@
     </div>
 
     <div class="box-footer">
-        <a href="/ops/jobs" class="btn btn-primary pull-left">< All Jobs</a>
+        <a href="/ops/jobs" class="btn btn-primary pull-left">All Jobs</a>
         <button type="submit" class="btn btn-success pull-right">Create Job</button>
     </div>
 
