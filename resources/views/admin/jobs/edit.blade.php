@@ -49,6 +49,16 @@
                       <input type="text" class="form-control" name="excerpt" id="excerpt" value="{{ session()->exists("errors") ? old("excerpt") : $job->excerpt }}" placeholder="Enter a short description...">
                     </div>
 
+
+                    <div class="form-group @if($errors->has("contact_email")) has-error @endif">
+                        @if($errors->has("contact_email"))
+                            <label class="control-label" for="contact_email"><i class="fa fa-times-circle-o"></i> {{ $errors->first("contact_email") }}</label>
+                        @else
+                            <label for="contact_email">Short description about this job</label>
+                        @endif
+                        <input type="text" class="form-control" name="contact_email" id="contact_email" value="{{ session()->exists("errors") ? old("contact_email") : $job->contact_email }}" placeholder="Enter a contact email">
+                    </div>
+
                     <div class="form-group @if($errors->has("content")) has-error @endif">
                         @if($errors->has("content"))
                             <label class="control-label" for="content"><i class="fa fa-times-circle-o"></i> {{ $errors->first("content") }}</label>
