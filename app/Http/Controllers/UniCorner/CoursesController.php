@@ -47,6 +47,8 @@ class CoursesController extends Controller
         */
         $courses = Course::all();
 
+        // dd($courses);
+
         return view("uni-corner.courses.index", compact(
             "page",
             "page_adverts",
