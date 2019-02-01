@@ -21,6 +21,14 @@
             </div>
 
             <div class="form-group">
+                <label for="link">Link</label>
+                @if($errors->has("link"))
+                  <p class="text-danger">{{ $errors->first("link") }}</p>
+                @endif
+                <input type="text" class="form-control" name="link" id="link" value="{{ old("link") }}" placeholder="Enter link...">
+              </div>
+
+            <div class="form-group">
               <label for="description">Description <sup class="text-danger">* (mandatory)</sup></label>
               @if($errors->has("description"))
                 <p class="text-danger">{{ $errors->first("description") }}</p>

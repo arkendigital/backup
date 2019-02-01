@@ -53,7 +53,8 @@ class CourseController extends Controller
     */
         $course = Course::create([
           "name" => request()->name,
-          "description" => request()->description
+          "description" => request()->description,
+          "link" => request()->link
         ]);
 
 
@@ -95,7 +96,8 @@ class CourseController extends Controller
 
         $course->update([
             "name" => request()->name,
-            "description" => request()->description
+            "description" => request()->description,
+            "link" => request()->link
         ]);
 
         alert()->success('Course Updated');
