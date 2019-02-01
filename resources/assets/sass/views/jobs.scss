@@ -321,6 +321,11 @@
   &-logo {
     max-width: 150px;
     margin-bottom: 30px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.03);
+    max-width: 90px;
+    border: 1px solid #d4d4d1;
+    border-radius: 5px;
+    padding: 3px;
 
     @media (min-width: 768px) {
       position: absolute;
@@ -329,6 +334,7 @@
     }
 
     @media (max-width: 768px) {
+      max-width: 150px;
       display: block;
       margin: 0 auto;
       margin-bottom: 25px;
