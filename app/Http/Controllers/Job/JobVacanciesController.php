@@ -54,7 +54,7 @@ class JobVacanciesController extends Controller
         * Get jobs.
         */
         $jobs = Job::with('company', 'location', 'sector')
-            ->where("featured", 0)
+            // ->where("featured", 0)
             ->where("start_date", "<=", now())
             ->where("end_date", ">=", now());
 
@@ -84,44 +84,54 @@ class JobVacanciesController extends Controller
 
         $regions = JobRegion::all();
 
+        $isSearching = false;
         /**
         * Apply filtering.
         */
         if (session()->exists("job-filter-keyword") && session()->get("job-filter-keyword") != "") {
+            $isSearching = true;
             $jobs = $jobs->where("title", "LIKE", "%".session()->get("job-filter-keyword")."%");
         }
 
         if (session()->exists("job-filter-status") && !empty(session()->get("job-filter-status"))) {
+            $isSearching = true;
             $jobs = $jobs->whereIn("status_id", session()->get("job-filter-status"));
         }
 
         if (session()->exists("job-filter-experience") && !empty(session()->get("job-filter-experience"))) {
+            $isSearching = true;
             $jobs = $jobs->whereIn("experience", session()->get("job-filter-experience"));
         }
 
         if (session()->exists("job-filter-type") && !empty(session()->get("job-filter-type")) && session()->get("job-filter-type") != "topsearch") {
+            $isSearching = true;
             $jobs = $jobs->whereIn("type", session()->get("job-filter-type"));
         }
 
         if (session()->exists('job-filter-sector') && !empty(session()->get('job-filter-sector'))) {
+            $isSearching = true;
             $jobs = $jobs->where('sectors', 'LIKE', '%'.session()->get('job-filter-sector').',%');
         }
 
         if (session()->exists('job-filter-salary-min') && !empty(session()->get('job-filter-salary-min'))) {
+            $isSearching = true;
             $jobs = $jobs->where('max_salary', ">=", session()->get('job-filter-salary-min'));
             $jobs = $jobs->where('max_salary', "<=", session()->get('job-filter-salary-max'));
         }
 
         if (session()->exists('job-filter-contract-salary-min') && !empty(session()->get('job-filter-contract-salary-min'))) {
+            $isSearching = true;
             $jobs = $jobs->orWhere('max_daily_salary', ">=", session()->get('job-filter-contract-salary-min'));
             $jobs = $jobs->orWhere('max_daily_salary', "<=", session()->get('job-filter-contract-salary-max'));
         }
 
         if (session()->exists('job-filter-region') && session()->get('job-filter-region') != '') {
+            $isSearching = true;
             $jobs = $jobs->where("region_id", session()->get("job-filter-region"));
         }
 
         if (session()->exists('job-filter-location') && session()->get('job-filter-location') != '') {
+            $isSearching = true;
             $jobs = $jobs->where("location_id", session()->get("job-filter-location"));
         }
 
@@ -134,7 +144,7 @@ class JobVacanciesController extends Controller
         }
         */
 
-        if (!session()->exists('job-filter-order')) {
+        if (!session()->exists('job-filter-order')) {  
             session()->put("job-filter-order", 'created_at-desc');
         }
 
@@ -158,6 +168,7 @@ class JobVacanciesController extends Controller
         * Display results.
         */
         return view("job.vacancies.index", compact(
+            'isSearching',
             "featured_jobs",
             "jobs",
             "page",
