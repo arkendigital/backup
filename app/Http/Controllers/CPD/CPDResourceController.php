@@ -76,7 +76,7 @@ class CPDResourceController extends Controller
     /**
     * Get section.
     */
-        $section = Section::where("slug", "cpd")
+        $section = Section::where("slug", "continued-professional-development")
             ->first();
 
         /**
