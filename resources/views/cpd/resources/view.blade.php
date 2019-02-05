@@ -1,7 +1,7 @@
 @extends("layouts.master")
 
 @section("content")
-
+  
   <div class="section-hero" style="background-image: url({{ $section->image }}); border-color: {{ $section->color }};"></div>
 
   <div class="website-container">
