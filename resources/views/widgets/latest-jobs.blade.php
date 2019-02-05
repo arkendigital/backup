@@ -12,7 +12,10 @@
 
     @php
         $jobs = [];
-          
+          $current_route = Route::currentRouteAction();
+          if($current_route == "App\Http\Controllers\HomeController@index") {
+            $experienceNeeded = NULL;
+          }
           if (isset($experienceNeeded)) {
             $jobs = App\Models\Job::latest()->get();
 
