@@ -163,7 +163,11 @@ class JobVacanciesController extends Controller
             $jobs = $jobs->orderBy($order[0], $order[1]);
         }
 
-        $jobs = $jobs->where('featured', 0)->paginate(6);
+        if($isSearching) {
+            $jobs = $jobs->paginate(6);
+        }else{
+            $jobs = $jobs->where('featured', 0)->paginate(6);
+        }
 
         /**
          * Get a list of job types
