@@ -254,6 +254,26 @@ class JobVacanciesController extends Controller
 
         // }
 
+        /**
+         * Contractor salary
+         *
+         */
+        if($request->order) {
+            switch ($request->order) {
+                case 'created_at-desc':
+                    session()->put("job-filter-order", 'created_at-desc');
+                    break;
+                case 'created_at-asc':
+                    session()->put("job-filter-order", 'created_at-asc');
+                    break;
+                case 'salary-asc':
+                    session()->put("job-filter-order", 'salary-asc');
+                    break;
+                case 'salary-desc':
+                    session()->put("job-filter-order", 'salary-desc');
+                    break;
+            }
+        }
 
         /**
         * Redirect back to job listing page.
