@@ -43,6 +43,7 @@
 
           <div class="job-list-banner-sort-by">
             <select name="order">
+              <option value="">Select Sort</option>
               <option value="created_at-desc" @if(session()->get('job-filter-order') == 'created_at-desc') selected @endif>Date (Newest First)</option>
               <option value="created_at-asc" @if(session()->get('job-filter-order') == 'created_at-asc') selected @endif>Date (Oldest First)</option>
               <option value="salary-asc" @if(session()->get('job-filter-order') == 'salary-asc') selected @endif>Salary (Lowest First)</option>
@@ -51,6 +52,10 @@
           </div>
 
           <button type="submit">Search</button>
+
+          @if(session()->get('job-filter-order'))
+            <button type="submit" name="reset_odering" value="1">Reset Sort By</button>
+          @endif
         </form>
 
         <div class="job-list-banner-showing">
