@@ -46,8 +46,8 @@
               <option value="">Select Sort</option>
               <option value="created_at-desc" @if(session()->get('job-filter-order') == 'created_at-desc') selected @endif>Date (Newest First)</option>
               <option value="created_at-asc" @if(session()->get('job-filter-order') == 'created_at-asc') selected @endif>Date (Oldest First)</option>
-              <option value="salary-asc" @if(session()->get('job-filter-order') == 'salary-asc') selected @endif>Salary (Lowest First)</option>
-              <option value="salary-desc" @if(session()->get('job-filter-order') == 'salary-desc') selected @endif>Salary (Hightest First)</option>
+              <option value="max_salary-asc" @if(session()->get('job-filter-order') == 'max_salary-asc') selected @endif>Salary (Lowest First)</option>
+              <option value="max_salary-desc" @if(session()->get('job-filter-order') == 'max_salary-desc') selected @endif>Salary (Hightest First)</option>
             </select>
           </div>
 

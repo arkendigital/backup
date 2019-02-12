@@ -249,11 +249,11 @@ class JobVacanciesController extends Controller
                 case 'created_at-asc':
                     session()->put("job-filter-order", 'created_at-asc');
                     break;
-                case 'salary-asc':
-                    session()->put("job-filter-order", 'salary-asc');
+                case 'max_salary-asc':
+                    session()->put("job-filter-order", 'max_salary-asc');
                     break;
-                case 'salary-desc':
-                    session()->put("job-filter-order", 'salary-desc');
+                case 'max_salary-desc':
+                    session()->put("job-filter-order", 'max_salary-desc');
                     break;
                 case '':
                     session()->forget("job-filter-order");
