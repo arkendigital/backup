@@ -96,7 +96,6 @@ class DiscussionController extends Controller
      */
     public function view(DiscussionCategory $category, Discussion $discussion)
     {
-
         /**
          * Get page information
          *

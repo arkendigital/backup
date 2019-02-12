@@ -40,8 +40,21 @@
                   @if($discussion->category)
                     <p class="discussion-list-thread-content-footer-subject">{{ $discussion->category->name }}</p>
                   @endif
-                  <p class="discussion-list-thread-content-footer-time">{{ $discussion->created_at->diffForHumans() }}</p>
-                  <p class="discussion-list-thread-content-footer-user">by {{ $discussion->user->username }}</p>
+
+                  <p class="discussion-list-thread-content-footer-original">Originally Posted: {{ $discussion->created_at->diffForHumans() }}</p>
+                  
+                  @php 
+                    $last = $discussion->replies->last(); 
+                    $lastDate = \Carbon\Carbon::parse($last['created_at'])->toDateString(); 
+                  @endphp
+                  <p class="discussion-list-thread-content-footer-time">Last Reply: 
+                    @if(count($discussion->replies))
+                      {{ \Carbon\Carbon::parse($lastDate)->diffForHumans()  }}
+                    @else 
+                      {{ $discussion->created_at->diffForHumans() }}
+                    @endif
+                  </p>
+                  <p class="discussion-list-thread-content-footer-user">by {{ optional($last)->user['username'] ?? $discussion->user->username }}</p>
                 </div><!-- /.discussion-list-thread-content-footer -->
               </div><!-- /.discussion-list-thread-content -->
 
