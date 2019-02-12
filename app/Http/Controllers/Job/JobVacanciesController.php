@@ -28,7 +28,7 @@ class JobVacanciesController extends Controller
     /**
     * Show a list of jobs.
     */
-    public function index(Request $request)
+    public function index()
     {
         /**
         * Get page Information
@@ -145,27 +145,22 @@ class JobVacanciesController extends Controller
             $jobs = $jobs->where("location_id", session()->get("job-filter-location"));
         }
 
-        if($request->order) {
-            switch ($request->order) {
-                case 'created_at-desc':
-                    session()->put("job-filter-order", 'created_at-desc');
-                    $jobs = $jobs->orderBy('created_at', 'DESC');
-                    break;
-                case 'created_at-asc':
-                    session()->put("job-filter-order", 'created_at-asc');
-                    $jobs = $jobs->orderBy('created_at', 'ASC');
-                    break;
-                case 'salary-asc':
-                    session()->put("job-filter-order", 'salary-asc');
-                    $jobs = $jobs->orderBy('max_salary', 'ASC');
-                    break;
-                case 'salary-desc':
-                    session()->put("job-filter-order", 'salary-desc');
-                    $jobs = $jobs->orderBy('max_salary', 'DESC');
-                    break;
-            }
-        }else{
-            session()->put("job-filter-order", '');
+        /*
+         * This code is for the old location search which is free type
+        if (session()->exists('job-filter-location') && session()->get('job-filter-location') != '') {
+            $jobs = $jobs->whereHas('location', function ($q) {
+                $q->where('name', 'LIKE', '%' . session()->get('job-filter-location') . '%');
+            });
+        }
+        */
+
+        if (!session()->exists('job-filter-order')) {  
+            session()->put("job-filter-order", 'created_at-desc');
+        }
+
+        if (session()->exists('job-filter-order') && !empty(session()->get('job-filter-order'))) {
+            $order = explode('-', session()->get('job-filter-order'));
+            $jobs = $jobs->orderBy($order[0], $order[1]);
         }
 
         if($isSearching) {
@@ -198,6 +193,92 @@ class JobVacanciesController extends Controller
             "job_types",
             "page_adverts"
         ))->compileShortcodes();
+    }
+
+    /**
+    * Set job search filtering.
+    *
+    * @param Request $request
+    *
+    */
+    public function set_filtering(Request $request)
+    {
+        // if (isset(request()->type) && !isset(request()->sector)) {
+        // session()->put("job-filter-location", request()->location);
+        // session()->put("job-filter-order", request()->order);
+        // } else {
+        session()->put("job-filter-keyword", request()->keyword);
+        session()->put("job-filter-status", request()->status);
+        session()->put("job-filter-experience", request()->experience);
+        session()->put("job-filter-type", request()->type);
+        session()->put("job-filter-sector", request()->sector);
+
+        if (str_contains(request()->location, "all-region")) {
+            session()->forget("job-filter-location");
+
+            $region_string = request()->location;
+            $region_id = explode("-", $region_string)[2];
+            session()->put("job-filter-region", $region_id);
+        } else {
+            session()->put("job-filter-location", request()->location);
+            session()->forget("job-filter-region");
+        }
+
+        /**
+         * Permanent salary
+         *
+         */
+        if (request()->salary != "all" && request()->salary !== null) {
+            $salary = explode("-", request()->salary);
+
+            session()->put("job-filter-salary-min", $salary[0]);
+            session()->put("job-filter-salary-max", $salary[1]);
+        } else {
+            session()->forget("job-filter-salary-min");
+            session()->forget("job-filter-salary-max");
+        }
+
+        /**
+         * Contractor salary
+         *
+         */
+        if (request()->daily_salary != "all" && request()->daily_salary !== null) {
+            $salary = explode("-", request()->daily_salary);
+
+            session()->put("job-filter-contract-salary-min", $salary[0]);
+            session()->put("job-filter-contract-salary-max", $salary[1]);
+        } else {
+            session()->forget("job-filter-contract-salary-min");
+            session()->forget("job-filter-contract-salary-max");
+        };
+
+        // }
+
+        /**
+         * Contractor salary
+         *
+         */
+        if($request->order) {
+            switch ($request->order) {
+                case 'created_at-desc':
+                    session()->put("job-filter-order", 'created_at-desc');
+                    break;
+                case 'created_at-asc':
+                    session()->put("job-filter-order", 'created_at-asc');
+                    break;
+                case 'salary-asc':
+                    session()->put("job-filter-order", 'salary-asc');
+                    break;
+                case 'salary-desc':
+                    session()->put("job-filter-order", 'salary-desc');
+                    break;
+            }
+        }
+
+        /**
+        * Redirect back to job listing page.
+        */
+        return redirect("/jobs/vacancies#jobs");
     }
 
     /**
