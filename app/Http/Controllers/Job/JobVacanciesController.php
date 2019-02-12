@@ -164,6 +164,8 @@ class JobVacanciesController extends Controller
                     $jobs = $jobs->orderBy('max_salary', 'DESC');
                     break;
             }
+        }else{
+            session()->put("job-filter-order", '');
         }
 
         if($isSearching) {
