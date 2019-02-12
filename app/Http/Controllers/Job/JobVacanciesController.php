@@ -154,11 +154,13 @@ class JobVacanciesController extends Controller
         }
         */
 
-        if (!session()->exists('job-filter-order')) {  
-            session()->put("job-filter-order", 'created_at-desc');
-        }
+        // if (!session()->exists('job-filter-order')) {  
+        //     session()->put("job-filter-order", 'created_at-desc');
+        // }
 
-        if (session()->exists('job-filter-order') && !empty(session()->get('job-filter-order'))) {
+        // dd(session()->exists('job-filter-order'));
+        if (session()->get('job-filter-order')) {
+            $isSearching = true;
             $order = explode('-', session()->get('job-filter-order'));
             $jobs = $jobs->orderBy($order[0], $order[1]);
         }
@@ -254,11 +256,10 @@ class JobVacanciesController extends Controller
 
         // }
 
-        /**
-         * Contractor salary
-         *
-         */
-        if($request->order) {
+          /**
+             * Order By
+             *
+             */
             switch ($request->order) {
                 case 'created_at-desc':
                     session()->put("job-filter-order", 'created_at-desc');
@@ -272,8 +273,14 @@ class JobVacanciesController extends Controller
                 case 'salary-desc':
                     session()->put("job-filter-order", 'salary-desc');
                     break;
+                case '':
+                    session()->forget("job-filter-order");
+                    break;
             }
-        }
+
+            if($request->reset_odering) {
+                session()->forget("job-filter-order");
+            }
 
         /**
         * Redirect back to job listing page.
