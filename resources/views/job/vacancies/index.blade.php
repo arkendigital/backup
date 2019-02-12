@@ -230,6 +230,8 @@
           <p class="job-list-sidebar-title">
             @if(session()->get("job-filter-keyword"))
               Your Search for "{{ session()->get("job-filter-keyword") }}"
+            @elseif(session()->get('job-filter-order'))
+              Your Search via sort
             @else
               Your Search via filters
             @endif
