@@ -145,20 +145,6 @@ class JobVacanciesController extends Controller
             $jobs = $jobs->where("location_id", session()->get("job-filter-location"));
         }
 
-        /*
-         * This code is for the old location search which is free type
-        if (session()->exists('job-filter-location') && session()->get('job-filter-location') != '') {
-            $jobs = $jobs->whereHas('location', function ($q) {
-                $q->where('name', 'LIKE', '%' . session()->get('job-filter-location') . '%');
-            });
-        }
-        */
-
-        // if (!session()->exists('job-filter-order')) {  
-        //     session()->put("job-filter-order", 'created_at-desc');
-        // }
-
-        // dd(session()->exists('job-filter-order'));
         if (session()->get('job-filter-order')) {
             $isSearching = true;
             $order = explode('-', session()->get('job-filter-order'));
@@ -198,17 +184,15 @@ class JobVacanciesController extends Controller
     }
 
     /**
-    * Set job search filtering.
+    * Set job search filtering via session and ths get 
+    * redirected to the above method which gets data 
+    * via the session set here.
     *
     * @param Request $request
     *
     */
     public function set_filtering(Request $request)
     {
-        // if (isset(request()->type) && !isset(request()->sector)) {
-        // session()->put("job-filter-location", request()->location);
-        // session()->put("job-filter-order", request()->order);
-        // } else {
         session()->put("job-filter-keyword", request()->keyword);
         session()->put("job-filter-status", request()->status);
         session()->put("job-filter-experience", request()->experience);
@@ -253,8 +237,6 @@ class JobVacanciesController extends Controller
             session()->forget("job-filter-contract-salary-min");
             session()->forget("job-filter-contract-salary-max");
         };
-
-        // }
 
           /**
              * Order By
