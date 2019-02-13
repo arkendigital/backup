@@ -291,6 +291,7 @@ class JobVacanciesController extends Controller
         */
         $this->seo()->setTitle($job->title);
         $this->seo()->setDescription($job->excerpt);
+        $this->seo()->opengraph()->addImage($job->company->logo);
 
         /**
         * Display job.
