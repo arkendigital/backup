@@ -124,6 +124,10 @@ class JobController extends Controller
         } else {
             $end_date = null;
         }
+        
+        if(request()->file('image')) {
+            $image = request()->image->store('/vacancy', 'public');
+        }
 
         /**
          * Update job.
@@ -132,6 +136,7 @@ class JobController extends Controller
             "title" => request()->title,
             "excerpt" => request()->excerpt,
             "content" => request()->content,
+            "image" => $image ?? $job->image,
             "salary_type" => request()->salary_type,
             "min_salary" => request()->min_salary,
             "max_salary" => request()->max_salary,
