@@ -1,8 +1,13 @@
 @extends("layouts.master")
 
 @section("content")
-
+    @if ($job->image)
+      <div class="box profile__header"
+          style='background-image: url("{{asset('storage/' . $job->image)}}"); min-height: 300px;'>
+      </div>
+    @endif
   <div class="website-container">
+    
 
       <div class="job-view-header">
         <div class="job-view-header-left">

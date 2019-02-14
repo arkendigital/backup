@@ -21,6 +21,7 @@ class Job extends Model
         "slug",
         "excerpt",
         "content",
+        "image",
         "salary_type",
         "min_salary",
         "max_salary",

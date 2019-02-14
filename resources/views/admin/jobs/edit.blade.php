@@ -40,6 +40,15 @@
                       <input type="text" class="form-control" name="title" id="title" value="{{ session()->exists("errors") ? old("title") : $job->title }}" placeholder="Job title...">
                     </div>
 
+                    <div class="form-group @if($errors->has("image")) has-error @endif">
+                        @if($errors->has("image"))
+                            <label class="control-label" for="image"><i class="fa fa-times-circle-o"></i> {{ $errors->first("image") }}</label>
+                        @else
+                            <label for="image">Job image</label>
+                        @endif
+                        <input type="file" class="form-control" name="image">
+                    </div>
+
                     <div class="form-group @if($errors->has("excerpt")) has-error @endif">
                         @if($errors->has("excerpt"))
                             <label class="control-label" for="excerpt"><i class="fa fa-times-circle-o"></i> {{ $errors->first("excerpt") }}</label>
