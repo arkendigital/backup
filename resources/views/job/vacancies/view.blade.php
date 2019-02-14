@@ -3,7 +3,7 @@
 @section("content")
     @if ($job->image)
       <div class="box profile__header"
-          style='background-image: url("{{asset('storage/' . $job->image)}}"); min-height: 300px;'>
+          style='background-image: url("{{asset('storage/' . $job->image)}}"); min-height: 300px; background-size: cover;'>
       </div>
     @endif
   <div class="website-container">
