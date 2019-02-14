@@ -278,7 +278,6 @@ class JobVacanciesController extends Controller
     */
     public function view(Job $job)
     {
-
     /**
     * Get page information.
     *
@@ -291,7 +290,7 @@ class JobVacanciesController extends Controller
         */
         $this->seo()->setTitle($job->title);
         $this->seo()->setDescription($job->excerpt);
-        $this->seo()->opengraph()->addImage($job->image, ['height' => 300, 'width' => 300]);
+        $this->seo()->opengraph()->addImage(url('/') . '/storage/' . $job->image, ['height' => 300, 'width' => 300]);
 
         /**
         * Display job.
