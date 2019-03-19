@@ -132,7 +132,7 @@ class Job extends Model
          * Create cookie
          *
          */
-            \Cookie::queue($cookie_name, now(), 43200);
+            \Cookie::make($cookie_name, now(), 43200);
 
             /**
              * Track unique impression

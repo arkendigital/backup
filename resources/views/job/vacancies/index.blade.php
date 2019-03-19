@@ -270,8 +270,10 @@
 
         @endif
 
+        <div class="discussion-pagination">
+            {{ $jobs->links() }}
+        </div><!-- /.discussion-pagination -->
       </div><!-- /.job-list-vacancies -->
-
 
     </div><!-- /.job-list-container-inner -->
   </div><!-- /.job-list-container -->
