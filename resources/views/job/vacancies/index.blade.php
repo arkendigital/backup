@@ -218,6 +218,9 @@
       <div class="job-list-vacancies" id="jobs">
         @if(!$isSearching)
           <p class="job-list-sidebar-title">Featured jobs</p>
+          @php 
+                // Any issues with 502 errors this will be issue
+          @endphp
           @foreach($featured_jobs as $job)
             {{ $job->trackImpression() }}
             {{ $job->trackUniqueImpression() }}
@@ -270,8 +273,10 @@
 
         @endif
 
+        <div class="discussion-pagination">
+            {{ $jobs->links() }}
+        </div><!-- /.discussion-pagination -->
       </div><!-- /.job-list-vacancies -->
-
 
     </div><!-- /.job-list-container-inner -->
   </div><!-- /.job-list-container -->

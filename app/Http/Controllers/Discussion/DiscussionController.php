@@ -23,7 +23,6 @@ class DiscussionController extends Controller
      */
     public function index(DiscussionCategory $category)
     {
-
         /**
          * Get page information
          *

@@ -152,9 +152,9 @@ class JobVacanciesController extends Controller
         }
 
         if($isSearching) {
-            $jobs = $jobs->paginate(6);
+            $jobs = $jobs->paginate(9);
         }else{
-            $jobs = $jobs->where('featured', 0)->paginate(6);
+            $jobs = $jobs->where('featured', 0)->paginate(9);
         }
 
         /**
