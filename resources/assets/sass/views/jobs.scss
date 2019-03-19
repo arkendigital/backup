@@ -294,6 +294,33 @@
   a {
     text-decoration: none;
   }
+
+  .jobs-pagination {
+    display: block;
+    margin: 40px 0;
+    text-align: left;
+  
+    @media (max-width: 650px) {
+      margin: 30px auto;
+      margin-top: 60px;
+      text-align: center;
+    }
+  
+    li {
+      display: inline-block;
+      font-weight: 600;
+      font-size: 18px;
+  
+      a, span {
+        color: #210e4c;
+        text-decoration: none;
+        padding: 7.5px 10px;
+        font-weight: 600;
+  
+      }
+  
+    }
+  }
 }
 
 /**
