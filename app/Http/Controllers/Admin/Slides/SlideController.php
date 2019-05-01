@@ -70,7 +70,7 @@ class SlideController extends Controller
             "slug" => request()->slug,
             "title" => request()->title,
             "text" => request()->text,
-            'link' => request()->link
+            "link" => request()->link
         ]);
 
         /**
@@ -127,11 +127,13 @@ class SlideController extends Controller
     * Update slide in storage.
     *
     */
+
         $slide->update([
             "title" => request()->title,
             "text" => request()->text,
-            'link' => request()->link
+            "link" => request()->link
         ]);
+
 
         /**
         * Upload slide image.

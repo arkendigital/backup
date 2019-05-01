@@ -18,7 +18,8 @@ class Slide extends Model
         "title",
         "text",
         "order",
-        "image_path"
+        "image_path",
+        "link"
     ];
 
     /**
