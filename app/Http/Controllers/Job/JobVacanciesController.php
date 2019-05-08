@@ -47,15 +47,16 @@ class JobVacanciesController extends Controller
         * Get featured jobs.
         */
         $featured_jobs = Job::with('company', 'location', 'sector')
-                            ->where("featured", 1)
-                            ->get();
+            ->where("featured", 1)
+            ->orderBy('created_at', 'desc')
+            ->get();
 
         /**
         * Get jobs.
         */
         $jobs = Job::with('company', 'location', 'sector')
-            // ->where("featured", 0)
             ->where("start_date", "<=", now())
+            ->orderBy('created_at', 'desc')
             ->where("end_date", ">=", now());
 
         /**
@@ -165,10 +166,12 @@ class JobVacanciesController extends Controller
         /**
         * Get adverts for this page.
         */
+
         $page_adverts = getArrayOfAdverts($page->id);
         /**
         * Display results.
         */
+
         return view("job.vacancies.index", compact(
             'isSearching',
             "featured_jobs",
