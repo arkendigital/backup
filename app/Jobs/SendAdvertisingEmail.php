@@ -11,9 +11,9 @@ use Illuminate\Queue\SerializesModels;
 use Mail;
 use App\Setting;
 
-class SendAdvertisingEmail implements ShouldQueue
+class SendAdvertisingEmail //implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable, InteractsWithQueue, SerializesModels;
 
     protected $contact_submission;
 

@@ -10,9 +10,9 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Mail;
 
-class SendVerificationEmail implements ShouldQueue
+class SendVerificationEmail //implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable, InteractsWithQueue, SerializesModels;
 
     protected $user;
 

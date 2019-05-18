@@ -13,7 +13,7 @@ use App\Setting;
 
 class SendSuggestFeatureEmail //implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable, InteractsWithQueue, SerializesModels;
 
     protected $submission;
 
