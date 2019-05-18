@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Mail;
 
 Route::namespace('Auth')->group(function () {
     Route::get('login/{provider}', 'LoginController@redirectToProvider')->name('socialAuth');
@@ -7,6 +8,12 @@ Route::namespace('Auth')->group(function () {
 
 Auth::routes();
 
+Route::get('test',function(){
+	Mail::send('test', [], function ($m) {
+        $m->from('no-reply@actuariesonline.com', Setting::get('site_name'));
+        $m->to('j.girgis85@gmail.com')->subject('test email');
+    });
+});
 
 /**
 * Homepage.
