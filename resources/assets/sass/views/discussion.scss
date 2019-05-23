@@ -101,6 +101,14 @@
 
 }
 
+.dicussion-page-subtitle{
+  clear: both;
+  margin: 25px 0px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #1a304d;
+}
+
 @import "discussion/sidebar";
 @import "discussion/edit";
 @import "discussion/list";

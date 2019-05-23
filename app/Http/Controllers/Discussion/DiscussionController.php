@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Discussion;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Http\Requests\Discussion as DiscussionRequest;
+use App\Article;
 use App\Http\Controllers\AWS\ImageController as AWS;
-use Cache;
-use App\Models\Page;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Discussion as DiscussionRequest;
 use App\Models\Discussion;
 use App\Models\DiscussionCategory;
 use App\Models\DiscussionReply;
+use App\Models\Page;
+use Cache;
+use Illuminate\Http\Request;
 
 class DiscussionController extends Controller
 {
@@ -83,6 +84,44 @@ class DiscussionController extends Controller
             "category",
             "categories",
             "discussions"
+        ));
+    }
+
+
+    /**
+     * Blog discussion version
+     *
+     *
+     */
+    public function blog()
+    {
+        /**
+         * Get page information
+         *
+         */
+        $page = Page::getPage("discussion");
+
+        /**
+         * Set page SEO
+         *
+         */
+        $this->seo()
+          ->setTitle($page->meta_title);
+        $this->seo()
+          ->setDescription($page->meta_description);
+
+        /**
+         * Get adverts for this page.
+         *
+         */
+        $page_adverts = getArrayOfAdverts($page->id);
+
+        $article = Article::find(3);
+
+        return view("discussion.blog", compact(
+            "page",
+            "page_adverts",
+            "article"
         ));
     }
 

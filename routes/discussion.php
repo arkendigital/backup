@@ -5,7 +5,10 @@ Route::namespace('Discussion')->prefix('discussion')->group(function() {
   * Display the home of the discussion section.
   *
   */
-  Route::get('/', 'DiscussionController@index')
+  // Route::get('/', 'DiscussionController@index')
+  //   ->name("front.discussion.index"); 
+
+  Route::get('/', 'DiscussionController@blog')
     ->name("front.discussion.index");
 
   /**
