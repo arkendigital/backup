@@ -1,15 +1,23 @@
 <?php
 Route::namespace('Discussion')->prefix('discussion')->group(function() {
 
+Route::get('/', function(){ return Redirect::to('/discussion/current', 301); });
+Route::get('jobs', function(){ return Redirect::to('/discussion/current', 301); });
+Route::get('exams', function(){ return Redirect::to('/discussion/current', 301); });
+Route::get('cpd', function(){ return Redirect::to('/discussion/current', 301); });
+Route::get('cv-support', function(){ return Redirect::to('/discussion/current', 301); });
+Route::get('uni-corner', function(){ return Redirect::to('/discussion/current', 301); });
+Route::get('resources', function(){ return Redirect::to('/discussion/current', 301); });
+Route::get('need-a-hand', function(){ return Redirect::to('/discussion/current', 301); });
+Route::get('discuss-salaries', function(){ return Redirect::to('/discussion/current', 301); });
+Route::get('regional-societies', function(){ return Redirect::to('/discussion/current', 301); });
+
   /**
   * Display the home of the discussion section.
   *
   */
   // Route::get('/', 'DiscussionController@index')
   //   ->name("front.discussion.index"); 
-
-  Route::get('/', 'DiscussionController@blog')
-    ->name("front.discussion.index");
 
   /**
   * Store a new discussion in the database.

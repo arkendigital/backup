@@ -1,12 +1,12 @@
 <div class="discussion-sidebar">
 
-  <div>
+  {{-- <div>
     <form action="/discussion/" method="GET">
       {{ csrf_field() }}
       {{ method_field("POST") }}
       <input type="text" name="search" class="discussion-sidebar-search" placeholder="Search the forum" value="{{ isset($_GET["search"]) ? $_GET["search"] : "" }}">
     </form>
-  </div>
+  </div> --}}
 
   <div class="discussion-sidebar__mobile-menu">
       <ul>
@@ -19,7 +19,7 @@
       </ul>
   </div>
 
-  <div class="discussion-sidebar__categories">
+  {{-- <div class="discussion-sidebar__categories">
     <ul>
       <li>
         <a href="/discussion">
@@ -52,7 +52,7 @@
         </a>
       </li>
     </ul>
-  </div>
+  </div> --}}
 
   <div class="discussion-sidebar__categories">
     <ul>

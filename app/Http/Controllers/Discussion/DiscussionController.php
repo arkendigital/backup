@@ -87,44 +87,6 @@ class DiscussionController extends Controller
         ));
     }
 
-
-    /**
-     * Blog discussion version
-     *
-     *
-     */
-    public function blog()
-    {
-        /**
-         * Get page information
-         *
-         */
-        $page = Page::getPage("discussion");
-
-        /**
-         * Set page SEO
-         *
-         */
-        $this->seo()
-          ->setTitle($page->meta_title);
-        $this->seo()
-          ->setDescription($page->meta_description);
-
-        /**
-         * Get adverts for this page.
-         *
-         */
-        $page_adverts = getArrayOfAdverts($page->id);
-
-        $article = Article::find(3);
-
-        return view("discussion.blog", compact(
-            "page",
-            "page_adverts",
-            "article"
-        ));
-    }
-
     /**
      * View a specific discussion.
      *
@@ -409,9 +371,7 @@ class DiscussionController extends Controller
      */
     protected function getCategories()
     {
-        return Cache::remember('discussion_categories', 1440, function () {
-            return DiscussionCategory::with('icon')->get();
-        });
+        return DiscussionCategory::with('icon')->get();
     }
 
     /**

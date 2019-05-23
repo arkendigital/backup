@@ -8,14 +8,6 @@ Route::namespace('Auth')->group(function () {
 });
 Auth::routes();
 
-Route::get('test',function(){
-    return Hash::make('password');
-	// Mail::send('test', [], function ($m) {
- //        $m->from('no-reply@actuariesonline.com', Setting::get('site_name'));
- //        $m->to('j.girgis85@gmail.com')->subject('test email');
- //    });
-});
-
 /**
 * Homepage.
 */

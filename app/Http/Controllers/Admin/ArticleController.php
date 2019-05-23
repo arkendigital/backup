@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Article;
 use App\ArticleCategory;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\AWS\ImageController as AWS;
+use App\Http\Controllers\Controller;
+use App\Models\Discussion;
+use App\Models\DiscussionCategory;
+use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
@@ -153,9 +155,22 @@ class ArticleController extends Controller
     public function setCurrentDiscussion(Article $article)
     {
         //delete all articles on the today's discussion category
+        $todayCategory = DiscussionCategory::where('slug','current')->first();
+        Discussion::where('category_id',$todayCategory->id)->forceDelete();
 
-        //copy article to the today category of discussion
+        //import this article into the discussions table for the current's category
+        $discussion = Discussion::create([
+            "name" => $article->title,
+            "subject" => $article->title,
+            "excerpt" => '',
+            "content" => $article->body,
+            "category_id" => $todayCategory->id,
+            "user_id" => auth()->user()->id,
+            "image_path" => $article->image
+        ]);
 
         //return back success message
+        alert()->success('Article Set as Current Discussion.');
+        return back();
     }
 }
