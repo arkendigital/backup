@@ -29,6 +29,7 @@
                         <th>ID</th>
                         <th>Title</th>
                         <th>Body</th>
+                        <th>Current</th>
                         <th>Image</th>
                         <th>Actions</th>
                     </tr>
@@ -39,6 +40,12 @@
                         <td>{{ $article->id }}</td>
                         <td>{{ $article->title }}</td>
                         <td>{!! str_limit(strip_tags($article->body), 100) !!}</td>
+                        <td>
+                            <form action="{{ route('article.setCurrentDiscussion', $article) }}" method="POST" style="float:left;">
+                                {{csrf_field()}}
+                                <button class="btn btn-warning btn-small" type="submit">Set Current</button>
+                            </form>
+                        </td>
                         @if ($article->image)
                             <td><a href="{{ asset($article->image) }}" class="btn btn-primary">View Image</a></td>
                         @else

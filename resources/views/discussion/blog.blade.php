@@ -8,7 +8,6 @@
     <div class="discussion-container-inner">
       <div class="row">
         <h1 class="discussion-page-title" style="margin: 50px 0px 25px 0;">Discussion</h1>
-        <h2 class="dicussion-page-subtitle">What Automation Means for Actuaries</h2>
       </div>
 
       @if(!auth()->check())
@@ -20,6 +19,7 @@
       @include("discussion.sidebar_blog")
 
       <div class="discussion-list-container margin-bottom--medium view-section" style="margin: 0px;">
+        <h2 class="dicussion-page-subtitle">What Automation Means for Actuaries</h2>
         @if(! str_contains($article->image, 'placeholder')) 
             <div class="section-hero" style="background-image: url({{ asset($article->image) }}); border-color: #0d72b9;border-bottom:0px;"></div>
         @endif

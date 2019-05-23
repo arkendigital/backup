@@ -40,6 +40,7 @@ Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function ()
 
 
     Route::resource('/articles/categories', 'ArticleCategoryController', ['as' => 'articles']);
+    Route::post('/articles/{article}/current', 'ArticleController@setCurrentDiscussion')->name('article.setCurrentDiscussion');
     Route::resource('/articles', 'ArticleController');
 
     Route::resource('/forums', 'ForumController');

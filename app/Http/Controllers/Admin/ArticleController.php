@@ -144,4 +144,18 @@ class ArticleController extends Controller
 
         return back();
     }
+
+    /**
+     *
+     * Function to set the current discussion article
+     *
+     */
+    public function setCurrentDiscussion(Article $article)
+    {
+        //delete all articles on the today's discussion category
+
+        //copy article to the today category of discussion
+
+        //return back success message
+    }
 }
