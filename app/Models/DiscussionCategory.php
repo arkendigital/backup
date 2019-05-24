@@ -71,4 +71,14 @@ class DiscussionCategory extends Model
     {
         return env("APP_URL")."/discussion/".$this->slug;
     }
+
+    /**
+     *
+     * Check if category is the current category
+     *
+     */
+    public function isCurrent()
+    {
+        return ($this->slug=='current');
+    }
 }

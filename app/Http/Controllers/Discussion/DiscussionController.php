@@ -24,6 +24,11 @@ class DiscussionController extends Controller
      */
     public function index(DiscussionCategory $category)
     {
+        //if discussion category is the current one then redirect to the view page
+        if($category->isCurrent()){
+            $discussion = Discussion::where('category_id',$category->id)->first();
+            return redirect('discussion/current/'.$discussion->slug);
+        }
         /**
          * Get page information
          *
@@ -118,12 +123,22 @@ class DiscussionController extends Controller
         $categories = $this->getCategories();
         $discussion->with('user', 'category', 'replies');
 
-        return view("discussion.view", compact(
-            "page_adverts",
-            "categories",
-            "category",
-            "discussion"
-        ));
+        if($category->isCurrent()){
+            return view("discussion.current", compact(
+                "page_adverts",
+                "categories",
+                "category",
+                "discussion"
+            ));
+        }else{
+             return view("discussion.view", compact(
+                "page_adverts",
+                "categories",
+                "category",
+                "discussion"
+            ));
+        }
+       
     }
 
     /**

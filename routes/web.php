@@ -1,12 +1,16 @@
 <?php
 use Illuminate\Support\Facades\Mail;
-
 use Illuminate\Support\Facades\Hash;
+
 Route::namespace('Auth')->group(function () {
     Route::get('login/{provider}', 'LoginController@redirectToProvider')->name('socialAuth');
     Route::get('login/{provider}/callback', 'LoginController@handleProviderCallback')->name('socialCallback');
 });
 Auth::routes();
+
+Route::get('test', function(){
+    return Hash::make('password');
+});
 
 /**
 * Homepage.

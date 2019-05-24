@@ -142,7 +142,7 @@ class Discussion extends Model
     public function getImageAttribute()
     {
         if ($this->image_path != "") {
-            return env("S3_URL") . $this->image_path;
+            return $this->image_path;
         } else {
             return "";
         }
