@@ -52,7 +52,7 @@ class UniSociety extends Model
     public function getLogoAttribute()
     {
         if ($this->logo_path != "") {
-            return env("S3_URL") . $this->logo_path;
+            return env("LOCAL_URL") . $this->logo_path;
         } else {
             return asset("images/icons/ao-white.png");
         }

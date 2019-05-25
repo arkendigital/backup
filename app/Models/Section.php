@@ -97,7 +97,7 @@ class Section extends Model
             return "/images/placeholder/article.png";
         }
 
-        return env("S3_URL") . $image_path;
+        return env("LOCAL_URL") . $image_path;
     }
 
     /**
@@ -112,7 +112,7 @@ class Section extends Model
             return "";
         }
 
-        return env("S3_URL") . $thumbnail_path;
+        return env("LOCAL_URL") . $thumbnail_path;
     }
 
     public function getField($section, $key)

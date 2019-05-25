@@ -38,6 +38,6 @@ class JobCompany extends Model
             // return "https://statewideguttercompany.com/wp-content/uploads/2012/07/logo-placeholder.jpg";
             return "";
         }
-        return env("S3_URL") . $this->logo_path;
+        return env("LOCAL_URL") . $this->logo_path;
     }
 }

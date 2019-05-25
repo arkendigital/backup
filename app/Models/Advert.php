@@ -135,7 +135,7 @@ class Advert extends Model
     public function getImageAttribute()
     {
         if ($this->image_path != "") {
-            return env("S3_URL") . $this->image_path;
+            return env("LOCAL_URL") . $this->image_path;
         }
     }
 

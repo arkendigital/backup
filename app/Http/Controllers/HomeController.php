@@ -34,7 +34,7 @@ class HomeController extends Controller
             ->get();
 
         if (isset($slides[0]) && isset($slides[0]->image_path) && $slides[0]->image_path != "") {
-            $this->seo()->opengraph()->addImage(env("S3_URL").$slides[0]->image_path);
+            $this->seo()->opengraph()->addImage(env("LOCAL_URL").$slides[0]->image_path);
         }
 
         /**

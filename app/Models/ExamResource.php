@@ -83,7 +83,7 @@ class ExamResource extends Model
             return asset("images/defaults/avatar_default.jpg");
         }
 
-        return env("S3_URL") . $icon_path;
+        return env("LOCAL_URL") . $icon_path;
     }
 
     /**

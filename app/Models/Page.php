@@ -127,7 +127,7 @@ class Page extends Model
                 $return = $field->value;
 
                 if ($type == "image") {
-                    return env("S3_URL") . str_replace("-thumb", "", $field->value);
+                    return env("LOCAL_URL") . str_replace("-thumb", "", $field->value);
                 }
 
                 return $return;

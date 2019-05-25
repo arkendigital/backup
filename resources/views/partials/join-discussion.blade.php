@@ -35,7 +35,7 @@
         <div class="swiper-wrapper">
 
           @foreach($discussions as $discussion)
-            <div class="homepage-discussion-slider-box swiper-slide @if($discussion->image_path == "") homepage-discussion-slider-box--no-image @endif" @if($discussion->image_path != "") style="background-image:url({{ $discussion->image }});" @endif>
+            <div class="homepage-discussion-slider-box swiper-slide @if($discussion->image_path == "") homepage-discussion-slider-box--no-image @endif" @if($discussion->image_path != "") style="background-image:url({{ env('LOCAL_URL').$discussion->image }});" @endif>
               <div class="homepage-discussion-slider-box-hover">
                 <a href="/discussion/{{ $discussion->category->slug }}/{{ $discussion->slug }}">
                   <p class="homepage-discussion-slider-box-title">{{ $discussion->name }}</p>

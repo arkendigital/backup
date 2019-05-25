@@ -1,7 +1,7 @@
 <?php
 Route::namespace('Discussion')->prefix('discussion')->group(function() {
 
-Route::get('/', function(){ return Redirect::to('/discussion/current', 301); });
+Route::get('/', function(){ return Redirect::to('/discussion/current', 301); })->name("front.discussion.index");
 Route::get('jobs', function(){ return Redirect::to('/discussion/current', 301); });
 Route::get('exams', function(){ return Redirect::to('/discussion/current', 301); });
 Route::get('cpd', function(){ return Redirect::to('/discussion/current', 301); });

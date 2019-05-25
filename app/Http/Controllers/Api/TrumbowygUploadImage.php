@@ -14,7 +14,7 @@ class TrumbowygUploadImage extends Controller
         if ($request->file('fileToUpload')) {
             $featuredImagePath = Aws::uploadImage($request->file('fileToUpload'), 'trumbowyg', 'uploads');
             $file = [
-        'file' => env("S3_URL") . $featuredImagePath,
+        'file' => env("LOCAL_URL") . $featuredImagePath,
         'success' => 'success'
       ];
             return json_encode($file);

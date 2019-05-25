@@ -83,7 +83,7 @@ class ExamCentre extends Model
     public function getLogoAttribute()
     {
         if ($this->logo_path != '') {
-            return env('S3_URL') . $this->logo_path;
+            return env('LOCAL_URL') . $this->logo_path;
         } else {
             return asset('images/icons/ao-white.png');
         }
@@ -96,7 +96,7 @@ class ExamCentre extends Model
     public function getImageAttribute()
     {
         if ($this->image_path != '') {
-            return env('S3_URL') . $this->image_path;
+            return env('LOCAL_URL') . $this->image_path;
         } else {
             return '';
         }

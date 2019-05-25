@@ -153,7 +153,7 @@ class User extends Authenticatable
             return asset("images/defaults/avatar_default.jpg");
         }
         // return asset('storage/'. $this->avatar_path);
-        return env("S3_URL") . $this->avatar_path;
+        return env("LOCAL_URL") . $this->avatar_path;
     }
 
     /**

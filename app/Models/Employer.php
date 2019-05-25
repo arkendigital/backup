@@ -82,6 +82,6 @@ class Employer extends Model
             return asset("images/icons/ao-white.png");
         }
 
-        return env("S3_URL") . $this->logo_path;
+        return env("LOCAL_URL") . $this->logo_path;
     }
 }

@@ -61,6 +61,6 @@ class Slide extends Model
             return "";
         }
 
-        return env("S3_URL") . $image_path;
+        return env("LOCAL_URL") . $image_path;
     }
 }

@@ -118,7 +118,10 @@ class ArticleController extends Controller
         ]);
 
         if ($request->image) {
-            $path = 'storage/'. $request->image->store('images/articles', 'public');
+            $path = AWS::uploadImage(
+                request()->file('image'),
+                'articles'
+            );
         }
 
         $article->update([

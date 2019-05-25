@@ -33,18 +33,10 @@
 
             <div class="margin-bottom--medium view-section" style="margin: 0px;">
               @if(! str_contains($discussion->image, 'placeholder')) 
-                <div class="section-hero" style="background-image: url({{ asset('/'.$discussion->image) }}); border-color: #0d72b9;border-bottom:0px;"></div>
+                <div class="section-hero" style="background-image: url({{ env('LOCAL_URL').$discussion->image }}); border-color: #0d72b9;border-bottom:0px;"></div>
               @endif
               <section class="discussion-view-thread-content-text" style="padding:0px 25px;">{!! $discussion->content !!}</section>
-
-              @if($discussion->image_path != "")
-                  <img class="discussion-view-thread-content-image" alt="" title="" src="{{ $discussion->image }}">
-              @endif
-
             </div><!-- /.discussion-view-thread-content -->
-
-
-
           </div><!-- /.discussion-view-thread -->
 
           <div class="discussion-replies-wrapper">
