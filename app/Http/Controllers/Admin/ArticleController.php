@@ -69,7 +69,7 @@ class ArticleController extends Controller
             'body' => $request->body,
             'user_id' => auth()->user()->id,
             'category_id' => $request->category_id,
-            'image' => $path ?? null,
+            'image' => $path ? env("LOCAL_URL").$path : null
         ]);
 
         $article->save();
@@ -125,7 +125,7 @@ class ArticleController extends Controller
         }
 
         $article->update([
-            'image' => $path ?? $article->image,
+            'image' =>  $path ? env("LOCAL_URL").$path : $article->image,
             'title' => $request->title,
             'body' => $request->body,
         ]);
