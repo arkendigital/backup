@@ -47,7 +47,10 @@
 
 @push("scripts-after")
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.9.4/trumbowyg.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.9.4/plugins/colors/trumbowyg.colors.min.js"></script>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.9.4/ui/trumbowyg.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.9.4/plugins/colors/ui/trumbowyg.colors.min.css">
   <script>
     $('.editor').trumbowyg({
       svgPath: '/images/icons.svg',
@@ -66,6 +69,7 @@
         ['viewHTML'],
         ['undo', 'redo'], // Only supported in Blink browsers
         ['formatting'],
+        ['foreColor', 'backColor'],
         ['strong', 'em', 'del'],
         ['superscript', 'subscript'],
         ['link'],
