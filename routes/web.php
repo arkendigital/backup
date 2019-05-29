@@ -18,7 +18,7 @@ Route::get('test', function(){
 Route::get('/', 'HomeController@index')->name("index");
 
 Route::get('/cpd', function () {
-    return redirect('https://actuariesonline.com/continued-professional-development');
+    return redirect('continued-professional-development');
 });
 
 /**
