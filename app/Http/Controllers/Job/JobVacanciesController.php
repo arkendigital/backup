@@ -293,7 +293,7 @@ class JobVacanciesController extends Controller
         */
         $this->seo()->setTitle($job->title);
         $this->seo()->setDescription($job->excerpt);
-        $this->seo()->opengraph()->addImage(url('/') . '/storage/' . $job->image, ['height' => 300, 'width' => 300]);
+        $this->seo()->opengraph()->addImage( ($job->image) ? asset($job->image) : asset($job->company->logo), ['height' => 300, 'width' => 300]);
 
         /**
         * Display job.
