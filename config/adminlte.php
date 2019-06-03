@@ -221,6 +221,12 @@ return [
             'icon'  => 'comments',
             'can'   => 'discussions'
         ],
+        [
+            'text' => 'Manage Discussions',
+            'url'  => 'ops/discussion',
+            'icon'  => 'comments',
+            'can'   => 'discussions'
+        ],
 
 
         /**

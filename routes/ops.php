@@ -96,6 +96,14 @@ Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function ()
     ]]);
 
     /**
+    * Discussions and comments
+    */
+    Route::resource("discussion-comments", "Discussions\DiscussionCommentController", ["parameters" => [
+      "discussion-comments" => "comment"
+    ]]);
+    Route::resource("discussion", "Discussions\DiscussionController");
+
+    /**
     * Jobs.
     */
     Route::resource("/jobs", "Jobs\JobController", ["parameters" => [
