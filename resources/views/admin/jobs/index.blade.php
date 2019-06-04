@@ -1,5 +1,13 @@
 @extends('adminlte::page')
 
+@section('css')
+    <style>
+        .dimmed{
+            background-color: #eee;
+        }
+    </style>
+@stop
+
 @section('content_header')
   <div class="pull-right">
     <a href="{{ route('jobs.create') }}" class="btn btn-primary">
@@ -18,17 +26,21 @@
     <div class="box-body">
         <div class="table-responsive">
             @unless ($jobs->isEmpty())
-            <table class="table table-hover">
+            <table class="table table-hover" id="datatable">
                 <thead>
                     <tr>
+                        <th>Recruiter</th>
                         <th>Job Title</th>
+                        <th>End Date</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                 @foreach ($jobs as $job)
-                    <tr>
+                    <tr class="{{ (strtotime($job->end_date)<time()) ? 'dimmed' : '' }}">
+                        <td>{{ $job->company->name }}</td>
                         <td>{{ $job->title }}</td>
+                        <td>{{ date('Y-m-d',strtotime($job->end_date)) }}</td>
                         <td>
                           <div class="btn-group">
                             <a class="btn btn-primary btn-small" type="button" href="{{ route('jobs.show', $job) }}">
