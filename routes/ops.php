@@ -98,9 +98,10 @@ Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function ()
     /**
     * Discussions and comments
     */
-    Route::resource("discussion-comments", "Discussions\DiscussionCommentController", ["parameters" => [
-      "discussion-comments" => "comment"
-    ]]);
+    Route::get("discussion/{discussionId}/replies", "Discussions\DiscussionReplyController@index")->name('discussion-replies-list');
+    Route::get("discussion/{discussionId}/replies/{replyId}", "Discussions\DiscussionReplyController@edit")->name('discussion-replies-edit');
+    Route::patch("discussion/{discussionId}/replies/{replyId}", "Discussions\DiscussionReplyController@update")->name('discussion-replies-update');
+    Route::delete("discussion/{discussionId}/replies/{replyId}", "Discussions\DiscussionReplyController@destroy")->name('discussion-replies-delete');
     Route::resource("discussion", "Discussions\DiscussionController");
 
     /**

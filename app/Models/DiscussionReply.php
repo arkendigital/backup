@@ -62,6 +62,6 @@ class DiscussionReply extends Model
     */
     public function discussion()
     {
-        return $this->belongsTo(Discussion::class, 'discussion_id', 'id');
+        return $this->belongsTo(Discussion::class, 'discussion_Id', 'id');
     }
 }

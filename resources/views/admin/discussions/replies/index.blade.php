@@ -1,50 +1,49 @@
 @extends('adminlte::page')
 
 @section('content_header')
-  <h1>All Discussions</h1>
+  <h1>All Replies</h1>
   <br>
 @stop
 
 @section('content')
 <div class="box box-primary">
     <div class="box-header with-border">
-      <h3 class="box-title">All Discussions</h3>
+      <h3 class="box-title">All Replies</h3>
     </div>
     <div class="box-body">
         <div class="table-responsive">
-            @unless ($discussions->isEmpty())
+            @unless ($replies->isEmpty())
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
-                        <th>Slug</th>
+                        <th>Discussion</th>
+                        <th>Username</th>
+                        <th>Reply</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                @foreach ($discussions as $discussion)
+                @foreach ($replies as $reply)
                     <tr>
-                        <td>{{ $discussion->id }}</td>
-                        <td>{{ $discussion->name }}</td>
-                        <td>{{ $discussion->slug }}</td>
+                        <td>{{ $reply->id }}</td>
+                        <td>{{ $reply->discussion->name }}</td>
+                        <td>{{ $reply->user->username }}</td>
+                        <td style="width: 50%;">{{ $reply->content }}</td>
                         <td>
                           <div class="btn-group">
-                            {{-- <a class="btn btn-success btn-small" type="button" href="{{ route('discussion.edit', $discussion) }}">
+                            <a class="btn btn-success btn-small" type="button" href="{{ route('discussion-replies-edit', [$discussion->id,$reply->id]) }}">
                               <i class="fa fa-pencil"></i>
-                            </a> --}}
-                            <a class="btn btn-success btn-small" type="button" href="{{ route('discussion-replies-list', $discussion->id) }}">
-                              Comments
                             </a>
 
-                            {{-- <a class="btn btn-danger btn-small" type="button" onclick="document.getElementById('remove-discussion-{{ $discussion->id }}').submit()">
+                            <a class="btn btn-danger btn-small" type="button" onclick="document.getElementById('remove-reply-{{ $reply->id }}').submit()">
                               <i class="fa fa-trash"></i>
                             </a>
 
-                            <form action="{{ route("discussion.destroy", $discussion) }}" method="POST" id="remove-discussion-{{ $discussion->id }}">
+                            <form action="{{ route("discussion-replies-delete", [$discussion->id,$reply->id]) }}" method="POST" id="remove-reply-{{ $reply->id }}">
                                 {{ csrf_field() }}
                                 {{ method_field("DELETE") }}
-                            </form> --}}
+                            </form>
                           </div>
                         </td>
                     </tr>
@@ -53,7 +52,7 @@
             </table>
             @else
               <div class="box__content">
-                <h3 class="text-center">You haven't added any discussions.</h3>
+                <h3 class="text-center">You haven't added any replies.</h3>
                 <img src="{{ asset('storage/images/admin/no-pages-error.jpg') }}" class="center-block" alt="">
               </div>
             @endunless
