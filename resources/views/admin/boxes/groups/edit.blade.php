@@ -6,7 +6,7 @@
 
 @section('content')
 
-<form action="{{ route('box-groups.update', compact("group")) }}" method="POST" role="form" enctype="multipart/form-data">
+<form action="{{ route('box-groups.update', compact("group")) }}" method="POST" role="form" id="boxUpdateForm" enctype="multipart/form-data">
   {{ csrf_field() }}
   {{ method_field("PATCH") }}
 
@@ -45,6 +45,7 @@
 
     </div>
   </div>
+</form>
 
   <div class="box box-primary">
     <div class="box-header with-border">
@@ -97,9 +98,9 @@
   </div>
 
   <div class="box-footer">
-      <button type="submit" class="btn btn-primary">Update</button>
+      <button type="button" class="btn btn-primary" onclick="document.getElementById('boxUpdateForm').submit(); return false;">Update</button>
   </div>
 
-</form>
+
 
 @endsection
