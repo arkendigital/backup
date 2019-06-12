@@ -8,6 +8,7 @@
         @yield('title', config('adminlte.title', 'AdminLTE 2'))
         @yield('title_postfix', config('adminlte.title_postfix', ''))
     </title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -18,6 +19,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/AdminLTE.min.css') }}">
+    <style>
+        .wrapper {
+          height:100%;position:relative;overflow-x:hidden;overflow-y:hidden;
+        }
+    </style>
 
     {{-- @if(config('adminlte.plugins.datatables')) --}}
         <!-- DataTables -->

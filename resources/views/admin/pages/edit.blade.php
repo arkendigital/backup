@@ -104,7 +104,7 @@
             @if($field->type == "string")
               <input type="text" class="form-control" name="field[{{ $field->key }}]" id="{{ $field->key }}" value="{{ $field->value }}">
             @elseif($field->type == "text")
-              <textarea class="form-control editor" name="field[{{ $field->key }}]" id="{{ $field->key }}"></textarea>
+              <textarea class="form-control editor" name="field[{{ $field->key }}]" id="{{ $field->key }}">{{ $field->value }}</textarea>
               
             @endif
           </div>
@@ -138,13 +138,6 @@
   @endif
 
 
-
-
-
-
-
-
-
   @if(!$page->getWidgets()->isEmpty())
     <div class="box box-primary">
       <div class="box-header with-border">
@@ -167,14 +160,6 @@
     </div>
   @endif
 
-
-
-
-
-
-
-
-
   <div class="box-footer">
       <button type="submit" class="btn btn-primary">Update Page</button>
   </div>
@@ -183,16 +168,15 @@
 
 @push("scripts-after")
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.9.4/trumbowyg.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.9.4/plugins/base64/trumbowyg.base64.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.9.4/plugins/upload/trumbowyg.upload.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.9.4/ui/trumbowyg.min.css">
   <script>
     
     $('.editor').trumbowyg({
-      lang: 'cs',
       svgPath: '/images/icons.svg',
       btnsDef: {
         image: {
-            dropdown: ['insertImage', 'base64'],
+            dropdown: ['insertImage', 'upload'],
             ico: 'insertImage'
         },
         buttonShortcode: {
@@ -219,12 +203,19 @@
         ['removeformat'],
         ['fullscreen'],
         ['buttonShortcode']
-      ]
+      ],
+      plugins: {
+        // Add imagur parameters to upload plugin for demo purposes
+        upload: {
+              serverPath: "{{ url('ops/pages/'.$page->id.'/image-upload') }}",
+              fileFieldName: 'image',
+              headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              },
+              urlPropertyName: 'url'
+          }
+      }
     });
-    
-    @if(!$pagefields->isEmpty())
-      $('.editor').trumbowyg('html', '{{  $pagefields[1]->value }}');
-    @endif
   </script>
 @endpush
 

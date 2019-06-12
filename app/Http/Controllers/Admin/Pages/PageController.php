@@ -297,4 +297,16 @@ class PageController extends Controller
         return redirect()
         ->back();
     }
+
+    /**
+     *
+     * Upload image coming from WUSIWUG
+     *
+     */
+    public function imageUpload(Request $request, $pageId)
+    {
+        $path = $request->image->storeAs('pages/'.$pageId,$request->image->getClientOriginalName(), 'public'); 
+        return ['success'=>true,'url'=>asset('storage/'.$path)];
+    }
+    
 }
