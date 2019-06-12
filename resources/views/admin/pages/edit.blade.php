@@ -91,20 +91,21 @@
 
 
 
-  @if(!$page->fields->isEmpty())
+  @if(!$pagefields->isEmpty())
     <div class="box box-primary">
       <div class="box-header with-border">
         <h3 class="box-title">Page Fields</h3>
       </div>
       <div class="box-body">
 
-        @foreach($page->fields as $field)
+        @foreach($pagefields as $field)
           <div class="form-group">
             <label for="{{ $field->key }}">{{ $field->name }}</label>
             @if($field->type == "string")
               <input type="text" class="form-control" name="field[{{ $field->key }}]" id="{{ $field->key }}" value="{{ $field->value }}">
             @elseif($field->type == "text")
-              <textarea class="form-control editor" name="field[{{ $field->key }}]" id="{{ $field->key }}">{{ $field->value }}</textarea>
+              <textarea class="form-control editor" name="field[{{ $field->key }}]" id="{{ $field->key }}"></textarea>
+              
             @endif
           </div>
         @endforeach
@@ -112,9 +113,6 @@
       </div>
     </div>
   @endif
-
-
-
 
   @if(!$page->adverts->isEmpty())
     <div class="box box-primary">
@@ -185,11 +183,18 @@
 
 @push("scripts-after")
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.9.4/trumbowyg.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.9.4/plugins/base64/trumbowyg.base64.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.9.4/ui/trumbowyg.min.css">
   <script>
+    
     $('.editor').trumbowyg({
+      lang: 'cs',
       svgPath: '/images/icons.svg',
       btnsDef: {
+        image: {
+            dropdown: ['insertImage', 'base64'],
+            ico: 'insertImage'
+        },
         buttonShortcode: {
           fn: 'insertText',
           ico: 'horizontal-rule',
@@ -207,7 +212,7 @@
         ['strong', 'em', 'del'],
         ['superscript', 'subscript'],
         ['link'],
-        ['insertImage'],
+        ['image'],
         ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
         ['unorderedList', 'orderedList'],
         ['horizontalRule'],
@@ -216,6 +221,10 @@
         ['buttonShortcode']
       ]
     });
+    
+    @if(!$pagefields->isEmpty())
+      $('.editor').trumbowyg('html', '{{  $pagefields[1]->value }}');
+    @endif
   </script>
 @endpush
 

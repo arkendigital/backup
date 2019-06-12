@@ -12,6 +12,7 @@ use App\Models\PageWidget;
 use App\Models\Section;
 use App\Models\DiscussionCategory;
 use App\Models\Widget;
+use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
 {
@@ -62,6 +63,28 @@ class PageController extends Controller
             "meta_description" => request()->meta_description
         ]);
 
+        //add page advert and content sections
+        PageField::create([
+            'page_id'   =>$page->id,
+            'type'      => 'string',
+            'name'      => 'Page Title',
+            'key'       => 'page_title',
+            'value'     => ''
+        ]);
+
+        PageField::create([
+            'page_id'   =>$page->id,
+            'type'      => 'text',
+            'name'      => 'Page Content',
+            'key'       => 'page_content',
+            'value'     => ''
+        ]);
+
+        PageAdvert::create([
+            'page_id'   => $page->id,
+            'slug'      => 'main-content'
+        ]);
+
         alert()->success('Page Created');
 
         return redirect("/ops/pages/".$page->id."/edit");
@@ -76,6 +99,14 @@ class PageController extends Controller
     {
         $page = Page::find($page_id);
 
+        $pagefields = DB::table('pages_fields')
+                    ->select([
+                        DB::raw('CAST(pages_fields.value AS CHAR(10000) CHARACTER SET utf8) as value'),
+                        'type', 'key', 'name'
+                        ])
+                    ->where('page_id',$page_id)
+                    ->get();
+
         $sections = Section::all();
 
         $categories = DiscussionCategory::all();
@@ -83,7 +114,8 @@ class PageController extends Controller
         return view("admin.pages.edit", compact(
             "sections",
             "categories",
-            "page"
+            "page",
+            "pagefields"
         ));
     }
 
@@ -130,6 +162,9 @@ class PageController extends Controller
         /**
         * Save custom fields.
         */
+
+        // dd(request()->field);
+
         if (! empty(request()->field)) {
             foreach (request()->field as $key => $field) {
                 $page_field = PageField::where("key", $key)
