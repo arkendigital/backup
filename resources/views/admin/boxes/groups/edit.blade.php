@@ -27,12 +27,8 @@
       </div>
 
       <div class="form-group">
-        <label for="widget_slug">Name</label>
-        <select class="form-control" name="widget_slug" id="widget_slug">
-          @foreach($widgets as $widget)
-            <option value="{{ $widget->slug }}" @if($widget->slug == $group->widget_slug) selected @endif>{{ $widget->name }}</option>
-          @endforeach
-        </select>
+        <label for="widget_slug">Slug</label>
+        <input type="text" class="form-control" name="widget_slug" id="widget_slug" placeholder="Enter a slug for URL" value="{{ $group->widget_slug }}">
       </div>
 
       <div class="form-group">

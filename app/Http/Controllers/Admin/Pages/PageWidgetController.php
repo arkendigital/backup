@@ -12,12 +12,6 @@ use Illuminate\Http\Request;
 use App\Models\Page;
 use App\Models\PageWidget;
 
-/**
-* Load requests.
-*
-*/
-use App\Http\Requests\PageWidget as PageWidgetRequest;
-
 class PageWidgetController extends Controller
 {
 
@@ -49,7 +43,7 @@ class PageWidgetController extends Controller
     * @param PageWidgetRequest $request
     *
     */
-    public function store(PageWidgetRequest $request)
+    public function store(Request $request)
     {
 
     /**
