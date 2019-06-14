@@ -83,6 +83,8 @@ Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function ()
     Route::post("/pages/{id}/widgets", "Pages\PageController@insertWidget");
     Route::delete("/pages/{id}", "Pages\PageController@destroy")->name("pages.destroy");
 
+    Route::resource("widgets", "WidgetController");
+
     /**
     * Page Widgets.
     */

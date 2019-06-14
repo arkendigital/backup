@@ -194,10 +194,15 @@ return [
         * Box Groups.
         */
         [
-          'header' => 'Box Groups',
+          'header' => 'Widgets',
         ],
         [
-            'text' => 'Manage Widget Boxes',
+            'text' => 'Manage Widgets',
+            'url'  => 'ops/widgets',
+            'icon'  => 'th',
+        ],
+        [
+            'text' => 'Manage Box Groups',
             'url'  => 'ops/box-groups',
             'icon'  => 'th',
         ],
