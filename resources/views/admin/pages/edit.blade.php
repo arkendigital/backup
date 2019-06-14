@@ -27,7 +27,7 @@
 
       @if(auth()->user()->hasRole("Super Administrator"))
         <div class="form-group">
-          <label for="slug">Page URL / Slug</label>
+          <label for="slug">Page URL / Slug</label><small> (For Auto Generated(Not Custom) Pages structure the URL like so (actuaries/slug)</small>
           <input type="text" class="form-control" name="slug" id="slug" placeholder="Enter page url..." value="{{ $page->slug }}">
         </div>
       @endif
