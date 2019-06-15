@@ -21,7 +21,7 @@
       </div>
 
         <div class="form-group">
-          <label for="widget_slug">Slug</label>
+          <label for="widget_slug">Host Widget</label>
           <select class="form-control" name="widget_slug" id="widget_slug">
             @foreach($widgets as $widget)
               <option value="{{ $widget->slug }}">{{ $widget->name }}</option>
