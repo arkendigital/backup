@@ -22,7 +22,11 @@
 
         <div class="form-group">
           <label for="widget_slug">Slug</label>
-          <input type="text" class="form-control" name="widget_slug" id="widget_slug" placeholder="Enter a slug for URL">
+          <select class="form-control" name="widget_slug" id="widget_slug">
+            @foreach($widgets as $widget)
+              <option value="{{ $widget->slug }}">{{ $widget->name }}</option>
+            @endforeach
+          </select>
         </div>
 
     </div>

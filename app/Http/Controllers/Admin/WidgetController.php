@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Widget as WidgetRequest;
 use App\Models\Page;
 use App\Models\Widget;
 use Illuminate\Http\Request;
@@ -25,39 +26,49 @@ class WidgetController extends Controller
         return view("admin.widgets.create");
     }
 
-    public function store(Request $request)
+    public function store(WidgetRequest $request)
     {
-        
+        $widget = Widget::create([
+            'name'=>$request->name,
+            'slug'=>$request->slug
+        ]);
+
+        return redirect(route("widgets.edit", compact(
+            "widget"
+        )));
     }
-	//function to show custom pages where it has to be added to routes manually
-    // public function show(Page $page)
-    // {
-    //     return redirect()->to($page->slug);
-    // }
-    
-    
-    // private function set_seo($page)
-    // {
-    //     $this->seo()->setTitle($page->meta_title);
-    //     $this->seo()->setDescription($page->meta_description);
-    //     $this->seo()->opengraph()->addImage($page->section->image);
-    // }
 
-    // function to show auto generated pages with unified prefix
-    // public function showPage($slug)
-    // {
-    	
-    //     $page = Page::where("slug", 'actuaries/'.$slug)
-    //         ->first();
+    public function edit(Widget $widget)
+    {
+        return view("admin.widgets.edit", compact('widget'));
+    }
 
-    //     $this->set_seo($page);
+    public function update(Widget $widget, WidgetRequest $request)
+    {
+        $widget->update([
+            "name" => request()->name,
+            "slug" => request()->slug,
+        ]);
 
-    //     $page_adverts = getArrayOfAdverts($page->id);
+        return redirect(route("widgets.edit", compact(
+            "widget"
+        )));
+    }
 
-    //     return view("pages.show", [
-    //         "section" => $page->section,
-    //         "page" => $page,
-    //         "page_adverts" => $page_adverts
-    //     ])->compileShortcodes();
-    // }
+    /**
+     * Delete page
+     *
+     * @param int $id
+     *
+     */
+    public function destroy($id)
+    {
+
+        Widget::find($id)->delete();
+
+        alert()->success("Widget Deleted");
+
+        return redirect()
+        ->back();
+    }
 }

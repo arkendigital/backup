@@ -6,10 +6,6 @@
 
 @section('content')
 
-@if(auth()->user()->hasRole("Super Administrator"))
-  <a class="btn btn-primary" style="margin-bottom:15px;" href="{{ route("pages.add.widget", $page->id) }}">Add a Widget</a>
-@endif
-
 <form action="" method="POST" role="form" enctype="multipart/form-data">
   {{ csrf_field() }}
   {{ method_field("PATCH") }}
@@ -138,27 +134,32 @@
   @endif
 
 
-  @if(!$page->getWidgets()->isEmpty())
+  
     <div class="box box-primary">
       <div class="box-header with-border">
         <h3 class="box-title">Widgets</h3>
-        @if(auth()->user()->hasRole("Super Administrator"))
+        {{-- @if(auth()->user()->hasRole("Super Administrator"))
           <a class="btn btn-primary pull-right" href="{{ route("page-widgets.create") }}?page_id={{ $page->id }}" style="margin-left: 10px;">Create Widget</a>
+        @endif --}}
+        @if(auth()->user()->hasRole("Super Administrator"))
+          <a class="btn btn-primary pull-right" style="margin-bottom:15px;margin-left: 10px;" href="{{ route("pages.add.widget", $page->id) }}">Add a Widget</a>
         @endif
+        @if(!$page->getWidgets()->isEmpty())
         <a class="btn btn-primary pull-right" href="{{ route("page-widgets.order", $page->id) }}">Update Widget Order</a>
+        @endif
       </div>
       <div class="box-body">
-
-        @foreach($page->getWidgets() as $page_widget)
-          <div class="form-group">
-            <label for="meta_title">Show the widget "{{ $page_widget->widget->name }}"?</label>
-            <p><input type="checkbox" name="widgets[{{ $page_widget->id }}]" id="widget-{{ $page_widget->id }}" @if($page_widget->is_visible) checked @endif value="{{ $page_widget->id }}"> <label for="widget-{{ $page_widget->id }}" style="margin-left: 5px;">Yes</label></p>
-          </div>
-        @endforeach
+        @if(!$page->getWidgets()->isEmpty())
+          @foreach($page->getWidgets() as $page_widget)
+            <div class="form-group">
+              <label for="meta_title">Show the widget "{{ $page_widget->widget->name }}"?</label>
+              <p><input type="checkbox" name="widgets[{{ $page_widget->id }}]" id="widget-{{ $page_widget->id }}" @if($page_widget->is_visible) checked @endif value="{{ $page_widget->id }}"> <label for="widget-{{ $page_widget->id }}" style="margin-left: 5px;">Yes</label></p>
+            </div>
+          @endforeach
+        @endif
 
       </div>
     </div>
-  @endif
 
   <div class="box-footer">
       <button type="submit" class="btn btn-primary">Update Page</button>
