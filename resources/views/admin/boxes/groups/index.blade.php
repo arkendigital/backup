@@ -35,6 +35,13 @@
                     <a class="btn btn-success btn-small" type="button" href="{{ route('box-groups.edit', $group) }}">
                       <i class="fa fa-pencil"></i>
                     </a>
+                    @if (auth()->user()->hasRole("Super Administrator"))
+                        <form action="{{ route('box-groups.destroy', $group) }}" method="POST" id="delete-widget-{{$group->id}}" style="float:left;">
+                            {{csrf_field()}}
+                            {{method_field('DELETE')}}
+                            <button class="btn btn-danger btn-small" type="submit">  <i class="fa fa-trash"></i> </button>
+                        </form>
+                    @endif
                   </div>
                 </td>
               </tr>

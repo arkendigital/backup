@@ -164,4 +164,18 @@ class BoxGroupController extends Controller
             "group"
         )));
     }
+
+
+    public function destroy(BoxGroup $group)
+    {
+
+        $group->delete();
+
+        alert()->success("Box Group Deleted");
+
+        return redirect()
+        ->back();
+    }
+
+
 }
