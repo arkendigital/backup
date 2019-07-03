@@ -32,6 +32,7 @@
         "predis/predis": "^1.1",
         "ramsey/uuid": "^3.7",
         "renatomarinho/laravel-page-speed": "^1.8",
+        "sentry/sentry-laravel": "1.0.2",
         "socialiteproviders/discord": "^2.0",
         "socialiteproviders/microsoft-live": "^3.0",
         "socialiteproviders/steam": "^1.0",

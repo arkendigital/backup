@@ -2,6 +2,10 @@
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 
+Route::get('/debug-sentry', function () {
+    throw new Exception('My first Sentry error!');
+});
+
 Route::namespace('Auth')->group(function () {
     Route::get('login/{provider}', 'LoginController@redirectToProvider')->name('socialAuth');
     Route::get('login/{provider}/callback', 'LoginController@handleProviderCallback')->name('socialCallback');
