@@ -20,6 +20,24 @@
 
     <div class="clear"></div>
 
+    <div class="row">
+        @foreach ($supportBlocks as $supportBlock)
+        <div class="col-4">
+            <div class="article">
+                <a href="{{route('support-block-items',$supportBlock->id)}}">
+                    <div class="article__image" style="background-image: url({{ asset(env('LOCAL_URL').$supportBlock->image) }}"></div>
+                </a>
+                <div class="article__title">
+                    <a href="{{route('support-block-items',$supportBlock->id)}}">{{ str_limit($supportBlock->title, 50) }}</a>
+                </div>
+                <div class="article__teaser">
+                    {{  $supportBlock->subtitle }}
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+
   </div><!-- /.website-container -->
 
   @include("partials.join-discussion", [

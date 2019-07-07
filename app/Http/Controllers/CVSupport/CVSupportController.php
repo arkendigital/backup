@@ -6,13 +6,10 @@ namespace App\Http\Controllers\CVSupport;
 * Load modules.
 */
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-
-/**
-* Load models.
-*/
-use App\Models\Section;
 use App\Models\Page;
+use App\Models\Section;
+use App\SupportBlock;
+use Illuminate\Http\Request;
 
 class CVSupportController extends Controller
 {
@@ -28,6 +25,8 @@ class CVSupportController extends Controller
 
     public function index()
     {
+        //get support blocks
+        $supportBlocks = SupportBlock::all();
 
     /**
     * Get page Information
@@ -53,7 +52,8 @@ class CVSupportController extends Controller
         return view("cvsupport.index", [
             "section" => $this->section,
             "page" => $page,
-            "page_adverts" => $page_adverts
+            "page_adverts" => $page_adverts,
+            "supportBlocks" => $supportBlocks
         ])->compileShortcodes();
     }
 }

@@ -155,6 +155,21 @@ return [
             'can'   => 'sections'
         ],
 
+
+
+        /**
+        * Support Blocks.
+        */
+        [
+          'header' => 'Support Blocks',
+        ],
+        [
+            'text' => 'Support Blocks',
+            'url'  => 'ops/support-blocks',
+            'icon'  => 'users',
+            'can'   => 'sections'
+        ],
+
         /**
         * Pages.
         */
@@ -178,8 +193,14 @@ return [
           'can' => 'create article',
         ],
         [
-            'text' => 'Manage Articles',
+            'text' => 'Blog Articles',
             'url'  => 'ops/articles',
+            'icon'  => 'newspaper-o',
+            'can'   => 'create article'
+        ],
+        [
+            'text' => 'Support Articles',
+            'url'  => 'ops/support-articles',
             'icon'  => 'newspaper-o',
             'can'   => 'create article'
         ],

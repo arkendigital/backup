@@ -1,4 +1,10 @@
 <?php
+
+Route::namespace('Article')->prefix('support-articles')->group(function() {
+	Route::get('/{supportblockid}/items', 'SupportArticleController@items')->name('support-block-items');
+    Route::get('/{articleid}', 'SupportArticleController@show')->name('show-support-article');
+});
+
 Route::namespace('Article')->prefix('news')->group(function() {
     Route::get('/', 'ArticleController@index')->name('articles');
     Route::get('/{article}', 'ArticleController@show')->name('showArticle');

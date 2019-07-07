@@ -46,6 +46,7 @@ Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function ()
     Route::resource('/articles/categories', 'ArticleCategoryController', ['as' => 'articles']);
     Route::post('/articles/{article}/current', 'ArticleController@setCurrentDiscussion')->name('article.setCurrentDiscussion');
     Route::resource('/articles', 'ArticleController');
+    Route::resource('/support-articles', 'SupportArticleController');
 
     Route::resource('/forums', 'ForumController');
     Route::resource('/forums/categories', 'ForumCategoryController');
@@ -222,6 +223,12 @@ Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function ()
     Route::resource("/box-groups", "BoxGroups\BoxGroupController", ["parameters" => [
       "box-groups" => "group"
     ]]);
+
+    /**
+    * Box Groups.
+    */
+    Route::resource("/support-blocks", "SupportBlocks\SupportBlockController");
+    Route::resource("/support-block-items", "SupportBlocks\SupportBlockItemController");
 
 
     /**
