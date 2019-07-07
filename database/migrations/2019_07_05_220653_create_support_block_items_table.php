@@ -20,7 +20,7 @@ class CreateSupportBlockItemsTable extends Migration
             $table->string('image');
             $table->unsignedInteger('support_block_id')->nullable(true);
             $table->foreign('support_block_id')->references('id')->on('support_blocks');
-            $table->unsignedInteger('support_artilce_id')->nullable(true);
+            $table->unsignedInteger('support_article_id')->nullable(true);
             $table->foreign('support_artilce_id')->references('id')->on('support_articles');
             $table->timestamps();
         });
