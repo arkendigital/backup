@@ -3,11 +3,15 @@
     $discussions = App\Models\Discussion::where("category_id", $category_id)
       ->take(8)
       ->orderBy("created_at", "DESC")
+      ->with('category')
       ->get();
   @endphp
 @else
   @php
     $discussions = App\Models\Discussion::take(8)
+      ->with(['category'=>function($query){
+        $query->where('deleted_at',null);
+      }])
       ->orderBy("created_at", "DESC")
       ->get();
   @endphp
@@ -33,16 +37,17 @@
 
       <div class="homepage-discussion-slider swiper-container margin-bottom--medium">
         <div class="swiper-wrapper">
-
           @foreach($discussions as $discussion)
-            <div class="homepage-discussion-slider-box swiper-slide @if($discussion->image_path == "") homepage-discussion-slider-box--no-image @endif" @if($discussion->image_path != "") style="background-image:url({{ env('LOCAL_URL').$discussion->image }});" @endif>
-              <div class="homepage-discussion-slider-box-hover">
-                <a href="/discussion/{{ $discussion->category->slug }}/{{ $discussion->slug }}">
-                  <p class="homepage-discussion-slider-box-title">{{ $discussion->name }}</p>
-                  <p class="homepage-discussion-slider-box-text">{{ $discussion->excerpt }}</p>
-                </a>
+            @if($discussion->category)
+              <div class="homepage-discussion-slider-box swiper-slide @if($discussion->image_path == "") homepage-discussion-slider-box--no-image @endif" @if($discussion->image_path != "") style="background-image:url({{ env('LOCAL_URL').$discussion->image }});" @endif>
+                <div class="homepage-discussion-slider-box-hover">
+                  <a href="/discussion/{{ $discussion->category->slug }}/{{ $discussion->slug }}">
+                    <p class="homepage-discussion-slider-box-title">{{ $discussion->name }}</p>
+                    <p class="homepage-discussion-slider-box-text">{{ $discussion->excerpt }}</p>
+                  </a>
+                </div>
               </div>
-            </div>
+            @endif
           @endforeach
 
         </div>
