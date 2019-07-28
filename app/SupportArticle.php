@@ -18,6 +18,7 @@ class SupportArticle extends Model
     protected $fillable = [
         'title',
         'slug',
+        'author',
         'body',
         'user_id',
         'category_id',

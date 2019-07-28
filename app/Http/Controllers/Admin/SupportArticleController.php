@@ -47,6 +47,10 @@ class SupportArticleController extends Controller
             'user_id' => auth()->user()->id,
             'image' => isset($path) ? env("LOCAL_URL").$path : null
         ]);
+        
+        if($request->author){
+            $article->author = $request->author;
+        }
 
         $article->save();
 
@@ -86,6 +90,12 @@ class SupportArticleController extends Controller
             'title' => $request->title,
             'body' => $request->body,
         ]);
+        
+        if($request->author){
+            $article->update([
+                'author'=> $request->author
+            ]);
+        }
                 
         alert()->success('Support Article Updated');
 

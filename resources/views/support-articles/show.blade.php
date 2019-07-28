@@ -13,7 +13,7 @@
         {!! $article->body !!}
     </div>
     <div class="website-container-sidebar website-container-sidebar--social">
-        <h4 class="sidebar-menu--title">Author: {{ $article->user->name }}</h4>
+        <h4 class="sidebar-menu--title">Author: {{ ($article->author)? $article->author : $article->user->name }}</h4>
         <span class="muted">{{ $article->created_at->diffForHumans() }}</span>
         <div>
             <a href="https://www.facebook.com/sharer/sharer.php?u={{ env('APP_URL') }}/news/{{ $article->slug }}" target="_blank" class="article__social article__social--facebook"><i class="fab fa-facebook"></i></a>

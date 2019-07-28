@@ -17,6 +17,11 @@
                 <label for="title">Title</label>
                 <input type="text" class="form-control" name="title" id="title" placeholder="Title">
             </div>
+            
+            <div class="form-group">
+                <label for="author">Author</label>
+                <input type="text" class="form-control" name="author" id="author" placeholder="Author">
+            </div>
 
             <div class="form-group">
                 <label for="body">Body</label>

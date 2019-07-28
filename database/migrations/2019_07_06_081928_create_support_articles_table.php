@@ -17,6 +17,7 @@ class CreateSupportArticlesTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('slug')->index();
+            $table->string('author')->nullable();
             $table->longtext('body');
             $table->integer('user_id')->index();
             $table->string('image')->nullable();
