@@ -45,6 +45,7 @@
 
 @push("scripts-after")
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.9.4/trumbowyg.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.9.4/plugins/upload/trumbowyg.upload.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.9.4/plugins/colors/trumbowyg.colors.min.js"></script>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.9.4/ui/trumbowyg.min.css">
@@ -53,6 +54,10 @@
     $('.editor').trumbowyg({
       svgPath: '/images/icons.svg',
       btnsDef: {
+        image: {
+            dropdown: ['insertImage', 'upload'],
+            ico: 'insertImage'
+        },
         buttonShortcode: {
           fn: 'insertText',
           ico: 'horizontal-rule',
@@ -67,18 +72,28 @@
         ['viewHTML'],
         ['undo', 'redo'], // Only supported in Blink browsers
         ['formatting'],
-        ['foreColor', 'backColor'],
         ['strong', 'em', 'del'],
         ['superscript', 'subscript'],
         ['link'],
-        ['insertImage'],
+        ['image'],
         ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
         ['unorderedList', 'orderedList'],
         ['horizontalRule'],
         ['removeformat'],
         ['fullscreen'],
         ['buttonShortcode']
-      ]
+      ],
+      plugins: {
+        // Add imagur parameters to upload plugin for demo purposes
+        upload: {
+              serverPath: "{{ url('ops/support-articles/'.$article->id.'/image-upload') }}",
+              fileFieldName: 'image',
+              headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              },
+              urlPropertyName: 'url'
+          }
+      }
     });
   </script>
 @endpush

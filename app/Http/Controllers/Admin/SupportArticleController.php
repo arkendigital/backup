@@ -117,4 +117,15 @@ class SupportArticleController extends Controller
 
         return back();
     }
+
+    /**
+     *
+     * Upload image coming from WUSIWUG
+     *
+     */
+    public function imageUpload(Request $request, $supportArticleId)
+    {
+        $path = $request->image->storeAs('support-articles/'.$supportArticleId,$request->image->getClientOriginalName(), 'public'); 
+        return ['success'=>true,'url'=>asset('storage/'.$path)];
+    }
 }

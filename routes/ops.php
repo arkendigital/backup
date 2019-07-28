@@ -2,6 +2,7 @@
 
 Route::namespace('Admin')->prefix('ops')->group(function () {
     Route::post("/pages/{id}/image-upload", "Pages\PageController@imageUpload");
+    Route::post("/support-articles/{id}/image-upload", "SupportArticleController@imageUpload");
 });
 
 Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function () {
