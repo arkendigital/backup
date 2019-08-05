@@ -168,9 +168,12 @@
 </form>
 
 @push("scripts-after")
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.9.4/trumbowyg.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.9.4/plugins/upload/trumbowyg.upload.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.9.4/ui/trumbowyg.min.css">
+  <script src="https://rawcdn.githack.com/RickStrahl/jquery-resizable/master/dist/jquery-resizable.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.10.0/trumbowyg.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.10.0/plugins/upload/trumbowyg.upload.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.10.0/plugins/resizimg/trumbowyg.resizimg.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.10.0/ui/trumbowyg.min.css">
+
   <script>
     
     $('.editor').trumbowyg({
@@ -214,7 +217,11 @@
                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
               },
               urlPropertyName: 'url'
-          }
+          },
+          resizimg: {
+            minSize: 64,
+            step: 16,
+        }
       }
     });
   </script>
