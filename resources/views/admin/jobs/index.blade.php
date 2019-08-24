@@ -22,6 +22,14 @@
 <div class="box box-primary">
     <div class="box-header with-border">
       <h3 class="box-title">All Jobs</h3>
+        <div class="btn-group pull-right" data-toggle="buttons">
+          <label class="btn btn-primary {{ (session('deleted-jobs')) ? '' : 'active' }} toggle_deleted_jobs" data-deleted="0">
+            <input type="radio" name="options" id="option1" checked> Without Deleted
+          </label>
+          <label class="btn btn-primary {{ (session('deleted-jobs')) ? 'active' : '' }} toggle_deleted_jobs" data-deleted="1">
+            <input type="radio" name="options" id="option2"> With Deleted
+          </label>
+        </div>
     </div>
     <div class="box-body">
         <div class="table-responsive">
@@ -38,20 +46,22 @@
                 <tbody>
                 @foreach ($jobs as $job)
                     <tr class="{{ (strtotime($job->end_date)<time()) ? 'dimmed' : '' }}">
-                        <td>{{ $job->company->name }}</td>
-                        <td>{{ $job->title }}</td>
-                        <td>{{ date('Y-m-d',strtotime($job->end_date)) }}</td>
-                        <td>
+                        <td class="{{ ($job->deleted_at) ? 'bg-danger' : '' }}">{{ $job->company->name }}</td>
+                        <td  class="{{ ($job->deleted_at) ? 'bg-danger' : '' }}">{{ $job->title }}</td>
+                        <td  class="{{ ($job->deleted_at) ? 'bg-danger' : '' }}">{{ date('Y-m-d',strtotime($job->end_date)) }}</td>
+                        <td class="{{ ($job->deleted_at) ? 'bg-danger' : '' }}">
                           <div class="btn-group">
-                            <a class="btn btn-primary btn-small" type="button" href="{{ route('jobs.show', $job) }}">
+                            <a class="btn btn-primary btn-small" type="button" href="{{ route('jobs.show', $job->id) }}">
                                 <i class="fa fa-eye"></i>
                             </a>
-                            <a class="btn btn-success btn-small" type="button" href="{{ route('jobs.edit', $job) }}">
-                                <i class="fa fa-pencil"></i>
-                            </a>
-                            <a class="btn btn-danger btn-small" type="button"  onclick="document.getElementById('delete-job-{{ $job->id }}').submit();">
-                                <i class="fa fa-trash"></i>
-                            </a>
+                            @if(!$job->deleted_at)
+                                <a class="btn btn-success btn-small" type="button" href="{{ route('jobs.edit', $job->id) }}">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <a class="btn btn-danger btn-small" type="button"  onclick="document.getElementById('delete-job-{{ $job->id }}').submit();">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            @endif
 
                             <form action="{{ route('jobs.destroy', $job) }}" method="POST" id="delete-job-{{ $job->id }}">
                                 {{ csrf_field() }}
@@ -74,3 +84,20 @@
     </div>
 </div>
 @endsection
+
+
+@push("scripts-after")
+<script>
+    
+    $('document').ready(function(){
+        $('.toggle_deleted_jobs').click(function(e){
+            if($(this).data('deleted')){
+                window.location.href = '/ops/jobs?deleted=1';
+            }else{
+                window.location.href = '/ops/jobs?deleted=0';
+            }
+        });
+    });
+
+</script>
+@endpush

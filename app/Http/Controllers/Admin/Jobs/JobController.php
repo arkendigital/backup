@@ -24,13 +24,21 @@ class JobController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-
+        if($request->has('deleted') && $request->deleted){
+            session(['deleted-jobs' => true]);
+        }elseif($request->has('deleted') && !$request->deleted){
+            $request->session()->forget('deleted-jobs');
+        }
         /**
          * Get jobs.
          */
-        $jobs = Job::all();
+        if(session('deleted-jobs')){
+            $jobs = Job::withTrashed()->get();
+        }else{
+            $jobs = Job::all();
+        }
 
         /**
          * Display results.
@@ -46,7 +54,7 @@ class JobController extends Controller
      * @param Job $job
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(Job $job)
+    public function edit($id)
     {
 
         $experienceNeeded = [
@@ -55,6 +63,8 @@ class JobController extends Controller
             'Part Qualified',
             'No Exams'
         ];
+
+        $job = Job::withTrashed()->where('id', $id)->first();
 
         /**
          * Get list of locations.
@@ -306,8 +316,9 @@ class JobController extends Controller
      * @param Job $job
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show(Job $job, Request $request)
+    public function show($id, Request $request)
     {
+        $job = Job::withTrashed()->where('id', $id)->first();
 
         /**
          * Get search dates
