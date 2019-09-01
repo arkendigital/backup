@@ -304,9 +304,7 @@ class JobController extends Controller
         /**
          * Redirect to edit page.
          */
-        return redirect(route("jobs.edit", compact(
-            "job"
-        )));
+        return redirect(route('jobs.edit', ['id' => $job->id]));
 
     }
 
