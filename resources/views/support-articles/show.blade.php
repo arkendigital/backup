@@ -2,6 +2,16 @@
 
 @section("content")
 
+
+
+@push("styles-after")
+<style>
+    .view-section img{
+        display: inline-block;
+    }
+</style>
+@endpush
+
 @if(! str_contains($article->image, 'placeholder')) 
 <div class="section-hero" style="background-image: url({{ asset($article->image) }}); border-color: #0d72b9;"></div>
 @endif

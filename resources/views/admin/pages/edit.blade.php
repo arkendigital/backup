@@ -170,6 +170,7 @@
 @push("scripts-after")
   <script src="https://rawcdn.githack.com/RickStrahl/jquery-resizable/master/dist/jquery-resizable.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.10.0/trumbowyg.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.9.4/plugins/colors/trumbowyg.colors.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.10.0/plugins/upload/trumbowyg.upload.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.10.0/plugins/resizimg/trumbowyg.resizimg.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.10.0/ui/trumbowyg.min.css">
@@ -197,6 +198,7 @@
         ['viewHTML'],
         ['undo', 'redo'], // Only supported in Blink browsers
         ['formatting'],
+        ['foreColor', 'backColor'],
         ['strong', 'em', 'del'],
         ['superscript', 'subscript'],
         ['link'],

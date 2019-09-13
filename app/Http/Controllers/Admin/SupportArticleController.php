@@ -29,8 +29,7 @@ class SupportArticleController extends Controller
     {
 
         $request->validate([
-            'title' => 'required',
-            'body' => 'required',
+            'title' => 'required'
         ]);
 
         if ($request->image) {
@@ -43,7 +42,6 @@ class SupportArticleController extends Controller
         $article->fill([
             'title' => $request->title,
             'slug' => str_slug($request->title),
-            'body' => $request->body,
             'user_id' => auth()->user()->id,
             'image' => isset($path) ? env("LOCAL_URL").$path : null
         ]);
