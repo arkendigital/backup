@@ -23,10 +23,10 @@
                 <input type="text" class="form-control" name="author" id="author" placeholder="Author">
             </div>
 
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="body">Body</label>
                 <textarea class="form-control editor" name="body" id="body" placeholder="Article Body" rows="5"></textarea>
-            </div>
+            </div> --}}
 
             <div class="form-group">
                 <label for="image">Image</label>
