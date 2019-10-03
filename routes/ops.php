@@ -115,6 +115,7 @@ Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function ()
     /**
     * Jobs.
     */
+    Route::post("/jobs/batch-delete",'Jobs\JobController@batchDelete');
     Route::resource("/jobs", "Jobs\JobController", ["parameters" => [
       "jobs" => "job"
     ]]);

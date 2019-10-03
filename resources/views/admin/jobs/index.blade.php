@@ -7,6 +7,9 @@
         }
     </style>
 @stop
+@push("styles-after")
+<link rel="stylesheet" type="text/css" href="{{ asset('css/dataTables.checkboxes.css') }}"/>
+@endpush
 
 @section('content_header')
   <div class="pull-right">
@@ -30,13 +33,15 @@
             <input type="radio" name="options" id="option2"> With Deleted
           </label>
         </div>
+        <button id="batch-delete" class="pull-right btn btn-danger" style="margin-right:10px;">Batch Delete</button>
     </div>
     <div class="box-body">
         <div class="table-responsive">
             @unless ($jobs->isEmpty())
-            <table class="table table-hover" id="datatable">
+            <table class="table table-hover" id="datatable-checkbox">
                 <thead>
                     <tr>
+                        <th></th>
                         <th>Recruiter</th>
                         <th>Job Title</th>
                         <th>End Date</th>
@@ -46,6 +51,7 @@
                 <tbody>
                 @foreach ($jobs as $job)
                     <tr class="{{ (strtotime($job->end_date)<time()) ? 'dimmed' : '' }}">
+                        <td>{{ $job->id }}</td>
                         <td class="{{ ($job->deleted_at) ? 'bg-danger' : '' }}">{{ $job->company->name }}</td>
                         <td  class="{{ ($job->deleted_at) ? 'bg-danger' : '' }}">{{ $job->title }}</td>
                         <td  class="{{ ($job->deleted_at) ? 'bg-danger' : '' }}">{{ date('Y-m-d',strtotime($job->end_date)) }}</td>
@@ -87,9 +93,62 @@
 
 
 @push("scripts-after")
+<script type="text/javascript" src="{{ asset('js/dataTables.checkboxes.min.js') }}"></script>
 <script>
     
     $('document').ready(function(){
+
+
+        
+        var table = $('#datatable-checkbox').DataTable({     
+          'columnDefs': [
+             {
+                'targets': 0,
+                'checkboxes': {
+                   'selectRow': true
+                }
+             }
+          ],
+          'select': {
+             'style': 'multi'
+          },
+          'order': [[1, 'asc']]
+       });
+
+        $('#batch-delete').click(function(){
+          var rows_selected = table.column(0).checkboxes.selected();
+
+          var selectedIDs = [];
+
+          if(rows_selected.length){
+            $.each(rows_selected, function(index, rowId){
+              selectedIDs.push(rowId);
+            });
+
+            $.ajax({
+              type: "POST",
+              url: "/ops/jobs/batch-delete",
+              data: {
+                method_field:"POST",
+                selected_ids:selectedIDs
+              },
+              headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              },
+              success: function(response){
+                location.reload();
+              },
+              error: function(response) {
+                console.log("FAIL");
+                console.log(response);
+              }
+            });
+
+
+          }
+          
+        })
+        
         $('.toggle_deleted_jobs').click(function(e){
             if($(this).data('deleted')){
                 window.location.href = '/ops/jobs?deleted=1';
