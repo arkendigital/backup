@@ -389,4 +389,16 @@ class JobController extends Controller
 
     }
 
+    function batchDelete(Request $request)
+    {
+        $selectedIds = $request->selected_ids;
+        //delete jobs
+        Job::whereIn('id',$selectedIds)->delete();
+        
+        alert()->success("Selected Jobs Deleted!");
+        //return back success and refresh page
+        // return redirect();
+
+    }
+
 }
