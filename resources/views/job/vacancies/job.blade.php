@@ -17,7 +17,7 @@
 			<span class="job-list-item-list-value">{{ ucwords($job->status->name) }}</span>
 		</div>
 
-		@if($job->status_id == 1)
+		@if($job->status_id == 1 && $job->min_salary>0 && $job->max_salary>0)
 			<div class="job-list-item-list">
 				<span class="job-list-item-list-key">Annual Salary</span>
 				<span class="job-list-item-list-value">
