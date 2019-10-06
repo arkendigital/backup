@@ -5,6 +5,9 @@
         .dimmed{
             background-color: #eee;
         }
+        thead tr th.dt-checkboxes-select-all input{ 
+          display: none;
+        }
     </style>
 @stop
 @push("styles-after")
@@ -34,6 +37,7 @@
           </label>
         </div>
         <button id="batch-delete" class="pull-right btn btn-danger" style="margin-right:10px;">Batch Delete</button>
+        <a href="{{ url('ops/jobs/sort') }}" class="pull-right btn btn-info" style="margin-right:10px;">Sort Jobs</a>
     </div>
     <div class="box-body">
         <div class="table-responsive">

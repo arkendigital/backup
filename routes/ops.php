@@ -115,6 +115,8 @@ Route::namespace('Admin')->middleware('admin')->prefix('ops')->group(function ()
     /**
     * Jobs.
     */
+    Route::get("/jobs/sort",'Jobs\JobController@sortIndex');
+    Route::post("/jobs/sort",'Jobs\JobController@sort');
     Route::post("/jobs/batch-delete",'Jobs\JobController@batchDelete');
     Route::resource("/jobs", "Jobs\JobController", ["parameters" => [
       "jobs" => "job"
