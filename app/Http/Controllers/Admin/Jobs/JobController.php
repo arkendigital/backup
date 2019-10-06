@@ -289,6 +289,7 @@ class JobController extends Controller
   			"start_date" => $start_date,
             "end_date" => $end_date,
             "contact_email" => request()->contact_email,
+            "sort_order" => 1
         ]);
 
         /**
@@ -398,7 +399,26 @@ class JobController extends Controller
         alert()->success("Selected Jobs Deleted!");
         //return back success and refresh page
         // return redirect();
+    }
 
+    function sortIndex(Request $request)
+    {
+        $jobs = Job::whereDate('end_date', '>=', date('Y-m-d'))->orderBy('sort_order')->get();
+
+        /**
+         * Display results.
+         */
+        return view("admin.jobs.sort", compact("jobs"));
+    }
+
+    function sort(Request $request)
+    {
+        $sortedArray = $request->sorted_date;
+        foreach($sortedArray as $index=>$sortedId){
+            if($sortedId!=null){
+                Job::where('id',$sortedId)->update(['sort_order'=>$index]);
+            }
+        }
     }
 
 }

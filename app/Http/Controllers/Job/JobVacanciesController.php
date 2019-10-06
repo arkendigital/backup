@@ -48,7 +48,7 @@ class JobVacanciesController extends Controller
         */
         $featured_jobs = Job::with('company', 'location', 'sector')
             ->where("featured", 1)
-            ->orderBy('created_at', 'desc')
+            ->orderBy('sort_order', 'asc')
             ->get();
 
         /**
@@ -56,7 +56,7 @@ class JobVacanciesController extends Controller
         */
         $jobs = Job::with('company', 'location', 'sector')
             ->where("start_date", "<=", now())
-            ->orderBy('created_at', 'desc')
+            ->orderBy('sort_order', 'asc')
             ->where("end_date", ">=", now());
 
         /**
