@@ -121,18 +121,18 @@ class Job extends Model
     public function trackUniqueImpression()
     {
         $cookie_name = "job_" . $this->attributes["id"];
-
+        
         /**
          * Check if unique cookie exists
          *
          */
-        if (null === request()->cookie($cookie_name)) {
+        if (null === cache($cookie_name)) {
 
         /**
          * Create cookie
          *
          */
-            \Cookie::make($cookie_name, now(), 43200);
+            cache([$cookie_name => now()] , 43200);
 
             /**
              * Track unique impression
