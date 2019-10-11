@@ -28,7 +28,7 @@
 					@endif
 				</span>
 			</div>
-		@elseif($job->status_id == 2)
+		@elseif($job->status_id == 2 && $job->max_daily_salary>0)
 			<div class="job-list-item-list">
 				<span class="job-list-item-list-key">Daily Salary</span>
 				<span class="job-list-item-list-value">
