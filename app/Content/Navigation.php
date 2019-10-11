@@ -46,12 +46,18 @@ class Navigation
                 $sub_item->text = $item->link_text;
                 $sub_item->url = $item->url;
             } else {
-                $sub_item->text = $item->page->name;
+                
+                if($item->page){
+                    $sub_item->text = $item->page->name;
 
-                if (substr($item->page->slug, 0, 1) != '/') {
-                    $sub_item->url = '/' . $item->page->slug;
-                } else {
-                    $sub_item->url = $item->page->slug;
+                    if (substr($item->page->slug, 0, 1) != '/') {
+                        $sub_item->url = '/' . $item->page->slug;
+                    } else {
+                        $sub_item->url = $item->page->slug;
+                    }
+                }else{
+                    $sub_item->text = '';
+                    $sub_item->url = '/';
                 }
             }
 
