@@ -87,12 +87,16 @@ class SectionSidebar extends Model
                 $new->text = $item->link_text;
                 $new->url = $item->url;
             } else {
-                $new->text = $item->page->name;
-
-                if (substr($item->page->slug, 0, 1) != "/") {
-                    $new->url = "/".$item->page->slug;
-                } else {
-                    $new->url = $item->page->slug;
+                if($item->page){
+                    $new->text = $item->page->name;
+                    if (substr($item->page->slug, 0, 1) != "/") {
+                        $new->url = "/".$item->page->slug;
+                    } else {
+                        $new->url = $item->page->slug;
+                    }
+                }else{
+                    $new->text = '';
+                    $new->url = '';
                 }
             }
 
