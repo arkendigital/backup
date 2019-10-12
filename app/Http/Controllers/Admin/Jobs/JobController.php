@@ -281,6 +281,13 @@ class JobController extends Controller
 
         $exp = collect($request->experience)->toJson();
 
+        //resort all jobs and empty slot for new job
+        $jobsWithTrashed = Job::withTrashed()->get();
+        foreach ($jobsWithTrashed as $job) {
+            $job->sort_order = $job->sort_order+1;
+            $job->save();
+        }
+
         /**
          * Create the job
          */
