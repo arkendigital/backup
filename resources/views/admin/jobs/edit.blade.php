@@ -172,6 +172,26 @@
                       </select>
                     </div>
 
+                    <div class="form-group @if($errors->has("town_id")) has-error @endif">
+                        @if($errors->has("town_id"))
+                            <label class="control-label" for="town_id"><i class="fa fa-times-circle-o"></i> {{ $errors->first("town_id") }}</label>
+                        @else
+                            <label for="town_id">Job Town</label>
+                        @endif
+                      <select name="town_id" class="form-control">
+                        <option value="">Select town of job...</option>
+                        @foreach($towns as $town)
+                          <option value="{{ $town->id }}"
+                              @if(session()->exists("errors"))
+                                  @if(old("town_id") == $town->id) selected @endif
+                              @else
+                                  @if($job->town_id == $town->id) selected @endif
+                              @endif
+                          >{{ $town->name }}</option>
+                        @endforeach
+                      </select>
+                    </div>
+
                 </div>
 
             </div>
@@ -385,8 +405,8 @@
     </div>
 
     <div class="box-footer">
-        <a href="/ops/jobs" class="btn btn-primary pull-left">All Jobs</a>
-        <button type="submit" class="btn btn-success pull-right">Update</button>
+        {{-- <a href="/ops/jobs" class="btn btn-primary pull-left">All Jobs</a> --}}
+        <button type="submit" class="btn btn-success pull-left">Update</button>
     </div>
 
 </form>
