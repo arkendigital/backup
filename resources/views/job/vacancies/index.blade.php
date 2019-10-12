@@ -56,11 +56,20 @@
           @if(session()->get('job-filter-order'))
             <button type="submit" name="reset_odering" value="1">Reset Sort By</button>
           @endif
+          <div class="job-list-banner-sort-by">
+            <select name="per_page" id="per_page">
+              <option value="">Per page</option>
+              <option value="10" @if(session()->get('job-per-page') == 10) selected @endif>10 per page</option>
+              <option value="20" @if(session()->get('job-per-page') == 20) selected @endif>20 per page</option>
+              <option value="40" @if(session()->get('job-per-page') == 40) selected @endif>40 per page</option>
+            </select>
+          </div>
         </form>
 
         <div class="job-list-banner-showing">
           Showing {{ $jobs->firstItem() }}-{{ $jobs->lastItem() }} of {{ $jobs->total() }}
         </div>
+        
       </div><!-- /.job-list-banner -->
 
       <div class="job-list-sidebar">
@@ -284,3 +293,15 @@
   ])
 
 @endsection
+
+@push("scripts-after")
+<script>
+    
+    $('document').ready(function(){
+      $('#per_page').change(function(){
+        window.location = '/jobs/vacancies-per-page/'+$(this).val();
+      })
+    });
+
+</script>
+@endpush
