@@ -29,6 +29,7 @@ class Job extends Model
         "max_daily_salary",
         "location_id",
         "region_id",
+        "town_id",
         "company_id",
         "featured",
         "apply_link",
@@ -90,6 +91,16 @@ class Job extends Model
     public function location()
     {
         return $this->hasOne(JobLocation::class, 'id', 'location_id');
+    }
+
+    /**
+    * A job has a location.
+    *
+    * @return Illuminate\Database\Eloquent\Relations\HasOne
+    */
+    public function town()
+    {
+        return $this->hasOne(Town::class, 'id', 'town_id');
     }
 
     public function sector()
