@@ -152,10 +152,12 @@ class JobVacanciesController extends Controller
             $jobs = $jobs->orderBy($order[0], $order[1]);
         }
 
+        $perPage = (session()->exists("job-per-page")) ? session('job-per-page') : 10 ;
+
         if($isSearching) {
-            $jobs = $jobs->paginate(9);
+            $jobs = $jobs->paginate($perPage);
         }else{
-            $jobs = $jobs->where('featured', 0)->paginate(9);
+            $jobs = $jobs->where('featured', 0)->paginate($perPage);
         }
 
         /**
@@ -302,5 +304,11 @@ class JobVacanciesController extends Controller
             "job",
             "page"
         ))->compileShortcodes();
+    }
+
+    public function perPage(Request $request, $perPage)
+    {
+        session(['job-per-page'=>$perPage]);
+        return back();
     }
 }
