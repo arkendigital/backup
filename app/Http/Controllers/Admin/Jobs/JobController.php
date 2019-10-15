@@ -75,7 +75,7 @@ class JobController extends Controller
         /**
         * Get list of towns.
         */
-        $towns = Town::all();
+        // $towns = Town::all();
 
         /**
          * Get list of companies.
@@ -99,7 +99,7 @@ class JobController extends Controller
         return view("admin.jobs.edit", compact(
             "job",
             "locations",
-            "towns",
+            // "towns",
             "companies",
             "types",
             "sectors",
@@ -123,7 +123,7 @@ class JobController extends Controller
          */
         $location = JobLocation::find($request->location_id);
         $region = JobRegion::find($location->region_id);
-        $town = Town::find($request->town_id);
+        // $town = Town::find($request->town_id);
 
         $sectors = implode(request()->sectors, ",") . ",";
 
@@ -162,7 +162,7 @@ class JobController extends Controller
             "max_daily_salary" => request()->max_daily_salary,
             "location_id" => request()->location_id,
             "region_id" => $region->id,
-            "town_id" => $town->id,
+            "town" => $request->town,
             "company_id" => request()->company_id,
             "apply_link" => request()->apply_link,
             "featured" => request()->featured,
@@ -213,7 +213,7 @@ class JobController extends Controller
         /**
         * Get list of towns.
         */
-        $towns = Town::all();
+        // $towns = Town::all();
 
         /**
          * Get list of companies.
@@ -237,7 +237,7 @@ class JobController extends Controller
         */
         return view("admin.jobs.create", compact(
             "locations",
-            "towns",
+            // "towns",
             "companies",
             "types",
             "sectors",
@@ -259,7 +259,7 @@ class JobController extends Controller
          */
         $location = JobLocation::find(request()->location_id);
         $region = JobRegion::find($location->region_id);
-        $town = Town::find(request()->town_id);
+        // $town = Town::find(request()->town_id);
 
         $sectors = implode(request()->sectors, ",") . ",";
 
@@ -302,7 +302,7 @@ class JobController extends Controller
             "max_daily_salary" => request()->max_daily_salary,
             "location_id" => request()->location_id,
             "region_id" => $region->id,
-            "town_id" => $town->id,
+            "town" => $request->town,
             "company_id" => request()->company_id,
             "apply_link" => request()->apply_link,
             "featured" => request()->featured,

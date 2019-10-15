@@ -29,7 +29,7 @@ class Job extends Model
         "max_daily_salary",
         "location_id",
         "region_id",
-        "town_id",
+        "town",
         "company_id",
         "featured",
         "apply_link",

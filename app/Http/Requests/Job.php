@@ -31,7 +31,7 @@ class Job extends FormRequest
             "status_id" => "required",
             "experience" => "required",
             "location_id" => "required",
-            "town_id" => "required",
+            // "town_id" => "required",
             "company_id" => "required",
             "apply_link" => "required|url",
             "sectors" => "required"
@@ -67,7 +67,7 @@ class Job extends FormRequest
             "sectors.required" => "Please select atleast 1 job sector",
             "experience.required" => "Please select the level of experience needed for this job",
             "location_id.required" => "You must select where this job is based",
-            "town_id.required" => "You must select in which town this job is based",
+            // "town_id.required" => "You must select in which town this job is based",
             "company_id.required" => "Please select which company or recruiter this job is being posted by",
             "apply_link.required" => "Please enter the URL to which a user can apply for this job listing"
         ];
