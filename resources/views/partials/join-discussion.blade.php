@@ -21,7 +21,7 @@
   <div class="website-container">
 
     @if(isset($with) && $with == "banner")
-      <img src="/images/temp/jobs-advertise-banner.png" alt="" title="" class="margin-top--medium">
+      {{-- <img src="/images/temp/jobs-advertise-banner.png" alt="" title="" class="margin-top--medium"> --}}
     @endif
 
     @if(isset($advert) && !empty($advert))
