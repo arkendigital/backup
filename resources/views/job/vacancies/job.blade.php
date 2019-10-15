@@ -44,7 +44,7 @@
 		@isset($job->location)
 			<div class="job-list-item-list">
 				<span class="job-list-item-list-key">Location</span>
-				<span class="job-list-item-list-value">{{ ($job->town) ? $job->town->name.' - ' : '' }}{{ str_replace("--", "", $job->location->name) }}</span>
+				<span class="job-list-item-list-value">{{ ($job->town) ? $job->town.' - ' : '' }}{{ str_replace("--", "", $job->location->name) }}</span>
 			</div>
 		@endisset
 
