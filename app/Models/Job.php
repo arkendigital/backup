@@ -138,21 +138,22 @@ class Job extends Model
          * Check if unique cookie exists
          *
          */
-        if (null === cache($cookie_name)) {
 
-        /**
-         * Create cookie
-         *
-         */
-            cache([$cookie_name => now()] , 43200);
+        if (!request()->session()->has($cookie_name)) {
+
+            /**
+             * Create cookie
+             *
+             */
+            request()->session()->put($cookie_name, now());
 
             /**
              * Track unique impression
              *
              */
             JobUniqueImpression::create([
-          "job_id" => $this->attributes["id"]
-        ]);
+                "job_id" => $this->attributes["id"]
+            ]);
         }
     }
 
