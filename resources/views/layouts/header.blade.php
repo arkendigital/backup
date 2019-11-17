@@ -100,7 +100,7 @@
           </ul>
         </li>
         <li @if(request()->route()->getPrefix() == "/cv-support") class="cvsupport-active" @endif>
-          <a href="/cv-support">CV Support</a>
+          <a href="/cv-support">Recruiters</a>
         </li>
       </ul>
     </nav>
