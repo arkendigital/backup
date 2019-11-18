@@ -44,7 +44,7 @@
         }
     </style>
 
-  <div class="section-hero" style="background-image: url(/images/temp/cvsupport-section-hero-bg.png); border-color: {{ $section->color }};"></div>
+  <div class="section-hero" style="background-image: url({{ 'storage/'.$section->image_path }}); border-color: {{ $section->color }};"></div>
 
   <div class="website-container view-section">
     <div class="website-container-content">
