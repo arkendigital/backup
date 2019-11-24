@@ -19,7 +19,7 @@ class CVSupportController extends Controller
   */
     public function __construct()
     {
-        $this->section = Section::where("slug", "cv-support")
+        $this->section = Section::where("slug", "recruiters")
             ->first();
     }
 
@@ -31,7 +31,7 @@ class CVSupportController extends Controller
     /**
     * Get page Information
     */
-        $page = Page::where("slug", "cv-support")
+        $page = Page::where("slug", "recruiters")
             ->first();
 
         /**

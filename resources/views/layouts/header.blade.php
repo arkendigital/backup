@@ -99,8 +99,8 @@
             @endforeach
           </ul>
         </li>
-        <li @if(request()->route()->getPrefix() == "/cv-support") class="cvsupport-active" @endif>
-          <a href="/cv-support">Recruiters</a>
+        <li @if(request()->route()->getPrefix() == "/recruiters") class="cvsupport-active" @endif>
+          <a href="/recruiters">Recruiters</a>
         </li>
       </ul>
     </nav>
