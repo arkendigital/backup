@@ -1,4 +1,4 @@
 <?php
-Route::namespace('CVSupport')->prefix('cv-support')->group(function() {
+Route::namespace('CVSupport')->prefix('recruiters')->group(function() {
   Route::get('/', 'CVSupportController@index');
 });

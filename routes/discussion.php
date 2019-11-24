@@ -5,7 +5,7 @@ Route::get('/', function(){ return Redirect::to('/discussion/current', 301); })-
 Route::get('jobs', function(){ return Redirect::to('/discussion/current', 301); });
 Route::get('exams', function(){ return Redirect::to('/discussion/current', 301); });
 Route::get('cpd', function(){ return Redirect::to('/discussion/current', 301); });
-Route::get('cv-support', function(){ return Redirect::to('/discussion/current', 301); });
+Route::get('recruiters', function(){ return Redirect::to('/discussion/current', 301); });
 Route::get('uni-corner', function(){ return Redirect::to('/discussion/current', 301); });
 Route::get('resources', function(){ return Redirect::to('/discussion/current', 301); });
 Route::get('need-a-hand', function(){ return Redirect::to('/discussion/current', 301); });
