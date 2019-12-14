@@ -28,7 +28,9 @@ class Navigation
 
     public function subItemBySlug($slug)
     {
-        return SectionSidebar::with('items', 'items.page')->where('slug', $slug)->first();
+        return SectionSidebar::with(['items'=>function($query){
+            $query->orderBy('sections_sidebars_items.order','asc');
+        }, 'items.page'])->where('slug', $slug)->first();
     }
 
     public function buildSubNav($slug)
