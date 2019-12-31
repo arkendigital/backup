@@ -67,4 +67,8 @@
     </ul>
   </div>
 
+  <div class="feedgrabbr_widget" id="fgid_c216a28cf657ad35875f797e6" style="overflow: hidden;"></div>
+<script>if (typeof (fg_widgets) === "undefined") fg_widgets = new Array(); fg_widgets.push("fgid_c216a28cf657ad35875f797e6");</script>​
+<script async src="https://www.feedgrabbr.com/widget/fgwidget.js"></script>
+
 </div><!-- /.discussion-sidebar -->
