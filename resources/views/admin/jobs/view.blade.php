@@ -37,9 +37,9 @@
   	      <span class="info-box-text">Impressions</span>
   	      <span class="info-box-number">{{ $impressions }}</span>
 
-  	      <div class="progress">
+  	      {{-- <div class="progress">
   	        <div class="progress-bar" style="width: 70%"></div>
-  	      </div>
+  	      </div> --}}
           <span class="progress-description">
             {{ date("jS M", strtotime($start_date)) }} to
             {{ date("jS M", strtotime($end_date)) }}
@@ -56,10 +56,7 @@
   	    <div class="info-box-content">
   	      <span class="info-box-text">Unique Impressions</span>
   	      <span class="info-box-number">{{ $unique_impressions }}</span>
-
-  	      <div class="progress">
-  	        <div class="progress-bar" style="width: 70%"></div>
-  	      </div>
+  	      
           <span class="progress-description">
             {{ date("jS M", strtotime($start_date)) }} to
             {{ date("jS M", strtotime($end_date)) }}
@@ -77,9 +74,6 @@
   	      <span class="info-box-text">Clicks</span>
   	      <span class="info-box-number">{{ $clicks }}</span>
 
-  	      <div class="progress">
-  	        <div class="progress-bar" style="width: 70%"></div>
-  	      </div>
           <span class="progress-description">
             {{ date("jS M", strtotime($start_date)) }} to
             {{ date("jS M", strtotime($end_date)) }}
@@ -101,9 +95,53 @@
   	      <span class="info-box-text">Click-through Rate</span>
   	      <span class="info-box-number">{{ $click_rate }}%</span>
 
-  	      <div class="progress">
-  	        <div class="progress-bar" style="width: 70%"></div>
-  	      </div>
+          <span class="progress-description">
+            {{ date("jS M", strtotime($start_date)) }} to
+            {{ date("jS M", strtotime($end_date)) }}
+          </span>
+  	    </div>
+  	    <!-- /.info-box-content -->
+  	  </div>
+  	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="col-md-3 col-sm-6 col-xs-12">
+  		<div class="info-box bg-maroon">
+  	    <span class="info-box-icon"><i class="fa fa-rocket"></i></span>
+
+  	    <div class="info-box-content">
+  	      <span class="info-box-text">Apply Button Clicks</span>
+  	      <span class="info-box-number">{{ $applies }}</span>
+
+          <span class="progress-description">
+            {{ date("jS M", strtotime($start_date)) }} to
+            {{ date("jS M", strtotime($end_date)) }}
+          </span>
+  	    </div>
+  	    <!-- /.info-box-content -->
+  	  </div>
+  	</div>
+
+
+
+    <div class="col-md-3 col-sm-6 col-xs-12">
+  		<div class="info-box bg-maroon">
+  	    <span class="info-box-icon"><i class="fa fa-rocket"></i></span>
+
+  	    <div class="info-box-content">
+  	      <span class="info-box-text">Contact Button Clicks</span>
+  	      <span class="info-box-number">{{ $emails }}</span>
+
           <span class="progress-description">
             {{ date("jS M", strtotime($start_date)) }} to
             {{ date("jS M", strtotime($end_date)) }}
