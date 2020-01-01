@@ -77,10 +77,10 @@
         <div class="job-view-content-description">{!! $job->content !!}</div>
 
         @if($job->contact_email)
-        <p><a class="job-view-content-button job-view-content-button-apply" href="mailto:{{ $job->contact_email }}">Contact</a></p>
+        <p><a class="job-view-content-button job-view-content-button-apply track-btn" data-type="contact" href="mailto:{{ $job->contact_email }}">Contact</a></p>
         @endif
         @if($job->apply_link)
-        <p><a class="job-view-content-button job-view-content-button-apply" target="_blank" href="{{ $job->apply_link }}" style="margin-top: 10px;">Apply</a></p>
+        <p><a class="job-view-content-button job-view-content-button-apply track-btn" data-type="apply" target="_blank" href="{{ $job->apply_link }}" style="margin-top: 10px;">Apply</a></p>
         @endif
         <p><a class="job-view-content-button job-view-content-button-back" onclick="window.history.back()">Back</a></p>
       </div>
@@ -96,3 +96,38 @@
   ])
 
 @endsection
+
+@push("scripts-after")
+<script>
+    
+    $('document').ready(function(){
+      var jobID = "<?php echo $job->id ?>";
+      $('.track-btn').click(function(e){
+        e.preventDefault();
+        var trackType = $(this).data('type');
+        var redirectLink = $(this).attr("href");
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+        $.ajax('/jobs/vacancies/'+jobID+'/track', {
+            type: 'POST',
+            data: { "trackType": trackType },
+            success: function (data, status, xhr) {
+                if(trackType=='apply'){
+                  var win = window.open(redirectLink, '_blank');
+                  win.focus();
+                }else{
+                  window.location.href = redirectLink;
+                }
+            },
+            error: function (jqXhr, textStatus, errorMessage) {
+              console.error(jqXhr, textStatus, errorMessage);
+            }
+        });
+      })
+    });
+
+</script>
+@endpush

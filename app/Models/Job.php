@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Cviebrock\EloquentSluggable\Sluggable;
 use App\Models\JobClick;
+use App\Models\JobApply;
+use App\Models\JobEmail;
 
 class Job extends Model
 {
@@ -152,6 +154,68 @@ class Job extends Model
              *
              */
             JobUniqueImpression::create([
+                "job_id" => $this->attributes["id"]
+            ]);
+        }
+    }
+
+    /**
+     * Add unique applies to the job
+     *
+     */
+    public function trackUniqueApplies()
+    {
+        $cookie_name = "job_apply_" . $this->attributes["id"];
+        
+        /**
+         * Check if unique cookie exists
+         *
+         */
+
+        if (!request()->session()->has($cookie_name)) {
+
+            /**
+             * Create cookie
+             *
+             */
+            request()->session()->put($cookie_name, now());
+
+            /**
+             * Track unique impression
+             *
+             */
+            JobApply::create([
+                "job_id" => $this->attributes["id"]
+            ]);
+        }
+    }
+
+    /**
+     * Add unique emails to the job
+     *
+     */
+    public function trackUniqueEmails()
+    {
+        $cookie_name = "job_email_" . $this->attributes["id"];
+        
+        /**
+         * Check if unique cookie exists
+         *
+         */
+
+        if (!request()->session()->has($cookie_name)) {
+
+            /**
+             * Create cookie
+             *
+             */
+            request()->session()->put($cookie_name, now());
+
+            /**
+             * Track unique impression
+             *
+             */
+            JobEmail::create([
                 "job_id" => $this->attributes["id"]
             ]);
         }

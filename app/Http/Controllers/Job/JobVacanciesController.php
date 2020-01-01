@@ -311,4 +311,19 @@ class JobVacanciesController extends Controller
         session(['job-per-page'=>$perPage]);
         return back();
     }
+
+    public function track(Request $request, $id)
+    {
+        $trackType = $request->trackType;
+        $job = Job::find($id);
+        
+        if($trackType=='apply'){
+            $job->trackUniqueApplies();
+        }else{
+            $job->trackUniqueEmails();
+        }
+        return response()->json([
+            'status' => 'success'
+        ],200);
+    }
 }
