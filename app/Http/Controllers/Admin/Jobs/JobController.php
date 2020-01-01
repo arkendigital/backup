@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Job as JobRequest;
 use App\Models\Job;
 use App\Models\JobClick;
+use App\Models\JobApply;
+use App\Models\JobEmail;
 use App\Models\JobCompany;
 use App\Models\JobImpression;
 use App\Models\JobLocation;
@@ -380,6 +382,22 @@ class JobController extends Controller
             ->count();
 
         /**
+         * Get applies for this advert
+         */
+        $applies = JobApply::where("job_id", $job->id)
+            ->where("created_at", ">=", date("Y-m-d", strtotime($start_date)) . " 00:00:00")
+            ->where("created_at", "<=", date("Y-m-d", strtotime($end_date)) . " 23:59:59")
+            ->count();
+
+        /**
+         * Get emais for this advert
+         */
+        $emails = JobEmail::where("job_id", $job->id)
+            ->where("created_at", ">=", date("Y-m-d", strtotime($start_date)) . " 00:00:00")
+            ->where("created_at", "<=", date("Y-m-d", strtotime($end_date)) . " 23:59:59")
+            ->count();
+
+        /**
          * Click through rate
          */
         if ($clicks !== 0 && $impressions !== 0) {
@@ -393,6 +411,8 @@ class JobController extends Controller
             "impressions",
             "unique_impressions",
             "clicks",
+            "applies",
+            "emails",
             "click_rate",
             "start_date",
             "end_date"
