@@ -19,7 +19,7 @@
           {{ method_field("DELETE") }}
           <button type="submit" class="discussion-button--delete">Delete</button>
         </form>
-        <a class="discussion-edit-button" href="{{ route("discussion.edit", compact("category", "discussion")) }}">Edit</a>
+        <a target="_blank" class="discussion-edit-button" href="{{ url("ops/articles/".$discussion->slug."/edit") }}">Edit</a>
       @endif
 
       <div class="clear"></div>
