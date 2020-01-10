@@ -17,7 +17,7 @@
 
         <div class="job-view-header-right">
 
-          @if($job->status_id == 1)
+          @if($job->status_id == 1 || $job->status_id == 4)
               <div class="job-view-header-right-item">
                 <p class="job-view-header-right-item-left">Salary</p>
                 <p class="job-view-header-right-item-right job-view-header-right-item-right-salary">
