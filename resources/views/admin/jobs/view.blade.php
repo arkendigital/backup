@@ -5,8 +5,12 @@
 @endsection
 
 @section("content")
+  
+  @php
+    $backUrl = (request()->page) ? route('jobs.index').'?page='.request()->page  :  route('jobs.index');
+  @endphp
 
-  <a href="{{ route('jobs.index') }}">
+  <a href="{{ $backUrl }}">
     <button type="button" class="btn btn-primary">Back</button>
   </a><br><br>
 
