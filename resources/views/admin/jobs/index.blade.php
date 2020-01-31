@@ -61,7 +61,7 @@
                         <td  class="{{ ($job->deleted_at) ? 'bg-danger' : '' }}">{{ date('Y-m-d',strtotime($job->end_date)) }}</td>
                         <td class="{{ ($job->deleted_at) ? 'bg-danger' : '' }}">
                           <div class="btn-group">
-                            <a class="btn btn-primary btn-small" type="button" href="{{ route('jobs.show', $job->id) }}">
+                            <a class="btn btn-primary btn-small show_states" data-route="{{ route('jobs.show', $job->id) }}" type="button" href="#">
                                 <i class="fa fa-eye"></i>
                             </a>
                             @if(!$job->deleted_at)
@@ -99,10 +99,29 @@
 @push("scripts-after")
 <script type="text/javascript" src="{{ asset('js/dataTables.checkboxes.min.js') }}"></script>
 <script>
-    
+    var page = "{{ request()->page }}";
+
+    // function setURLPage(){
+    //   var url = new URL(window.location.href);
+
+    //   var query_string = url.search;
+
+    //   var search_params = new URLSearchParams(query_string); 
+
+    //   // new value of "id" is set to "101"
+    //   search_params.set('page', '101');
+
+    //   // change the search property of the main url
+    //   url.search = search_params.toString();
+
+    //   // the new url string
+    //   var new_url = url.toString();
+
+    //   // output : http://demourl.com/path?id=101&topic=main
+    //   console.log(new_url);
+    // }
+
     $('document').ready(function(){
-
-
         
         var table = $('#datatable-checkbox').DataTable({     
           'columnDefs': [
@@ -118,6 +137,29 @@
           },
           'order': [[1, 'asc']]
        });
+
+        if(page!==''){
+            table.page(parseInt(page)).draw( 'page' );
+        }
+
+        $('.show_states').click(function(e){
+          e.preventDefault();
+          statsNavigate(table.page.info().page,$(this).data('route'));
+        });
+
+        $('#datatable-checkbox').on( 'draw.dt', function () {
+          $('.show_states').off('click');
+          $('.show_states').click(function(e){
+            e.preventDefault();
+            statsNavigate(table.page.info().page,$(this).data('route'));
+          });
+        });
+
+        function statsNavigate(pageNumber,url)
+        {
+          console.log(pageNumber,url);
+          window.location = url+'?page='+pageNumber
+        }
 
         $('#batch-delete').click(function(){
           var rows_selected = table.column(0).checkboxes.selected();
