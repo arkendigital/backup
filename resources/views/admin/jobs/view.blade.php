@@ -7,7 +7,9 @@
 @section("content")
   
   @php
-    $backUrl = (request()->page) ? route('jobs.index').'?page='.request()->page  :  route('jobs.index');
+    $page = (Request::has('page') && request()->page !=='') ? request()->page : 0;
+    $perPage = (Request::has('per_page') && request()->per_page !=='') ? request()->per_page : 10;
+    $backUrl = route('jobs.index').'?page='.$page.'&per_page='.$perPage;
   @endphp
 
   <a href="{{ $backUrl }}">
