@@ -116,7 +116,7 @@
             data: { "trackType": trackType },
             success: function (data, status, xhr) {
                 if(trackType=='apply'){
-                  var win = window.open(redirectLink, '_blank');
+                  var win = window.open(redirectLink, '_self');
                   win.focus();
                 }else{
                   window.location.href = redirectLink;
