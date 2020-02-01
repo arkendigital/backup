@@ -14,6 +14,16 @@
 
 @section('content')
 
+@php
+    $page = (Request::has('page') && request()->page !=='') ? request()->page : 0;
+    $perPage = (Request::has('per_page') && request()->per_page !=='') ? request()->per_page : 10;
+    $backUrl = route('jobs.index').'?page='.$page.'&per_page='.$perPage;
+  @endphp
+
+  <a href="{{ $backUrl }}">
+    <button type="button" class="btn btn-primary">Back</button>
+  </a><br><br>
+
 <form action="{{ route('jobs.update', $job) }}" method="POST" role="form" enctype="multipart/form-data">
 
     {{ csrf_field() }}

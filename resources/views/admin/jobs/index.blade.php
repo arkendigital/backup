@@ -48,6 +48,7 @@
                         <th></th>
                         <th>Recruiter</th>
                         <th>Job Title</th>
+                        <th>Start Date</th>
                         <th>End Date</th>
                         <th>Actions</th>
                     </tr>
@@ -58,6 +59,7 @@
                         <td>{{ $job->id }}</td>
                         <td class="{{ ($job->deleted_at) ? 'bg-danger' : '' }}">{{ $job->company->name }}</td>
                         <td  class="{{ ($job->deleted_at) ? 'bg-danger' : '' }}">{{ $job->title }}</td>
+                        <td  class="{{ ($job->deleted_at) ? 'bg-danger' : '' }}">{{ date('Y-m-d',strtotime($job->start_date)) }}</td>
                         <td  class="{{ ($job->deleted_at) ? 'bg-danger' : '' }}">{{ date('Y-m-d',strtotime($job->end_date)) }}</td>
                         <td class="{{ ($job->deleted_at) ? 'bg-danger' : '' }}">
                           <div class="btn-group">
@@ -65,7 +67,7 @@
                                 <i class="fa fa-eye"></i>
                             </a>
                             @if(!$job->deleted_at)
-                                <a class="btn btn-success btn-small" type="button" href="{{ route('jobs.edit', $job->id) }}">
+                                <a class="btn btn-success btn-small edit_job" data-route="{{ route('jobs.edit', $job->id) }}" type="button">
                                     <i class="fa fa-pencil"></i>
                                 </a>
                                 <a class="btn btn-danger btn-small" type="button"  onclick="document.getElementById('delete-job-{{ $job->id }}').submit();">
@@ -99,27 +101,19 @@
 @push("scripts-after")
 <script type="text/javascript" src="{{ asset('js/dataTables.checkboxes.min.js') }}"></script>
 <script>
-    var page = "{{ request()->page }}";
+    var page = "{{ (Request::has('page') && request()->page !=='') ? request()->page : 0 }}";
+    var perPage = "{{ (Request::has('per_page') && request()->per_page !=='') ? request()->per_page : 10 }}";
 
-    // function setURLPage(){
-    //   var url = new URL(window.location.href);
-
-    //   var query_string = url.search;
-
-    //   var search_params = new URLSearchParams(query_string); 
-
-    //   // new value of "id" is set to "101"
-    //   search_params.set('page', '101');
-
-    //   // change the search property of the main url
-    //   url.search = search_params.toString();
-
-    //   // the new url string
-    //   var new_url = url.toString();
-
-    //   // output : http://demourl.com/path?id=101&topic=main
-    //   console.log(new_url);
-    // }
+    function setURLPage(pageNumber, perPage){
+      var url = new URL(window.location.href);
+      var query_string = url.search;
+      var search_params = new URLSearchParams(query_string); 
+      search_params.set('page', pageNumber);
+      search_params.set('per_page', perPage);
+      url.search = search_params.toString();
+      var new_url = url.toString();
+      window.location = new_url;
+    }
 
     $('document').ready(function(){
         
@@ -138,27 +132,38 @@
           'order': [[1, 'asc']]
        });
 
-        if(page!==''){
-            table.page(parseInt(page)).draw( 'page' );
-        }
+        table.page.len(perPage).page(parseInt(page)).draw('page');
 
         $('.show_states').click(function(e){
           e.preventDefault();
-          statsNavigate(table.page.info().page,$(this).data('route'));
+          statsNavigate(table.page.info().page,perPage,$(this).data('route'));
+        });
+
+        $('.edit_job').click(function(e){
+          e.preventDefault();
+          statsNavigate(page,perPage,$(this).data('route'))
+        });
+
+        $('#datatable-checkbox').on( 'page.dt', function () {
+          setURLPage(table.page.info().page,perPage);
         });
 
         $('#datatable-checkbox').on( 'draw.dt', function () {
           $('.show_states').off('click');
           $('.show_states').click(function(e){
             e.preventDefault();
-            statsNavigate(table.page.info().page,$(this).data('route'));
+            statsNavigate(table.page.info().page,perPage,$(this).data('route'));
           });
         });
 
-        function statsNavigate(pageNumber,url)
+        $('#datatable-checkbox').on( 'length.dt', function ( e, settings, len ) {
+            // setURLPage(parseInt(page),len);
+            setURLPage(table.page.info().page,len);
+        });
+
+        function statsNavigate(pageNumber,perPage,url)
         {
-          console.log(pageNumber,url);
-          window.location = url+'?page='+pageNumber
+          window.location = url+'?page='+pageNumber+'&per_page='+perPage;
         }
 
         $('#batch-delete').click(function(){
