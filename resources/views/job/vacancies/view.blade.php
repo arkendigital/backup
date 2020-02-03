@@ -99,7 +99,19 @@
 
 @push("scripts-after")
 <script>
-    
+    function detec() {
+        if (navigator.userAgent.match(/Android/i) 
+            || navigator.userAgent.match(/webOS/i) 
+            || navigator.userAgent.match(/iPhone/i)  
+            || navigator.userAgent.match(/iPad/i)  
+            || navigator.userAgent.match(/iPod/i) 
+            || navigator.userAgent.match(/BlackBerry/i) 
+            || navigator.userAgent.match(/Windows Phone/i)) { 
+            return true; 
+        } else { 
+            return false; 
+        }
+    } 
     $('document').ready(function(){
       var jobID = "<?php echo $job->id ?>";
       $('.track-btn').click(function(e){
@@ -116,7 +128,11 @@
             data: { "trackType": trackType },
             success: function (data, status, xhr) {
                 if(trackType=='apply'){
-                  var win = window.open(redirectLink, '_self');
+                  if(detec()){
+                    var win = window.open(redirectLink, '_self');
+                  }else{
+                    var win = window.open(redirectLink, '_blank');
+                  }
                   win.focus();
                 }else{
                   window.location.href = redirectLink;
