@@ -39,11 +39,19 @@ class ExportController extends Controller
 
         //jobs that started within the month (period)
         //or ended withing the month (period)
-        $vacancies = Job::withTrashed()
-                        ->whereBetween('start_date', [$periodStart, $periodEnd])
-                        ->orWhereBetween('end_date', [$periodStart, $periodEnd])
+        $vacancies = Job::select('job_vacancies.*','job_companies.name as company_name')
+                        ->withTrashed()
+                        ->leftJoin('job_companies','job_companies.id','=','job_vacancies.company_id')
+                        ->where(function($query) use($periodStart){
+                            $query->where('start_date','<=',$periodStart)
+                                ->where('end_date','>=',$periodStart);
+                        })
+                        ->orWhere(function($query) use($periodEnd){
+                            $query->where('start_date','<=',$periodEnd)
+                                ->where('end_date','>=',$periodEnd);
+                        })
                         ->get();
-
+                        
         return (new JobsStats)->download($periodStart.'-'.$periodEnd.'-jobs-stats',$vacancies,$periodStart,$periodEnd);
         return redirect()->back();
     }
