@@ -41,6 +41,16 @@
     ga('send', 'pageview');
     </script>
     <!-- End Google Analytics -->
+    <!-- Global site tag (gtag.js) - Google Ads: 719018787 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-719018787"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-719018787');
+    </script>
+    @yield("head_scripts")
 </head>
 <body>
   @include("layouts.header")
