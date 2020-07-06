@@ -1,5 +1,12 @@
 @extends("layouts.master")
 
+@section("head_scripts")
+<!-- Event snippet for Apply Clicks conversion page In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. --> 
+<script> function gtag_report_conversion(url) { var callback = function () { if (typeof(url) != 'undefined') { window.location = url; } }; gtag('event', 'conversion', { 'send_to': 'AW-719018787/Z5WwCNbxi9IBEKO27dYC', 'event_callback': callback }); return false; } 
+</script>
+<script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/51760736ffa0ca0ab15a0abbe/bf204fb69eade3dc3e6588cc4.js");</script>
+@endsection
+
 @section("content")
     @if ($job->image)
       <div class="box profile__header"
@@ -128,6 +135,8 @@
             data: { "trackType": trackType },
             success: function (data, status, xhr) {
                 if(trackType=='apply'){
+                  //trigger conversion
+                  gtag_report_conversion(window.location.href);
                   if(detec()){
                     var win = window.open(redirectLink, '_self');
                   }else{
