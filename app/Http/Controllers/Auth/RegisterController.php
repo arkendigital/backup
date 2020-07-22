@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use \DrewM\MailChimp\MailChimp;
 
 use App\Http\Requests\Register;
 
@@ -76,12 +77,22 @@ class RegisterController extends Controller
         }
 
         Auth::loginUsingId($user->id);
+        $MailChimp = new MailChimp(env('MAILCHIMP_APIKEY'));
+        $mailChimpEmailCheck = $MailChimp->get('lists/'.env('MAILCHIMP_LISTID').'/members/'.request()->email);
+    
+        //subscribe user to mailchimp newsletter
+        if($mailChimpEmailCheck['status']===404){
+            $result = $MailChimp->post("lists/".env('MAILCHIMP_LISTID')."/members", [
+				'email_address' => request()->email,
+				'status'        => 'subscribed',
+			]);
+        }
 
         /**
          * Redirect user and show a popup confirmation registration
          *
          */
-        return redirect(route("front.discussion.index"))->with([
+        return redirect('/')->with([
             "alert" => true,
             "alert_title" => "Success",
             "alert_message" => "Your account has been created!",

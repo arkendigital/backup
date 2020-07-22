@@ -1,6 +1,41 @@
 <?php
-use Illuminate\Support\Facades\Mail;
+use App\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use \DrewM\MailChimp\MailChimp;
+
+
+Route::get('/newsletter', function () {
+    //get mailchimp users
+    // Newsletter::delete('rincewind@discworld.com');
+//     $MailChimp = new MailChimp(env('MAILCHIMP_APIKEY'));
+//     $listUsers = $MailChimp->get('lists/'.env('MAILCHIMP_LISTID').'/members?count=1000');
+//     $mailChimpListMembers = $listUsers['members'];
+//     $mailchimpExistingEmails = [];
+//     foreach($mailChimpListMembers as $member){
+//         array_push($mailchimpExistingEmails, $member['email_address']);
+//     }
+
+// // $result = $MailChimp->post("lists/$list_id/members", [
+// // 				'email_address' => 'j.girgis85@gmail.com',
+// // 				'status'        => 'subscribed',
+// // 			]);
+// //     dd($result);
+//     //compare merge them with db users
+//     $users = User::select('email','name')->get();
+//     $Batch 	   = $MailChimp->new_batch();
+//     //add all site users to list
+//     foreach($users as $index=>$user){
+//         if(!in_array($user->email,$mailchimpExistingEmails)){
+//             $Batch->post("op_".$index, "lists/".env('MAILCHIMP_LISTID')."/members", [
+// 				'email_address' => $user->email,
+// 				'status'        => 'subscribed',
+// 			]);
+//         }
+//     }
+//     $result = $Batch->execute();
+//     dd($result);
+});
 
 Route::get('/debug-sentry', function () {
     throw new Exception('My first Sentry error!');
