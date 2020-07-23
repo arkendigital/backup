@@ -6,6 +6,7 @@
 
 @section("content")
 
+  <div class="section-hero" style="background-image: url({{ $page->section->image }}); border-color: {{ $page->section->color }};"></div>
   <div class="website-container">
     <div class="website-container-content view-section">
 
