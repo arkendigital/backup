@@ -1,8 +1,8 @@
 <?php
-Route::redirect('/jobs/vacancies', '/jobs');
 Route::namespace('Job')->prefix('jobs')->group(function() {
+  Route::redirect('/vacancies', '/');
   Route::get('/vacancies-per-page/{perPage}', 'JobVacanciesController@perPage');
-  Route::get('/vacancies', 'JobVacanciesController@index');
+  // Route::get('/vacancies', 'JobVacanciesController@index');
   Route::get('/', 'JobVacanciesController@index');
   Route::post('/vacancies', 'JobVacanciesController@set_filtering');
   Route::get('/vacancies/{job}', 'JobVacanciesController@view')->name('job.show');
