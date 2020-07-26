@@ -13,4 +13,4 @@ yarn-error.log
 public/.htaccess
 .DS_Store
 ._*
-/robots.txt
+/robots
