@@ -1,15 +1,64 @@
 <?php
 use App\User;
+use App\Models\Job;
+use Illuminate\Support\Carbon;
+use \DrewM\MailChimp\MailChimp;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use \DrewM\MailChimp\MailChimp;
 
 
 Route::get('/newsletter', function () {
+
+    $MailChimp = new MailChimp(env('MAILCHIMP_APIKEY'));
+
+    $periodEnd = Carbon::now()->format('Y-m-d');
+    $periodStart = Carbon::now()->subDays(13)->format('Y-m-d');
+    // $periodStart = Carbon::now()->subDays(7)->format('Y-m-d');
+
+    $vacancies = Job::select('job_vacancies.*','job_companies.name as company_name')
+                    ->withTrashed()
+                    ->leftJoin('job_companies','job_companies.id','=','job_vacancies.company_id')
+                    ->where(function($query) use($periodStart, $periodEnd){
+                        $query->where('job_vacancies.created_at','>=',$periodStart)
+                            ->where('job_vacancies.created_at','<',$periodEnd);
+                    })
+                    ->get();
+
+    // return view('emails.newsletter', [
+    //     'vacancies' => $vacancies
+    // ]);
+    $view = View::make('emails.newsletter', [
+        'vacancies' => $vacancies
+    ]);
+
+    $html = $view->render();
+
+    $templateResult = $MailChimp->post("templates", [
+                    'name' => 'new test email',
+                    'html' => $html
+                ]);
+    $templateId = $templateResult['id'];
+
+    
+    $campaignResult = $MailChimp->post("campaigns", [
+                    'type' => 'regular',
+                    'recipients'=>[
+                        'list_id'=>'ca24afb478'
+                    ],
+                    'settings'=>[
+                        'subject_line'=>'Newsletter',
+                        'title'=>'Newsletter',
+                        'from_name'=>'Actuaries Online',
+                        'reply_to'=>'j.girgis85@gmail.com',
+                        'template_id'=>$templateId
+                    ]
+                ]);
+    $campaignId = $campaignResult['id'];
+
+    $result = $MailChimp->post("/campaigns/".$campaignId."/actions/send", []);
+
+    dd($result);
     //get mailchimp users
-    // Newsletter::delete('rincewind@discworld.com');
-//     $MailChimp = new MailChimp(env('MAILCHIMP_APIKEY'));
-//     $listUsers = $MailChimp->get('lists/'.env('MAILCHIMP_LISTID').'/members?count=1000');
 //     $mailChimpListMembers = $listUsers['members'];
 //     $mailchimpExistingEmails = [];
 //     foreach($mailChimpListMembers as $member){

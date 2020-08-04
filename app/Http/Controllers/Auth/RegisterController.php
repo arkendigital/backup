@@ -65,6 +65,17 @@ class RegisterController extends Controller
          *
          */
         if (request()->has("internal_marketing")) {
+            Auth::loginUsingId($user->id);
+            $MailChimp = new MailChimp(env('MAILCHIMP_APIKEY'));
+            $mailChimpEmailCheck = $MailChimp->get('lists/'.env('MAILCHIMP_LISTID').'/members/'.request()->email);
+        
+            //subscribe user to mailchimp newsletter
+            if($mailChimpEmailCheck['status']===404){
+                $result = $MailChimp->post("lists/".env('MAILCHIMP_LISTID')."/members", [
+                    'email_address' => request()->email,
+                    'status'        => 'subscribed',
+                ]);
+            }
             $user->update([
                 "internal_marketing" => true
             ]);
@@ -76,17 +87,7 @@ class RegisterController extends Controller
             ]);
         }
 
-        Auth::loginUsingId($user->id);
-        $MailChimp = new MailChimp(env('MAILCHIMP_APIKEY'));
-        $mailChimpEmailCheck = $MailChimp->get('lists/'.env('MAILCHIMP_LISTID').'/members/'.request()->email);
-    
-        //subscribe user to mailchimp newsletter
-        if($mailChimpEmailCheck['status']===404){
-            $result = $MailChimp->post("lists/".env('MAILCHIMP_LISTID')."/members", [
-				'email_address' => request()->email,
-				'status'        => 'subscribed',
-			]);
-        }
+        
 
         /**
          * Redirect user and show a popup confirmation registration
