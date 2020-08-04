@@ -1,15 +1,15 @@
 <?php
 use App\User;
+use App\Models\Job;
+use Illuminate\Support\Carbon;
+use \DrewM\MailChimp\MailChimp;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use \DrewM\MailChimp\MailChimp;
-
+use Illuminate\Support\Facades\Artisan;
 
 Route::get('/newsletter', function () {
+    Artisan::call('send:newsletter');
     //get mailchimp users
-    // Newsletter::delete('rincewind@discworld.com');
-//     $MailChimp = new MailChimp(env('MAILCHIMP_APIKEY'));
-//     $listUsers = $MailChimp->get('lists/'.env('MAILCHIMP_LISTID').'/members?count=1000');
 //     $mailChimpListMembers = $listUsers['members'];
 //     $mailchimpExistingEmails = [];
 //     foreach($mailChimpListMembers as $member){

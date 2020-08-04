@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Console\Commands\SendNewsLetter;
 
 class Kernel extends ConsoleKernel
 {
@@ -13,7 +14,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\SendMonthlyStats::class,
+        // Commands\SendMonthlyStats::class,
+        Commands\SendNewsLetter::class,
     ];
 
     /**
@@ -23,6 +25,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        if(env('APP_ENV')==='production'){
+            $schedule->command('send:newsletter')->daily()->at('12:00');
+        }
         // $schedule->command('send_monthly_stats')->dailyAt('08:00')->when(function () {
         //     return \Carbon\Carbon::now()->endOfMonth()->isToday();
         // });
