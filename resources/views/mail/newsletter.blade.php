@@ -1028,23 +1028,11 @@
                         
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
-                            <em>Copyright © *|CURRENT_YEAR|* *|LIST:COMPANY|*, All rights reserved.</em>
+                            <em>Copyright ©{{ date('Y') }} Actuaries Online, All rights reserved.</em>
 <br>
-*|IFNOT:ARCHIVE_PAGE|*
-    *|LIST:DESCRIPTION|*
-    <br>
-    <br>
-    <strong>Our mailing address is:</strong>
-    <br>
-    *|HTML:LIST_ADDRESS_HTML|* *|END:IF|*
-    <br>
-    <br>
 	Want to change how you receive these emails?<br>
     You can <a href="*|UPDATE_PROFILE|*">update your preferences</a> or <a href="*|UNSUB|*">unsubscribe from this list</a>.
     <br>
-    <br>
-    *|IF:REWARDS|* *|HTML:REWARDS|*
-*|END:IF|*
 
                         </td>
                     </tr>
