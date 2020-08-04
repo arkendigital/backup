@@ -672,7 +672,7 @@
                 <tbody><tr>
                     <td class="mcnCaptionLeftImageContent" align="center" valign="top">
                         @if($job->company->logo_path != "")
-                            <img src="{{ $job->company->logo }}" width="132" style="max-width: 225px; border: 1px none;" class="mcnImage" alt="{{ $job->company->name }}">
+                            <img src="{{ asset($job->company->logo) }}" width="132" style="max-width: 225px; border: 1px none;" class="mcnImage" alt="{{ $job->company->name }}">
                         @endif
                     </td>
                 </tr>
