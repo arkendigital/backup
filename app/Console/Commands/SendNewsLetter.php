@@ -50,7 +50,7 @@ class SendNewsLetter extends Command
                     ->withTrashed()
                     ->leftJoin('job_companies','job_companies.id','=','job_vacancies.company_id')
                     ->orderBy('job_vacancies.created_at','desc')
-                    ->take(7);
+                    ->take(7)->get();
                     // ->where(function($query) use($periodStart, $periodEnd){
                     //     $query->where('job_vacancies.created_at','>=',$periodStart)
                     //         ->where('job_vacancies.created_at','<',$periodEnd);
