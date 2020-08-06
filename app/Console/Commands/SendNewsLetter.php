@@ -49,11 +49,13 @@ class SendNewsLetter extends Command
         $vacancies = Job::select('job_vacancies.*','job_companies.name as company_name')
                     ->withTrashed()
                     ->leftJoin('job_companies','job_companies.id','=','job_vacancies.company_id')
-                    ->where(function($query) use($periodStart, $periodEnd){
-                        $query->where('job_vacancies.created_at','>=',$periodStart)
-                            ->where('job_vacancies.created_at','<',$periodEnd);
-                    })
-                    ->get();
+                    ->orderBy('job_vacancies.created_at','desc')
+                    ->take(7);
+                    // ->where(function($query) use($periodStart, $periodEnd){
+                    //     $query->where('job_vacancies.created_at','>=',$periodStart)
+                    //         ->where('job_vacancies.created_at','<',$periodEnd);
+                    // })
+                    // ->take(7);
 
         // return view('mail.newsletter', [
         //     'vacancies' => $vacancies
