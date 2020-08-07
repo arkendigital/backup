@@ -78,7 +78,7 @@ class SendNewsLetter extends Command
                             'list_id'=>env('MAILCHIMP_LISTID_CAMPAIGN')
                         ],
                         'settings'=>[
-                            'subject_line'=>'Actuaries Online Newsletter '.date('d/m/Y'),
+                            'subject_line'=>'Actuaries Online Job Alerts '.date('d/m/Y'),
                             'title'=>'Newsletter',
                             'from_name'=>'Actuaries Online',
                             'reply_to'=>env('MAIL_FROM_ADDRESS'),
