@@ -590,7 +590,7 @@
                     <tbody>
                         <tr>
                             <td align="center" valign="middle" class="mcnButtonContent" style="font-family: &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 16px; padding: 18px;">
-                                <a class="mcnButton " title="FIND OUT MORE" href="https://actuariesonline.com/" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">FIND OUT MORE</a>
+                                <a class="mcnButton " title="FIND OUT MORE" href="https://actuariesonline.com/jobs/vacancies" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">FIND OUT MORE</a>
                             </td>
                         </tr>
                     </tbody>
@@ -1028,7 +1028,7 @@
                         
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
-                            <em>Copyright ©{{ date('Y') }} Actuaries Online, All rights reserved.</em>
+                            <em>Copyright © {{ date('Y') }} Actuaries Online, All rights reserved.</em>
 <br>
 	Want to change how you receive these emails?<br>
     You can <a href="*|UPDATE_PROFILE|*">update your preferences</a> or <a href="*|UNSUB|*">unsubscribe from this list</a>.

@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         if(env('APP_ENV')==='production'){
-            $schedule->command('send:newsletter')->dailyAt('14:00');
+            $schedule->command('send:newsletter')->dailyAt('10:30');
         }
         // $schedule->command('send_monthly_stats')->dailyAt('08:00')->when(function () {
         //     return \Carbon\Carbon::now()->endOfMonth()->isToday();
