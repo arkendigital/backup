@@ -49,6 +49,8 @@
         <input class="login_page_form_item_input" type="text" name="email" id="email" value="{{ old("email") }}">
       </div>
 
+      <input type="hidden" name="recaptcha" id="recaptcha">
+
       <div class="login_page_form_item">
         <label class="login_page_form_item_label" for="password">Password</label>
         @if($errors->has("password"))
@@ -63,4 +65,14 @@
     </form>
 
   </body>
+  <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.sitekey') }}"></script>
+  <script>
+         grecaptcha.ready(function() {
+             grecaptcha.execute('{{ config('services.recaptcha.sitekey') }}', {action: 'login'}).then(function(token) {
+                if (token) {
+                  document.getElementById('recaptcha').value = token;
+                }
+             });
+         });
+  </script> 
 </html>
