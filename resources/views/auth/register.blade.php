@@ -18,6 +18,8 @@
       {{ csrf_field() }}
       {{ method_field("POST") }}
 
+      <input type="hidden" name="recaptcha" id="recaptcha">
+
       <div class="login_page_form_actions">
         <a href="{{ route("register") }}" class="login_page_form_actions_item login_page_form_actions_item_active">Sign up</a>
         <a href="{{ route("login") }}" class="login_page_form_actions_item">Log in</a>
@@ -178,6 +180,17 @@
 
       <input class="login_page_form_submit" value="Register" type="submit">
     </form>
+
+    <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.sitekey') }}"></script>
+    <script>
+          grecaptcha.ready(function() {
+              grecaptcha.execute('{{ config('services.recaptcha.sitekey') }}', {action: 'login'}).then(function(token) {
+                  if (token) {
+                    document.getElementById('recaptcha').value = token;
+                  }
+              });
+          });
+    </script> 
 
   </body>
 </html>

@@ -72,10 +72,14 @@ return [
         'client_secret' => env('TWITCH_CLIENT_SECRET'),
         'redirect' => env('APP_URL') . '/login/twitch/callback',
     ],
-    //http://go.microsoft.com/fwlink/?LinkID=144070
     'live' => [
         'client_id' => env('LIVE_CLIENT_ID'),
         'client_secret' => env('LIVE_CLIENT_SECRET'),
         'redirect' => env('APP_URL') . '/login/live/callback',
+    ],
+    'recaptcha' => [
+        'sitekey' => env('RECAPTCHA_SITEKEY'),
+        'secret' => env('RECAPTCHA_SECRET'),
+        'verify_url'=> env('RECAPTCHA_VERIFY_URL')
     ],
 ];
