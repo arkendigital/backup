@@ -14,7 +14,7 @@
       <img src="/images/logo.png" alt="Actuaries Online" title="Actuaries Online" class="login_page_logo">
     </a>
 
-    <form class="login_page_form" action="{{ route("login") }}" method="POST">
+    <form class="login_page_form" action="{{ route("login") }}" method="POST" style="padding-bottom: 20px">
       {{ csrf_field() }}
       {{ method_field("POST") }}
 
@@ -60,10 +60,10 @@
       </div>
 
       <p>Forgot your password? <a href="{{ url('/password/reset') }}" title="reset password">Click here to reset it</a></p>
-
       <input class="login_page_form_submit" value="Log in" type="submit">
+      <p>This website is protected by reCAPTCHA v3</p>
     </form>
-
+    
   </body>
   <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.sitekey') }}"></script>
   <script>

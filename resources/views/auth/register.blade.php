@@ -14,7 +14,7 @@
       <img src="/images/logo.png" alt="Actuaries Online" title="Actuaries Online" class="login_page_logo">
     </a>
 
-    <form class="login_page_form" action="{{ route("register") }}" method="POST">
+    <form class="login_page_form" action="{{ route("register") }}" method="POST" style="padding-bottom: 20px">
       {{ csrf_field() }}
       {{ method_field("POST") }}
 
@@ -179,12 +179,13 @@
       </div>
 
       <input class="login_page_form_submit" value="Register" type="submit">
+      <p>This website is protected by reCAPTCHA v3</p>
     </form>
 
     <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.sitekey') }}"></script>
     <script>
           grecaptcha.ready(function() {
-              grecaptcha.execute('{{ config('services.recaptcha.sitekey') }}', {action: 'login'}).then(function(token) {
+              grecaptcha.execute('{{ config('services.recaptcha.sitekey') }}', {action: 'register'}).then(function(token) {
                   if (token) {
                     document.getElementById('recaptcha').value = token;
                   }
