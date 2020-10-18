@@ -53,6 +53,43 @@ class JobAdvertiseController extends Controller
     */
     public function submit(JobAdvertiseRequest $request)
     {
+        
+        $url = config('services.recaptcha.verify_url');
+        $remoteip = $_SERVER['REMOTE_ADDR'];
+
+
+        $data = [
+            'secret' => config('services.recaptcha.secret'),
+            'response' => $request->get('recaptcha'),
+            'remoteip' => $remoteip
+        ];
+        $options = [
+            'http' => [
+                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method' => 'POST',
+                'content' => http_build_query($data)
+            ]
+        ];
+        $context = stream_context_create($options);
+        $result = file_get_contents($url, false, $context);
+        $resultJson = json_decode($result);
+
+
+        if ($resultJson->success !== true) {
+            return redirect(url('jobs/advertise-with-us'))
+                ->withErrors([
+                    "captcha" => "ReCaptcha Error"
+                ])
+                ->withInput();
+        }
+        if ($resultJson->score < 0.3) {
+                return redirect(url('jobs/advertise-with-us'))
+                ->withErrors([
+                    "captcha" => "ReCaptcha Error"
+                ])
+                ->withInput();
+        } else {
+
             /**
             * Build submission object.
             *
@@ -80,5 +117,6 @@ class JobAdvertiseController extends Controller
                 "alert_message" => "Your message has been sent to us",
                 "alert_button" => "OK"
             ]);
+        }
     }
 }
