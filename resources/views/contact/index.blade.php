@@ -20,8 +20,8 @@
       </div><!-- /.contact_page_header_inner -->
     </div><!-- /.contact_page_header -->
 
-    <div class="contact_page_wrap">
-      <div class="contact_page_wrap_inner">
+    <div class="contact_page_wrap" style="margin-bottom: 100px;">
+      <div class="contact_page_wrap_inner" style="padding-bottom: 20px;">
 
         <h1 class="contact_page_title">Contact us</h1>
         <p class="contact_page_text">Fill in the form below and we'll get back to you</p>
@@ -29,6 +29,8 @@
         <form action="/contact" method="POST">
           {{ csrf_field() }}
           {{ method_field("POST") }}
+
+          <input type="hidden" name="recaptcha" id="recaptcha">
 
           <div class="contact_page_form_item">
             <label class="contact_page_form_item_label" for="first_name">First Name</label>
@@ -70,8 +72,8 @@
             <textarea class="contact_page_form_item_textarea" name="comment" id="comment">{{ old("comment") }}</textarea>
           </div>
 
-          <input class="account_page_form_submit" value="Submit" type="submit">
-
+          <input class="account_page_form_submit" value="Submit" type="submit" style="margin-bottom: 100px;">
+          <p>This website is protected by reCAPTCHA v3</p>
         </form>
 
       </div><!-- /.contact_page_wrap_inner -->
@@ -87,7 +89,20 @@
       </div>
     @endif
 
-    <script src="{{ asset("js/app.js") }}"></script>
+    <link href="{{ asset("css/vendor.css") }}?cb={{env('CACHEBUST_KEY', date('Ymd'))}}" rel="stylesheet">
+    <script src="{{ asset("js/vendor.js") }}?cb={{env('CACHEBUST_KEY', date('Ymd'))}}"></script>
+    <script src="{{ asset("js/app.js") }}?cb={{env('CACHEBUST_KEY', date('Ymd'))}}" async></script>
+
+    <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.sitekey') }}"></script>
+    <script>
+          grecaptcha.ready(function() {
+              grecaptcha.execute('{{ config('services.recaptcha.sitekey') }}', {action: 'contact'}).then(function(token) {
+                  if (token) {
+                    document.getElementById('recaptcha').value = token;
+                  }
+              });
+          });
+    </script>
 
   </body>
 </html>
