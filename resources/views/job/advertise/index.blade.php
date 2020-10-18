@@ -49,6 +49,8 @@
       <form action="" method="POST">
         {{ csrf_field() }}
         {{ method_field("POST") }}
+        
+        <input type="hidden" name="recaptcha" id="recaptcha">
 
         @if($errors->any())
             <p class="advertising-toggle-item-form-error"><strong>There were some errors in your submission, please check below</strong></p>
@@ -103,12 +105,14 @@
         </div>
 
         <button type="submit" class="advertising-toggle-item-form-submit">Submit</button>
-
+        
       </form>
+      
 
       <div class="clear"></div>
-
+        <p style="padding: 10px 20px;">This website is protected by reCAPTCHA v3</p>
       <div class="advertising-toggle-item-form-bar"></div>
+      
     </div><!-- /#advert-form -->
 
     <div class="clear"></div>
@@ -132,3 +136,14 @@
   @endif
 
 @endsection
+
+<script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.sitekey') }}"></script>
+          <script>
+            grecaptcha.ready(function() {
+                grecaptcha.execute('{{ config('services.recaptcha.sitekey') }}', {action: 'advertise'}).then(function(token) {
+                    if (token) {
+                    document.getElementById('recaptcha').value = token;
+                    }
+                });
+            });
+          </script>

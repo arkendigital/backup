@@ -53,33 +53,70 @@ class JobAdvertiseController extends Controller
     */
     public function submit(JobAdvertiseRequest $request)
     {
+        
+        $url = config('services.recaptcha.verify_url');
+        $remoteip = $_SERVER['REMOTE_ADDR'];
 
-        /**
-        * Build submission object.
-        *
-        */
-        $contact_submission = collect();
-        $contact_submission->company_name = request()->company_name;
-        $contact_submission->name = request()->name;
-        $contact_submission->email = request()->email;
-        $contact_submission->phone = request()->phone;
-        $contact_submission->comment = request()->comment;
 
-        /**
-        * Initiate the send job advertising email job.
-        *
-        */
-        dispatch(new SendAdvertisingEmail($contact_submission));
+        $data = [
+            'secret' => config('services.recaptcha.secret'),
+            'response' => $request->get('recaptcha'),
+            'remoteip' => $remoteip
+        ];
+        $options = [
+            'http' => [
+                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method' => 'POST',
+                'content' => http_build_query($data)
+            ]
+        ];
+        $context = stream_context_create($options);
+        $result = file_get_contents($url, false, $context);
+        $resultJson = json_decode($result);
 
-        /**
-        * Redirect user.
-        *
-        */
-        return redirect(route("index"))->with([
-            "alert" => true,
-            "alert_title" => "Success",
-            "alert_message" => "Your message has been sent to us",
-            "alert_button" => "OK"
-        ]);
+
+        if ($resultJson->success !== true) {
+            return redirect(url('jobs/advertise-with-us'))
+                ->withErrors([
+                    "captcha" => "ReCaptcha Error"
+                ])
+                ->withInput();
+        }
+        if ($resultJson->score < 0.3) {
+                return redirect(url('jobs/advertise-with-us'))
+                ->withErrors([
+                    "captcha" => "ReCaptcha Error"
+                ])
+                ->withInput();
+        } else {
+
+            /**
+            * Build submission object.
+            *
+            */
+            $contact_submission = collect();
+            $contact_submission->company_name = request()->company_name;
+            $contact_submission->name = request()->name;
+            $contact_submission->email = request()->email;
+            $contact_submission->phone = request()->phone;
+            $contact_submission->comment = request()->comment;
+    
+            /**
+            * Initiate the send job advertising email job.
+            *
+            */
+            dispatch(new SendAdvertisingEmail($contact_submission));
+    
+            /**
+            * Redirect user.
+            *
+            */
+            return redirect(route("index"))->with([
+                "alert" => true,
+                "alert_title" => "Success",
+                "alert_message" => "Your message has been sent to us",
+                "alert_button" => "OK"
+            ]);
+        }
     }
 }
