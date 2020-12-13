@@ -14,7 +14,7 @@
 
       <h3>Find graduate employers <a href="{{ url("/uni-corner/actuarial-employers") }}">here</a></h3>
 
-      <form action="/jobs/vacancies" method="POST" id="searchGraduateJobsForm" style="display: none;">
+      <form action="/actuary-jobs" method="POST" id="searchGraduateJobsForm" style="display: none;">
         {{ csrf_field() }}
         {{ method_field("POST") }}
 

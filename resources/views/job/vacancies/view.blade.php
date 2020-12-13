@@ -130,7 +130,7 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           }
         });
-        $.ajax('/jobs/vacancies/'+jobID+'/track', {
+        $.ajax('/actuary-jobs/'+jobID+'/track', {
             type: 'POST',
             data: { "trackType": trackType },
             success: function (data, status, xhr) {
