@@ -34,7 +34,7 @@
         @if(isset($jobs))
           @foreach($jobs as $job)
           <div class="swiper-slide">
-            <a class="box-select-item" href="/jobs/vacancies/{{ $job->slug }}">{{ $job->title }}</a>
+            <a class="box-select-item" href="/actuary-jobs/{{ $job->slug }}">{{ $job->title }}</a>
           </div>
           @endforeach
         @endif

@@ -1,13 +1,14 @@
 <?php
-Route::redirect('/jobs', '/jobs/vacancies');
-Route::namespace('Job')->prefix('jobs')->group(function() {
-  Route::get('/vacancies-per-page/{perPage}', 'JobVacanciesController@perPage');
-  Route::get('/vacancies', 'JobVacanciesController@index');
-  Route::post('/vacancies', 'JobVacanciesController@set_filtering');
-  Route::get('/vacancies/{job}', 'JobVacanciesController@view')->name('job.show');
-  Route::post('/vacancies/{id}/track', 'JobVacanciesController@track');
-  Route::get('/advertise-with-us', 'JobAdvertiseController@index');
-  Route::post('/advertise-with-us', 'JobAdvertiseController@submit');
-  Route::get('/internships', 'JobInternshipController@index');
-  Route::get('/graduate-jobs', 'JobGraduateController@index');
+Route::redirect('/jobs', '/actuary-jobs');
+
+Route::namespace('Job')->group(function() {
+  Route::get('/jobs/vacancies-per-page/{perPage}', 'JobVacanciesController@perPage');
+  Route::get('/actuary-jobs', 'JobVacanciesController@index');
+  Route::post('/actuary-jobs', 'JobVacanciesController@set_filtering');
+  Route::get('/actuary-jobs/{job}', 'JobVacanciesController@view')->name('job.show');
+  Route::post('/actuary-jobs/{id}/track', 'JobVacanciesController@track');
+  Route::get('/jobs/advertise-with-us', 'JobAdvertiseController@index');
+  Route::post('/jobs/advertise-with-us', 'JobAdvertiseController@submit');
+  Route::get('/jobs/internships', 'JobInternshipController@index');
+  Route::get('/jobs/graduate-jobs', 'JobGraduateController@index');
 });

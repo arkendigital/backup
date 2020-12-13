@@ -36,7 +36,7 @@
         </div>
 
 
-        <form action="/jobs/vacancies" method="POST" id="jobFiltering">
+        <form action="/actuary-jobs" method="POST" id="jobFiltering">
           {{ csrf_field() }}
 
           {{-- <input type="hidden" name="type" value="topsearch"> --}}
@@ -80,7 +80,7 @@
       <div class="job-list-sidebar">
         <p class="job-list-sidebar-title">Filter by</p>
 
-        <form action="/jobs/vacancies" method="POST" id="jobFiltering">
+        <form action="/actuary-jobs" method="POST" id="jobFiltering">
           {{ csrf_field() }}
           {{ method_field("POST") }}
 

@@ -272,7 +272,7 @@ class JobVacanciesController extends Controller
         /**
         * Redirect back to job listing page.
         */
-        return redirect("/jobs/vacancies#jobs");
+        return redirect("/actuary-jobs#jobs");
     }
 
     /**

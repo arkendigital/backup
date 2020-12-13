@@ -539,7 +539,7 @@
                         <tbody><tr>
                             <td class="mcnImageContent" valign="top" style="padding-right: 9px; padding-left: 9px; padding-top: 0; padding-bottom: 0; text-align:center;">
                                 
-                                    <a href="https://www.actuariesonline.com/jobs/vacancies" title="" class="" target="_blank">
+                                    <a href="https://www.actuariesonline.com/actuary-jobs" title="" class="" target="_blank">
                                         <img align="center" alt="" src="https://mcusercontent.com/bba349a324721d7921bb88ba3/images/8c80bd8e-3ef0-4829-9822-84e1e264cfa3.png" width="564" style="max-width:1200px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
                                     </a>
                                 
@@ -590,7 +590,7 @@
                     <tbody>
                         <tr>
                             <td align="center" valign="middle" class="mcnButtonContent" style="font-family: &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 16px; padding: 18px;">
-                                <a class="mcnButton " title="FIND OUT MORE" href="https://actuariesonline.com/jobs/vacancies" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">FIND OUT MORE</a>
+                                <a class="mcnButton " title="FIND OUT MORE" href="https://actuariesonline.com/actuary-jobs" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">FIND OUT MORE</a>
                             </td>
                         </tr>
                     </tbody>

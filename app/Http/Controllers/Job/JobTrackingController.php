@@ -33,6 +33,6 @@ class JobTrackingController extends Controller
          * Redirect user to the target url
          *
          */
-        return redirect(url("/jobs/vacancies/" . $job->slug));
+        return redirect(url("/actuary-jobs/" . $job->slug));
     }
 }
