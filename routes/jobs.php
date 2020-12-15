@@ -1,5 +1,5 @@
 <?php
-Route::redirect('/jobs', '/actuary-jobs');
+// Route::redirect('/jobs', '/actuary-jobs');
 
 Route::namespace('Job')->group(function() {
   Route::get('/jobs/vacancies-per-page/{perPage}', 'JobVacanciesController@perPage');
