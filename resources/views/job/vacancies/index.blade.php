@@ -2,6 +2,13 @@
 
 @section("head_scripts")
 <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/51760736ffa0ca0ab15a0abbe/bf204fb69eade3dc3e6588cc4.js");</script>
+<link rel="canonical" href="{{ url('actuary-jobs/'.$paginator->currentPage()) }}">
+@if($paginator->hasMorePages())
+<link rel="next" href="{{ url('actuary-jobs/'.((int)$paginator->currentPage()+1)) }}">
+@endif
+@if($paginator->currentPage()!==1)
+<link rel="prev" href="{{ url('actuary-jobs/'.((int)$paginator->currentPage()-1)) }}">
+@endif
 @endsection
 
 @section("content")
@@ -72,7 +79,7 @@
         </form>
 
         <div class="job-list-banner-showing">
-          Showing {{ $jobs->firstItem() }}-{{ $jobs->lastItem() }} of {{ $jobs->total() }}
+          Showing {{ $paginator->firstItem() }}-{{ $paginator->lastItem() }} of {{ $paginator->total() }}
         </div>
         
       </div><!-- /.job-list-banner -->
@@ -259,15 +266,14 @@
           {{-- <div style="display: block; padding: 25px 0; display: block; width: 100%; background: #1a304d; text-align: center; color: white; margin-top: 20px; margin-bottom: 30px;">SPONSORED LINK</div> --}}
         @endif
 
-        @if($jobs->isEmpty() && $featured_jobs->isEmpty())
+        @if(count($paginator->items())===0 && $featured_jobs->isEmpty())
 
           <div class="job-list-item job-list-item-featured">
             Sorry, we couldn't find any job vacancies.
           </div>
 
-        @elseif($jobs->count() > 0)
-
-          @foreach($jobs as $job)
+        @elseif(count($paginator->items()) > 0)
+          @foreach($paginator->items() as $job)
             {{ $job->trackImpression() }}
             {{ $job->trackUniqueImpression() }}
             @include("job.vacancies.job", [
@@ -285,7 +291,23 @@
         @endif
 
         <div class="jobs-pagination">
-            {{ $jobs->links() }}
+            <ul class="pager">
+              @if($paginator->currentPage()>1)
+                <li><a href="{{ url('actuary-jobs/'.((int)$paginator->currentPage()-1)) }}" rel="prev">&laquo;</a></li>
+              @endif
+
+              @for ($i = 1; $i <= $paginator->lastPage(); $i++)
+                @if($i === $paginator->currentPage())
+                  <li class="active"><span>{{ $i }}</span></li>
+                @else
+                <li><a href="{{ url('actuary-jobs/'.$i) }}">{{ $i }}</a></li>
+                @endif
+              @endfor
+
+              @if($paginator->hasMorePages())
+                <li><a href="{{ url('actuary-jobs/'.((int)$paginator->currentPage()+1)) }}" rel="next">&raquo;</a></li>
+              @endif
+          </ul>
         </div><!-- /.jobs-pagination -->
       </div><!-- /.job-list-vacancies -->
 

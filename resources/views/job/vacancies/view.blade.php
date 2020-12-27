@@ -5,6 +5,39 @@
 <script> function gtag_report_conversion(url) { var callback = function () { if (typeof(url) != 'undefined') { window.location = url; } }; gtag('event', 'conversion', { 'send_to': 'AW-719018787/Z5WwCNbxi9IBEKO27dYC', 'event_callback': callback }); return false; } 
 </script>
 <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/51760736ffa0ca0ab15a0abbe/bf204fb69eade3dc3e6588cc4.js");</script>
+<script type="application/ld+json">
+    {
+      "@context" : "https://schema.org/",
+      "@type" : "JobPosting",
+      "title" : "{{ $job->title }}",
+      "description" : "{!! $job->company->description !!}",
+      "datePosted" : "{{ $job->start_date }}",
+      "validThrough" : "{{ $job->end_date }}",
+      "employmentType" : "FULL_TIME",
+      "hiringOrganization" : {
+        "@type" : "Organization",
+        "name" : "{{ $job->company->name }}",
+        "logo" : "{{ url('/').$job->company->logo }}"
+      },
+      "jobLocation": {
+      "@type": "Place",
+        "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "{{ str_replace("--", "", $job->location->name) }}",
+        "addressCountry": "GB"
+        }
+      },
+     "baseSalary": {
+        "@type": "MonetaryAmount",
+        "currency": "GBP",
+        "value": {
+          "@type": "QuantitativeValue",
+          "value": {{ ($job->status_id == 1 || $job->status_id == 4) ? number_format($job->max_salary) : number_format($job->max_daily_salary) }},
+          "unitText": "{{ ($job->status_id == 1 || $job->status_id == 4) ? 'MONTH' : 'DAY' }}"
+        }
+      }
+    }
+    </script>
 @endsection
 
 @section("content")
@@ -87,7 +120,7 @@
         <p><a class="job-view-content-button job-view-content-button-apply track-btn" data-type="contact" href="mailto:{{ $job->contact_email }}">Contact</a></p>
         @endif
         @if($job->apply_link)
-        <p><a class="job-view-content-button job-view-content-button-apply track-btn" data-type="apply" target="_blank" rel=”nofollow” href="{{ $job->apply_link }}" style="margin-top: 10px;">Apply</a></p>
+        <p><a class="job-view-content-button job-view-content-button-apply track-btn" data-type="apply" target="_blank" rel="nofollow" href="{{ $job->apply_link }}" style="margin-top: 10px;">Apply</a></p>
         @endif
         <p><a class="job-view-content-button job-view-content-button-back" onclick="window.history.back()">Back</a></p>
       </div>

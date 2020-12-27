@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\Job;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Section;
-use App\Models\Page;
 use App\Models\Job;
-use App\Models\JobLocation;
-use App\Models\JobSector;
-use App\Models\JobCompany;
+use App\Models\Page;
+use App\Models\Section;
 use App\Models\JobRegion;
+use App\Models\JobSector;
 use App\Models\JobStatus;
+use App\Models\JobCompany;
+use App\Models\JobLocation;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class JobVacanciesController extends Controller
 {
@@ -30,14 +31,24 @@ class JobVacanciesController extends Controller
     */
     public function index()
     {
+        $currentPage = 1;
+
+        if(request()->segment(2)){
+            if(is_numeric(request()->segment(2))){
+                $currentPage = request()->segment(2);
+            }else{
+                return $this->view(request()->segment(2));
+            }
+        }
+
         /**
         * Get page Information
         */
-        $page = Page::getPage(request()->route()->uri);
+        $page = Page::getPage(request()->segment(1));
 
-        /**
-        * Set seo.
-        */
+        // /**
+        // * Set seo.
+        // */
         $this->seo()->setTitle($page->meta_title);
         $this->seo()->setDescription($page->meta_description);
 
@@ -153,12 +164,19 @@ class JobVacanciesController extends Controller
         }
 
         $perPage = (session()->exists("job-per-page")) ? session('job-per-page') : 10 ;
-
-        if($isSearching) {
-            $jobs = $jobs->paginate($perPage);
-        }else{
-            $jobs = $jobs->where('featured', 0)->paginate($perPage);
+        if($currentPage>ceil($jobs->count()/$perPage)){
+            $currentPage = ceil($jobs->count()/$perPage);
         }
+
+        if(!$isSearching) {
+            $jobs = $jobs->where('featured', 0);
+        }  
+
+        $total = $jobs->count();
+        $jobs = $jobs->offset($perPage*($currentPage-1))
+                ->limit($perPage)->get();
+        
+        $paginator = new LengthAwarePaginator($jobs, $total,$perPage,$currentPage);
 
         /**
          * Get a list of job types
@@ -184,7 +202,8 @@ class JobVacanciesController extends Controller
             "locations",
             "regions",
             "job_types",
-            "page_adverts"
+            "page_adverts",
+            "paginator"
         ))->compileShortcodes();
     }
 
@@ -281,12 +300,16 @@ class JobVacanciesController extends Controller
     * @param Job $job
     *
     */
-    public function view(Job $job)
+    public function view($slug)
     {
     /**
     * Get page information.
     *
     */
+        $job = Job::where('slug',$slug)->first();
+        if(!$job){
+            abort(404);
+        }
         $page = Page::getPage("jobs-vacancy-view");
 
         /**
