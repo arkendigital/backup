@@ -33,7 +33,7 @@
         "value": {
           "@type": "QuantitativeValue",
           "value": {{ ($job->status_id == 1 || $job->status_id == 4) ? number_format($job->max_salary) : number_format($job->max_daily_salary) }},
-          "unitText": "{{ ($job->status_id == 1 || $job->status_id == 4) ? 'MONTH' : 'DAY' }}"
+          "unitText": "{{ ($job->status_id == 1 || $job->status_id == 4) ? 'YEAR' : 'DAY' }}"
         }
       }
     }
