@@ -6,7 +6,7 @@ Route::namespace('Job')->group(function() {
   Route::get('/actuary-jobs', 'JobVacanciesController@index');
   Route::post('/actuary-jobs', 'JobVacanciesController@set_filtering');
 
-  Route::get('/actuary-jobs/{pageorjob}', 'JobVacanciesController@index');
+  Route::get('/actuary-jobs/{pageorjob}', 'JobVacanciesController@index')->name('job.show');
   // Route::get('/actuary-jobs/{job}', 'JobVacanciesController@view')->name('job.show');
 
 
