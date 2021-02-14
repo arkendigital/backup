@@ -50,8 +50,8 @@
             @endforeach
           </ul>
         </li>
-        <li @if(request()->route()->getPrefix() == "/jobs") class="jobs-active" @endif>
-          <a href="/actuary-jobs">Jobs</a>
+        <li @if(request()->route()->getPrefix() == "/actuary-jobs") class="jobs-active" @endif>
+          <a href="/actuary-jobs">Actuarial Jobs</a>
           <i class="fas fa-angle-down"></i>
           <ul>
             @foreach($navigation_items['jobs'] as $item)
