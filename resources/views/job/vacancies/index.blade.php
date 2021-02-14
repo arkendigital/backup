@@ -2,13 +2,13 @@
 
 @section("head_scripts")
 <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/51760736ffa0ca0ab15a0abbe/bf204fb69eade3dc3e6588cc4.js");</script>
-<link rel="canonical" href="{{ url('actuary-jobs/'.$paginator->currentPage()) }}">
-@if($paginator->hasMorePages())
-<link rel="next" href="{{ url('actuary-jobs/'.((int)$paginator->currentPage()+1)) }}">
-@endif
 @if($paginator->currentPage()!==1)
 <link rel="prev" href="{{ url('actuary-jobs/'.((int)$paginator->currentPage()-1)) }}">
 @endif
+@if($paginator->hasMorePages())
+<link rel="next" href="{{ url('actuary-jobs/'.((int)$paginator->currentPage()+1)) }}">
+@endif
+<link rel="canonical" href="{{ url('actuary-jobs/'.$paginator->currentPage()) }}">
 @endsection
 
 @section("content")

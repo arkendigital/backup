@@ -36,6 +36,9 @@ class JobVacanciesController extends Controller
         if(request()->segment(2)){
             if(is_numeric(request()->segment(2))){
                 $currentPage = request()->segment(2);
+                if((int)$currentPage===1){
+                    return redirect('/actuary-jobs');
+                }
             }else{
                 return $this->view(request()->segment(2));
             }
