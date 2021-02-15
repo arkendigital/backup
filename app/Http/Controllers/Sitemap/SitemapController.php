@@ -44,11 +44,12 @@ class SitemapController extends Controller
      */
     public function pages($page = null)
     {
-        $pages = cache()->remember('sitemap-pages-page-'.$page, now()->addDays(1), function () use ($page) {
+        $pages = cache()->remember('sitemap-pages-page-'.$page, now(), function () use ($page) {
             $offset = $page * 10000;
 
             return Page::select('id', 'slug', 'updated_at')
                                 ->where('show_on_sitemap', 1)
+                                ->whereNull('deleted_at')
                                 ->orderBy('updated_at', 'desc')
                                 ->take(10000)
                                 ->offset($offset)
