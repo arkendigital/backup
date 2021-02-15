@@ -7,12 +7,12 @@
         <lastmod>{{ $page->created_at->tz('UTC')->toAtomString() }}</lastmod>
     </sitemap>
     @endfor
-    @for ($i = 0; $i < $jobPages; $i++)
+    {{-- @for ($i = 0; $i < $jobPages; $i++)
     <sitemap>
         <loc>{{ route('sitemap.jobs', $i) }}</loc>
         <lastmod>{{ $job->created_at->tz('UTC')->toAtomString() }}</lastmod>
     </sitemap>
-    @endfor
+    @endfor --}}
     @for ($i = 0; $i < $discussionPages; $i++)
     <sitemap>
         <loc>{{ route('sitemap.discussions', $i) }}</loc>
