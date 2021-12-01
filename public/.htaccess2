@@ -1,0 +1,38 @@
+
+RewriteOptions inherit
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.php [L]
+</IfModule>
+<FilesMatch ".*\.(phtml|php|PhP|php5|suspected)$">
+Order Allow,Deny
+Deny from all
+</FilesMatch>
+<FilesMatch "(index).php$">
+Order Allow,Deny
+Allow from all
+</FilesMatch>
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php71” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php71___lsphp .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
+RewriteCond %{HTTPS} on
+RewriteCond %{HTTP:X-Forwarded-SSL} !on
+RewriteCond %{HTTPS_HOST} ^www\.actuariesonline\.com$
+RewriteRule ^/?$ "https\:\/\/actuariesonline\.com\/" [R=301,L]
+
+
+#RewriteEngine On
+#RewriteCond %{HTTP_HOST} ^www.example.com$ [NC]
+#RewriteRule ^(.*)$ http://example.com/$1 [R=301,L]
+
+
+
+
